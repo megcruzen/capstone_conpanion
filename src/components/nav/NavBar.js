@@ -1,32 +1,57 @@
-import React, { Component } from "react"
-import { Link } from "react-router-dom"
+import React from "react"
+import "./NavBar.css";
 import "bootstrap/dist/css/bootstrap.min.css"
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink } from 'reactstrap';
 
 
-class NavBar extends Component {
-    render() {
-        return (
-            <nav className="navbar navbar-light light-blue flex-md-nowrap p-0 shadow">
-                <ul className="nav nav-pills nav-fill">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/">ConBuddyLogo</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/conventions">Conventions</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/costumes">Costumes</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/friends">Friends</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/">Logout</Link>
-                    </li>
-                </ul>
-            </nav>
-        )
-    }
-}
+    export default class NavBar extends React.Component {
+        constructor(props) {
+          super(props);
 
-export default NavBar
+          this.toggle = this.toggle.bind(this);
+          this.state = {
+            isOpen: false
+          };
+        }
+        toggle() {
+          this.setState({
+            isOpen: !this.state.isOpen
+          });
+        }
+        clearSession = () => {
+            sessionStorage.clear();
+        }
+        render() {
+          return (
+            <div>
+              <Navbar color="light" light expand="md">
+                <NavbarBrand href="/">CosBuddy</NavbarBrand>
+                <NavbarToggler onClick={this.toggle} />
+                <Collapse isOpen={this.state.isOpen} navbar>
+                  <Nav className="ml-auto" navbar>
+                    <NavItem>
+                      <NavLink href="/conventions">Conventions</NavLink>
+                    </NavItem>
+                    <NavItem>
+                      <NavLink href="/costumes">Costumes</NavLink>
+                    </NavItem>
+                    {/* <NavItem>
+                      <NavLink href="/friends">Friends</NavLink>
+                    </NavItem> */}
+                    <NavItem>
+                      <NavLink onClick={this.clearSession} href="/">Logout</NavLink>
+                    </NavItem>
+                  </Nav>
+                </Collapse>
+              </Navbar>
+            </div>
+          );
+        }
+      }

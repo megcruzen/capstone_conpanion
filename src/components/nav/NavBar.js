@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import "./NavBar.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 import {
@@ -32,21 +33,21 @@ import {
           return (
             <div>
               <Navbar color="light" light expand="md">
-                <NavbarBrand href="/">CosBuddy</NavbarBrand>
+                <NavbarBrand tag={Link} to="/">CosBuddy</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>
                     <NavItem>
-                      <NavLink href="/conventions">Conventions</NavLink>
+                        <NavLink tag={Link} to="/conventions">Conventions</NavLink>
                     </NavItem>
                     <NavItem>
-                      <NavLink href="/costumes">Costumes</NavLink>
+                    <NavLink tag={Link} to="/costumes">Costumes</NavLink>
                     </NavItem>
                     {/* <NavItem>
                       <NavLink href="/friends">Friends</NavLink>
                     </NavItem> */}
                     <NavItem>
-                      <NavLink onClick={this.clearSession} href="/">Logout</NavLink>
+                        <NavLink onClick={this.clearSession} tag={Link} to="/">Logout</NavLink>
                     </NavItem>
                   </Nav>
                 </Collapse>

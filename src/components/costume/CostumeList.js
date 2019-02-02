@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import CostumeCard from "./CostumeCard"
 
 export default class CostumeList extends Component {
     render() {
@@ -9,12 +9,7 @@ export default class CostumeList extends Component {
                 <div className="costume_list_global">
                 {
                     this.props.costumes.map(costume =>
-                        <div key={costume.id}>
-                            <div>
-                            {costume.name}
-                            </div>
-                            {/* <Link className="nav-link" to={`students/${student.id}/edit`}>Edit</Link> */}
-                        </div>
+                        <CostumeCard key={costume.id} costume={costume} {...this.props} />
                     )
                 }
                 </div>

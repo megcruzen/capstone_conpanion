@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import ConventionCard from "./ConventionCard"
 
 export default class ConventionList extends Component {
     render() {
@@ -8,15 +8,8 @@ export default class ConventionList extends Component {
                 <h1>My Conventions</h1>
                 <div className="convention_list_personal">
                 {
-                    this.props.myConventions.map(con =>
-                        <div key={con.convention.id}>
-                            <div>
-                            {con.convention.name}
-                            <br />
-                            {con.convention.city}, {con.convention.state}
-                            </div>
-                            {/* <Link className="nav-link" to={`students/${student.id}/edit`}>Edit</Link> */}
-                        </div>
+                    this.props.myConventions.map(myConvention =>
+                        <ConventionCard key={myConvention.id} myConvention={myConvention} {...this.props} />
                     )
                 }
                 </div>

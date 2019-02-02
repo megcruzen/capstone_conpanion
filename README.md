@@ -1,1 +1,1 @@
-# ConBuddy
+# CosBuddy

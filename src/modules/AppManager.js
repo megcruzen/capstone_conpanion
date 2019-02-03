@@ -21,6 +21,28 @@ export default {
           body: JSON.stringify(newCon)
         })
         .then(data => data.json())
+        .then(newCon => {
+            const newUserCon = {
+                userId: newCon.userId,
+                conventionId: newCon.id
+            }
+            console.log(newUserCon)
+            this.createUserConvention(newUserCon);
+            // return newUserCon;
+            })
+        // .then(() => console.log(newUserCon))
+    },
+
+    createUserConvention(newCon) {
+        console.log(newCon)
+        return fetch(`${remoteURL}/userConventions`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newCon)
+        })
+        // .then(data => data.json())
     },
 
     getGenres() {

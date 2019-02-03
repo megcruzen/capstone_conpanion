@@ -12,7 +12,8 @@ export default class ConventionForm extends Component {
         city: "",
         state: "",
         website: "",
-        thumbnail: ""
+        thumbnail: "",
+        userId: ""
     }
 
     // Update state whenever an input field is edited
@@ -38,7 +39,8 @@ export default class ConventionForm extends Component {
             state: this.state.state,
             website: this.state.website,
             thumbnail: this.state.thumbnail,
-            genreId: this.state.select
+            genreId: this.state.select,
+            userId: 1
         }
 
         // Create the convention and then redirect user to their convention list

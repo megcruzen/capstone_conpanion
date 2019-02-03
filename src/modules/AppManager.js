@@ -42,7 +42,7 @@ export default {
           },
           body: JSON.stringify(newCon)
         })
-        // .then(data => data.json())
+        .then(data => data.json())
     },
 
     getGenres() {

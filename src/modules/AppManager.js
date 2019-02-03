@@ -12,6 +12,22 @@ export default {
         .then(data => data.json())
     },
 
+    postConvention(newCon) {
+        return fetch(`${remoteURL}/conventions`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newCon)
+        })
+        .then(data => data.json())
+    },
+
+    getGenres() {
+        return fetch(`${remoteURL}/genres`)
+        .then(data => data.json())
+    },
+
     getCostumes() {
         return fetch(`${remoteURL}/costumes?userId=1`)
         .then(data => data.json())

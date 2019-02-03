@@ -2,8 +2,28 @@
     padding: 20px;
 }
 
+a.link {
+    color: #74c2a7;
+    text-decoration: underline;
+}
+
+a.cancel {
+    color: #636363;
+    text-decoration: underline;
+}
+
 a.delete {
     color: red;
+}
+
+/* Forms */
+
+.form_width {
+    max-width: 500px;
+}
+
+.convention_form label {
+    margin-bottom: 0px;
 }
 
 /* Media */

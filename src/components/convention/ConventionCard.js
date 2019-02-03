@@ -1,7 +1,7 @@
 // Component that creates each convention card.
 
 import React, { Component } from 'react'
-import { Button, Media } from 'reactstrap'
+import { Media } from 'reactstrap'
 import "../CosBuddy.css"
 import thumb from "./64x64.jpg"
 

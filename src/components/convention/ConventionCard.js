@@ -6,6 +6,12 @@ import "../CosBuddy.css"
 import thumb from "./64x64.jpg"
 
 export default class ConventionCard extends Component {
+
+    deletePrompt = () => {
+        if (window.confirm(`Are you sure you want to remove ${this.props.myConvention.convention.name} from your list?`)) {
+            this.props.removeConvention(this.props.myConvention.id)
+       }
+    }
     render() {
         return (
             <tr>
@@ -22,7 +28,7 @@ export default class ConventionCard extends Component {
                                 {this.props.myConvention.convention.city}, {this.props.myConvention.convention.state}
                             </div>
                             <div>
-                                <i className="fas fa-times-circle text-danger" onClick={() => console.log("Delete!")}></i>
+                                <i className="fas fa-times-circle text-danger" onClick={this.deletePrompt}></i>
                             </div>
                         </Media>
                     </Media>

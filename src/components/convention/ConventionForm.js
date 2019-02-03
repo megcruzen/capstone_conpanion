@@ -32,7 +32,7 @@ export default class ConventionForm extends Component {
     constructNewConvention = evt => {
         evt.preventDefault()
         const convention = {
-            name: this.state.name,
+            name: this.state.conventionName,
             startDate: this.state.startDate,
             endDate: this.state.endDate,
             city: this.state.city,
@@ -56,8 +56,8 @@ export default class ConventionForm extends Component {
                 <Row form>
                         <Col md={8}>
                             <FormGroup>
-                                <Label for="name">Convention Name</Label>
-                                <Input type="text" required name="name" id="name"
+                                <Label for="conventionName">Convention Name</Label>
+                                <Input type="text" required name="conventionName" id="conventionName"
                                 onChange={this.handleFieldChange} placeholder="e.g. DragonCon" />
                             </FormGroup>
                         </Col>

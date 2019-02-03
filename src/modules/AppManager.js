@@ -21,16 +21,15 @@ export default {
           body: JSON.stringify(newCon)
         })
         .then(data => data.json())
-        .then(newCon => {
-            const newUserCon = {
-                userId: newCon.userId,
-                conventionId: newCon.id
-            }
-            console.log(newUserCon)
-            this.createUserConvention(newUserCon);
-            // return newUserCon;
-            })
-        // .then(() => console.log(newUserCon))
+        // .then(newCon => {
+        //     const newUserCon = {
+        //         userId: newCon.userId,
+        //         conventionId: newCon.id
+        //     }
+        //     console.log(newUserCon)
+        //     this.createUserConvention(newUserCon);
+        //     })
+        // .then(() => this.getMyConventions())
     },
 
     createUserConvention(newCon) {
@@ -43,6 +42,13 @@ export default {
           body: JSON.stringify(newCon)
         })
         .then(data => data.json())
+    },
+
+    deleteUserConvention(id) {
+        return fetch(`${remoteURL}/userConventions/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getMyConventions())
     },
 
     getGenres() {

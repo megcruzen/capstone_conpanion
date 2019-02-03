@@ -5,12 +5,15 @@ import AppManager from "../modules/AppManager"
 import "./CosBuddy.css";
 
 import ConventionList from './convention/ConventionList'
+import ConventionSearch from './convention/ConventionSearch'
+import ConventionForm from './convention/ConventionForm'
 import CostumeList from './costume/CostumeList'
 
 export default class ApplicationViews extends Component {
 
   state = {
     users: [],
+    genres: [],
     conventions: [],
     myConventions: [],
     costumes: []
@@ -22,37 +25,54 @@ export default class ApplicationViews extends Component {
         this.setState({ myConventions: myConventions })
     })
 
+    AppManager.getGenres()
+    .then(genres => {
+        this.setState({ genres: genres })
+    })
+
     AppManager.getCostumes()
     .then(costumes => {
         this.setState({ costumes: costumes })
     })
   }
 
+  addConvention = (convention) => AppManager.postConvention(convention)
+    .then(() => AppManager.getMyConventions())
+    .then(myConventions => this.setState({
+      myConventions: myConventions
+    })
+  )
+
   render() {
     return (
       <div id="appviews">
 
-        <Route
-          exact path="/" render={props => {
+        <Route exact path="/" render={props => {
             return null
           }}
         />
 
-        <Route path="/conventions" render={props => {
+        <Route exact path="/conventions" render={props => {
             return <ConventionList {...props}
                     myConventions={this.state.myConventions} />
           }}
         />
 
-        <Route path="/costumes" render={props => {
-            return <CostumeList {...props}
-                    costumes={this.state.costumes} />
+        <Route exact path="/conventions/search" render={props => {
+            return <ConventionSearch {...props}
+                    myConventions={this.state.myConventions} />
           }}
         />
 
-        <Route
-          path="/friends" render={props => {
-            return null
+        <Route path="/conventions/new" render={(props) => {
+                    return <ConventionForm {...props}
+                            addConvention={this.addConvention}
+                            genres={this.state.genres} />
+                }} />
+
+        <Route path="/costumes" render={props => {
+            return <CostumeList {...props}
+                    costumes={this.state.costumes} />
           }}
         />
 

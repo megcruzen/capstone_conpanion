@@ -12,7 +12,8 @@ export default class ConventionForm extends Component {
         city: "",
         state: "",
         website: "",
-        thumbnail: ""
+        thumbnail: "",
+        userId: ""
     }
 
     // Update state whenever an input field is edited
@@ -23,17 +24,23 @@ export default class ConventionForm extends Component {
         this.setState(stateToChange)
     }
 
+    submit = e => {
+        e.preventDefault();
+        console.log('it works!');
+      }
+
     constructNewConvention = evt => {
         evt.preventDefault()
         const convention = {
             name: this.state.name,
-            genreId: this.state.genre.id,
             startDate: this.state.startDate,
             endDate: this.state.endDate,
             city: this.state.city,
             state: this.state.state,
             website: this.state.website,
-            thumbnail: this.state.thumbnail
+            thumbnail: this.state.thumbnail,
+            genreId: this.state.select,
+            userId: 1
         }
 
         // Create the convention and then redirect user to their convention list
@@ -45,7 +52,7 @@ export default class ConventionForm extends Component {
         return (
             <section className="convention_form">
                 <h1>Add a Convention</h1>
-                <Form onSubmit={console.log("Submit!")} className="form_width mt-4">
+                <Form onSubmit={this.constructNewConvention} className="form_width mt-4">
                 <Row form>
                         <Col md={8}>
                             <FormGroup>
@@ -61,7 +68,7 @@ export default class ConventionForm extends Component {
                                 onChange={this.handleFieldChange}>
                                 <option value="">Select a genre</option>
                                     {
-                                        this.props.genres.map(genre => <option key={genre.id} id={genre.id}>{genre.name}</option>)
+                                        this.props.genres.map(genre => <option key={genre.id} id={genre.id} value={genre.id}>{genre.name}</option>)
                                     }
                                 </Input>
                             </FormGroup>

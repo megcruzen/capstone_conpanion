@@ -9,7 +9,7 @@ export default class ConventionList extends Component {
             <section className="convention_list_personal">
                 <div className="d-sm-flex justify-content-between flex-wrap align-items-center mb-3">
                     <div><h1 className="text-center">My Conventions</h1></div>
-                    <div className="text-center"><Button color="primary">Add Convention</Button></div>
+                    <div className="text-center"><Button color="primary" onClick={() => this.props.history.push("/conventions/search")}>Add Convention</Button></div>
                 </div>
                 <Table striped borderless>
                     <tbody>

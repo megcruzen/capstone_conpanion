@@ -13,19 +13,14 @@ export default class ConventionCard extends Component {
         };
 
         this.toggle = this.toggle.bind(this);
-      }
-
-      toggle() {
-        this.setState({
-          modal: !this.state.modal
-        });
-      }
-
-    deletePrompt = () => {
-        if (window.confirm(`Are you sure you want to remove ${this.props.myConvention.convention.name} from your list?`)) {
-            this.props.removeConvention(this.props.myConvention.id)
-       }
     }
+
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
+
     render() {
         return (
             <tr>
@@ -42,17 +37,17 @@ export default class ConventionCard extends Component {
                                 {this.props.myConvention.convention.city}, {this.props.myConvention.convention.state}
                             </div>
                             <div>
-                                <i className="fas fa-times-circle text-danger" onClick={this.toggle}></i>
+                                <i className="fas fa-times-circle text-danger" onClick={this.toggle} style={{cursor:'pointer'}}></i>
                             </div>
                         </Media>
                     </Media>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Remove Convention</ModalHeader>
                         <ModalBody>
-                            Are you sure you want to remove {this.props.myConvention.convention.name} from your list?
+                            Are you sure you want to remove <strong>{this.props.myConvention.convention.name}</strong> from your list?
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={() => this.props.removeConvention(this.props.myConvention.id)}>Yes</Button>{' '}
+                            <Button color="primary" onClick={() => this.props.removeConvention(this.props.myConvention.id)}>Yes, Please Remove</Button>{' '}
                             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
                     </Modal>

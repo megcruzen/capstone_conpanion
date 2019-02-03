@@ -2,6 +2,7 @@
 import { Route } from "react-router-dom";
 import React, { Component } from "react";
 import AppManager from "../modules/AppManager"
+import "./CosBuddy.css";
 
 import ConventionList from './convention/ConventionList'
 import CostumeList from './costume/CostumeList'
@@ -29,7 +30,7 @@ export default class ApplicationViews extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div id="appviews">
 
         <Route
           exact path="/" render={props => {
@@ -55,7 +56,7 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-      </React.Fragment>
+      </div>
     );
   }
 }

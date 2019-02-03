@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
-import "./ConBuddy.css";
+import "./CosBuddy.css";
 
-class ConBuddy extends Component {
+class CosBuddy extends Component {
   render() {
     return (
       <React.Fragment>
@@ -14,4 +14,4 @@ class ConBuddy extends Component {
   }
 }
 
-export default ConBuddy;
+export default CosBuddy;

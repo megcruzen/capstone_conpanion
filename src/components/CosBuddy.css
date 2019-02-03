@@ -1,0 +1,20 @@
+#appviews {
+    padding: 20px;
+}
+
+a.delete {
+    color: red;
+}
+
+/* Media */
+
+.con_details {
+    font-size: .9rem;
+    line-height: 1.3em;
+}
+
+.thumb {
+    width: 64px;
+    height: 64px;
+}
+

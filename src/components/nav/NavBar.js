@@ -31,7 +31,7 @@ import {
         }
         render() {
           return (
-            <div>
+            <div id="nav">
               <Navbar color="light" light expand="md">
                 <NavbarBrand tag={Link} to="/">CosBuddy</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />

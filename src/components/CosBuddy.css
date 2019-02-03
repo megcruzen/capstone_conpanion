@@ -26,7 +26,7 @@ a.delete {
     margin-bottom: 0px;
 }
 
-/* Media */
+/* Convention List */
 
 .con_details {
     font-size: .9rem;
@@ -36,5 +36,26 @@ a.delete {
 .thumb {
     width: 64px;
     height: 64px;
+}
+
+/* Costume List */
+.costume_list {
+    max-width: 1050px;
+}
+
+.costume_list .card {
+    max-width: 318px;
+}
+
+.costume_list .card-title, .costume_list .card-title h3 {
+    margin-bottom: 0;
+}
+
+.costume_list .series {
+    font-size: .7em;
+}
+
+.costume_list .outfit {
+    font-size: .7em;
 }
 

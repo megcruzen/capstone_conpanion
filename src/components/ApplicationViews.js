@@ -37,11 +37,26 @@ export default class ApplicationViews extends Component {
   }
 
   addConvention = (convention) => AppManager.postConvention(convention)
+    .then(newCon => {
+      const newUserCon = {
+          userId: newCon.userId,
+          conventionId: newCon.id
+      }
+      console.log(newUserCon)
+      AppManager.createUserConvention(newUserCon);
+    })
     .then(() => AppManager.getMyConventions())
     .then(myConventions => this.setState({
       myConventions: myConventions
     })
   )
+
+  removeConvention = (id) => {
+    return AppManager.deleteUserConvention(id)
+    .then(myConventions =>
+        this.setState({ myConventions: myConventions })
+    )
+  }
 
   render() {
     return (
@@ -54,7 +69,8 @@ export default class ApplicationViews extends Component {
 
         <Route exact path="/conventions" render={props => {
             return <ConventionList {...props}
-                    myConventions={this.state.myConventions} />
+                    myConventions={this.state.myConventions}
+                    removeConvention={this.removeConvention} />
           }}
         />
 

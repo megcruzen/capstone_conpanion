@@ -14,7 +14,7 @@ export default class ApplicationViews extends Component {
   state = {
     users: [],
     genres: [],
-    conventions: [],
+    allConventions: [],
     myConventions: [],
     costumes: []
   }

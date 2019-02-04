@@ -7,6 +7,7 @@ export default class CostumeForm extends Component {
     state = {
         name: "",
         series: "",
+        outfit: "",
         notes: "",
         timestamp: "",
         image: "",
@@ -23,12 +24,15 @@ export default class CostumeForm extends Component {
 
     constructNewCostume = evt => {
         evt.preventDefault()
+        let d = new Date();
+        let timestamp = d.getTime();
         const costume = {
             name: this.state.characterName,
             series: this.state.series,
+            outfit: this.state.outfit,
             notes: "",
-            timestamp: "",
-            image: "",
+            timestamp: timestamp,
+            image: this.state.image,
             userId: 1
         }
 
@@ -40,11 +44,16 @@ export default class CostumeForm extends Component {
     render() {
         return (
             <section className="costume_form">
-                <h1>Add a Costume</h1>
+                <h1>Add New Costume</h1>
                 <Form onSubmit={this.constructNewCostume} className="form_width mt-4">
                     <FormGroup>
                         <Label for="characterName">Character Name</Label>
                         <Input type="text" required name="characterName" id="characterName"
+                        onChange={this.handleFieldChange} />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="series">Outfit</Label>
+                        <Input type="text" name="outfit" id="outfit"
                         onChange={this.handleFieldChange} />
                     </FormGroup>
                     <FormGroup>
@@ -53,7 +62,7 @@ export default class CostumeForm extends Component {
                         onChange={this.handleFieldChange} />
                     </FormGroup>
                     <FormGroup>
-                        <Label for="image">Logo</Label>
+                        <Label for="image">Image</Label>
                         <Input type="url" required name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange} />
                     </FormGroup>
                     <Button type="submit" color="primary" className="mr-3">Save Costume</Button>

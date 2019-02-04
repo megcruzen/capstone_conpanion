@@ -37,6 +37,8 @@ export default class ApplicationViews extends Component {
     })
   }
 
+  /* ADD NEW */
+
   addConvention = (convention) => AppManager.postConvention(convention)
     .then(newCon => {
       const newUserCon = {
@@ -52,6 +54,14 @@ export default class ApplicationViews extends Component {
     })
   )
 
+  addCostume = (costume) => AppManager.postCostume(costume)
+    .then(() => AppManager.getCostumes())
+    .then(costumes => this.setState({
+      costumes: costumes
+    })
+  )
+
+  /* DELETE */
   removeConvention = (id) => {
     return AppManager.deleteUserConvention(id)
     .then(myConventions =>
@@ -95,7 +105,7 @@ export default class ApplicationViews extends Component {
 
         <Route exact path="/costumes/new" render={(props) => {
             return <CostumeForm {...props}
-                    costumes={this.state.costumes} />
+                    addCostume={this.addCostume} />
         }} />
 
       </div>

@@ -71,4 +71,16 @@ export default {
         })
         .then(data => data.json())
     },
+
+    deleteCostume(id) {
+        return fetch(`${remoteURL}/costumes/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getCostumes())
+    },
+
+    getCostumeItems() {
+        return fetch(`${remoteURL}/costumeItems?_expand=costume`)
+        .then(data => data.json())
+    }
 }

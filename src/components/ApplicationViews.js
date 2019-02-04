@@ -7,8 +7,10 @@ import "./CosBuddy.css";
 import ConventionList from './convention/ConventionList'
 import ConventionSearch from './convention/ConventionSearch'
 import ConventionForm from './convention/ConventionForm'
+
 import CostumeList from './costume/CostumeList'
 import CostumeForm from './costume/CostumeForm'
+import CostumeDetails from './costume/CostumeDetails'
 
 export default class ApplicationViews extends Component {
 
@@ -17,7 +19,8 @@ export default class ApplicationViews extends Component {
     genres: [],
     allConventions: [],
     myConventions: [],
-    costumes: []
+    costumes: [],
+    costumeItems: []
   }
 
   componentDidMount() {
@@ -34,6 +37,11 @@ export default class ApplicationViews extends Component {
     AppManager.getCostumes()
     .then(costumes => {
         this.setState({ costumes: costumes })
+    })
+
+    AppManager.getCostumeItems()
+    .then(costumeItems => {
+        this.setState({ costumeItems: costumeItems })
     })
   }
 
@@ -66,6 +74,13 @@ export default class ApplicationViews extends Component {
     return AppManager.deleteUserConvention(id)
     .then(myConventions =>
         this.setState({ myConventions: myConventions })
+    )
+  }
+
+  deleteCostume= (id) => {
+    return AppManager.deleteCostume(id)
+    .then(costumes =>
+        this.setState({ costumes: costumes })
     )
   }
 
@@ -106,6 +121,14 @@ export default class ApplicationViews extends Component {
         <Route exact path="/costumes/new" render={(props) => {
             return <CostumeForm {...props}
                     addCostume={this.addCostume} />
+        }} />
+
+        <Route path="/costumes/:costumeId(\d+)" render={(props) => {
+            return <CostumeDetails {...props}
+                    costumes={this.state.costumes}
+                    costumeItems={this.state.costumeItems}
+                    deleteCostume={this.deleteCostume}
+                    editCostume={this.editCostume} />
         }} />
 
       </div>

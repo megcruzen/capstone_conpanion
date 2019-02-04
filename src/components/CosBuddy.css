@@ -14,6 +14,15 @@ a.cancel {
 
 a.delete {
     color: red;
+    text-decoration: underline;
+}
+
+.costume_links {
+    font-size: 10px;
+}
+
+.costume_links a {
+    color: #999;
 }
 
 /* Forms */
@@ -47,15 +56,15 @@ a.delete {
     max-width: 318px;
 }
 
-.costume_list .card-title, .costume_list .card-title h3 {
+.costume_list .card-title, .costume_list .card-title h3, .costume_details h4 {
     margin-bottom: 0;
 }
 
-.costume_list .series {
+.costume_list .series, .costume_details .series {
     font-size: .7em;
 }
 
-.costume_list .outfit {
+.costume_list .outfit, .costume_details .outfit {
     font-size: .7em;
 }
 

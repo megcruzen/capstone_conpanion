@@ -24,11 +24,6 @@ export default class ConventionForm extends Component {
         this.setState(stateToChange)
     }
 
-    submit = e => {
-        e.preventDefault();
-        console.log('it works!');
-      }
-
     constructNewConvention = evt => {
         evt.preventDefault()
         const convention = {

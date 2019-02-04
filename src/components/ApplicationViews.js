@@ -8,6 +8,7 @@ import ConventionList from './convention/ConventionList'
 import ConventionSearch from './convention/ConventionSearch'
 import ConventionForm from './convention/ConventionForm'
 import CostumeList from './costume/CostumeList'
+import CostumeForm from './costume/CostumeForm'
 
 export default class ApplicationViews extends Component {
 
@@ -80,17 +81,22 @@ export default class ApplicationViews extends Component {
           }}
         />
 
-        <Route path="/conventions/new" render={(props) => {
+        <Route exact path="/conventions/new" render={(props) => {
                     return <ConventionForm {...props}
                             addConvention={this.addConvention}
                             genres={this.state.genres} />
-                }} />
+        }} />
 
-        <Route path="/costumes" render={props => {
+        <Route exact path="/costumes" render={props => {
             return <CostumeList {...props}
                     costumes={this.state.costumes} />
           }}
         />
+
+        <Route exact path="/costumes/new" render={(props) => {
+            return <CostumeForm {...props}
+                    costumes={this.state.costumes} />
+        }} />
 
       </div>
     );

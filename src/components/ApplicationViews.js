@@ -10,6 +10,7 @@ import ConventionForm from './convention/ConventionForm'
 
 import CostumeList from './costume/CostumeList'
 import CostumeForm from './costume/CostumeForm'
+import CostumeEditForm from './costume/CostumeEditForm'
 import CostumeDetails from './costume/CostumeDetails'
 
 export default class ApplicationViews extends Component {
@@ -77,6 +78,7 @@ export default class ApplicationViews extends Component {
   )
 
   /* DELETE */
+
   removeConvention = (id) => {
     return AppManager.deleteUserConvention(id)
     .then(myConventions =>
@@ -97,6 +99,16 @@ export default class ApplicationViews extends Component {
         this.setState({ costumeItems: costumeItems })
     )
   }
+
+  /* EDIT */
+
+  editCostume = (costumeId, editedCostume) =>
+    AppManager.editCostume(costumeId, editedCostume)
+    .then(() => AppManager.getCostumes())
+    .then(costumes => this.setState({
+        costumes: costumes
+        })
+  )
 
   render() {
     return (
@@ -144,6 +156,12 @@ export default class ApplicationViews extends Component {
                     addCostumeItem={this.addCostumeItem}
                     deleteCostumeItem={this.deleteCostumeItem}
                     deleteCostume={this.deleteCostume}
+                    editCostume={this.editCostume} />
+        }} />
+
+        <Route path="/costumes/edit" render={(props) => {
+            return <CostumeEditForm {...props}
+                    costumes={this.state.costumes}
                     editCostume={this.editCostume} />
         }} />
 

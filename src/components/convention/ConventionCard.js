@@ -1,6 +1,7 @@
 // Component that creates each convention card.
 
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { Media, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import "../CosBuddy.css"
 import thumb from "./64x64.jpg"
@@ -40,6 +41,7 @@ export default class ConventionCard extends Component {
                                 <i className="fas fa-times-circle text-danger" onClick={this.toggle} style={{cursor:'pointer'}}></i>
                             </div>
                         </Media>
+                        <Link to={`/conventions/${this.props.myConvention.id}/${this.props.myConvention.convention.name}`}>Details</Link>
                     </Media>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Remove Convention</ModalHeader>

@@ -7,6 +7,7 @@ import "./CosBuddy.css";
 import ConventionList from './convention/ConventionList'
 import ConventionSearch from './convention/ConventionSearch'
 import ConventionForm from './convention/ConventionForm'
+import ConventionDetails from './convention/ConventionDetails'
 
 import CostumeList from './costume/CostumeList'
 import CostumeForm from './costume/CostumeForm'
@@ -21,7 +22,8 @@ export default class ApplicationViews extends Component {
     allConventions: [],
     myConventions: [],
     costumes: [],
-    costumeItems: []
+    costumeItems: [],
+    conCostumes: []
   }
 
   componentDidMount() {
@@ -43,6 +45,11 @@ export default class ApplicationViews extends Component {
     AppManager.getCostumeItems()
     .then(costumeItems => {
         this.setState({ costumeItems: costumeItems })
+    })
+
+    AppManager.getConCostumes()
+    .then(conCostumes => {
+        this.setState({ conCostumes: conCostumes })
     })
   }
 
@@ -133,9 +140,17 @@ export default class ApplicationViews extends Component {
         />
 
         <Route exact path="/conventions/new" render={(props) => {
-                    return <ConventionForm {...props}
-                            addConvention={this.addConvention}
-                            genres={this.state.genres} />
+            return <ConventionForm {...props}
+                    addConvention={this.addConvention}
+                    genres={this.state.genres} />
+        }} />
+
+        <Route path="/conventions/:conventionId(\d+)" render={(props) => {
+            return <ConventionDetails {...props}
+                    allConventions={this.state.allConventions}
+                    myConventions={this.state.myConventions}
+                    costumes={this.state.costumes}
+                    conCostumes={this.state.conCostumes} />
         }} />
 
         <Route exact path="/costumes" render={props => {

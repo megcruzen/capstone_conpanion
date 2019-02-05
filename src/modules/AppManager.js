@@ -110,5 +110,10 @@ export default {
             method: "DELETE"
         })
         .then(() => this.getCostumeItems())
+    },
+
+    getConCostumes() {
+        return fetch(`${remoteURL}/conCostumes?userConventionId=1&_expand=costume`)
+        .then(data => data.json())
     }
 }

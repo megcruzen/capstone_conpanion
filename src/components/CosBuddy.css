@@ -65,11 +65,11 @@ a.return {
     text-decoration: none;
 }
 
-.costume_list .card-title, .costume_list .card-title h3 {
+.costume_list .card-title {
     margin-bottom: 0;
 }
 
-.costume_list .series, .costume_details .series {
+.subtitle {
     font-size: .7em;
 }
 

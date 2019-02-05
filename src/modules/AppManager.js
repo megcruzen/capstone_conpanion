@@ -79,6 +79,16 @@ export default {
         .then(() => this.getCostumes())
     },
 
+    editCostume(costumeId, editedCostume) {
+        return fetch(`${remoteURL}/costumes/${costumeId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedCostume)
+        })
+    },
+
     getCostumeItems() {
         return fetch(`${remoteURL}/costumeItems/?_expand=costume`)
         .then(data => data.json())

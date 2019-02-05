@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { Table, Row, Col, Media, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label } from 'reactstrap';
 import "../CosBuddy.css";
 import thumb from "./64x64.jpg"
@@ -65,10 +66,10 @@ export default class CostumeDetails extends Component {
                             <div className="costume_details">
                                 <span className="text-uppercase series">{costume.series}</span>
                                 <h4>{costume.name}</h4>
-                                <span className="series">{costume.outfit}</span>
+                                <i class="fas fa-user-circle"></i> <span className="series">{costume.outfit}</span>
                             </div>
                             <div>
-                            <i className="fas fa-edit mr-2 text-secondary" onClick={() => console.log("Edit!")}></i>
+                            <Link to={{pathname:"/costumes/edit/", state:{id: costume.id, name: costume.name, series: costume.series, outfit: costume.outfit, notes: costume.notes, image: costume.image, timestamp: costume.timestamp, userId: costume.userId}}}><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push("/costumes/edit")}></i></Link>
                             <i className="fas fa-times-circle text-danger" onClick={this.toggle} style={{cursor:'pointer'}}></i>
                             </div>
                         </Media>

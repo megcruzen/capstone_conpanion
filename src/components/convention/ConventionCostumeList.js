@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import CostumeCard from "../costume/CostumeCard"
+import ConCostumeCard from "./ConCostumeCard"
 
 export default class ConventionCostumeList extends Component {
     render() {
-        console.log(this.props.conCostumes);
+        // console.log(this.props.conCostumes);
         return (
             <section className="convention_costume_list">
                 <div className="d-sm-flex justify-content-between flex-wrap align-items-center mb-3 mt-4">
@@ -26,16 +26,9 @@ export default class ConventionCostumeList extends Component {
                 <div className="d-flex justify-content-between flex-wrap">
                 {
                     this.props.conCostumes.map(conCostume =>
-                        <CostumeCard key={conCostume.id} costume={conCostume} {...this.props} />
+                        <ConCostumeCard key={conCostume.id} conCostume={conCostume} {...this.props} />
                     )
                 }
-                {/* {
-                    this.props.costumes
-                        .filter(costume => costume.costumeId === costume.id)
-                        .map(costume =>
-                            <CostumeCard key={costume.id} costume={costume} {...this.props} />
-                        )
-                    } */}
                 </div>
             </section>
         )

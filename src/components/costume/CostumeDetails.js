@@ -2,10 +2,24 @@ import React, { Component } from 'react'
 import { Table, Row, Col, Media, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label } from 'reactstrap';
 import "../CosBuddy.css";
 import thumb from "./64x64.jpg"
-
 import CostumeItemCard from "./CostumeItemCard"
 
 export default class CostumeDetails extends Component {
+
+    // Set initial state
+    state = {
+        costumeId: "",
+        name: ""
+    }
+
+    // Update state whenever an input field is edited
+    handleFieldChange = evt => {
+        const stateToChange = {}
+        // console.log(evt.target.id, evt.target.value);
+        stateToChange[evt.target.id] = evt.target.value
+        this.setState(stateToChange)
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -21,11 +35,27 @@ export default class CostumeDetails extends Component {
         });
     }
 
+     // Add new message to chat room
+     addItem = event => {
+        const costume = this.props.costumes.find(costume => costume.id === parseInt(this.props.match.params.costumeId)) || {}
+        event.preventDefault();     // Cancels the default action of the submit.
+        event.target.reset();       // Resets values after submit.
+
+        const newItem = {
+            name: this.state.itemName,
+            costumeId: costume.id
+        }
+
+        // Create the item (and then refresh list)
+        this.props.addCostumeItem(newItem);
+    }
+
     render() {
         const costume = this.props.costumes.find(costume => costume.id === parseInt(this.props.match.params.costumeId)) || {}
         return (
                 <section key={costume.id} className="mr-2 mb-3 costume_details">
-                    <Media className="pt-2">
+                    <a href="#" onClick={() => this.props.history.push("/costumes/")} className="return">&laquo; Return to costumes</a>
+                    <Media className="mt-4 pt-2">
                         <Media left href="#" className="mr-3">
                             <Media object src={thumb} className="thumb" alt="" />
                         </Media>
@@ -44,21 +74,17 @@ export default class CostumeDetails extends Component {
                     <Row className="items_and_notes">
                         <Col sm="4" className="mt-4">
                             <h3>Costume Items</h3>
-                            <div className="item_input d-flex">
-                                <div className="w-100 mr-2">
-                                    <Form>
-                                        <FormGroup>
-                                            <Label for="itemName" hidden>Item Name</Label>
-                                            <Input type="text" required name="itemName" id="itemName"
-                                            onChange={this.handleFieldChange} placeholder="item name" />
-                                        </FormGroup>
-                                    </Form>
-                                </div>
-                                <div>
-                                    <Button color="primary">Go</Button>
-                                </div>
+                            <div className="item_input">
+                                <Form onSubmit={this.addItem} className="d-flex">
+                                    <FormGroup className="w-100 mr-2">
+                                        <Label for="itemName" hidden>Item Name</Label>
+                                        <Input type="text" required name="itemName" id="itemName"
+                                        onChange={this.handleFieldChange} placeholder="Enter an item name" />
+                                    </FormGroup>
+                                    <div><Button color="primary">Go</Button></div>
+                                </Form>
                             </div>
-                            <div className="items_box border">
+                            <div className="items_box">
                                 <Table borderless striped>
                                     <tbody>
                                     {

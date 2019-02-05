@@ -69,6 +69,13 @@ export default class ApplicationViews extends Component {
     })
   )
 
+  addCostumeItem = (item) => AppManager.postCostumeItem(item)
+    .then(() => AppManager.getCostumeItems())
+    .then(costumeItems => this.setState({
+      costumeItems: costumeItems
+    })
+  )
+
   /* DELETE */
   removeConvention = (id) => {
     return AppManager.deleteUserConvention(id)
@@ -127,6 +134,7 @@ export default class ApplicationViews extends Component {
             return <CostumeDetails {...props}
                     costumes={this.state.costumes}
                     costumeItems={this.state.costumeItems}
+                    addCostumeItem={this.addCostumeItem}
                     deleteCostume={this.deleteCostume}
                     editCostume={this.editCostume} />
         }} />

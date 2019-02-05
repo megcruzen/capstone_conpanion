@@ -17,6 +17,10 @@ a.delete {
     text-decoration: underline;
 }
 
+a.return {
+    font-size: .8em;
+}
+
 .costume_links {
     font-size: 10px;
 }

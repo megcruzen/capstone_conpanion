@@ -80,7 +80,18 @@ export default {
     },
 
     getCostumeItems() {
-        return fetch(`${remoteURL}/costumeItems?_expand=costume`)
+        return fetch(`${remoteURL}/costumeItems/?_expand=costume`)
+        .then(data => data.json())
+    },
+
+    postCostumeItem(newItem) {
+        return fetch(`${remoteURL}/costumeItems`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newItem)
+        })
         .then(data => data.json())
     }
 }

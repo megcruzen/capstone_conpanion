@@ -93,10 +93,17 @@ export default class ApplicationViews extends Component {
     )
   }
 
-  deleteCostume= (id) => {
+  deleteCostume = (id) => {
     return AppManager.deleteCostume(id)
     .then(costumes =>
         this.setState({ costumes: costumes })
+    )
+  }
+
+  deleteConCostume = (id) => {
+    return AppManager.deleteConCostume(id)
+    .then(conCostumes =>
+        this.setState({ conCostumes: conCostumes })
     )
   }
 
@@ -150,7 +157,8 @@ export default class ApplicationViews extends Component {
                     allConventions={this.state.allConventions}
                     myConventions={this.state.myConventions}
                     costumes={this.state.costumes}
-                    conCostumes={this.state.conCostumes} />
+                    conCostumes={this.state.conCostumes}
+                    deleteConCostume={this.deleteConCostume} />
         }} />
 
         <Route exact path="/costumes" render={props => {

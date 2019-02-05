@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Media, Button, Row, Col, TabContent, TabPane, Nav, NavItem, NavLink, } from 'reactstrap';
+import { Media, Row, Col, TabContent, TabPane, Nav, NavItem, NavLink, } from 'reactstrap';
 import classnames from 'classnames';
 import "../CosBuddy.css";
 import thumb from "./64x64.jpg"

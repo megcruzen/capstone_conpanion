@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 export default class CostumeCard extends Component {
@@ -10,6 +11,7 @@ export default class CostumeCard extends Component {
                         <CardSubtitle className="text-uppercase series">{this.props.costume.series}</CardSubtitle>
                         <CardTitle><h3>{this.props.costume.name}</h3></CardTitle>
                         <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.costume.outfit}</CardText>
+                        <Link to={`/costumes/${this.props.costume.id}`}>Details</Link>
                     </CardBody>
                 </Card>
         )

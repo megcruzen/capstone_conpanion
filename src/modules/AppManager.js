@@ -71,4 +71,34 @@ export default {
         })
         .then(data => data.json())
     },
+
+    deleteCostume(id) {
+        return fetch(`${remoteURL}/costumes/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getCostumes())
+    },
+
+    getCostumeItems() {
+        return fetch(`${remoteURL}/costumeItems/?_expand=costume`)
+        .then(data => data.json())
+    },
+
+    postCostumeItem(newItem) {
+        return fetch(`${remoteURL}/costumeItems`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newItem)
+        })
+        .then(data => data.json())
+    },
+
+    deleteCostumeItem(id) {
+        return fetch(`${remoteURL}/costumeItems/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getCostumeItems())
+    }
 }

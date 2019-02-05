@@ -3,11 +3,13 @@ import { Table, Row, Col, Media, Button, Modal, ModalHeader, ModalBody, ModalFoo
 import "../CosBuddy.css";
 import thumb from "./64x64.jpg"
 import CostumeItemCard from "./CostumeItemCard"
+import AppManager from "../../modules/AppManager"
 
 export default class CostumeDetails extends Component {
 
     // Set initial state
     state = {
+        notes: "",
         costumeId: "",
         name: ""
     }
@@ -15,7 +17,7 @@ export default class CostumeDetails extends Component {
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = {}
-        // console.log(evt.target.id, evt.target.value);
+        console.log(evt.target.id, evt.target.value);
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
@@ -35,7 +37,7 @@ export default class CostumeDetails extends Component {
         });
     }
 
-     // Add new message to chat room
+     // Add new item to costume
      addItem = event => {
         const costume = this.props.costumes.find(costume => costume.id === parseInt(this.props.match.params.costumeId)) || {}
         event.preventDefault();     // Cancels the default action of the submit.
@@ -46,7 +48,7 @@ export default class CostumeDetails extends Component {
             costumeId: costume.id
         }
 
-        // Create the item (and then refresh list)
+        // Create the item
         this.props.addCostumeItem(newItem);
     }
 
@@ -101,7 +103,7 @@ export default class CostumeDetails extends Component {
                         <Col sm={{ size: 5, offset: 1 }} className="mt-4">
                             <h3>Notes</h3>
                             <FormGroup>
-                                <Input type="textarea" name="notes" id="notes" rows="10" cols="40" placeholder="Enter notes here..." />
+                                <Input type="textarea" name="notes" id="notes" rows="10" cols="40" placeholder="Enter notes here..." onClick={this.editNotes} />
                             </FormGroup>
                         </Col>
                     </Row>

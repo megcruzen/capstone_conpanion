@@ -13,11 +13,16 @@ export default class ConventionCostumeList extends Component {
                 <div className="costume_selector d-flex flex-wrap">
                     <Form onSubmit={(() => console.log("Add!"))} className="d-flex w-75 mr-2">
                         <FormGroup className="w-100 mr-2">
-                            <Label for="itemName" hidden>Item Name</Label>
-                            <Input type="text" required name="itemName" id="itemName"
-                            onChange={this.handleFieldChange} placeholder="Select a costume" />
+                            <Label hidden for="costumeName">Genre</Label>
+                            <Input type="select" required name="costumeName" id="costumeName"
+                            onChange={this.handleFieldChange}>
+                            <option value="">Select a costume</option>
+                                {
+                                    this.props.costumes.map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
+                                }
+                            </Input>
                         </FormGroup>
-                        <div><Button color="primary">Add</Button></div>
+                        <div><Button color="primary" onClick={(() => console.log("Add!"))}>Add</Button></div>
                     </Form>
                     <div>
                         <Button color="primary" onClick={() => this.props.history.push("/costumes/new")}>Create New Costume</Button>

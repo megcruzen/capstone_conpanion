@@ -24,7 +24,7 @@ export default class ConCostumeCard extends Component {
                     <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
                     <CardBody className="d-flex justify-content-between">
                         <div>
-                            <CardSubtitle className="text-uppercase subtitle">{this.props.conCostume.costume.series}</CardSubtitle>
+                            <CardSubtitle className="text-uppercase subtitle mt-1">{this.props.conCostume.costume.series}</CardSubtitle>
                             <CardTitle><h3>{this.props.conCostume.costume.name}</h3></CardTitle>
                             <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.conCostume.costume.outfit}</CardText>
                         </div>

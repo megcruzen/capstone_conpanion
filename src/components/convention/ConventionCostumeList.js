@@ -3,8 +3,35 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import ConCostumeCard from "./ConCostumeCard"
 
 export default class ConventionCostumeList extends Component {
+
+    // Set initial state
+    state = {
+        userConventionId: "",
+        costumeId: ""
+    }
+
+    // Update state whenever an input field is edited
+    handleFieldChange = evt => {
+        const stateToChange = {}
+        console.log(evt.target.id, evt.target.value);
+        stateToChange[evt.target.id] = evt.target.value
+        this.setState(stateToChange)
+    }
+
+    // Create the conCostume object
+    constructConnection = evt => {
+        evt.preventDefault()
+        const conCostume = {
+            costumeId: Number(this.state.costumeId),
+            userConventionId: this.props.myConventionId
+        }
+
+        // console.log("conCostume:", conCostume)
+        // POST the conCostume object
+        this.props.addCostumeToCon(conCostume)
+    }
+
     render() {
-        // console.log(this.props.conCostumes);
         return (
             <section className="convention_costume_list">
                 <div className="d-sm-flex justify-content-between flex-wrap align-items-center mb-3 mt-4">
@@ -14,7 +41,7 @@ export default class ConventionCostumeList extends Component {
                     <Form onSubmit={(() => console.log("Add!"))} className="d-flex w-75 mr-2">
                         <FormGroup className="w-100 mr-2">
                             <Label hidden for="costumeName">Genre</Label>
-                            <Input type="select" required name="costumeName" id="costumeName"
+                            <Input type="select" required name="costumeId" id="costumeId"
                             onChange={this.handleFieldChange}>
                             <option value="">Select a costume</option>
                                 {
@@ -22,7 +49,7 @@ export default class ConventionCostumeList extends Component {
                                 }
                             </Input>
                         </FormGroup>
-                        <div><Button color="primary" onClick={(() => console.log("Add!"))}>Add</Button></div>
+                        <div><Button color="primary" onClick={this.constructConnection}>Add</Button></div>
                     </Form>
                     <div>
                         <Button color="primary" onClick={() => this.props.history.push("/costumes/new")}>Create New Costume</Button>

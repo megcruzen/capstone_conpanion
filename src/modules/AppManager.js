@@ -112,7 +112,7 @@ export default {
         .then(() => this.getCostumeItems())
     },
 
-    getConCostumes() {
+    getConCostumes(userConId) {
         return fetch(`${remoteURL}/conCostumes?userConventionId=1&_expand=costume`)
         .then(data => data.json())
     },
@@ -122,5 +122,16 @@ export default {
             method: "DELETE"
         })
         .then(() => this.getConCostumes())
+    },
+
+    postConCostume(newCostume) {
+        return fetch(`${remoteURL}/conCostumes`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newCostume)
+        })
+        .then(data => data.json())
     }
 }

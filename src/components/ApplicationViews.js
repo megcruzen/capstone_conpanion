@@ -91,6 +91,13 @@ export default class ApplicationViews extends Component {
     )
   }
 
+  deleteCostumeItem= (id) => {
+    return AppManager.deleteCostumeItem(id)
+    .then(costumeItems =>
+        this.setState({ costumeItems: costumeItems })
+    )
+  }
+
   render() {
     return (
       <div id="appviews">
@@ -135,6 +142,7 @@ export default class ApplicationViews extends Component {
                     costumes={this.state.costumes}
                     costumeItems={this.state.costumeItems}
                     addCostumeItem={this.addCostumeItem}
+                    deleteCostumeItem={this.deleteCostumeItem}
                     deleteCostume={this.deleteCostume}
                     editCostume={this.editCostume} />
         }} />

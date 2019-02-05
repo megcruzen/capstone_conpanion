@@ -81,7 +81,7 @@ export default class CostumeDetails extends Component {
                                         <Input type="text" required name="itemName" id="itemName"
                                         onChange={this.handleFieldChange} placeholder="Enter an item name" />
                                     </FormGroup>
-                                    <div><Button color="primary">Go</Button></div>
+                                    <div><Button color="primary">Add</Button></div>
                                 </Form>
                             </div>
                             <div className="items_box">

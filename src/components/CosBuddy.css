@@ -80,6 +80,14 @@ a.return {
     margin-bottom: 5px;
 }
 
-.costume_details .table {
+/* .costume_details .table {
     margin-bottom: 0px;
+} */
+
+.costume_details .table td {
+    padding: 7px 5px;
+}
+
+.items_box {
+    font-size: .8em;
 }

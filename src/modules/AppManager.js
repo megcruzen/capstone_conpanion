@@ -93,5 +93,12 @@ export default {
           body: JSON.stringify(newItem)
         })
         .then(data => data.json())
+    },
+
+    deleteCostumeItem(id) {
+        return fetch(`${remoteURL}/costumeItems/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getCostumeItems())
     }
 }

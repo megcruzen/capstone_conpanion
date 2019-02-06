@@ -75,7 +75,7 @@ export default class CostumeDetails extends Component {
                     </Media>
                     <Row className="items_and_notes">
                         <Col sm="4" className="mt-4">
-                            <h3 className="mb-0">Costume Items</h3>
+                            <h3>Costume Items</h3>
                             <div className="item_input">
                                 <Form onSubmit={this.addItem} className="d-flex">
                                     <FormGroup className="w-100 mr-2">

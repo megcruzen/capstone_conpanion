@@ -23,7 +23,7 @@ export default class ConventionCostumeList extends Component {
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = {}
-        console.log(evt.target.id, evt.target.value);
+        // console.log(evt.target.id, evt.target.value);
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
@@ -36,7 +36,6 @@ export default class ConventionCostumeList extends Component {
             userConventionId: this.props.myConventionId
         }
 
-        // console.log("userconId:", this.props.myConventionId)
         // POST the conCostume object
         this.props.addCostumeToCon(conCostume)
     }
@@ -50,13 +49,13 @@ export default class ConventionCostumeList extends Component {
                 <div className="d-sm-flex justify-content-between flex-wrap align-items-center mb-3 mt-4">
                     <h4 className="text-center">Costume List</h4>
                 </div>
-                <div className="costume_selector d-flex flex-wrap">
-                    <Form onSubmit={this.constructConnection} className="d-flex w-75 mr-2">
-                        <FormGroup className="w-100 mr-2">
-                            <Label hidden for="costumeName">Genre</Label>
+                <div className="costume_selector d-flex flex-wrap align-items-end">
+                    <Form onSubmit={this.constructConnection} className="d-flex w-75 mr-2 align-items-end">
+                        <FormGroup className="w-100 mr-2 mb-0">
+                            <Label for="costumeId">Add a costume:</Label>
                             <Input type="select" required name="costumeId" id="costumeId"
                             onChange={this.handleFieldChange}>
-                            <option value="" selected disabled hidden>Select a costume</option>
+                            {/* <option value="" selected disabled hidden>Select a costume</option> */}
                                 {
                                     this.props.costumes.map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
                                 }
@@ -68,7 +67,7 @@ export default class ConventionCostumeList extends Component {
                         <Button color="primary" onClick={() => this.props.history.push("/costumes/new")}>Create New Costume</Button>
                     </div>
                 </div>
-                <div className="d-flex justify-content-between flex-wrap">
+                <div className="d-flex justify-content-between flex-wrap mt-4">
                 {
                     // get all conCostume objects
                     this.props.conCostumes

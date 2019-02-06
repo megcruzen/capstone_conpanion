@@ -28,20 +28,21 @@ export default class ConventionCard extends Component {
                 <td>
                     <Media className="pt-2 px-2">
                         <Media left href="#" className="mr-3">
-                            <Media object src={thumb} className="thumb" alt="" />
+                            <Link to={`/conventions/${this.props.myConvention.id}/${this.props.myConvention.convention.name}`}><Media object src={thumb} className="thumb" alt="" /></Link>
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div className="con_details">
+                                <Link to={`/conventions/${this.props.myConvention.id}/${this.props.myConvention.convention.name}`}>
                                 <h4>{this.props.myConvention.convention.name}</h4>
                                 {this.props.myConvention.convention.startDate} - {this.props.myConvention.convention.endDate}
                                 <br />
                                 {this.props.myConvention.convention.city}, {this.props.myConvention.convention.state}
+                                </Link>
                             </div>
                             <div>
                                 <i className="fas fa-times-circle text-danger" onClick={this.toggle} style={{cursor:'pointer'}}></i>
                             </div>
                         </Media>
-                        <Link to={`/conventions/${this.props.myConvention.id}/${this.props.myConvention.convention.name}`}>Details</Link>
                     </Media>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Remove Convention</ModalHeader>

@@ -74,8 +74,8 @@ export default class ConventionCostumeList extends Component {
                     this.props.conCostumes
                     // only show those objects where costume.userConId = this.props.myConventionId
                     .filter(conCostume => this.props.myConventionId === conCostume.userConventionId)
-                    .map(costume =>
-                        <ConCostumeCard key={costume.id} costume={costume} {...this.props} />
+                    .map(conCostume =>
+                        <ConCostumeCard key={conCostume.id} conCostume={conCostume} {...this.props} />
                     )
                 }
                 </div>

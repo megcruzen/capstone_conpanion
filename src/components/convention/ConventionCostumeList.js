@@ -7,7 +7,8 @@ export default class ConventionCostumeList extends Component {
 
     // Set initial state
     state = {
-        conCostumes: []
+        conCostumes: [],
+        costumeId: ""
       }
 
     componentDidMount() {
@@ -20,7 +21,7 @@ export default class ConventionCostumeList extends Component {
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = {}
-        // console.log(evt.target.id, evt.target.value);
+        console.log(evt.target.id, evt.target.value);
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
@@ -60,13 +61,20 @@ export default class ConventionCostumeList extends Component {
     // Create the conCostume object
     constructConnection = event => {
         event.preventDefault();     // Cancels the default action of the submit.
-        const conCostume = {
-            costumeId: Number(this.state.costumeId),
-            userConventionId: this.props.myConventionId
-        }
+        event.target.reset();       // Resets select after submit.
 
-        // POST the conCostume object
-        this.props.addCostumeToCon(conCostume)
+        if (this.state.costumeId === "") {      // if costume select is empty, alert to select costume
+            window.alert("Please select a costume.")
+        }
+        else {
+            const conCostume = {
+                costumeId: Number(this.state.costumeId),
+                userConventionId: this.props.myConventionId
+            }
+
+            // POST the conCostume object
+            this.props.addCostumeToCon(conCostume)
+        }
     }
 
     render() {
@@ -80,21 +88,19 @@ export default class ConventionCostumeList extends Component {
                 </div>
                 <div className="costume_selector d-flex flex-wrap align-items-end">
                     <Form onSubmit={this.constructConnection} className="d-flex w-75 mr-2 align-items-end">
-                        <FormGroup className="w-100 mr-2 mb-0">
-                            <Label for="costumeId">Add a costume:</Label>
+                        <FormGroup className="w-100 mr-2 mb-0" onSubmit={this.constructConnection}>
+                            <Label for="costumeId" hidden>Add a costume:</Label>
                             <Input type="select" required name="costumeId" id="costumeId"
                             onChange={this.handleFieldChange}>
-                            <option value="" selected disabled hidden>Select a costume</option>
-                                {/* {
-                                    // this.props.costumes
-                                    // .filter(costume => costume.id === this.props.conCostume.userConventionId)
+                            <option value="" id="" selected>Select a costume</option>
+                                {
                                     this.props.costumes
                                     .map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
-                                } */}
-                                {this.connectionCheck()}
+                                }
+                                {/* {this.connectionCheck()} */}
                             </Input>
                         </FormGroup>
-                        <div><Button color="primary" onClick={this.constructConnection}>Add</Button></div>
+                        <div><Button color="primary">Add</Button></div>
                     </Form>
                     <div>
                         <Button color="primary" onClick={() => this.props.history.push("/costumes/new")}>Create New Costume</Button>

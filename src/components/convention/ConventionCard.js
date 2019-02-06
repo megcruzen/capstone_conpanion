@@ -34,12 +34,12 @@ export default class ConventionCard extends Component {
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div className="con_details">
-                                {/* <Link to={`/conventions/${this.props.myConvention.id}/${this.props.myConvention.convention.name}`}> */}
+                                <Link to={`/conventions/${this.props.myConvention.id}/${this.props.myConvention.name}`}>
                                 <h4>{this.props.myConvention.name}</h4>
                                 {this.props.myConvention.startDate} - {this.props.myConvention.endDate}
                                 <br />
                                 {this.props.myConvention.city}, {this.props.myConvention.state}
-                                {/* </Link> */}
+                                </Link>
                             </div>
                             <div>
                                 <i className="fas fa-times-circle text-danger" onClick={this.toggle} style={{cursor:'pointer'}}></i>

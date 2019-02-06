@@ -4,7 +4,15 @@ import "../CosBuddy.css"
 import ConventionCard from "./ConventionCard"
 
 export default class ConventionList extends Component {
+
+    sortDate = (a, b) => {
+        let date1 = new Date(a.startDate);
+        let date2 = new Date(b.startDate)
+        return date1 - date2;
+    }
+
     render() {
+        console.log(this.props.myConventions)
         return (
             <section className="convention_list_personal">
                 <div className="d-sm-flex justify-content-between flex-wrap align-items-center mb-3">
@@ -14,7 +22,9 @@ export default class ConventionList extends Component {
                 <Table striped borderless>
                     <tbody>
                         {
-                            this.props.myConventions.map(myConvention =>
+                            this.props.myConventions
+                            .sort(this.sortDate)
+                            .map(myConvention =>
                                 <ConventionCard key={myConvention.id} myConvention={myConvention} {...this.props} />
                             )
                         }

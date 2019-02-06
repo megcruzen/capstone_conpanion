@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import ConCostumeCard from "./ConCostumeCard"
+import AppManager from '../../modules/AppManager';
 
 export default class ConventionCostumeList extends Component {
 
     // Set initial state
     state = {
-        userConventionId: "",
-        costumeId: ""
-    }
+        conCostumes: []
+      }
 
-    // getCorrectCostumes = (userConId) => {
-    //     AppManager.getCostumesForCon(this.props.myConventionId)
-    //     .then(conCostume => {
-    //         this.setState({
-    //             userConventionId: conCostume.message,
-    //             costumeId: conCostume.timeDisplay
-    //          })
-    //     })
-    // }
+    componentDidMount() {
+        AppManager.getCostumesForCon(this.props.myConventionId)
+        .then(conCostumes => {
+            this.setState({ conCostumes: conCostumes })
+        })
+    }
 
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
@@ -27,6 +24,38 @@ export default class ConventionCostumeList extends Component {
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
+
+    connectionCheck = () => {
+        let costumeArray = this.props.costumes;
+        let conCostumeArray = this.state.conCostumes;
+        // let conCostumeArray = this.state.conCostumes.map(conCostume => conCostume);
+
+        console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
+
+        // let results = costumeArray.find(costume =>
+        //     costume.id === conCostumeArray.map(conCostume => conCostume.costumeId)
+        //     )
+        // console.log("results", results)
+        // if (results === undefined) {
+        //     console.log("No results found.")
+        // }
+
+        // costumeArray.find(costume =>
+        //     costume.id === conCostumeArray.map(conCostume => conCostume.costumeId)
+        //     )
+        //     // .map(costume =>
+        //     //     console.log(costume.name))
+
+        // let results = costumeArray.find(costume =>
+        //     costume.id === 1)
+        //     console.log("results", results)
+
+        // if (costumeArray.map(costume => costume).id === conCostumeArray.map(conCostume => conCostume.conCostumeId).id) {
+        //     console.log("It's a match!")
+        // }
+
+    }
+
 
     // Create the conCostume object
     constructConnection = event => {
@@ -55,10 +84,14 @@ export default class ConventionCostumeList extends Component {
                             <Label for="costumeId">Add a costume:</Label>
                             <Input type="select" required name="costumeId" id="costumeId"
                             onChange={this.handleFieldChange}>
-                            {/* <option value="" selected disabled hidden>Select a costume</option> */}
-                                {
-                                    this.props.costumes.map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
-                                }
+                            <option value="" selected disabled hidden>Select a costume</option>
+                                {/* {
+                                    // this.props.costumes
+                                    // .filter(costume => costume.id === this.props.conCostume.userConventionId)
+                                    this.props.costumes
+                                    .map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
+                                } */}
+                                {this.connectionCheck()}
                             </Input>
                         </FormGroup>
                         <div><Button color="primary" onClick={this.constructConnection}>Add</Button></div>
@@ -66,6 +99,9 @@ export default class ConventionCostumeList extends Component {
                     <div>
                         <Button color="primary" onClick={() => this.props.history.push("/costumes/new")}>Create New Costume</Button>
                     </div>
+                </div>
+                <div>
+
                 </div>
                 <div className="d-flex justify-content-between flex-wrap mt-4">
                 {

@@ -36,8 +36,8 @@ export default class ConventionDetails extends Component {
     render() {
 
         const myConvention = this.props.myConventions.find(convention => convention.id === parseInt(this.props.match.params.conventionId)) || {}
-        const conventionName = myConvention.convention ? myConvention.convention.name : ""
-        const conventionDate = myConvention.convention ? myConvention.convention.displayDate : ""
+        const conventionName = myConvention.convention ? myConvention.name : ""
+        const conventionDate = myConvention.convention ? myConvention.displayDate : ""
         // console.log("myconvention:", this.props);
         return (
                 <section key={myConvention.id} className="mr-2 mb-3 convention_details">

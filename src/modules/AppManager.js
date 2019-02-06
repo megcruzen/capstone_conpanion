@@ -110,5 +110,33 @@ export default {
             method: "DELETE"
         })
         .then(() => this.getCostumeItems())
+    },
+
+    getConCostumes() {
+        return fetch(`${remoteURL}/conCostumes?_expand=costume`)
+        .then(data => data.json())
+    },
+
+    // getCostumesForCon(userConId) {
+    //     return fetch(`${remoteURL}/conCostumes?userConventionId=${userConId}&_expand=costume`)
+    //     .then(data => data.json())
+    // },
+
+    deleteConCostume(id) {
+        return fetch(`${remoteURL}/conCostumes/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getConCostumes())
+    },
+
+    postConCostume(newCostume) {
+        return fetch(`${remoteURL}/conCostumes`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newCostume)
+        })
+        .then(data => data.json())
     }
 }

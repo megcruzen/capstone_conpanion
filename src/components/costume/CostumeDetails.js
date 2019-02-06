@@ -4,7 +4,6 @@ import { Table, Row, Col, Media, Button, Modal, ModalHeader, ModalBody, ModalFoo
 import "../CosBuddy.css";
 import thumb from "./64x64.jpg"
 import CostumeItemCard from "./CostumeItemCard"
-import AppManager from "../../modules/AppManager"
 
 export default class CostumeDetails extends Component {
 
@@ -64,7 +63,7 @@ export default class CostumeDetails extends Component {
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div className="costume_details">
-                                <span className="text-uppercase series">{costume.series}</span>
+                                <span className="text-uppercase subtitle">{costume.series}</span>
                                 <h4>{costume.name}</h4>
                                 <i class="fas fa-user-circle"></i> <span className="series">{costume.outfit}</span>
                             </div>
@@ -76,7 +75,7 @@ export default class CostumeDetails extends Component {
                     </Media>
                     <Row className="items_and_notes">
                         <Col sm="4" className="mt-4">
-                            <h3>Costume Items</h3>
+                            <h3 className="mb-0">Costume Items</h3>
                             <div className="item_input">
                                 <Form onSubmit={this.addItem} className="d-flex">
                                     <FormGroup className="w-100 mr-2">

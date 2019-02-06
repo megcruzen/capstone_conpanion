@@ -2,6 +2,8 @@
     padding: 20px;
 }
 
+/* Links */
+
 a.link {
     color: #74c2a7;
     text-decoration: underline;
@@ -65,11 +67,11 @@ a.return {
     text-decoration: none;
 }
 
-.costume_list .card-title, .costume_list .card-title h3 {
+.costume_list .card-title {
     margin-bottom: 0;
 }
 
-.costume_list .series, .costume_details .series {
+.subtitle {
     font-size: .7em;
 }
 
@@ -95,4 +97,18 @@ a.return {
 
 .items_box {
     font-size: .8em;
+}
+
+/* Convention Details */
+.convention_costume_list .card {
+    max-width: 200px;
+    height: auto;
+}
+
+.convention_costume_list .card-body {
+    padding: 10px;
+}
+
+.convention_costume_list .card-title h3 {
+    font-size: 1.4em;
 }

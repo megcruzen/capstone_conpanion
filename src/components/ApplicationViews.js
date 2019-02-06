@@ -7,6 +7,7 @@ import "./CosBuddy.css";
 import ConventionList from './convention/ConventionList'
 import ConventionSearch from './convention/ConventionSearch'
 import ConventionForm from './convention/ConventionForm'
+import ConventionDetails from './convention/ConventionDetails'
 
 import CostumeList from './costume/CostumeList'
 import CostumeForm from './costume/CostumeForm'
@@ -21,7 +22,8 @@ export default class ApplicationViews extends Component {
     allConventions: [],
     myConventions: [],
     costumes: [],
-    costumeItems: []
+    costumeItems: [],
+    conCostumes: []
   }
 
   componentDidMount() {
@@ -43,6 +45,11 @@ export default class ApplicationViews extends Component {
     AppManager.getCostumeItems()
     .then(costumeItems => {
         this.setState({ costumeItems: costumeItems })
+    })
+
+    AppManager.getConCostumes()
+    .then(conCostumes => {
+        this.setState({ conCostumes: conCostumes })
     })
   }
 
@@ -77,6 +84,13 @@ export default class ApplicationViews extends Component {
     })
   )
 
+  addCostumeToCon = (costume) => AppManager.postConCostume(costume)
+    .then(() => AppManager.getConCostumes())
+    .then(conCostumes => this.setState({
+      conCostumes: conCostumes
+    })
+  )
+
   /* DELETE */
 
   removeConvention = (id) => {
@@ -86,14 +100,21 @@ export default class ApplicationViews extends Component {
     )
   }
 
-  deleteCostume= (id) => {
+  deleteCostume = (id) => {
     return AppManager.deleteCostume(id)
     .then(costumes =>
         this.setState({ costumes: costumes })
     )
   }
 
-  deleteCostumeItem= (id) => {
+  deleteConCostume = (id) => {
+    return AppManager.deleteConCostume(id)
+    .then(conCostumes =>
+        this.setState({ conCostumes: conCostumes })
+    )
+  }
+
+  deleteCostumeItem = (id) => {
     return AppManager.deleteCostumeItem(id)
     .then(costumeItems =>
         this.setState({ costumeItems: costumeItems })
@@ -133,9 +154,19 @@ export default class ApplicationViews extends Component {
         />
 
         <Route exact path="/conventions/new" render={(props) => {
-                    return <ConventionForm {...props}
-                            addConvention={this.addConvention}
-                            genres={this.state.genres} />
+            return <ConventionForm {...props}
+                    addConvention={this.addConvention}
+                    genres={this.state.genres} />
+        }} />
+
+        <Route path="/conventions/:conventionId(\d+)" render={(props) => {
+            return <ConventionDetails {...props}
+                    allConventions={this.state.allConventions}
+                    myConventions={this.state.myConventions}
+                    costumes={this.state.costumes}
+                    conCostumes={this.state.conCostumes}
+                    deleteConCostume={this.deleteConCostume}
+                    addCostumeToCon={this.addCostumeToCon} />
         }} />
 
         <Route exact path="/costumes" render={props => {

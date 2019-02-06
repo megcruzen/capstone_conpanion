@@ -17,7 +17,7 @@ export default class CostumeDetails extends Component {
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = {}
-        console.log(evt.target.id, evt.target.value);
+        // console.log(evt.target.id, evt.target.value);
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
@@ -75,7 +75,7 @@ export default class CostumeDetails extends Component {
                     </Media>
                     <Row className="items_and_notes">
                         <Col sm="4" className="mt-4">
-                            <h3 className="mb-0">Costume Items</h3>
+                            <h3>Costume Items</h3>
                             <div className="item_input">
                                 <Form onSubmit={this.addItem} className="d-flex">
                                     <FormGroup className="w-100 mr-2">
@@ -100,12 +100,12 @@ export default class CostumeDetails extends Component {
                                 </Table>
                             </div>
                         </Col>
-                        <Col sm={{ size: 5, offset: 1 }} className="mt-4">
+                        {/* <Col sm={{ size: 5, offset: 1 }} className="mt-4">
                             <h3>Notes</h3>
                             <FormGroup>
                                 <Input type="textarea" name="notes" id="notes" rows="10" cols="40" placeholder="Enter notes here..." onClick={this.editNotes} />
                             </FormGroup>
-                        </Col>
+                        </Col> */}
                     </Row>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Remove Costume</ModalHeader>

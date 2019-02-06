@@ -1,0 +1,15 @@
+[
+  {
+    "name": "TestCon2",
+    "startDate": "2019-02-16",
+    "endDate": "2019-02-17",
+    "displayDate": "February 16 - February 17",
+    "city": "Nashville",
+    "state": "TN",
+    "website": "http://google.com",
+    "thumbnail": "http://google.com",
+    "genreId": "2",
+    "userId": 2,
+    "id": 5
+  }
+]

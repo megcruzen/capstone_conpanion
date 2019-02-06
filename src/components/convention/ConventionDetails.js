@@ -35,12 +35,12 @@ export default class ConventionDetails extends Component {
 
     render() {
 
-        const myConvention = this.props.myConventions.find(convention => convention.id === parseInt(this.props.match.params.conventionId)) || {}
-        const conventionName = myConvention.convention ? myConvention.convention.name : ""
-        const conventionDate = myConvention.convention ? myConvention.convention.displayDate : ""
+        const convention = this.props.myConventions.find(convention => convention.id === parseInt(this.props.match.params.conventionId)) || {}
+        // const conventionName = myConvention.convention ? myConvention.name : ""
+        // const conventionDate = myConvention.convention ? myConvention.displayDate : ""
         // console.log("myconvention:", this.props);
         return (
-                <section key={myConvention.id} className="mr-2 mb-3 convention_details">
+                <section key={this.props.id} className="mr-2 mb-3 convention_details">
                     <a href="#" onClick={() => this.props.history.push("/conventions/")} className="return">&laquo; Return to conventions</a>
                     <Media className="mt-4 pt-2">
                         <Media left href="#" className="mr-3">
@@ -48,8 +48,8 @@ export default class ConventionDetails extends Component {
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div>
-                                <h3 className="mb-0">{conventionName}</h3>
-                                <span className="text-uppercase subtitle">{conventionDate}</span>
+                                <h3 className="mb-0">{convention.name}</h3>
+                                <span className="text-uppercase subtitle">{convention.displayDate}</span>
                             </div>
                         </Media>
                     </Media>
@@ -70,7 +70,7 @@ export default class ConventionDetails extends Component {
                         <TabPane tabId="1">
                             <Row>
                                 <Col sm="12">
-                                    <ConventionCostumeList key={myConvention.id} myConventionId={myConvention.id} {...this.props} />
+                                    <ConventionCostumeList key={convention.id} myConventionId={convention.id} {...this.props} />
                                 </Col>
                             </Row>
                         </TabPane>

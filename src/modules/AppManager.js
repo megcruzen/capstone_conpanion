@@ -112,10 +112,15 @@ export default {
         .then(() => this.getCostumeItems())
     },
 
-    getConCostumes(userConId) {
-        return fetch(`${remoteURL}/conCostumes?userConventionId=1&_expand=costume`)
+    getConCostumes() {
+        return fetch(`${remoteURL}/conCostumes?_expand=costume`)
         .then(data => data.json())
     },
+
+    // getCostumesForCon(userConId) {
+    //     return fetch(`${remoteURL}/conCostumes?userConventionId=${userConId}&_expand=costume`)
+    //     .then(data => data.json())
+    // },
 
     deleteConCostume(id) {
         return fetch(`${remoteURL}/conCostumes/${id}`, {

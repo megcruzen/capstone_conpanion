@@ -18,8 +18,6 @@ export default class ConCostumeCard extends Component {
     }
 
     render() {
-        // const costume = this.props.costumes.find(costume => costume.id === parseInt(this.props.myConventionId)) || {}
-        // console.log(costume)
         return (
             <div className="con_costume_card">
                 <Card key={this.props.conCostume.costume.id} className="mr-2 mb-3">

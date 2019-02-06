@@ -36,14 +36,14 @@ export default class ConventionCostumeList extends Component {
             userConventionId: this.props.myConventionId
         }
 
-        console.log("userconId:", this.props.myConventionId)
+        // console.log("userconId:", this.props.myConventionId)
         // POST the conCostume object
         this.props.addCostumeToCon(conCostume)
     }
 
     render() {
-        console.log("this.props.myConventionId:", this.props.myConventionId);
-        console.log("this.props.conCostumes:", this.props.conCostumes)
+        // console.log("this.props.myConventionId:", this.props.myConventionId);
+        // console.log("this.props.conCostumes:", this.props.conCostumes)
 
         return (
             <section className="convention_costume_list">
@@ -70,9 +70,9 @@ export default class ConventionCostumeList extends Component {
                 </div>
                 <div className="d-flex justify-content-between flex-wrap">
                 {
-                    // get all costume objects
+                    // get all conCostume objects
                     this.props.conCostumes
-                    // only show those objects where costume.userConId = this.props.myConventionId
+                    // only show those objects where this.props.myConventionId (current convention) = conCostume.userConId
                     .filter(conCostume => this.props.myConventionId === conCostume.userConventionId)
                     .map(conCostume =>
                         <ConCostumeCard key={conCostume.id} conCostume={conCostume} {...this.props} />

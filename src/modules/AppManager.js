@@ -50,7 +50,7 @@ export default {
     },
 
     createUserConvention(newCon) {
-        console.log(newCon)
+        // console.log(newCon)
         return fetch(`${remoteURL}/userConventions`, {
           method: "POST",
           headers: {

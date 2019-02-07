@@ -98,7 +98,6 @@ export default class ConventionDetails extends Component {
                         </TabPane>
                     </TabContent>
                     <Modal isOpen={this.state.modal} toggle={this.toggle2} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle2}>Modal title</ModalHeader>
                         <ModalBody>
                             Does this convention need a correction? Please contact our administration team.
                         </ModalBody>

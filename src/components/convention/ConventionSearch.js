@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { TabContent, TabPane, Button } from 'reactstrap';
-import classnames from 'classnames';
+// import classnames from 'classnames';
 import "../CosBuddy.css"
 import ConSearchName from './ConSearchName';
 

@@ -62,7 +62,8 @@ export default class ApplicationViews extends Component {
 
   /* ADD NEW */
 
-  addConvention = (convention) => AppManager.postConvention(convention)
+  addConvention = (convention) =>
+    AppManager.postConvention(convention)
     .then(newCon => {
       const newUserCon = {
           userId: newCon.userId,
@@ -71,6 +72,14 @@ export default class ApplicationViews extends Component {
       console.log(newUserCon)
       AppManager.createUserConvention(newUserCon);
     })
+    .then(() => AppManager.getMyConventions())
+    .then(myConventions => this.setState({
+      myConventions: myConventions
+    })
+  )
+
+  addUserConvention = (newUserCon) =>
+    AppManager.createUserConvention(newUserCon)
     .then(() => AppManager.getMyConventions())
     .then(myConventions => this.setState({
       myConventions: myConventions
@@ -164,7 +173,8 @@ export default class ApplicationViews extends Component {
 
         <Route exact path="/conventions/search" render={props => {
             return <ConventionSearch {...props}
-                    allConventions={this.state.allConventions} />
+                    allConventions={this.state.allConventions}
+                    addUserConvention={this.addUserConvention} />
           }}
         />
 

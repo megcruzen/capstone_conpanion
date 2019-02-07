@@ -52,7 +52,7 @@ export default class ConventionCard extends Component {
                             Are you sure you want to remove <strong>{this.props.myConvention.name}</strong> from your list?
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={() => this.props.removeConvention(this.props.myConvention.id)}>Yes, Please Remove</Button>{' '}
+                            <Button color="primary" onClick={() => this.props.removeConvention(this.props.myConvention.userConventionId)}>Yes, Please Remove</Button>{' '}
                             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
                     </Modal>

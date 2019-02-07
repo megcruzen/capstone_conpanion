@@ -11,7 +11,11 @@ export default {
         return fetch(`${remoteURL}/userConventions?userId=1&_expand=convention`)
         .then(data => data.json())
         .then(connections => connections.map(
-            connection => connection.convention)
+            connection => {
+                connection.convention.userConventionId = connection.id;
+                return connection.convention
+            }
+            )
         )
     },
 

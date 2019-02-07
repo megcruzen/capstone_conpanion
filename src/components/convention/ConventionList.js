@@ -12,7 +12,6 @@ export default class ConventionList extends Component {
     }
 
     render() {
-        console.log(this.props.myConventions)
         return (
             <section className="convention_list_personal">
                 <div className="d-sm-flex justify-content-between flex-wrap align-items-center mb-3">

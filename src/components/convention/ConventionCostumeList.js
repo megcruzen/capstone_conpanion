@@ -31,7 +31,7 @@ export default class ConventionCostumeList extends Component {
         let conCostumeArray = this.state.conCostumes;
         // let conCostumeArray = this.state.conCostumes.map(conCostume => conCostume);
 
-        console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
+        // console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
 
         // let results = costumeArray.find(costume =>
         //     costume.id === conCostumeArray.map(conCostume => conCostume.costumeId)
@@ -78,14 +78,14 @@ export default class ConventionCostumeList extends Component {
     }
 
     render() {
-        console.log("this.props.myConventionId:", this.props.myConventionId);
-        console.log("this.props.conCostumes:", this.props.conCostumes)
+        // console.log("this.props.myConventionId:", this.props.myConventionId);
+        // console.log("this.props.conCostumes:", this.props.conCostumes)
 
-        let costumeArray = this.props.costumes;
-        let conCostumeArray = this.state.conCostumes;
+        // let costumeArray = this.props.costumes;
+        // let conCostumeArray = this.state.conCostumes;
         // let conCostumeArray = this.state.conCostumes.map(conCostume => conCostume);
 
-        console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
+        // console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
 
         return (
             <section className="convention_costume_list">

@@ -82,7 +82,8 @@ export default class ConSearchName extends Component {
                             <strong>{this.props.result.name}</strong> was added to your conventions!
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.toggle}>Great!</Button>
+                            <Button color="primary" onClick={this.toggle}>Add Another Convention</Button>
+                            <Button color="primary" onClick={(() => this.props.history.push("/conventions/"))}>Return to My Conventions</Button>
                         </ModalFooter>
                     </Modal>
                 </td>

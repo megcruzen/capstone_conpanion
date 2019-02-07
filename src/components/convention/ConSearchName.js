@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { FormGroup, Form, Input, Media, Table, Button, Modal, ModalBody } from 'reactstrap';
+import { FormGroup, Form, Input, Table } from 'reactstrap';
 import "../CosBuddy.css"
-import thumb from "./64x64.jpg"
 import AppManager from "../../modules/AppManager"
 import ConSearchResults from "./ConSearchResults"
 

@@ -5,10 +5,10 @@ import classnames from 'classnames';
 import "../CosBuddy.css";
 import thumb from "./64x64.jpg"
 import ConventionCostumeList from "./ConventionCostumeList"
+import ConventionPackingList from './ConventionPackingList';
 
 export default class ConventionDetails extends Component {
 
-    // Set initial state
     constructor(props) {
         super(props);
 
@@ -34,20 +34,12 @@ export default class ConventionDetails extends Component {
         });
       }
 
-    // Update state whenever an input field is edited
-    handleFieldChange = evt => {
-        const stateToChange = {}
-        console.log(evt.target.id, evt.target.value);
-        stateToChange[evt.target.id] = evt.target.value
-        this.setState(stateToChange)
-    }
-
     render() {
-
         const convention = this.props.myConventions.find(convention => convention.id === parseInt(this.props.match.params.conventionId)) || {}
         // const conventionName = myConvention.convention ? myConvention.name : ""
         // const conventionDate = myConvention.convention ? myConvention.displayDate : ""
         // console.log("myconvention:", this.props);
+        // console.log("convention", convention)
         return (
                 <section key={this.props.id} className="mr-2 mb-3 convention_details">
                     <a href="#" onClick={() => this.props.history.push("/conventions/")} className="return">&laquo; Return to conventions</a>
@@ -78,18 +70,18 @@ export default class ConventionDetails extends Component {
                             onClick={() => { this.toggle('2'); }}>Packing Lists</NavLink>
                         </NavItem>
                     </Nav>
-                    <TabContent activeTab={this.state.activeTab}>
+                    <TabContent activeTab={this.state.activeTab} className="mt-4">
                         <TabPane tabId="1">
                             <Row>
                                 <Col sm="12">
-                                    <ConventionCostumeList key={convention.id} myConventionId={convention.id} {...this.props} />
+                                    <ConventionCostumeList key={convention.id} convention={convention} {...this.props} />
                                 </Col>
                             </Row>
                         </TabPane>
                         <TabPane tabId="2">
                             <Row>
                                 <Col sm="6">
-                                    <div>General Packing List</div>
+                                    <ConventionPackingList myConventionId={convention.id} {...this.props} />
                                 </Col>
                                 <Col sm="6">
                                     <div>Costume Packing lists</div>

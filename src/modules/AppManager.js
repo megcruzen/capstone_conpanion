@@ -24,6 +24,40 @@ export default {
         )
     },
 
+    getConventionItems() {
+        return fetch(`${remoteURL}/conventionItems/`)
+        .then(data => data.json())
+    },
+
+
+    postConventionItem(newItem) {
+        return fetch(`${remoteURL}/conventionItems`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newItem)
+        })
+        .then(data => data.json())
+    },
+
+    deleteConventionItem(id) {
+        return fetch(`${remoteURL}/conventionItems/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getConventionItems())
+    },
+
+    editConventionItem(itemId, editedItem) {
+        return fetch(`${remoteURL}/conventionItems/${itemId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedItem)
+        })
+    },
+
     searchConventions(query) {
         return fetch(`${remoteURL}/conventions/?q=${query}`)
         .then(response => response.json())

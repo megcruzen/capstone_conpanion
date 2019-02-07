@@ -34,16 +34,7 @@ export default class ConventionDetails extends Component {
         });
       }
 
-    // Update state whenever an input field is edited
-    handleFieldChange = evt => {
-        const stateToChange = {}
-        console.log(evt.target.id, evt.target.value);
-        stateToChange[evt.target.id] = evt.target.value
-        this.setState(stateToChange)
-    }
-
     render() {
-
         const convention = this.props.myConventions.find(convention => convention.id === parseInt(this.props.match.params.conventionId)) || {}
         // const conventionName = myConvention.convention ? myConvention.name : ""
         // const conventionDate = myConvention.convention ? myConvention.displayDate : ""

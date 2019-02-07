@@ -1,11 +1,30 @@
 import React, { Component } from 'react';
 
 export default class ConItemCard extends Component {
+
+    state = {
+        checked: this.props.item.checked
+    }
+
+    // Update state whenever an item is clicked
+    checkOffItem = evt => {
+        if (this.state.checked === false) {
+            this.setState({
+              checked: true
+            });
+          }
+        else {
+            this.setState({
+                checked: false
+            });
+        }
+    }
+
     render() {
-        console.log("item id", this.props.item.id)
+        console.log(this.state.checked)
         return (
             <tr>
-                <td>
+                <td onClick={this.checkOffItem}>
                     <div className="d-flex justify-content-between">
                         <div className="item_name">{this.props.item.name}</div>
                         <div>

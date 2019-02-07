@@ -3,7 +3,12 @@ const remoteURL = "http://localhost:5002"
 export default {
 
     get(id) {
-        return fetch(`${remoteURL}/students/${id}`)
+        return fetch(`${remoteURL}/conventions/${id}`)
+        .then(data => data.json())
+    },
+
+    getAllConventions() {
+        return fetch(`${remoteURL}/conventions`)
         .then(data => data.json())
     },
 
@@ -17,6 +22,11 @@ export default {
             }
             )
         )
+    },
+
+    searchConventions(query) {
+        return fetch(`${remoteURL}/conventions/?q=${query}`)
+        .then(response => response.json())
     },
 
     postConvention(newCon) {

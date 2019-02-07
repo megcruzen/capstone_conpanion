@@ -29,6 +29,11 @@ export default class ApplicationViews extends Component {
   }
 
   componentDidMount() {
+    AppManager.getAllConventions()
+    .then(allConventions => {
+        this.setState({ allConventions: allConventions })
+    })
+
     AppManager.getMyConventions()
     .then(myConventions => {
         this.setState({ myConventions: myConventions })
@@ -133,6 +138,14 @@ export default class ApplicationViews extends Component {
         })
   )
 
+  // /* SEARCH */
+  // searchConventions = (searchQuery) => {
+  //   const newSearchResults = {}
+  //   return AppManager.searchConventions(searchQuery)
+  //   .then(response => newSearchResults.conventions = response)
+  //   .then(() => this.setState(newSearchResults))
+  // }
+
   render() {
     return (
       <div id="appviews">
@@ -151,7 +164,7 @@ export default class ApplicationViews extends Component {
 
         <Route exact path="/conventions/search" render={props => {
             return <ConventionSearch {...props}
-                    myConventions={this.state.myConventions} />
+                    allConventions={this.state.allConventions} />
           }}
         />
 

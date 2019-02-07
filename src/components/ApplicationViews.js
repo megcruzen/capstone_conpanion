@@ -14,6 +14,8 @@ import CostumeForm from './costume/CostumeForm'
 import CostumeEditForm from './costume/CostumeEditForm'
 import CostumeDetails from './costume/CostumeDetails'
 
+import Contact from './Contact.js'
+
 export default class ApplicationViews extends Component {
 
   state = {
@@ -194,6 +196,10 @@ export default class ApplicationViews extends Component {
             return <CostumeEditForm {...props}
                     costumes={this.state.costumes}
                     editCostume={this.editCostume} />
+        }} />
+
+        <Route exact path="/contact/" render={(props) => {
+            return <Contact />
         }} />
 
       </div>

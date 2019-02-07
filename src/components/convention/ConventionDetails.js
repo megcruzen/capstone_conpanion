@@ -80,7 +80,7 @@ export default class ConventionDetails extends Component {
                         </TabPane>
                         <TabPane tabId="2">
                             <Row>
-                                <Col sm="6" className="con_packing_list">
+                                <Col sm="6">
                                     <ConventionPackingList myConventionId={convention.id} {...this.props} />
                                 </Col>
                                 <Col sm="6">

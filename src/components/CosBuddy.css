@@ -53,6 +53,10 @@ a.return {
     height: 64px;
 }
 
+.convention_packing_list .checked {
+    text-decoration: line-through;
+}
+
 /* Costume List */
 .costume_list {
     max-width: 1050px;

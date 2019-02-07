@@ -40,7 +40,7 @@ export default class ConventionPackingList extends Component {
         console.log(this.props.myConventionId)
 
         return (
-                <section key="" className="mr-2 mb-3 convention_details">
+                <section className="convention_packing_list mr-2 mb-3">
                     <h4>Convention Packing List</h4>
                     <Form onSubmit={this.addItem} className="d-flex">
                         <FormGroup className="w-100 mr-2">

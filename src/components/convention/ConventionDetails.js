@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Media, Row, Col, TabContent, TabPane, Nav, NavItem, NavLink, } from 'reactstrap';
+import { Link } from 'react-router-dom'
+import { Button, Media, Row, Col, TabContent, TabPane, Nav, NavItem, NavLink, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import classnames from 'classnames';
 import "../CosBuddy.css";
 import thumb from "./64x64.jpg"
@@ -12,8 +13,10 @@ export default class ConventionDetails extends Component {
         super(props);
 
         this.toggle = this.toggle.bind(this);
+        this.toggle2 = this.toggle2.bind(this);
         this.state = {
-          activeTab: '1'
+          activeTab: '1',
+          modal: false
         };
       }
 
@@ -23,6 +26,12 @@ export default class ConventionDetails extends Component {
             activeTab: tab
           });
         }
+      }
+
+      toggle2() {
+        this.setState({
+          modal: !this.state.modal
+        });
       }
 
     // Update state whenever an input field is edited
@@ -50,6 +59,9 @@ export default class ConventionDetails extends Component {
                             <div>
                                 <h3 className="mb-0">{convention.name}</h3>
                                 <span className="text-uppercase subtitle">{convention.displayDate}</span>
+                            </div>
+                            <div>
+                                <i className="fas fa-edit mr-2 text-secondary" onClick={this.toggle2}></i>
                             </div>
                         </Media>
                     </Media>
@@ -84,7 +96,17 @@ export default class ConventionDetails extends Component {
                                 </Col>
                             </Row>
                         </TabPane>
-                        </TabContent>
+                    </TabContent>
+                    <Modal isOpen={this.state.modal} toggle={this.toggle2} className={this.props.className}>
+                        <ModalHeader toggle={this.toggle2}>Modal title</ModalHeader>
+                        <ModalBody>
+                            Does this convention need a correction? Please contact our administration team.
+                        </ModalBody>
+                        <ModalFooter>
+                            <Link to="/contact"><Button color="primary">Contact Us</Button>{' '}</Link>
+                            <Button color="secondary" onClick={this.toggle2}>Cancel</Button>
+                        </ModalFooter>
+                        </Modal>
                     </div>
                 </section>
         )

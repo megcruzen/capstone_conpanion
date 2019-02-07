@@ -120,8 +120,13 @@ export default {
         .then(data => data.json())
     },
 
-    getCostumesForCon(userConId) {
-        return fetch(`${remoteURL}/conCostumes?userConventionId=${userConId}&_expand=costume`)
+    // getCostumesForCon(userConId) {
+    //     return fetch(`${remoteURL}/conCostumes?userConventionId=${userConId}&_expand=costume`)
+    //     .then(data => data.json())
+    // },
+
+    getCostumesForCon(userConId, costumeId) {
+        return fetch(`${remoteURL}/conCostumes?userConventionId=${userConId}&costumeId=${costumeId}`)
         .then(data => data.json())
     },
 

@@ -12,7 +12,7 @@ export default class ConventionCostumeList extends Component {
       }
 
     componentDidMount() {
-        AppManager.getCostumesForCon(this.props.myConventionId)
+        AppManager.getCostumesForCon(this.props.myConventionId, null)
         .then(conCostumes => {
             this.setState({ conCostumes: conCostumes })
         })
@@ -78,8 +78,14 @@ export default class ConventionCostumeList extends Component {
     }
 
     render() {
-        // console.log("this.props.myConventionId:", this.props.myConventionId);
-        // console.log("this.props.conCostumes:", this.props.conCostumes)
+        console.log("this.props.myConventionId:", this.props.myConventionId);
+        console.log("this.props.conCostumes:", this.props.conCostumes)
+
+        let costumeArray = this.props.costumes;
+        let conCostumeArray = this.state.conCostumes;
+        // let conCostumeArray = this.state.conCostumes.map(conCostume => conCostume);
+
+        console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
 
         return (
             <section className="convention_costume_list">
@@ -97,7 +103,6 @@ export default class ConventionCostumeList extends Component {
                                     this.props.costumes
                                     .map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
                                 }
-                                {/* {this.connectionCheck()} */}
                             </Input>
                         </FormGroup>
                         <div><Button color="primary">Add</Button></div>

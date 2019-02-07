@@ -48,6 +48,16 @@ export default {
         .then(() => this.getConventionItems())
     },
 
+    editConventionItem(itemId, editedItem) {
+        return fetch(`${remoteURL}/conventionItems/${itemId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedItem)
+        })
+    },
+
     searchConventions(query) {
         return fetch(`${remoteURL}/conventions/?q=${query}`)
         .then(response => response.json())

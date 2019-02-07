@@ -167,6 +167,14 @@ export default class ApplicationViews extends Component {
         })
   )
 
+  updateItem = (itemId, editedItem) =>
+    AppManager.editConventionItem(itemId, editedItem)
+    .then(() => AppManager.getConventionItems())
+    .then(conventionItems => this.setState({
+      conventionItems: conventionItems
+        })
+  )
+
   // /* SEARCH */
   // searchConventions = (searchQuery) => {
   //   const newSearchResults = {}
@@ -214,7 +222,8 @@ export default class ApplicationViews extends Component {
                     addCostumeToCon={this.addCostumeToCon}
                     addConventionItem={this.addConventionItem}
                     conventionItems={this.state.conventionItems}
-                    deleteConItem={this.deleteConItem} />
+                    deleteConItem={this.deleteConItem}
+                    updateItem={this.updateItem} />
         }} />
 
         <Route exact path="/costumes" render={props => {

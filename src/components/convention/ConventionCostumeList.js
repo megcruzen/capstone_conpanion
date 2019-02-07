@@ -89,8 +89,8 @@ export default class ConventionCostumeList extends Component {
 
         return (
             <section className="convention_costume_list">
-                <div className="d-sm-flex justify-content-between flex-wrap align-items-center mb-3 mt-4">
-                    <h4 className="text-center">Costume List</h4>
+                <div className="d-sm-flex justify-content-between flex-wrap align-items-center">
+                    <h4>Costume List</h4>
                 </div>
                 <div className="costume_selector d-flex flex-wrap align-items-end">
                     <Form onSubmit={this.constructConnection} className="d-flex w-75 mr-2 align-items-end">

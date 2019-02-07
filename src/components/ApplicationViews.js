@@ -23,9 +23,10 @@ export default class ApplicationViews extends Component {
     genres: [],
     allConventions: [],
     myConventions: [],
+    conventionItems: [],
     costumes: [],
     costumeItems: [],
-    conCostumes: []
+    conCostumes: [],
   }
 
   componentDidMount() {
@@ -37,6 +38,11 @@ export default class ApplicationViews extends Component {
     AppManager.getMyConventions()
     .then(myConventions => {
         this.setState({ myConventions: myConventions })
+    })
+
+    AppManager.getConventionItems()
+    .then(conventionItems => {
+        this.setState({ conventionItems: conventionItems })
     })
 
     AppManager.getGenres()
@@ -86,6 +92,13 @@ export default class ApplicationViews extends Component {
     })
   )
 
+  addConventionItem = (item) => AppManager.postConventionItem(item)
+    .then(() => AppManager.getConventionItems())
+    .then(conventionItems => this.setState({
+      conventionItems: conventionItems
+    })
+  )
+
   addCostume = (costume) => AppManager.postCostume(costume)
     .then(() => AppManager.getCostumes())
     .then(costumes => this.setState({
@@ -113,6 +126,13 @@ export default class ApplicationViews extends Component {
     return AppManager.deleteUserConvention(id)
     .then(myConventions =>
         this.setState({ myConventions: myConventions })
+    )
+  }
+
+  deleteConItem = (id) => {
+    return AppManager.deleteConventionItem(id)
+    .then(conventionItems =>
+        this.setState({ conventionItems: conventionItems })
     )
   }
 
@@ -191,7 +211,10 @@ export default class ApplicationViews extends Component {
                     costumes={this.state.costumes}
                     conCostumes={this.state.conCostumes}
                     deleteConCostume={this.deleteConCostume}
-                    addCostumeToCon={this.addCostumeToCon} />
+                    addCostumeToCon={this.addCostumeToCon}
+                    addConventionItem={this.addConventionItem}
+                    conventionItems={this.state.conventionItems}
+                    deleteConItem={this.deleteConItem} />
         }} />
 
         <Route exact path="/costumes" render={props => {

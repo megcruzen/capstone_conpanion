@@ -75,29 +75,36 @@ export default class ConventionCostumeList extends Component {
         // POST the conCostume object
         this.props.addCostumeToCon(conCostume)
 
+
         // THEN
-        // get that new conCostume's id and the costumeId to create new object
-        /*
+        // get all items for this costume (this.state.costumeId) & map through all items
+        console.log("filter", this.props.costumeItems.filter( costumeItem => costumeItem.costumeId  ));
+        console.log("this.state.costumeId", Number(this.state.costumeId))
+
+        this.props.costumeItems.filter( costumeItem => costumeItem.costumeId === Number(this.state.costumeId) )
+        .map(item => {
+            // for each item, create new object
             const conCostumeItem = {
                 conCostumeId: "",
-                costumeId: this.state.costumeId,
+                costumeItemId: item.id,
                 checked: false
             }
-        */
-        // and POST -> this.props.copyCostumeItems(conCostumeItem)
-        }
+            // post that object to ConCostumeItems
+            this.props.copyCostumeItems(conCostumeItem)
+        })
+        // then reload
+
     }
+}
 
     render() {
-        // console.log("this.props", this.props);
+        // console.log("this.props", this.props.conCostumes.costumeId);
         // console.log("this.props.convention.userConventionId:", this.props.convention.userConventionId);
         // console.log("this.props.conCostumes:", this.props.conCostumes)
 
         // let costumeArray = this.props.costumes;
         // let conCostumeArray = this.state.conCostumes;
         // let conCostumeArray = this.state.conCostumes.map(conCostume => conCostume);
-
-        // console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
 
         return (
             <section className="convention_costume_list">

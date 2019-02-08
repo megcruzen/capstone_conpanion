@@ -57,14 +57,14 @@ export default class CosPackingListCard extends Component {
                     <h4>{this.props.conCostume.costume.name}</h4>
                     costumeId: {this.props.conCostume.costume.id}<br />
                     conCostumeId: {this.props.conCostume.id}
-                    {/* <Form onSubmit={this.addItem} className="d-flex">
+                    <Form onSubmit={this.addItem} className="d-flex">
                         <FormGroup className="w-100 mr-2">
                             <Label for="itemName" hidden>Item Name</Label>
                             <Input type="text" required name="itemName" id="itemName"
                             onChange={this.handleFieldChange} placeholder="Enter an item name" />
                         </FormGroup>
                         <div><Button color="primary">Add</Button></div>
-                    </Form> */}
+                    </Form>
                     <div className="items_box">
                         <Table borderless striped>
                             <tbody>

@@ -126,7 +126,7 @@ export default class ApplicationViews extends Component {
     })
   )
 
-  addConCostumeItem = (item) => AppManager.postConCostumeItem(item)
+  copyCostumeItems = (item) => AppManager.postConCostumeItem(item)
     .then(() => AppManager.getConCostumeItems())
     .then(conCostumeItems => this.setState({
       conCostumeItems: conCostumeItems
@@ -196,15 +196,6 @@ export default class ApplicationViews extends Component {
         })
   )
 
-
-  // /* SEARCH */
-  // searchConventions = (searchQuery) => {
-  //   const newSearchResults = {}
-  //   return AppManager.searchConventions(searchQuery)
-  //   .then(response => newSearchResults.conventions = response)
-  //   .then(() => this.setState(newSearchResults))
-  // }
-
   render() {
     return (
       <div id="appviews">
@@ -246,7 +237,9 @@ export default class ApplicationViews extends Component {
                     conventionItems={this.state.conventionItems}
                     deleteConItem={this.deleteConItem}
                     updateItem={this.updateItem}
-                    conCostumeItems={this.state.conCostumeItems} />
+                    conCostumeItems={this.state.conCostumeItems}
+                    costumeItems={this.state.costumeItems}
+                    copyCostumeItems={this.copyCostumeItems} />
         }} />
 
         <Route exact path="/costumes" render={props => {

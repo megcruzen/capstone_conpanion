@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Table } from 'reactstrap';
 import "../CosBuddy.css";
 // import AppManager from '../../modules/AppManager';
+import ConCosItemCard from "./ConCosItemCard"
 
 export default class CosPackingListCard extends Component {
 
@@ -43,15 +44,18 @@ export default class CosPackingListCard extends Component {
 
     render() {
 
-        console.log("user convention Id", this.props.userConventionId)
+        // console.log("userconvention Id", this.props.userConventionId)
         // this.getCostumesForCon(this.props.myConventionId);
 
-        // console.log("conCostumes:", this.props.conCostumes)
+        console.log("costume name/id:", this.props.conCostume.costume.name, this.props.conCostume.costume.id)
         // console.log("userConventionId:", this.props.conCostumes.map(conCostume => conCostume.userConventionId))
+
+        console.log(this.props.conCostumeItems)
 
         return (
                 <div className="con_costume_card">
                     <h4>{this.props.conCostume.costume.name}</h4>
+                    costumeId: {this.props.conCostume.costume.id}
                     <Form onSubmit={this.addItem} className="d-flex">
                         <FormGroup className="w-100 mr-2">
                             <Label for="itemName" hidden>Item Name</Label>
@@ -64,15 +68,17 @@ export default class CosPackingListCard extends Component {
                         <Table borderless striped>
                             <tbody>
                                 {/* {
-                                this.props.conventionItems
-                                .filter(item => item.userConventionId === this.props.myConventionId)
-                                .map(item => <ConItemCard key={item.id} item={item} {...this.props} />)
-                                } */}
-                                {/* {
                                 // this.props.conCostumeItems
                                 // .filter(item => item.conCostumeId === this.props.conCostume.id)
                                 // .map(item => <ConCostumeCard key={item.id} item={item} {...this.props} />)
                                 // } */}
+
+                                {
+                                    this.props.conCostumeItems
+                                    .filter(item => item.costumeItemId === this.props.conCostume.costume.id)
+                                    .map(item => <ConCosItemCard key={item.id} item={item} {...this.props} />)
+                                }
+
                             </tbody>
                         </Table>
                     </div>

@@ -1,21 +1,6 @@
 import React, { Component } from 'react';
 
-export default class ConItemCard extends Component {
-
-
-    // // Update state whenever an item is clicked
-    // checkOffItem = (itemId) => {
-    //     if (this.state.checked === false) {
-    //         this.setState({
-    //           checked: true
-    //         });
-    //       }
-    //     else {
-    //         this.setState({
-    //             checked: false
-    //         });
-    //     }
-    // }
+export default class ConCosItemCard extends Component {
 
     updateItem = (itemId) => {
 
@@ -25,7 +10,7 @@ export default class ConItemCard extends Component {
             userConventionId: this.props.item.userConventionId
         }
 
-        this.props.updateItem(itemId, existingItem)
+        this.props.updateConCostumeItem(itemId, existingItem)
     }
 
     itemConditionalStyle = (itemId) => {
@@ -41,11 +26,13 @@ export default class ConItemCard extends Component {
 
     render() {
 
+        console.log("this.props", this.props.item.costumeItem.name)
+
         return (
             <tr>
                 <td onClick={(() => this.updateItem(this.props.item.id))}>
                     <div className="d-flex justify-content-between">
-                        <div className={this.itemConditionalStyle(this.props.item.id)}>{this.props.item.name}</div>
+                        <div className={this.itemConditionalStyle(this.props.item.id)}>{this.props.item.costumeItem.name}</div>
                         <div>
                             <i className="fas fa-times-circle text-danger" onClick={() => this.props.deleteConItem(this.props.item.id)} style={{cursor:'pointer'}}></i>
                         </div>

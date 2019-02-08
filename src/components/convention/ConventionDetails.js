@@ -40,7 +40,7 @@ export default class ConventionDetails extends Component {
         // const conventionName = myConvention.convention ? myConvention.name : ""
         // const conventionDate = myConvention.convention ? myConvention.displayDate : ""
         // console.log("myconvention:", this.props);
-        // console.log("convention", convention)
+        console.log("this.props", this.props)
         return (
                 <section className="mr-2 mb-3 convention_details">
                     <a href="#" onClick={() => this.props.history.push("/conventions/")} className="return">&laquo; Return to conventions</a>
@@ -87,7 +87,7 @@ export default class ConventionDetails extends Component {
                                     <ConventionPackingList convention={convention} {...this.props} />
                                 </Col>
                                 <Col sm="6">
-                                    <CostumePackingList myConventionId={convention.id} {...this.props} />
+                                    <CostumePackingList conCostumes={this.props.conCostumes} {...this.props} />
                                 </Col>
                             </Row>
                         </TabPane>

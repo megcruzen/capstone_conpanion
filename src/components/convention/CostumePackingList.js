@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Table } from 'reactstrap';
 import "../CosBuddy.css";
-import ConItemCard from "./ConItemCard"
 import AppManager from '../../modules/AppManager';
+import CosPackingListCard from './CosPackingListCard'
+import CostumeEditForm from '../costume/CostumeEditForm';
 
 export default class CostumePackingList extends Component {
 
@@ -44,31 +45,22 @@ export default class CostumePackingList extends Component {
 
     render() {
 
-        // console.log("userConId:", this.props.myConventionId)
+        console.log("this.props.conCostumes", this.props.conCostumes)
         // this.getCostumesForCon(this.props.myConventionId);
 
         return (
-                <section className="convention_packing_list mr-2 mb-3">
-                    <h4>Costume Packing List</h4>
-                    <Form onSubmit={this.addItem} className="d-flex">
-                        <FormGroup className="w-100 mr-2">
-                            <Label for="itemName" hidden>Item Name</Label>
-                            <Input type="text" required name="itemName" id="itemName"
-                            onChange={this.handleFieldChange} placeholder="Enter an item name" />
-                        </FormGroup>
-                        <div><Button color="primary">Add</Button></div>
-                    </Form>
-                    <div className="items_box">
-                        <Table borderless striped>
-                            <tbody>
-                                {/* {
-                                this.props.conventionItems
-                                .filter(item => item.userConventionId === this.props.myConventionId)
-                                .map(item => <ConItemCard key={item.id} item={item} {...this.props} />)
-                                } */}
-                            </tbody>
-                        </Table>
-                    </div>
+                <section className="costume_packing_lists mr-2 mb-3">
+
+                    {/*
+                        - Generate card for each conCostume
+                        - Find where this.props.conCostume.userConventionId === (this.convention.id)
+                    */}
+
+                    {this.props.conCostumes.map(conCostume =>
+                        <CosPackingListCard key={conCostume.id} conCostume={conCostume} />
+                    )}
+
+
                 </section>
         )
     }

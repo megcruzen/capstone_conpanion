@@ -19,7 +19,7 @@ export default class ConCostumeCard extends Component {
 
     render() {
 
-        console.log("this.props.conCostume.id", this.props.conCostume.id)
+        // console.log("this.props.conCostume", this.props.conCostume)
 
         return (
             <div className="con_costume_card">
@@ -31,7 +31,8 @@ export default class ConCostumeCard extends Component {
                             <CardTitle><h3>{this.props.conCostume.costume.name}</h3></CardTitle>
                             <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.conCostume.costume.outfit}</CardText>
                             <br />
-                            costumeId: {this.props.conCostume.costume.id}
+                            costumeId: {this.props.conCostume.costume.id}<br />
+                            conCostumeId: {this.props.conCostume.id}
                         </div>
                         <div>
                             <i className="fas fa-times-circle text-danger" onClick={this.toggle} style={{cursor:'pointer'}}></i>

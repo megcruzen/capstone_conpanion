@@ -37,7 +37,7 @@ export default class ConventionPackingList extends Component {
 
     render() {
 
-        console.log("this.props.conventionItems", this.props.conventionItems)
+        // console.log("this.props.conventionItems", this.props.conventionItems)
 
         return (
                 <section className="convention_packing_list mr-2 mb-3">

@@ -24,6 +24,7 @@ export default class ApplicationViews extends Component {
     allConventions: [],
     myConventions: [],
     conventionItems: [],
+    conCostumeItems: [],
     costumes: [],
     costumeItems: [],
     conCostumes: [],
@@ -63,6 +64,11 @@ export default class ApplicationViews extends Component {
     AppManager.getConCostumes()
     .then(conCostumes => {
         this.setState({ conCostumes: conCostumes })
+    })
+
+    AppManager.getConCostumeItems()
+    .then(conCostumeItems => {
+        this.setState({ conCostumeItems: conCostumeItems })
     })
   }
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Table } from 'reactstrap';
 import "../CosBuddy.css";
-import AppManager from '../../modules/AppManager';
+// import AppManager from '../../modules/AppManager';
 
 export default class CosPackingListCard extends Component {
 
@@ -50,8 +50,8 @@ export default class CosPackingListCard extends Component {
         // console.log("userConventionId:", this.props.conCostumes.map(conCostume => conCostume.userConventionId))
 
         return (
-                <section className="convention_packing_list mr-2 mb-3">
-                    <h4>CostumeName</h4>
+                <div className="con_costume_card">
+                    <h4>{this.props.conCostume.costume.name}</h4>
                     <Form onSubmit={this.addItem} className="d-flex">
                         <FormGroup className="w-100 mr-2">
                             <Label for="itemName" hidden>Item Name</Label>
@@ -69,14 +69,14 @@ export default class CosPackingListCard extends Component {
                                 .map(item => <ConItemCard key={item.id} item={item} {...this.props} />)
                                 } */}
                                 {/* {
-                                this.props.conCostumeItems
-                                .filter(item => item.conCostumeId === this.props.myConventionId)
-                                .map(item => <ConItemCard key={item.id} item={item} {...this.props} />)
-                                } */}
+                                // this.props.conCostumeItems
+                                // .filter(item => item.conCostumeId === this.props.conCostume.id)
+                                // .map(item => <ConCostumeCard key={item.id} item={item} {...this.props} />)
+                                // } */}
                             </tbody>
                         </Table>
                     </div>
-                </section>
+                </div>
         )
     }
 }

@@ -195,5 +195,10 @@ export default {
           body: JSON.stringify(newCostume)
         })
         .then(data => data.json())
-    }
+    },
+
+    getConCostumeItems() {
+        return fetch(`${remoteURL}/conCostumeItems`)
+        .then(data => data.json())
+    },
 }

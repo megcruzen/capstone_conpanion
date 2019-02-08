@@ -17,13 +17,10 @@ export default class ConCostumeCard extends Component {
         });
     }
 
-    testId = () => {
-        console.log("testId", this.props.conCostume.id)
-    }
-
     render() {
 
         console.log("this.props.conCostume.id", this.props.conCostume.id)
+
         return (
             <div className="con_costume_card">
                 <Card key={this.props.conCostume.costume.id} className="mr-2 mb-3">
@@ -46,7 +43,6 @@ export default class ConCostumeCard extends Component {
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" onClick={() => this.props.deleteConCostume(this.props.conCostume.id)}>Yes, Please Remove</Button>{' '}
-                        {this.testId()}
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

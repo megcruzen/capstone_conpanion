@@ -69,16 +69,28 @@ export default class ConventionCostumeList extends Component {
         else {
             const conCostume = {
                 costumeId: Number(this.state.costumeId),
-                userConventionId: this.props.myConventionId
+                userConventionId: this.props.convention.userConventionId
             }
 
-            // POST the conCostume object
-            this.props.addCostumeToCon(conCostume)
+        // POST the conCostume object
+        this.props.addCostumeToCon(conCostume)
+
+        // THEN
+        // get that new conCostume's id and the costumeId to create new object
+        /*
+            const conCostumeItem = {
+                conCostumeId: "",
+                costumeId: this.state.costumeId,
+                checked: false
+            }
+        */
+        // and POST -> this.props.copyCostumeItems(conCostumeItem)
         }
     }
 
     render() {
-        // console.log("this.props.myConventionId:", this.props.myConventionId);
+        // console.log("this.props", this.props);
+        // console.log("this.props.convention.userConventionId:", this.props.convention.userConventionId);
         // console.log("this.props.conCostumes:", this.props.conCostumes)
 
         // let costumeArray = this.props.costumes;
@@ -119,7 +131,7 @@ export default class ConventionCostumeList extends Component {
                     // get all conCostume objects
                     this.props.conCostumes
                     // only show those objects where this.props.myConventionId (current convention) = conCostume.userConId
-                    .filter(conCostume => this.props.myConventionId === conCostume.userConventionId)
+                    .filter(conCostume => this.props.convention.userConventionId === conCostume.userConventionId)
                     .map(conCostume =>
                         <ConCostumeCard key={conCostume.id} conCostume={conCostume} {...this.props} />
                     )

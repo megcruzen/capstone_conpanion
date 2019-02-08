@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import { Button, Media, Row, Col, TabContent, TabPane, Nav, NavItem, NavLink, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import { Button, Media, Row, Col, TabContent, TabPane, Nav, NavItem, NavLink, Modal, ModalBody, ModalFooter} from 'reactstrap';
 import classnames from 'classnames';
 import "../CosBuddy.css";
 import thumb from "./64x64.jpg"
-import ConventionCostumeList from "./ConventionCostumeList"
+import ConventionCostumeList from "./ConventionCostumeList";
 import ConventionPackingList from './ConventionPackingList';
+import CostumePackingList from './CostumePackingList';
 
 export default class ConventionDetails extends Component {
 
@@ -84,7 +85,7 @@ export default class ConventionDetails extends Component {
                                     <ConventionPackingList myConventionId={convention.id} {...this.props} />
                                 </Col>
                                 <Col sm="6">
-                                    <div>Costume Packing lists</div>
+                                    <CostumePackingList myConventionId={convention.id} {...this.props} />
                                 </Col>
                             </Row>
                         </TabPane>

@@ -72,30 +72,36 @@ export default class ConventionCostumeList extends Component {
                 userConventionId: this.props.convention.userConventionId
             }
 
-        // POST the conCostume object
-        this.props.addCostumeToCon(conCostume)
+            // POST the conCostume object
+            this.props.addCostumeToCon(conCostume, this.props.costumeItems)
 
+                // this.props.costumeItems.filter( costumeItem => costumeItem.costumeId === Number(this.state.costumeId) )
+                // .map(item => {
+                //     // for each item, create new object
+                //     const conCostumeItem = {
+                //         conCostumeId: results.id,
+                //         costumeItemId: item.id,
+                //         checked: false
+                //     }
+                //     // post that object to ConCostumeItems
+                //     this.props.copyCostumeItems(conCostumeItem)
+                // })
+            // )
+        }
+    }
 
-        // THEN
-        // get all items for this costume (this.state.costumeId) & map through all items
-        console.log("filter", this.props.costumeItems.filter( costumeItem => costumeItem.costumeId  ));
-        console.log("this.state.costumeId", Number(this.state.costumeId))
-
+    createConCostumeItems = (result) => {
         this.props.costumeItems.filter( costumeItem => costumeItem.costumeId === Number(this.state.costumeId) )
         .map(item => {
-            // for each item, create new object
             const conCostumeItem = {
-                conCostumeId: "",
-                costumeItemId: item.id,
-                checked: false
-            }
-            // post that object to ConCostumeItems
+                    conCostumeId: result.id,
+                    costumeItemId: item.id,
+                    checked: false
+                }
             this.props.copyCostumeItems(conCostumeItem)
         })
-        // then reload
-
     }
-}
+
 
     render() {
         // console.log("this.props", this.props.conCostumes.costumeId);

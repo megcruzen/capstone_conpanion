@@ -195,6 +195,7 @@ export default {
           body: JSON.stringify(newCostume)
         })
         .then(data => data.json())
+        // .then(result => console.log(result.id))
     },
 
     getConCostumeItems() {

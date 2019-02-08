@@ -120,6 +120,8 @@ export default class ApplicationViews extends Component {
   )
 
   addCostumeToCon = (costume) => AppManager.postConCostume(costume)
+    // .then(result => console.log(result.id))
+    // .then(() => AppManager.copyCostumeItems())
     .then(() => AppManager.getConCostumes())
     .then(conCostumes => this.setState({
       conCostumes: conCostumes

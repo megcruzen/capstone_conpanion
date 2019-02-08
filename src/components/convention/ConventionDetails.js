@@ -39,8 +39,7 @@ export default class ConventionDetails extends Component {
         const convention = this.props.myConventions.find(convention => convention.id === parseInt(this.props.match.params.conventionId)) || {}
         // const conventionName = myConvention.convention ? myConvention.name : ""
         // const conventionDate = myConvention.convention ? myConvention.displayDate : ""
-        // console.log("myconvention:", this.props);
-        console.log("this.props", this.props)
+
         return (
                 <section className="mr-2 mb-3 convention_details">
                     <a href="#" onClick={() => this.props.history.push("/conventions/")} className="return">&laquo; Return to conventions</a>

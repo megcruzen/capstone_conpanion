@@ -36,16 +36,16 @@ export default class CostumePackingList extends Component {
         this.props.addConventionItem(newItem);
     }
 
-    getCostumesForCon = (userConId) => {
-        AppManager.getCostumesForCon(userConId)
-        .then(allConnections => allConnections.map(connection =>
-            console.log(connection)))
-    }
+    // getCostumesForCon = (userConId) => {
+    //     AppManager.getCostumesForCon(userConId)
+    //     .then(allConnections => allConnections.map(connection =>
+    //         console.log(connection)))
+    // }
 
     render() {
 
-        console.log("global packing list userConventionId", this.props.convention.userConventionId)
-        console.log("global packing list conCostume", this.props.conCostumes.map(conCostume => conCostume.userConventionId))
+        // console.log("props", this.props)
+        // console.log("global packing list conCostume", this.props.conCostumes.map(conCostume => conCostume.userConventionId))
         // this.getCostumesForCon(this.props.myConventionId);
 
         return (

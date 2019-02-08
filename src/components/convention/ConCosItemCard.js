@@ -7,7 +7,7 @@ export default class ConCosItemCard extends Component {
         const existingItem = {
             checked: !this.props.item.checked,
             name: this.props.item.name,
-            userConventionId: this.props.item.userConventionId
+            conCostumeId: this.props.item.userConventionId
         }
 
         this.props.updateConCostumeItem(itemId, existingItem)
@@ -26,16 +26,16 @@ export default class ConCosItemCard extends Component {
 
     render() {
 
-        console.log("this.props", this.props.item.costumeItem.name)
+        // console.log("costumeItem.name", this.props.item.costumeItem.name)
+        // console.log("props", this.props)
 
         return (
             <tr>
                 <td onClick={(() => this.updateItem(this.props.item.id))}>
                     <div className="d-flex justify-content-between">
                         <div className={this.itemConditionalStyle(this.props.item.id)}>{this.props.item.costumeItem.name}</div>
-                        <div>
-                            <i className="fas fa-times-circle text-danger" onClick={() => this.props.deleteConItem(this.props.item.id)} style={{cursor:'pointer'}}></i>
-                        </div>
+                        <div>costumeItem.id: {this.props.item.costumeItem.id}</div>
+                        <div>conCostumeId: {this.props.conCostumeId}</div>
                     </div>
                 </td>
             </tr>

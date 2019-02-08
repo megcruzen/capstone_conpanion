@@ -45,38 +45,34 @@ export default class CosPackingListCard extends Component {
     render() {
 
         // console.log("userconvention Id", this.props.userConventionId)
-        // this.getCostumesForCon(this.props.myConventionId);
 
-        console.log("costume name/id:", this.props.conCostume.costume.name, this.props.conCostume.costume.id)
+        // console.log("costume name/id:", this.props.conCostume.costume.name, this.props.conCostume.costume.id)
         // console.log("userConventionId:", this.props.conCostumes.map(conCostume => conCostume.userConventionId))
 
-        console.log(this.props.conCostumeItems)
+        // console.log("conCostumeItems", this.props.conCostumeItems.filter(item => item.costumeItem.costumeId === this.props.conCostume.costume.id))
+        // console.log("conCostumeItems", this.props.conCostumeItems)
 
         return (
                 <div className="con_costume_card">
                     <h4>{this.props.conCostume.costume.name}</h4>
-                    costumeId: {this.props.conCostume.costume.id}
-                    <Form onSubmit={this.addItem} className="d-flex">
+                    costumeId: {this.props.conCostume.costume.id}<br />
+                    conCostumeId: {this.props.conCostume.id}
+                    {/* <Form onSubmit={this.addItem} className="d-flex">
                         <FormGroup className="w-100 mr-2">
                             <Label for="itemName" hidden>Item Name</Label>
                             <Input type="text" required name="itemName" id="itemName"
                             onChange={this.handleFieldChange} placeholder="Enter an item name" />
                         </FormGroup>
                         <div><Button color="primary">Add</Button></div>
-                    </Form>
+                    </Form> */}
                     <div className="items_box">
                         <Table borderless striped>
                             <tbody>
-                                {/* {
-                                // this.props.conCostumeItems
-                                // .filter(item => item.conCostumeId === this.props.conCostume.id)
-                                // .map(item => <ConCostumeCard key={item.id} item={item} {...this.props} />)
-                                // } */}
 
                                 {
                                     this.props.conCostumeItems
-                                    .filter(item => item.costumeItemId === this.props.conCostume.costume.id)
-                                    .map(item => <ConCosItemCard key={item.id} item={item} {...this.props} />)
+                                    .filter(item => item.costumeItem.costumeId === this.props.conCostume.costume.id)
+                                    .map(item => <ConCosItemCard key={item.id} item={item} conCostumeId={this.props.conCostume.id} {...this.props} />)
                                 }
 
                             </tbody>

@@ -212,4 +212,14 @@ export default {
         })
         .then(data => data.json())
     },
+
+    editConCostumeItem(itemId, editedItem) {
+        return fetch(`${remoteURL}/conCostumeItems/${itemId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedItem)
+        })
+    },
 }

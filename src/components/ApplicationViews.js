@@ -188,6 +188,14 @@ export default class ApplicationViews extends Component {
         })
   )
 
+  updateConCostumeItem = (itemId, editedItem) =>
+    AppManager.editConCostumeItem(itemId, editedItem)
+    .then(() => AppManager.getConCostumeItems())
+    .then(conCostumeItems => this.setState({
+      conCostumeItems: conCostumeItems
+        })
+  )
+
 
   // /* SEARCH */
   // searchConventions = (searchQuery) => {

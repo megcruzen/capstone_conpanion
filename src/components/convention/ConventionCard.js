@@ -28,17 +28,19 @@ export default class ConventionCard extends Component {
                 <td>
                     <Media className="pt-2 px-2">
                         <Media left href="#" className="mr-3">
-                            <Link to={`/conventions/${this.props.myConvention.id}/${this.props.myConvention.name}`}>
+                            <Link to={`/conventions/${this.props.convention.id}/${this.props.convention.name}`}>
                                 <Media object src={thumb} className="thumb" alt="" />
                             </Link>
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div className="con_details">
-                                <Link to={`/conventions/${this.props.myConvention.id}/${this.props.myConvention.name}`}>
-                                <h4>{this.props.myConvention.name}</h4>
-                                {this.props.myConvention.startDate} - {this.props.myConvention.endDate}
+                                <Link to={`/conventions/${this.props.convention.id}/${this.props.convention.name}`}>
+                                <h4>{this.props.convention.name} [id: {this.props.convention.id}]</h4>
+                                {this.props.convention.startDate} - {this.props.convention.endDate}
                                 <br />
-                                {this.props.myConvention.city}, {this.props.myConvention.state}
+                                {this.props.convention.city}, {this.props.convention.state}
+                                <br />
+                                userConventionId: {this.props.convention.userConventionId}
                                 </Link>
                             </div>
                             <div>
@@ -49,10 +51,10 @@ export default class ConventionCard extends Component {
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Remove Convention</ModalHeader>
                         <ModalBody>
-                            Are you sure you want to remove <strong>{this.props.myConvention.name}</strong> from your list?
+                            Are you sure you want to remove <strong>{this.props.convention.name}</strong> from your list?
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={() => this.props.removeConvention(this.props.myConvention.userConventionId)}>Yes, Please Remove</Button>{' '}
+                            <Button color="primary" onClick={() => this.props.removeConvention(this.props.convention.userConventionId)}>Yes, Please Remove</Button>{' '}
                             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
                     </Modal>

@@ -12,6 +12,7 @@ export default class ConventionList extends Component {
     }
 
     render() {
+        console.log("this.props.myConventions", this.props.myConventions.map(convention => convention.userConventionId))
         return (
             <section className="convention_list_personal">
                 <div className="d-sm-flex justify-content-between flex-wrap align-items-center mb-3">
@@ -23,8 +24,8 @@ export default class ConventionList extends Component {
                         {
                             this.props.myConventions
                             .sort(this.sortDate)
-                            .map(myConvention =>
-                                <ConventionCard key={myConvention.id} myConvention={myConvention} {...this.props} />
+                            .map(convention =>
+                                <ConventionCard key={convention.userConventionId} convention={convention} {...this.props} />
                             )
                         }
                     </tbody>

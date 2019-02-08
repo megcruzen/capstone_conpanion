@@ -42,7 +42,7 @@ export default class ConventionDetails extends Component {
         // console.log("myconvention:", this.props);
         // console.log("convention", convention)
         return (
-                <section key={this.props.id} className="mr-2 mb-3 convention_details">
+                <section className="mr-2 mb-3 convention_details">
                     <a href="#" onClick={() => this.props.history.push("/conventions/")} className="return">&laquo; Return to conventions</a>
                     <Media className="mt-4 pt-2">
                         <Media left href="#" className="mr-3">
@@ -50,8 +50,10 @@ export default class ConventionDetails extends Component {
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div>
-                                <h3 className="mb-0">{convention.name}</h3>
+                                <h3 className="mb-0">{convention.name} [id: {convention.id}]</h3>
                                 <span className="text-uppercase subtitle">{convention.displayDate}</span>
+                                <br />
+                                userConventionId: {convention.userConventionId}
                             </div>
                             <div>
                                 <i className="fas fa-edit mr-2 text-secondary" onClick={this.toggle2}></i>
@@ -82,7 +84,7 @@ export default class ConventionDetails extends Component {
                         <TabPane tabId="2">
                             <Row>
                                 <Col sm="6">
-                                    <ConventionPackingList myConventionId={convention.id} {...this.props} />
+                                    <ConventionPackingList convention={convention} {...this.props} />
                                 </Col>
                                 <Col sm="6">
                                     <CostumePackingList myConventionId={convention.id} {...this.props} />

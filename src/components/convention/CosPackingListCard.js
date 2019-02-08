@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Table } from 'reactstrap';
 import "../CosBuddy.css";
-import ConItemCard from "./ConItemCard"
 import AppManager from '../../modules/AppManager';
 
-export default class CostumePackingList extends Component {
+export default class CosPackingListCard extends Component {
 
     // Set initial state
     state = {
-        userConventionId: "",
-        name: "",
+        conCostumeId: "",
+        costumeItemId: "",
         checked: ""
     }
 
@@ -27,29 +26,32 @@ export default class CostumePackingList extends Component {
         event.target.reset();       // Resets values after submit.
 
         const newItem = {
-            name: this.state.itemName,
-            userConventionId: this.props.myConventionId,
+            conCostumeId: this.props.myConventionId,
+            costumeItemId: "",
             checked: false
         }
 
         // Create the item
-        this.props.addConventionItem(newItem);
+        this.props.addCostumeItemToCon(newItem);
     }
 
-    getCostumesForCon = (userConId) => {
-        AppManager.getCostumesForCon(userConId)
-        .then(allConnections => allConnections.map(connection =>
-            console.log(connection)))
-    }
+    // getCostumesForCon = (userConId) => {
+    //     AppManager.getCostumesForCon(userConId)
+    //     .then(allConnections => allConnections.map(connection =>
+    //         console.log("connection:", connection.userConventionId)))
+    // }
 
     render() {
 
-        // console.log("userConId:", this.props.myConventionId)
+        console.log("convention Id", this.props.myConventionId)
         // this.getCostumesForCon(this.props.myConventionId);
+
+        // console.log("conCostumes:", this.props.conCostumes)
+        // console.log("userConventionId:", this.props.conCostumes.map(conCostume => conCostume.userConventionId))
 
         return (
                 <section className="convention_packing_list mr-2 mb-3">
-                    <h4>Costume Packing List</h4>
+                    <h4>CostumeName</h4>
                     <Form onSubmit={this.addItem} className="d-flex">
                         <FormGroup className="w-100 mr-2">
                             <Label for="itemName" hidden>Item Name</Label>
@@ -64,6 +66,11 @@ export default class CostumePackingList extends Component {
                                 {/* {
                                 this.props.conventionItems
                                 .filter(item => item.userConventionId === this.props.myConventionId)
+                                .map(item => <ConItemCard key={item.id} item={item} {...this.props} />)
+                                } */}
+                                {/* {
+                                this.props.conCostumeItems
+                                .filter(item => item.conCostumeId === this.props.myConventionId)
                                 .map(item => <ConItemCard key={item.id} item={item} {...this.props} />)
                                 } */}
                             </tbody>

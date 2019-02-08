@@ -27,7 +27,7 @@ export default class ConventionPackingList extends Component {
 
         const newItem = {
             name: this.state.itemName,
-            userConventionId: this.props.myConventionId,
+            userConventionId: this.props.convention.userConventionId,
             checked: false
         }
 
@@ -37,7 +37,7 @@ export default class ConventionPackingList extends Component {
 
     render() {
 
-        console.log(this.props.myConventionId)
+        // console.log("this.props.conventionItems", this.props.conventionItems)
 
         return (
                 <section className="convention_packing_list mr-2 mb-3">
@@ -55,7 +55,7 @@ export default class ConventionPackingList extends Component {
                             <tbody>
                                 {
                                 this.props.conventionItems
-                                .filter(item => item.userConventionId === this.props.myConventionId)
+                                .filter(item => item.userConventionId === this.props.convention.userConventionId)
                                 .map(item => <ConItemCard key={item.id} item={item} {...this.props} />)
                                 }
                             </tbody>

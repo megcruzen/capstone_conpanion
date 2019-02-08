@@ -24,6 +24,7 @@ export default class ApplicationViews extends Component {
     allConventions: [],
     myConventions: [],
     conventionItems: [],
+    conCostumeItems: [],
     costumes: [],
     costumeItems: [],
     conCostumes: [],
@@ -63,6 +64,11 @@ export default class ApplicationViews extends Component {
     AppManager.getConCostumes()
     .then(conCostumes => {
         this.setState({ conCostumes: conCostumes })
+    })
+
+    AppManager.getConCostumeItems()
+    .then(conCostumeItems => {
+        this.setState({ conCostumeItems: conCostumeItems })
     })
   }
 
@@ -114,9 +120,18 @@ export default class ApplicationViews extends Component {
   )
 
   addCostumeToCon = (costume) => AppManager.postConCostume(costume)
+    // .then(result => console.log(result.id))
+    // .then(() => AppManager.copyCostumeItems())
     .then(() => AppManager.getConCostumes())
     .then(conCostumes => this.setState({
       conCostumes: conCostumes
+    })
+  )
+
+  copyCostumeItems = (item) => AppManager.postConCostumeItem(item)
+    .then(() => AppManager.getConCostumeItems())
+    .then(conCostumeItems => this.setState({
+      conCostumeItems: conCostumeItems
     })
   )
 
@@ -175,13 +190,13 @@ export default class ApplicationViews extends Component {
         })
   )
 
-  // /* SEARCH */
-  // searchConventions = (searchQuery) => {
-  //   const newSearchResults = {}
-  //   return AppManager.searchConventions(searchQuery)
-  //   .then(response => newSearchResults.conventions = response)
-  //   .then(() => this.setState(newSearchResults))
-  // }
+  updateConCostumeItem = (itemId, editedItem) =>
+    AppManager.editConCostumeItem(itemId, editedItem)
+    .then(() => AppManager.getConCostumeItems())
+    .then(conCostumeItems => this.setState({
+      conCostumeItems: conCostumeItems
+        })
+  )
 
   render() {
     return (
@@ -223,7 +238,10 @@ export default class ApplicationViews extends Component {
                     addConventionItem={this.addConventionItem}
                     conventionItems={this.state.conventionItems}
                     deleteConItem={this.deleteConItem}
-                    updateItem={this.updateItem} />
+                    updateItem={this.updateItem}
+                    conCostumeItems={this.state.conCostumeItems}
+                    costumeItems={this.state.costumeItems}
+                    copyCostumeItems={this.copyCostumeItems} />
         }} />
 
         <Route exact path="/costumes" render={props => {

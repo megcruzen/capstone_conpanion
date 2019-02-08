@@ -40,6 +40,7 @@ export default class ConItemCard extends Component {
     }
 
     render() {
+
         return (
             <tr>
                 <td onClick={(() => this.updateItem(this.props.item.id))}>

@@ -17,13 +17,10 @@ export default class ConCostumeCard extends Component {
         });
     }
 
-    testId = () => {
-        console.log("testId", this.props.conCostume.id)
-    }
-
     render() {
 
-        console.log("this.props.conCostume.id", this.props.conCostume.id)
+        // console.log("this.props.conCostume", this.props.conCostume)
+
         return (
             <div className="con_costume_card">
                 <Card key={this.props.conCostume.costume.id} className="mr-2 mb-3">
@@ -33,6 +30,9 @@ export default class ConCostumeCard extends Component {
                             <CardSubtitle className="text-uppercase subtitle mt-1">{this.props.conCostume.costume.series}</CardSubtitle>
                             <CardTitle><h3>{this.props.conCostume.costume.name}</h3></CardTitle>
                             <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.conCostume.costume.outfit}</CardText>
+                            <br />
+                            costumeId: {this.props.conCostume.costume.id}<br />
+                            conCostumeId: {this.props.conCostume.id}
                         </div>
                         <div>
                             <i className="fas fa-times-circle text-danger" onClick={this.toggle} style={{cursor:'pointer'}}></i>
@@ -46,7 +46,6 @@ export default class ConCostumeCard extends Component {
                     </ModalBody>
                     <ModalFooter>
                         <Button color="primary" onClick={() => this.props.deleteConCostume(this.props.conCostume.id)}>Yes, Please Remove</Button>{' '}
-                        {this.testId()}
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

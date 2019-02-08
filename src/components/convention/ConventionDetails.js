@@ -87,7 +87,7 @@ export default class ConventionDetails extends Component {
                                     <ConventionPackingList convention={convention} {...this.props} />
                                 </Col>
                                 <Col sm="6">
-                                    <CostumePackingList conCostumes={this.props.conCostumes} {...this.props} />
+                                    <CostumePackingList convention={convention} conCostumes={this.props.conCostumes} {...this.props} />
                                 </Col>
                             </Row>
                         </TabPane>

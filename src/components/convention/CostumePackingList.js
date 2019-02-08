@@ -45,7 +45,8 @@ export default class CostumePackingList extends Component {
 
     render() {
 
-        console.log("this.props.conCostumes", this.props.conCostumes)
+        console.log("global packing list userConventionId", this.props.convention.userConventionId)
+        console.log("global packing list conCostume", this.props.conCostumes.map(conCostume => conCostume.userConventionId))
         // this.getCostumesForCon(this.props.myConventionId);
 
         return (
@@ -53,12 +54,19 @@ export default class CostumePackingList extends Component {
 
                     {/*
                         - Generate card for each conCostume
-                        - Find where this.props.conCostume.userConventionId === (this.convention.id)
+                        - Find where conCostume.userConventionId === this.props.convention.userConventionId
                     */}
 
-                    {this.props.conCostumes.map(conCostume =>
-                        <CosPackingListCard key={conCostume.id} conCostume={conCostume} />
+                    {this.props.conCostumes.filter(conCostume =>
+                            conCostume.userConventionId === this.props.convention.userConventionId)
+                        .map(conCostume =>
+                        <CosPackingListCard key={conCostume.id} conCostume={conCostume} userConventionId={this.props.convention.userConventionId} />
                     )}
+
+                    {/* {
+                    this.props.conCostumes.map(conCostume =>
+                        <CosPackingListCard key={conCostume.id} conCostume={conCostume} userConventionId={this.props.convention.userConventionId} />
+                    )} */}
 
 
                 </section>

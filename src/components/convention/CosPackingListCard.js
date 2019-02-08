@@ -43,7 +43,7 @@ export default class CosPackingListCard extends Component {
 
     render() {
 
-        console.log("convention Id", this.props.myConventionId)
+        console.log("user convention Id", this.props.userConventionId)
         // this.getCostumesForCon(this.props.myConventionId);
 
         // console.log("conCostumes:", this.props.conCostumes)

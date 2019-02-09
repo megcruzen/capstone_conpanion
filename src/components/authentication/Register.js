@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input, Modal, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalBody, ModalFooter, Jumbotron } from 'reactstrap';
 import "../CosBuddy.css";
 import AppManager from '../../modules/AppManager';
 
@@ -16,10 +16,12 @@ export default class Register extends Component {
         super(props);
         this.state = {
             nameModal: false,
-            emailModal: false
+            emailModal: false,
+            welcomeModal: false,
         };
         this.toggleUsername = this.toggleUsername.bind(this);
         this.toggleEmail = this.toggleEmail.bind(this);
+        this.toggleWelcome= this.toggleWelcome.bind(this);
     }
 
     toggleUsername() {
@@ -28,6 +30,10 @@ export default class Register extends Component {
 
     toggleEmail() {
         this.setState(prevState => ({ emailModal: !prevState.emailModal }));
+    }
+
+    toggleWelcome() {
+        this.setState(prevState => ({ welcomeModal: !prevState.welcomeModal }));
     }
 
     // Update state whenever an input field is edited
@@ -56,7 +62,8 @@ export default class Register extends Component {
                 this.toggleEmail();
             }
             else {
-                alert(`Welcome, ${this.state.username}!`)
+                // alert(`Welcome, ${this.state.username}!`)
+                this.toggleWelcome();
 
                 let d = new Date();
                 let timestamp = d.getTime();
@@ -69,12 +76,12 @@ export default class Register extends Component {
                     usertype: "cosplayer"
                 }
                 this.props.addUser(newUser)
-                    .then(() => {
-                        AppManager.getAllUsers()
-                            .then(() => {
-                            this.props.history.push("/conventions")
-                            })
-                    })
+                    // .then(() => {
+                    //     AppManager.getAllUsers()
+                    //         .then(() => {
+                    //         this.props.history.push("/conventions")
+                    //         })
+                    // })
             }
         })
     }
@@ -117,6 +124,17 @@ export default class Register extends Component {
                             <Button color="primary" onClick={this.toggleEmail}>OK</Button>{' '}
                         </ModalFooter>
                     </Modal>
+
+                    <Modal isOpen={this.state.welcomeModal} toggleEmail={this.toggleWelcome} className={this.props.className}>
+                        <ModalBody>
+                            <Jumbotron className="text-center">
+                                <h1 className="display-3 text-center">Welcome to CosBuddy!</h1>
+                                <p className="lead text-center">We're glad you're here.</p>
+                                <Button color="primary" onClick={() => this.props.history.push("/conventions")}>Continue</Button>
+                        </Jumbotron>
+                        </ModalBody>
+                    </Modal>
+
 
             </section>
         )

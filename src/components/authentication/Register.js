@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalBody, ModalFooter } from 'reactstrap';
 import "../CosBuddy.css";
 import AppManager from '../../modules/AppManager';
 
@@ -12,26 +12,30 @@ export default class Register extends Component {
         id: ""
     }
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            nameModal: false,
+            emailModal: false
+        };
+        this.toggleUsername = this.toggleUsername.bind(this);
+        this.toggleEmail = this.toggleEmail.bind(this);
+    }
+
+    toggleUsername() {
+        this.setState(prevState => ({ nameModal: !prevState.nameModal }));
+    }
+
+    toggleEmail() {
+        this.setState(prevState => ({ emailModal: !prevState.emailModal }));
+    }
+
     // Update state whenever an input field is edited
     handleFieldChange = (evt) => {
         const stateToChange = {}
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
-
-
-    // Simplistic handler for login submit
-    // handleRegister = (e) => {
-    //     e.preventDefault()
-    //     sessionStorage.setItem(
-    //         "credentials",
-    //         JSON.stringify({
-    //             name: this.state.username,
-    //             email: this.state.email,
-    //             id: this.state.id
-    //         })
-    //     )
-    // }
 
     constructUser = evt => {
         evt.preventDefault();
@@ -46,10 +50,10 @@ export default class Register extends Component {
                 return (user.email === this.state.email)
             })
             if (usernameArray.length > 0) {
-                alert("Sorry, this username is taken.")
+                this.toggleUsername();
             }
             else if (emailArray.length > 0) {
-                alert("Sorry, this email is already associated with an account.")
+                this.toggleEmail();
             }
             else {
                 alert(`Welcome, ${this.state.username}!`)
@@ -75,6 +79,7 @@ export default class Register extends Component {
         })
     }
 
+
     render() {
         return (
             <section className="register">
@@ -98,6 +103,20 @@ export default class Register extends Component {
                         </FormGroup>
                         <Button color="primary">Submit</Button>
                     </Form>
+
+                    <Modal isOpen={this.state.nameModal} toggleUsername={this.toggleUsername} className={this.props.className}>
+                        <ModalBody>Sorry, the username <strong>{this.state.username}</strong> is taken.</ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onClick={this.toggleUsername}>OK</Button>{' '}
+                        </ModalFooter>
+                    </Modal>
+
+                    <Modal isOpen={this.state.emailModal} toggleEmail={this.toggleEmail} className={this.props.className}>
+                        <ModalBody>That email is already associated with an account.</ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onClick={this.toggleEmail}>OK</Button>{' '}
+                        </ModalFooter>
+                    </Modal>
 
             </section>
         )

@@ -186,14 +186,7 @@ export default class ApplicationViews extends Component {
             // .then(() => AppManager.getConCostumeItems())
         }
     })
-    // this.state.costumeItems.filter( costumeItem => costumeItem.costumeId === Number(this.state.costumeId) )
-    // .map(item => {
-    //     const conCostumeItem = {
-    //             conCostumeId: response.id,
-    //             costumeItemId: item.id,
-    //             checked: false
-    //         }
-    //         AppManager.postConCostumeItem(conCostumeItem)
+
     // })
     // .then(() => AppManager.getConCostumeItems())
     // .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems }))
@@ -254,13 +247,13 @@ export default class ApplicationViews extends Component {
         })
   )
 
-  // updateConCostumeItem = (itemId, editedItem) =>
-  //   AppManager.editConCostumeItem(itemId, editedItem)
-  //   .then(() => AppManager.getConCostumeItems())
-  //   .then(conCostumeItems => this.setState({
-  //     conCostumeItems: conCostumeItems
-  //       })
-  // )
+  updateConCostumeItem = (itemId, editedItem) =>
+    AppManager.editConCostumeItem(itemId, editedItem)
+    .then(() => AppManager.getConCostumeItems())
+    .then(conCostumeItems => this.setState({
+      conCostumeItems: conCostumeItems
+        })
+  )
 
   render() {
     return (
@@ -314,7 +307,8 @@ export default class ApplicationViews extends Component {
                     updateItem={this.updateItem}
                     conCostumeItems={this.state.conCostumeItems}
                     costumeItems={this.state.costumeItems}
-                    copyCostumeItems={this.copyCostumeItems} />
+                    copyCostumeItems={this.copyCostumeItems}
+                    updateConCostumeItem={this.updateConCostumeItem} />
         }} />
 
         <Route exact path="/costumes" render={props => {

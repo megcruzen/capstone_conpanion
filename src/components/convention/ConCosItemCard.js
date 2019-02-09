@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-
+import "../CosBuddy.css";
 export default class ConCosItemCard extends Component {
 
-    // updateItem = (itemId) => {
+    updateItem = (itemId) => {
 
-    //     const existingItem = {
-    //         checked: !this.props.item.checked,
-    //         name: this.props.item.name,
-    //         conCostumeId: this.props.item.userConventionId
-    //     }
+        const existingItem = {
+            checked: !this.props.item.checked,
+            conCostumeId: this.props.item.conCostumeId,
+            costumeItemId: this.props.item.costumeItemId,
+        }
 
-    //     this.props.updateConCostumeItem(itemId, existingItem)
-    // }
+        this.props.updateConCostumeItem(this.props.item.id, existingItem)
+    }
 
     itemConditionalStyle = (itemId) => {
         if (this.props.item.checked === false) {
@@ -25,9 +25,6 @@ export default class ConCosItemCard extends Component {
     }
 
     render() {
-
-        // console.log("costumeItem.name", this.props.item.costumeItem.name)
-        // console.log("props", this.props)
 
         return (
             <tr>

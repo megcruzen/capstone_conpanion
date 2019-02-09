@@ -58,7 +58,7 @@ a.return {
     height: 64px;
 }
 
-.convention_packing_list .checked {
+.convention_packing_list .checked, .costume_packing_lists .checked {
     text-decoration: line-through;
 }
 

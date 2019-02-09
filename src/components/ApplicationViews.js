@@ -34,7 +34,7 @@ export default class ApplicationViews extends Component {
   }
 
   // Check if credentials are in local storage
-  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
   componentDidMount() {
     AppManager.getAllUsers()
@@ -231,6 +231,7 @@ export default class ApplicationViews extends Component {
 
         <Route path="/register" render={(props) => {
             return <Register {...props}
+                  allUsers={this.state.allUsers}
                   addUser={this.addUser} />
         }} />
 

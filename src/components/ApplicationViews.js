@@ -94,6 +94,19 @@ export default class ApplicationViews extends Component {
   /* ADD NEW */
 
   addUser = (user) => AppManager.postUser(user)
+  .then(response => response.json())
+  .then(newUser => { this.setSessionAfterRegister(newUser) })
+
+  setSessionAfterRegister = (newUser) => {
+    sessionStorage.setItem(
+        "credentials",
+        JSON.stringify({
+            name: newUser.username,
+            email: newUser.email,
+            id: newUser.id
+        })
+    )
+    }
 
   addConvention = (convention) =>
     AppManager.postConvention(convention)

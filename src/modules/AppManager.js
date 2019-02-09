@@ -21,7 +21,8 @@ export default {
             "Content-Type": "application/json"
           },
           body: JSON.stringify(newUser)
-        }).then(response => response.json())
+        })
+        // .then(response => response.json())
     },
 
     // CONVENTIONS

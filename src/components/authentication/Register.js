@@ -20,7 +20,7 @@ export default class Register extends Component {
     }
 
 
-    // // Simplistic handler for login submit
+    // Simplistic handler for login submit
     // handleRegister = (e) => {
     //     e.preventDefault()
     //     sessionStorage.setItem(

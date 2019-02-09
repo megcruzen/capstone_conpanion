@@ -12,7 +12,7 @@ export default class ConventionList extends Component {
     }
 
     render() {
-        console.log("this.props.myConventions", this.props.myConventions.map(convention => convention.userConventionId))
+        // console.log("this.props.myConventions", this.props.myConventions.map(convention => convention.userConventionId))
         return (
             <section className="convention_list_personal">
                 <div className="d-sm-flex justify-content-between flex-wrap align-items-center mb-3">

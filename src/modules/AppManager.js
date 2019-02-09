@@ -2,6 +2,23 @@ const remoteURL = "http://localhost:5002"
 
 export default {
 
+    // USERS, SIGNUP, LOGIN
+
+    getAllUsers() {
+        return fetch(`${remoteURL}/users`)
+        .then(data => data.json())
+    },
+
+    postUser(newUser) {
+        return fetch(`${remoteURL}/users`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newUser)
+        }).then(data => data.json())
+    },
+
     // CONVENTIONS
 
     getAllConventions() {
@@ -114,6 +131,11 @@ export default {
         .then(data => data.json())
     },
 
+    getSpecificCostume(costumeId) {
+        return fetch(`${remoteURL}/costumes/${costumeId}`)
+        .then(data => data.json())
+    },
+
     postCostume(newCostume) {
         return fetch(`${remoteURL}/costumes`, {
           method: "POST",
@@ -174,8 +196,8 @@ export default {
         .then(data => data.json())
     },
 
-    getCostumesForCon(conCostumeId) {
-        return fetch(`${remoteURL}/conCostumes?userConventionId=${conCostumeId}&_expand=costume`)
+    getCostumesForCon(userConId) {
+        return fetch(`${remoteURL}/conCostumes?userConventionId=${userConId}&_expand=costume`)
         .then(data => data.json())
     },
 

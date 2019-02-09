@@ -8,11 +8,12 @@ export default class ConventionCostumeList extends Component {
     // Set initial state
     state = {
         conCostumes: [],
+        filteredCostumes: [],
         costumeId: ""
       }
 
     componentDidMount() {
-        AppManager.getCostumesForCon(this.props.myConventionId, null)
+        AppManager.getCostumesForCon(this.props.convention.userConventionId)
         .then(conCostumes => {
             this.setState({ conCostumes: conCostumes })
         })
@@ -27,33 +28,28 @@ export default class ConventionCostumeList extends Component {
     }
 
     connectionCheck = () => {
-        let costumeArray = this.props.costumes;
-        let conCostumeArray = this.state.conCostumes;
-        // let conCostumeArray = this.state.conCostumes.map(conCostume => conCostume);
+
+        // if an id in array1 matches an id in array2
+        // then remove it
+        // and then map through remaining items
+
+        let costumeArray = this.props.costumes.map(costume => costume.id);
+        let conCostumeArray = this.state.conCostumes.map(conCostume => conCostume.costumeId);
 
         // console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
 
-        // let results = costumeArray.find(costume =>
-        //     costume.id === conCostumeArray.map(conCostume => conCostume.costumeId)
+        costumeArray = costumeArray.filter(val => !conCostumeArray.includes(val));
+        console.log("costumeArray", costumeArray)
+
+        // costumeArray.map(costume => console.log("costumeArray", costume))
+
+
+
+        // .then(filteredCostumes =>
+        //     filteredCostumes.map(costume =>
+        //         costume => <div key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</div>
         //     )
-        // console.log("results", results)
-        // if (results === undefined) {
-        //     console.log("No results found.")
-        // }
-
-        // costumeArray.find(costume =>
-        //     costume.id === conCostumeArray.map(conCostume => conCostume.costumeId)
-        //     )
-        //     // .map(costume =>
-        //     //     console.log(costume.name))
-
-        // let results = costumeArray.find(costume =>
-        //     costume.id === 1)
-        //     console.log("results", results)
-
-        // if (costumeArray.map(costume => costume).id === conCostumeArray.map(conCostume => conCostume.conCostumeId).id) {
-        //     console.log("It's a match!")
-        // }
+        // )
 
     }
 
@@ -104,13 +100,6 @@ export default class ConventionCostumeList extends Component {
 
 
     render() {
-        // console.log("this.props", this.props.conCostumes.costumeId);
-        // console.log("this.props.convention.userConventionId:", this.props.convention.userConventionId);
-        // console.log("this.props.conCostumes:", this.props.conCostumes)
-
-        // let costumeArray = this.props.costumes;
-        // let conCostumeArray = this.state.conCostumes;
-        // let conCostumeArray = this.state.conCostumes.map(conCostume => conCostume);
 
         return (
             <section className="convention_costume_list">
@@ -128,6 +117,7 @@ export default class ConventionCostumeList extends Component {
                                     this.props.costumes
                                     .map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
                                 }
+                                {this.connectionCheck()}
                             </Input>
                         </FormGroup>
                         <div><Button color="primary">Add</Button></div>
@@ -137,7 +127,7 @@ export default class ConventionCostumeList extends Component {
                     </div>
                 </div>
                 <div>
-
+                    <h4 onClick={() => this.connectionCheck}>Connection Check</h4>
                 </div>
                 <div className="d-flex justify-content-between flex-wrap mt-4">
                 {

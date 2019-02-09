@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Label, Input, Table } from 'reactstrap';
 import "../CosBuddy.css";
 import AppManager from '../../modules/AppManager';
 import CosPackingListCard from './CosPackingListCard'
@@ -35,12 +34,6 @@ export default class CostumePackingList extends Component {
         // Create the item
         this.props.addConventionItem(newItem);
     }
-
-    // getCostumesForCon = (userConId) => {
-    //     AppManager.getCostumesForCon(userConId)
-    //     .then(allConnections => allConnections.map(connection =>
-    //         console.log(connection)))
-    // }
 
     render() {
 

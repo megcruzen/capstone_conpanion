@@ -4,6 +4,9 @@ import React, { Component } from "react";
 import AppManager from "../modules/AppManager"
 import "./CosBuddy.css";
 
+import Login from './authentication/Login'
+import Register from './authentication/Register'
+
 import ConventionList from './convention/ConventionList'
 import ConventionSearch from './convention/ConventionSearch'
 import ConventionForm from './convention/ConventionForm'
@@ -30,7 +33,15 @@ export default class ApplicationViews extends Component {
     conCostumes: [],
   }
 
+  // Check if credentials are in local storage
+  // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+
   componentDidMount() {
+    AppManager.getAllUsers()
+    .then(allUsers => {
+      this.setState({ users: allUsers });
+    })
+
     AppManager.getAllConventions()
     .then(allConventions => {
         this.setState({ allConventions: allConventions })
@@ -72,7 +83,17 @@ export default class ApplicationViews extends Component {
     })
   }
 
+  // // Reset state after a user logs in
+  // updateComponent = () => {
+  //   AppManager.getAllUsers()
+  //  .then(allUsers => {
+  //     this.setState({ users: allUsers });
+  //   })
+  // }
+
   /* ADD NEW */
+
+  addUser = (user) => AppManager.postUser(user)
 
   addConvention = (convention) =>
     AppManager.postConvention(convention)
@@ -202,24 +223,33 @@ export default class ApplicationViews extends Component {
     return (
       <div id="appviews">
 
+        <Route path="/login" render={(props) => {
+            return <Login {...props}
+                    users={this.state.users}
+                    updateComponent={this.updateComponent} />
+        }} />
+
+        <Route path="/register" render={(props) => {
+            return <Register {...props}
+                  allUsers={this.state.allUsers}
+                  addUser={this.addUser} />
+        }} />
+
         <Route exact path="/" render={props => {
             return null
-          }}
-        />
+          }} />
 
         <Route exact path="/conventions" render={props => {
             return <ConventionList {...props}
                     myConventions={this.state.myConventions}
                     removeConvention={this.removeConvention} />
-          }}
-        />
+          }} />
 
         <Route exact path="/conventions/search" render={props => {
             return <ConventionSearch {...props}
                     allConventions={this.state.allConventions}
                     addUserConvention={this.addUserConvention} />
-          }}
-        />
+          }} />
 
         <Route exact path="/conventions/new" render={(props) => {
             return <ConventionForm {...props}
@@ -247,8 +277,7 @@ export default class ApplicationViews extends Component {
         <Route exact path="/costumes" render={props => {
             return <CostumeList {...props}
                     costumes={this.state.costumes} />
-          }}
-        />
+          }} />
 
         <Route exact path="/costumes/new" render={(props) => {
             return <CostumeForm {...props}

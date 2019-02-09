@@ -2,16 +2,38 @@ const remoteURL = "http://localhost:5002"
 
 export default {
 
+    // USERS, SIGNUP, LOGIN
+
+    getAllUsers() {
+        return fetch(`${remoteURL}/users`)
+        .then(response => response.json())
+    },
+
+    checkForUser(username, password) {
+        return fetch(`${remoteURL}/users?username=${username}&password=${password}`)
+        .then(response => response.json())
+    },
+
+    postUser(newUser) {
+        return fetch(`${remoteURL}/users`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newUser)
+        }).then(response => response.json())
+    },
+
     // CONVENTIONS
 
     getAllConventions() {
         return fetch(`${remoteURL}/conventions`)
-        .then(data => data.json())
+        .then(response => response.json())
     },
 
     getMyConventions() {
         return fetch(`${remoteURL}/userConventions?userId=1&_expand=convention`)
-        .then(data => data.json())
+        .then(response => response.json())
         .then(connections => connections.map(
             connection => {
                 connection.convention.userConventionId = connection.id;
@@ -34,7 +56,7 @@ export default {
           },
           body: JSON.stringify(newCon)
         })
-        .then(data => data.json())
+        .then(response => response.json())
         // .then(newCon => {
         //     const newUserCon = {
         //         userId: newCon.userId,
@@ -57,7 +79,7 @@ export default {
           },
           body: JSON.stringify(newCon)
         })
-        .then(data => data.json())
+        .then(response => response.json())
     },
 
     deleteUserConvention(id) {
@@ -71,7 +93,7 @@ export default {
 
     getConventionItems() {
         return fetch(`${remoteURL}/conventionItems/`)
-        .then(data => data.json())
+        .then(response => response.json())
     },
 
     postConventionItem(newItem) {
@@ -82,7 +104,7 @@ export default {
           },
           body: JSON.stringify(newItem)
         })
-        .then(data => data.json())
+        .then(response => response.json())
     },
 
     deleteConventionItem(id) {
@@ -104,14 +126,19 @@ export default {
 
     getGenres() {
         return fetch(`${remoteURL}/genres`)
-        .then(data => data.json())
+        .then(response => response.json())
     },
 
     // COSTUMES
 
     getCostumes() {
         return fetch(`${remoteURL}/costumes?userId=1`)
-        .then(data => data.json())
+        .then(response => response.json())
+    },
+
+    getSpecificCostume(costumeId) {
+        return fetch(`${remoteURL}/costumes/${costumeId}`)
+        .then(response => response.json())
     },
 
     postCostume(newCostume) {
@@ -122,7 +149,7 @@ export default {
           },
           body: JSON.stringify(newCostume)
         })
-        .then(data => data.json())
+        .then(response => response.json())
     },
 
     deleteCostume(id) {
@@ -146,7 +173,7 @@ export default {
 
     getCostumeItems() {
         return fetch(`${remoteURL}/costumeItems/?_expand=costume`)
-        .then(data => data.json())
+        .then(response => response.json())
     },
 
     postCostumeItem(newItem) {
@@ -157,7 +184,7 @@ export default {
           },
           body: JSON.stringify(newItem)
         })
-        .then(data => data.json())
+        .then(response => response.json())
     },
 
     deleteCostumeItem(id) {
@@ -171,12 +198,12 @@ export default {
 
     getConCostumes() {
         return fetch(`${remoteURL}/conCostumes?_expand=costume`)
-        .then(data => data.json())
+        .then(response => response.json())
     },
 
-    getCostumesForCon(conCostumeId) {
-        return fetch(`${remoteURL}/conCostumes?userConventionId=${conCostumeId}&_expand=costume`)
-        .then(data => data.json())
+    getCostumesForCon(userConId) {
+        return fetch(`${remoteURL}/conCostumes?userConventionId=${userConId}&_expand=costume`)
+        .then(response => response.json())
     },
 
     deleteConCostume(id) {
@@ -194,13 +221,13 @@ export default {
           },
           body: JSON.stringify(newCostume)
         })
-        .then(data => data.json())
+        .then(response => response.json())
         // .then(result => console.log(result.id))
     },
 
     getConCostumeItems() {
         return fetch(`${remoteURL}/conCostumeItems?_expand=costumeItem`)
-        .then(data => data.json())
+        .then(response => response.json())
     },
 
     postConCostumeItem(newItem) {
@@ -211,7 +238,7 @@ export default {
           },
           body: JSON.stringify(newItem)
         })
-        .then(data => data.json())
+        .then(response => response.json())
     },
 
     editConCostumeItem(itemId, editedItem) {

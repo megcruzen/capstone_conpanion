@@ -33,7 +33,6 @@ export default class Register extends Component {
     }
 
     constructNewUser = () => {
-
         let d = new Date();
         let timestamp = d.getTime();
 
@@ -45,10 +44,12 @@ export default class Register extends Component {
             usertype: "cosplayer"
         }
 
-        this.props.addUser(user).then(response => {
-            console.log(response)
-            this.props.history.push("/")
-        })
+        this.props.addUser(user)
+        .then(userResponse => {
+            console.log(userResponse);
+            this.setState({ name: userResponse.id, email: userResponse.email, id: userResponse.id });
+          })
+        .then(() => this.props.history.push("/conventions"))
     }
 
     render() {
@@ -56,8 +57,6 @@ export default class Register extends Component {
             <section className="register">
                 <form onSubmit={this.handleRegister}>
                     <h2>Create an Account</h2>
-
-                    {/* {this.constructNewUser()} */}
 
                     <Form onSubmit={() => this.constructNewUser()}>
                         <FormGroup>

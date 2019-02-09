@@ -33,6 +33,9 @@ export default class ApplicationViews extends Component {
     conCostumes: [],
   }
 
+  // Check if credentials are in local storage
+  isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+
   componentDidMount() {
     AppManager.getAllUsers()
     .then(allUsers => {
@@ -90,7 +93,7 @@ export default class ApplicationViews extends Component {
 
   /* ADD NEW */
 
-  addUser = (user) => AppManager.postUser(user);
+  addUser = (user) => AppManager.postUser(user)
 
   addConvention = (convention) =>
     AppManager.postConvention(convention)

@@ -7,9 +7,8 @@ export default class Login extends Component {
 
     // Set initial state
     state = {
-        name: "",
-        email: "",
-        id: ""
+        username: "",
+        password: ""
     }
 
     // Update state whenever an input field is edited
@@ -21,16 +20,16 @@ export default class Login extends Component {
 
 
     // Set session storage for login submit
-    handleRegister = (e) => {
+    setUser = (e) => {
         e.preventDefault();
         sessionStorage.setItem(
             "credentials",
             JSON.stringify({
-                name: this.state.name,
-                email: this.state.email,
-                id: this.state.id
+                username: this.state.username
             })
-        );
+        )
+        // .then(() => this.props.history.push("/conventions"))
+
     }
 
     render() {
@@ -38,19 +37,17 @@ export default class Login extends Component {
             <section className="login">
                     <h1 className="text-center">Welcome to CosBuddy!</h1>
 
-                    {/* onSubmit={this.handleRegister} */}
-
                     <div className="login_form my-4">
-                        <Form inline onSubmit={() => console.log("Sign in!")}>
+                        <Form inline onSubmit={() => this.setUser}>
                             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                                 <Label for="username" hidden>Username</Label>
                                 <Input type="text" name="username" id="username"
-                                onChange={this.handleFieldChange} required placeholder="username" />
+                                onChange={this.handleFieldChange} required placeholder="Username" />
                             </FormGroup>
                             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                                 <Label for="password" hidden>Password</Label>
                                 <Input type="password" name="password" id="password"
-                                onChange={this.handleFieldChange} required placeholder="password" />
+                                onChange={this.handleFieldChange} required placeholder="Password" />
                             </FormGroup>
                             <Button color="primary">Submit</Button>
                         </Form>

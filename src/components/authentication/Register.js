@@ -78,11 +78,9 @@ export default class Register extends Component {
     render() {
         return (
             <section className="register">
-                {/* <form onSubmit={this.handleRegister}> */}
                     <h2>Create an Account</h2>
 
-                    {/* onSubmit={() => this.constructUser()} */}
-                    <Form>
+                    <Form onSubmit={this.constructUser}>
                         <FormGroup>
                             <Label for="username" hidden>Username</Label>
                             <Input type="username" name="username" id="username" placeholder="Username"
@@ -98,10 +96,9 @@ export default class Register extends Component {
                             <Input type="password" name="password" id="password" placeholder="Password"
                             onChange={this.handleFieldChange} required />
                         </FormGroup>
-                        <Button color="primary" onClick={this.constructUser}>Submit</Button>
+                        <Button color="primary">Submit</Button>
                     </Form>
 
-                {/* </form> */}
             </section>
         )
     }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import AppManager from '../../modules/AppManager';
 import "../CosBuddy.css";
 
 
@@ -18,18 +19,28 @@ export default class Login extends Component {
         this.setState(stateToChange)
     }
 
-
-    // Set session storage for login submit
-    setUser = (e) => {
-        e.preventDefault();
-        sessionStorage.setItem(
-            "credentials",
-            JSON.stringify({
-                username: this.state.username
-            })
-        )
-        // .then(() => this.props.history.push("/conventions"))
-
+    userLogin = evt => {
+        evt.preventDefault();
+        AppManager.checkForUser(this.state.username, this.state.password)
+            .then(user => {
+                console.log("userArray:", user)
+                if (user.length === 0) {
+                    alert("Your username and password do not match. Please try again.")
+                } else {
+                    user.forEach(user => {
+                        let loggedIn = false;
+                        if (this.state.username === user.username && this.state.password === user.password) {
+                            loggedIn = true;
+                        }
+                        if (loggedIn === true) {
+                            sessionStorage.setItem("User", user.id)
+                            let sessionUser = sessionStorage.getItem("User")
+                            console.log("sessionUser", sessionUser)
+                            this.props.history.push("/conventions")
+                        }
+                    })
+                }
+        })
     }
 
     render() {
@@ -38,7 +49,7 @@ export default class Login extends Component {
                     <h1 className="text-center">Welcome to CosBuddy!</h1>
 
                     <div className="login_form my-4">
-                        <Form inline onSubmit={() => this.setUser}>
+                        <Form inline onSubmit={this.userLogin}>
                             <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                                 <Label for="username" hidden>Username</Label>
                                 <Input type="text" name="username" id="username"

@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 
 export default class ConCosItemCard extends Component {
 
-    updateItem = (itemId) => {
+    // updateItem = (itemId) => {
 
-        const existingItem = {
-            checked: !this.props.item.checked,
-            name: this.props.item.name,
-            conCostumeId: this.props.item.userConventionId
-        }
+    //     const existingItem = {
+    //         checked: !this.props.item.checked,
+    //         name: this.props.item.name,
+    //         conCostumeId: this.props.item.userConventionId
+    //     }
 
-        this.props.updateConCostumeItem(itemId, existingItem)
-    }
+    //     this.props.updateConCostumeItem(itemId, existingItem)
+    // }
 
     itemConditionalStyle = (itemId) => {
         if (this.props.item.checked === false) {

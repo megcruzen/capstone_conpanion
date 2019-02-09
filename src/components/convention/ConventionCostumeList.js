@@ -69,7 +69,7 @@ export default class ConventionCostumeList extends Component {
             }
 
             // POST the conCostume object
-            this.props.addCostumeToCon(conCostume, this.props.costumeItems)
+            this.props.addCostumeToCon(conCostume)
 
                 // this.props.costumeItems.filter( costumeItem => costumeItem.costumeId === Number(this.state.costumeId) )
                 // .map(item => {
@@ -86,17 +86,17 @@ export default class ConventionCostumeList extends Component {
         }
     }
 
-    createConCostumeItems = (result) => {
-        this.props.costumeItems.filter( costumeItem => costumeItem.costumeId === Number(this.state.costumeId) )
-        .map(item => {
-            const conCostumeItem = {
-                    conCostumeId: result.id,
-                    costumeItemId: item.id,
-                    checked: false
-                }
-            this.props.copyCostumeItems(conCostumeItem)
-        })
-    }
+    // createConCostumeItems = (result) => {
+    //     this.props.costumeItems.filter( costumeItem => costumeItem.costumeId === Number(this.state.costumeId) )
+    //     .map(item => {
+    //         const conCostumeItem = {
+    //                 conCostumeId: result.id,
+    //                 costumeItemId: item.id,
+    //                 checked: false
+    //             }
+    //         this.props.copyCostumeItems(conCostumeItem)
+    //     })
+    // }
 
 
     render() {

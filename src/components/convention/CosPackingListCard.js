@@ -43,19 +43,15 @@ export default class CosPackingListCard extends Component {
         event.target.reset();       // Resets values after submit.
 
         const newItem = {
-            conCostumeId: this.props.myConventionId,
-            costumeItemId: "",
-            checked: false
+            name: this.state.itemName,
+            costumeId: this.props.conCostume.costume.id
         }
 
         // Create the item
-        this.props.addCostumeItemToCon(newItem);
+        this.props.addCostumeItem(newItem);
     }
 
     render() {
-
-        // console.log("costume id", this.props.conCostume.costume.id)
-        // console.log("concostume id", this.props.conCostume.id)
 
         const costumeId = this.props.conCostume.costume.id;
 

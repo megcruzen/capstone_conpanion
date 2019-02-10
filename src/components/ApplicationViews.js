@@ -110,31 +110,23 @@ export default class ApplicationViews extends Component {
       AppManager.createUserConvention(newUserCon);
     })
     .then(() => AppManager.getMyConventions())
-    .then(myConventions => this.setState({
-      myConventions: myConventions
-    })
+    .then(myConventions => this.setState({ myConventions: myConventions })
   )
 
   addUserConvention = (newUserCon) =>
     AppManager.createUserConvention(newUserCon)
     .then(() => AppManager.getMyConventions())
-    .then(myConventions => this.setState({
-      myConventions: myConventions
-    })
+    .then(myConventions => this.setState({ myConventions: myConventions })
   )
 
   addConventionItem = (item) => AppManager.postConventionItem(item)
     .then(() => AppManager.getConventionItems())
-    .then(conventionItems => this.setState({
-      conventionItems: conventionItems
-    })
+    .then(conventionItems => this.setState({ conventionItems: conventionItems })
   )
 
   addCostume = (costume) => AppManager.postCostume(costume)
     .then(() => AppManager.getCostumes())
-    .then(costumes => this.setState({
-      costumes: costumes
-    })
+    .then(costumes => this.setState({ costumes: costumes })
   )
 
 //   addCostumeItem = (item) => AppManager.postCostumeItem(item)
@@ -204,16 +196,12 @@ export default class ApplicationViews extends Component {
 
   removeConvention = (id) => {
     return AppManager.deleteUserConvention(id)
-    .then(myConventions =>
-        this.setState({ myConventions: myConventions })
-    )
+    .then(myConventions => this.setState({ myConventions: myConventions }))
   }
 
   deleteConItem = (id) => {
     return AppManager.deleteConventionItem(id)
-    .then(conventionItems =>
-        this.setState({ conventionItems: conventionItems })
-    )
+    .then(conventionItems => this.setState({ conventionItems: conventionItems }))
   }
 
   deleteCostumeAndDependents = (id) => {
@@ -223,9 +211,7 @@ export default class ApplicationViews extends Component {
 
   deleteCostume = (id) => {
     return AppManager.deleteCostume(id)
-    .then(costumes =>
-        this.setState({ costumes: costumes })
-    )
+    .then(costumes => this.setState({ costumes: costumes }))
   }
 
   deleteConCostume = (id) => {
@@ -247,16 +233,12 @@ export default class ApplicationViews extends Component {
 
   deleteCostumeItem = (id) => {
     return AppManager.deleteCostumeItem(id)
-    .then(costumeItems =>
-        this.setState({ costumeItems: costumeItems })
-    )
+    .then(costumeItems => this.setState({ costumeItems: costumeItems }))
   }
 
   deleteConCostumeItem = (id) => {
     AppManager.deleteConCostumeItem(id)
-    .then(conCostumeItems =>
-      this.setState({ conCostumeItems: conCostumeItems })
-  )
+    .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems }))
   }
 
   /* EDIT */
@@ -264,25 +246,19 @@ export default class ApplicationViews extends Component {
   editCostume = (costumeId, editedCostume) =>
     AppManager.editCostume(costumeId, editedCostume)
     .then(() => AppManager.getCostumes())
-    .then(costumes => this.setState({
-        costumes: costumes
-        })
+    .then(costumes => this.setState({ costumes: costumes })
   )
 
   updateItem = (itemId, editedItem) =>
     AppManager.editConventionItem(itemId, editedItem)
     .then(() => AppManager.getConventionItems())
-    .then(conventionItems => this.setState({
-      conventionItems: conventionItems
-        })
+    .then(conventionItems => this.setState({ conventionItems: conventionItems })
   )
 
   updateConCostumeItem = (itemId, editedItem) =>
     AppManager.editConCostumeItem(itemId, editedItem)
     .then(() => AppManager.getConCostumeItems())
-    .then(conCostumeItems => this.setState({
-      conCostumeItems: conCostumeItems
-        })
+    .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems })
   )
 
   render() {
@@ -341,7 +317,7 @@ export default class ApplicationViews extends Component {
                     costumeItems={this.state.costumeItems}
                     copyCostumeItems={this.copyCostumeItems}
                     updateConCostumeItem={this.updateConCostumeItem}
-                    addCostumeItemToCon={this.addCostumeItemToCon}
+                    addCostumeItem={this.addCostumeItem}
                     deleteCostumeItem={this.deleteCostumeItem} />
         }} />
 

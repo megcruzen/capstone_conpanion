@@ -13,7 +13,7 @@ export default class CostumeItemCard extends Component {
             this.props.deleteConCostumeItem(item.id)
         })
 
-        // this.props.deleteCostumeItem(itemId);
+        this.props.deleteCostumeItem(itemId);
         // this.props.deleteConCostumeItem(conCostumeItemId);
     }
 

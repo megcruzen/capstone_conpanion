@@ -41,12 +41,18 @@ export default class CosPackingListCard extends Component {
         // console.log("costume id", this.props.conCostume.costume.id)
         // console.log("concostume id", this.props.conCostume.id)
 
+        const costumeId = this.props.conCostume.costume.id;
+
         return (
 
                 <div className="con_costume_card">
-                    <h4>{this.props.conCostume.costume.name}</h4>
-                    costumeId: {this.props.conCostume.costume.id}<br />
-                    conCostumeId: {this.props.conCostume.id}
+                    <div className="d-flex justify-content-between align-items-center">
+                        <div><h4>{this.props.conCostume.costume.name}</h4></div>
+                        <div><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push(`/costumes/${costumeId}`)} style={{cursor:'pointer'}}></i></div>
+                    </div>
+
+                    {/* costumeId: {this.props.conCostume.costume.id}<br />
+                    conCostumeId: {this.props.conCostume.id} */}
                     {/* <Form onSubmit={this.addItem} className="d-flex">
                         <FormGroup className="w-100 mr-2">
                             <Label for="itemName" hidden>Item Name</Label>

@@ -31,8 +31,8 @@ export default class ConCosItemCard extends Component {
                 <td onClick={(() => this.updateItem(this.props.item.id))}>
                     <div className="d-flex justify-content-between">
                         <div className={this.itemConditionalStyle(this.props.item.id)}>{this.props.item.costumeItem.name}</div>
-                        <div>costumeItem.id: {this.props.item.costumeItem.id}</div>
-                        <div>conCostumeId: {this.props.conCostumeId}</div>
+                        {/* <div>costumeItem.id: {this.props.item.costumeItem.id}</div>
+                        <div>conCostumeId: {this.props.conCostumeId}</div> */}
                     </div>
                 </td>
             </tr>

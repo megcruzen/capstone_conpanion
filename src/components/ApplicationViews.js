@@ -216,6 +216,11 @@ export default class ApplicationViews extends Component {
     )
   }
 
+  deleteCostumeAndDependents = (id) => {
+    this.deleteConCostumes(id);
+    this.deleteCostume(id);
+  }
+
   deleteCostume = (id) => {
     return AppManager.deleteCostume(id)
     .then(costumes =>
@@ -223,53 +228,12 @@ export default class ApplicationViews extends Component {
     )
   }
 
-  deleteCostumeAndDependents = (id) => {
-
-    this.deleteConCostumes(id);
-    this.deleteCostume(id);
-
-    // .then(() => AppManager.deleteCostume(id))
-
-    // const setNewState =
-    //     AppManager.getCostumes().then(costumes => this.setState({ costumes: costumes }))
-    //     AppManager.getConCostumes().then(conCostumes => { this.setState({ conCostumes: conCostumes })})
-
-    // Promise.all([deleteCostume, setNewState])
-
-    // const deleteCostume = AppManager.deleteCostume(id);
-    // const deleteConCostume = this.state.conCostumes
-    //                           .filter(conCostume =>
-    //                           conCostume.costumeId === id)
-    //                           .map(conCostume =>
-    //                           this.deleteConCostume(conCostume.id))
-
-    // Promise.all([deleteConCostume, deleteCostume])
-
-    // .then(conCostumes => {
-    //     this.setState({ conCostumes: conCostumes })
-    // })
-    // .then(() => AppManager.getCostumes())
-    // .then(costumes =>
-    //     this.setState({ costumes: costumes })
-    // )
-    // .then(() => AppManager.getConCostumes())
-    // .then(conCostumes => {
-    //     this.setState({ conCostumes: conCostumes })
-    // })
-
-    // .then(() => this.getConCostumes())
-    // .then(conCostumes => conCostumes.filter(conCostume => conCostume.costumeId === id).map(
-    //   conCostume => this.deleteConCostume(conCostume.id)))
-    // .then(() => this.getCostumes())
-    // .then(costumes =>
-    //     this.setState({ costumes: costumes })
-    // )
-  }
-
   deleteConCostume = (id) => {
     return AppManager.deleteConCostume(id)
-    .then(conCostumes =>
-        this.setState({ conCostumes: conCostumes })
+    .then(
+      Promise.all([AppManager.getConCostumes(), AppManager.getConCostumeItems()])
+      .then(conCostumes => this.setState({ conCostumes: conCostumes }))
+      .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems }))
     )
   }
 

@@ -209,7 +209,8 @@ export default {
         return fetch(`${remoteURL}/conCostumes/${id}`, {
             method: "DELETE"
         })
-        .then(() => this.getConCostumes())
+        // .then(() => this.getConCostumes())
+        // .then(() => this.getConCostumeItems())
     },
 
     deleteCostumeItem(id) {

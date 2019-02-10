@@ -5,8 +5,8 @@ import classnames from 'classnames';
 import "../CosBuddy.css";
 import thumb from "./64x64.jpg"
 import ConventionCostumeList from "./ConventionCostumeList";
-import ConventionPackingList from './ConventionPackingList';
-import CostumePackingList from './CostumePackingList';
+import ConventionPackingList from './packinglists/ConventionPackingList';
+import CostumeListSection from './packinglists/CostumeListSection';
 
 export default class ConventionDetails extends Component {
 
@@ -86,7 +86,7 @@ export default class ConventionDetails extends Component {
                                     <ConventionPackingList convention={convention} {...this.props} />
                                 </Col>
                                 <Col sm="6">
-                                    <CostumePackingList convention={convention} conCostumes={this.props.conCostumes} {...this.props} />
+                                    <CostumeListSection convention={convention} conCostumes={this.props.conCostumes} {...this.props} />
                                 </Col>
                             </Row>
                         </TabPane>

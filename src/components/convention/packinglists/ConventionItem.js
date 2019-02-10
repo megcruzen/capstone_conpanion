@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class ConItemCard extends Component {
+export default class ConventionItem extends Component {
 
 
     // // Update state whenever an item is clicked

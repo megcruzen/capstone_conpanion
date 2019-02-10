@@ -52,7 +52,10 @@ export default class CosPackingListCard extends Component {
         // console.log("conCostumeItems", this.props.conCostumeItems.filter(item => item.costumeItem.costumeId === this.props.conCostume.costume.id))
         // console.log("conCostumeItems", this.props.conCostumeItems)
 
+        console.log("costume id", this.props.conCostume.costume.id)
+
         return (
+
                 <div className="con_costume_card">
                     <h4>{this.props.conCostume.costume.name}</h4>
                     costumeId: {this.props.conCostume.costume.id}<br />

@@ -144,30 +144,11 @@ export default class ApplicationViews extends Component {
     })
   )
 
-  // addCostumeToCon = (costume) => AppManager.postConCostume(costume)
-  // .then(result =>
-  //   this.copyCostumeItems(result))
-  // // .then(() => AppManager.copyCostumeItems())
-  // // .then(() => AppManager.getConCostumes())
-  // // .then(conCostumes => this.setState({
-  // //   conCostumes: conCostumes
-  // // })
-// )
-
   addCostumeToCon = (costume) =>
     AppManager.postConCostume(costume)
     // POST
     //.then(response => response.json())
     .then(response => this.copyCostumeItems(response))
-
-  // addCostumeToCon = (costume) => AppManager.postConCostume(costume)
-  // .then(response => {console.log(response)})
-  //   // .then(() => AppManager.copyCostumeItems())
-  //   .then(() => AppManager.getConCostumes())
-  //   .then(conCostumes => this.setState({
-  //     conCostumes: conCostumes
-  //   })
-  // )
 
   copyCostumeItems = (response) => {
     console.log(response.id)
@@ -186,9 +167,8 @@ export default class ApplicationViews extends Component {
             // .then(() => AppManager.getConCostumeItems())
         }
     })
-
-    // })
     // .then(() => AppManager.getConCostumeItems())
+    // .then(() => this.getConCostumeItems())
     // .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems }))
   }
 
@@ -301,6 +281,7 @@ export default class ApplicationViews extends Component {
                     conCostumes={this.state.conCostumes}
                     deleteConCostume={this.deleteConCostume}
                     addCostumeToCon={this.addCostumeToCon}
+                    getConCostumes={this.getConCostumes}
                     addConventionItem={this.addConventionItem}
                     conventionItems={this.state.conventionItems}
                     deleteConItem={this.deleteConItem}

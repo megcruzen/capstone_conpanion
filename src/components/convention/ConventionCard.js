@@ -23,12 +23,16 @@ export default class ConventionCard extends Component {
     }
 
     render() {
+
+        let str = this.props.convention.name;
+        str = str.replace(/\s+/g, '-').toLowerCase();
+
         return (
             <tr>
                 <td>
                     <Media className="pt-2 px-2">
                         <Media left href="#" className="mr-3">
-                            <Link to={`/conventions/${this.props.convention.id}/${this.props.convention.name}`}>
+                            <Link to={`/conventions/${this.props.convention.id}/${str}`}>
                                 <Media object src={thumb} className="thumb" alt="" />
                             </Link>
                         </Media>

@@ -17,6 +17,18 @@ export default class ConCostumeCard extends Component {
         });
     }
 
+    removeCostumeAndDeleteItems = (conCostumeId) => {
+
+        // console.log("conCostumeId", conCostumeId)
+        let conCostumeItems = this.props.conCostumeItems;
+        conCostumeItems.filter(conItem => conItem.conCostumeId === conCostumeId).map(item =>
+            this.props.deleteConCostumeItem(item.id)
+        )
+
+        this.props.deleteConCostume(this.props.conCostume.id)
+
+    }
+
     render() {
 
         // console.log("this.props.conCostume", this.props.conCostume)
@@ -45,7 +57,7 @@ export default class ConCostumeCard extends Component {
                         Are you sure you want to remove <strong>{this.props.conCostume.costume.name}</strong> from this convention?
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="primary" onClick={() => this.props.deleteConCostume(this.props.conCostume.id)}>Yes, Please Remove</Button>{' '}
+                        <Button color="primary" onClick={() => this.removeCostumeAndDeleteItems(this.props.conCostume.id)}>Yes, Please Remove</Button>{' '}
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                     </ModalFooter>
                 </Modal>

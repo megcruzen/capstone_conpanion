@@ -315,6 +315,7 @@ export default class ApplicationViews extends Component {
                     costumes={this.state.costumes}
                     conCostumes={this.state.conCostumes}
                     deleteConCostume={this.deleteConCostume}
+                    deleteConCostumeItem={this.deleteConCostumeItem}
                     addCostumeToCon={this.addCostumeToCon}
                     getConCostumes={this.getConCostumes}
                     addConventionItem={this.addConventionItem}

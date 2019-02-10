@@ -62,7 +62,7 @@ export default class CostumeDetails extends Component {
                 <section key={costume.id} className="mr-2 mb-3 costume_details">
                     <a href="#" onClick={() => this.props.history.push("/costumes/")} className="return">&laquo; Return to costumes</a>
                     <Media className="mt-4 pt-2">
-                        <Media left href="#" className="mr-3">
+                        <Media left className="mr-3">
                             <Media object src={thumb} className="thumb" alt="" />
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">

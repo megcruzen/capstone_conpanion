@@ -37,6 +37,10 @@ export default class CostumeDetails extends Component {
         });
     }
 
+    // addItemAndConItem = () => {
+    //     this.addItem()
+    // }
+
      // Add new item to costume
      addItem = event => {
         const costume = this.props.costumes.find(costume => costume.id === parseInt(this.props.match.params.costumeId)) || {}

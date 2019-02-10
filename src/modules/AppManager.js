@@ -227,7 +227,7 @@ export default {
     },
 
     getConCostumeItems() {
-        return fetch(`${remoteURL}/conCostumeItems?_expand=costumeItem`)
+        return fetch(`${remoteURL}/conCostumeItems?_expand=costumeItem&_expand=conCostume`)
         .then(response => response.json())
     },
 
@@ -250,5 +250,12 @@ export default {
             },
             body: JSON.stringify(editedItem)
         })
+    },
+
+    deleteConCostumeItem(id) {
+        return fetch(`${remoteURL}/conCostumeItems/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getConCostumeItems())
     },
 }

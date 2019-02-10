@@ -69,35 +69,9 @@ export default class ConventionCostumeList extends Component {
             }
 
             // POST the conCostume object
-            this.props.addCostumeToCon(conCostume, this.props.costumeItems)
-
-                // this.props.costumeItems.filter( costumeItem => costumeItem.costumeId === Number(this.state.costumeId) )
-                // .map(item => {
-                //     // for each item, create new object
-                //     const conCostumeItem = {
-                //         conCostumeId: results.id,
-                //         costumeItemId: item.id,
-                //         checked: false
-                //     }
-                //     // post that object to ConCostumeItems
-                //     this.props.copyCostumeItems(conCostumeItem)
-                // })
-            // )
+            this.props.addCostumeToCon(conCostume)
         }
     }
-
-    createConCostumeItems = (result) => {
-        this.props.costumeItems.filter( costumeItem => costumeItem.costumeId === Number(this.state.costumeId) )
-        .map(item => {
-            const conCostumeItem = {
-                    conCostumeId: result.id,
-                    costumeItemId: item.id,
-                    checked: false
-                }
-            this.props.copyCostumeItems(conCostumeItem)
-        })
-    }
-
 
     render() {
 

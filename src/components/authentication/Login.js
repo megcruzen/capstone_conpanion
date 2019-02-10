@@ -22,12 +22,12 @@ export default class Login extends Component {
     userLogin = evt => {
         evt.preventDefault();
         AppManager.checkForUser(this.state.username, this.state.password)
-            .then(user => {
-                console.log("userArray:", user)
-                if (user.length === 0) {
+            .then(userData => {
+                console.log("userArray:", userData)
+                if (userData.length === 0) {
                     alert("Your username and password do not match. Please try again.")
                 } else {
-                    user.forEach(user => {
+                    userData.forEach(user => {
                         let loggedIn = false;
                         if (this.state.username === user.username && this.state.password === user.password) {
                             loggedIn = true;

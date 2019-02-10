@@ -83,14 +83,6 @@ export default class ApplicationViews extends Component {
     })
   }
 
-  // // Reset state after a user logs in
-  // updateComponent = () => {
-  //   AppManager.getAllUsers()
-  //  .then(allUsers => {
-  //     this.setState({ users: allUsers });
-  //   })
-  // }
-
   /* ADD NEW */
 
   addUser = (user) => AppManager.postUser(user)
@@ -104,8 +96,7 @@ export default class ApplicationViews extends Component {
             name: newUser.username,
             email: newUser.email,
             id: newUser.id
-        })
-    )
+        }))
     }
 
   addConvention = (convention) =>
@@ -153,21 +144,33 @@ export default class ApplicationViews extends Component {
     })
   )
 
-  addCostumeToCon = (costume) => AppManager.postConCostume(costume)
-    // .then(result => console.log(result.id))
-    // .then(() => AppManager.copyCostumeItems())
-    .then(() => AppManager.getConCostumes())
-    .then(conCostumes => this.setState({
-      conCostumes: conCostumes
-    })
-  )
+  addCostumeToCon = (costume) =>
+    AppManager.postConCostume(costume)
+    // AppManager: POST
+    // AppManager: .then(response => response.json())
+    .then(response => this.copyCostumeItems(response))
 
-  copyCostumeItems = (item) => AppManager.postConCostumeItem(item)
-    .then(() => AppManager.getConCostumeItems())
-    .then(conCostumeItems => this.setState({
-      conCostumeItems: conCostumeItems
+  copyCostumeItems = (response) => {
+    console.log(response.id)
+    let costumeItems = this.state.costumeItems;
+    console.log(costumeItems)
+    costumeItems.forEach( item => {
+        console.log("itemId", item.costumeId, "costumeId", response.costumeId, "conCostumeId", response.id)
+        if (item.costumeId === response.costumeId) {
+            const conCostumeItem = {
+                conCostumeId: response.id,
+                costumeItemId: item.id,
+                checked: false
+            }
+            // console.log(conCostumeItem)
+            AppManager.postConCostumeItem(conCostumeItem)
+            // .then(() => AppManager.getConCostumeItems())
+        }
     })
-  )
+    // .then(() => AppManager.getConCostumeItems())
+    // .then(() => this.getConCostumeItems())
+    // .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems }))
+  }
 
   /* DELETE */
 
@@ -204,6 +207,13 @@ export default class ApplicationViews extends Component {
     .then(costumeItems =>
         this.setState({ costumeItems: costumeItems })
     )
+  }
+
+  deleteConCostumeItem = (id) => {
+    AppManager.deleteConCostumeItem(id)
+    .then(conCostumeItems =>
+      this.setState({ conCostumeItems: conCostumeItems })
+  )
   }
 
   /* EDIT */
@@ -278,13 +288,15 @@ export default class ApplicationViews extends Component {
                     conCostumes={this.state.conCostumes}
                     deleteConCostume={this.deleteConCostume}
                     addCostumeToCon={this.addCostumeToCon}
+                    getConCostumes={this.getConCostumes}
                     addConventionItem={this.addConventionItem}
                     conventionItems={this.state.conventionItems}
                     deleteConItem={this.deleteConItem}
                     updateItem={this.updateItem}
                     conCostumeItems={this.state.conCostumeItems}
                     costumeItems={this.state.costumeItems}
-                    copyCostumeItems={this.copyCostumeItems} />
+                    copyCostumeItems={this.copyCostumeItems}
+                    updateConCostumeItem={this.updateConCostumeItem} />
         }} />
 
         <Route exact path="/costumes" render={props => {
@@ -304,7 +316,9 @@ export default class ApplicationViews extends Component {
                     addCostumeItem={this.addCostumeItem}
                     deleteCostumeItem={this.deleteCostumeItem}
                     deleteCostume={this.deleteCostume}
-                    editCostume={this.editCostume} />
+                    editCostume={this.editCostume}
+                    conCostumeItems={this.state.conCostumeItems}
+                    deleteConCostumeItem={this.deleteConCostumeItem} />
         }} />
 
         <Route path="/costumes/edit" render={(props) => {

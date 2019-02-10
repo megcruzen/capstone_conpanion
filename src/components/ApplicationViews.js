@@ -340,7 +340,9 @@ export default class ApplicationViews extends Component {
                     conCostumeItems={this.state.conCostumeItems}
                     costumeItems={this.state.costumeItems}
                     copyCostumeItems={this.copyCostumeItems}
-                    updateConCostumeItem={this.updateConCostumeItem} />
+                    updateConCostumeItem={this.updateConCostumeItem}
+                    addCostumeItemToCon={this.addCostumeItemToCon}
+                    deleteCostumeItem={this.deleteCostumeItem} />
         }} />
 
         <Route exact path="/costumes" render={props => {

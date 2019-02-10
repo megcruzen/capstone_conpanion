@@ -9,12 +9,11 @@ export default class CostumeItemCard extends Component {
 
         let filteredItems = conCostumeItems.filter(conItem => conItem.costumeItemId === itemId)
         console.log("filteredItems", filteredItems)
-        filteredItems.map(item => {
+        filteredItems.map(item =>
             this.props.deleteConCostumeItem(item.id)
-        })
+        )
 
-        // this.props.deleteCostumeItem(itemId);
-        // this.props.deleteConCostumeItem(conCostumeItemId);
+        this.props.deleteCostumeItem(itemId);
     }
 
     render() {
@@ -24,7 +23,7 @@ export default class CostumeItemCard extends Component {
                     <div className="d-flex justify-content-between">
                         <div className="item_name">{this.props.item.name}</div>
                         <div>
-                            <i className="fas fa-times-circle text-danger" onClick={() => this.deleteCostumeItemAndConItem(this.props.item.id)} style={{cursor:'pointer'}}></i>
+                            <i className="fas fa-times-circle text-danger" onClick={() => this.deleteCostumeItemAndConItem(this.props.item.id)} style={{cursor:'pointer'}}>x</i>
                         </div>
                     </div>
                 </td>

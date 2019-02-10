@@ -137,12 +137,40 @@ export default class ApplicationViews extends Component {
     })
   )
 
+//   addCostumeItem = (item) => AppManager.postCostumeItem(item)
+//   .then(() => AppManager.getCostumeItems())
+//   .then(costumeItems => this.setState({
+//     costumeItems: costumeItems
+//   })
+// )
+
   addCostumeItem = (item) => AppManager.postCostumeItem(item)
-    .then(() => AppManager.getCostumeItems())
-    .then(costumeItems => this.setState({
-      costumeItems: costumeItems
+    // AppManager: POST
+    // AppManager: .then(response => response.json())
+    .then(response => this.copyNewCostumeItem(response))
+
+    // .then(() => AppManager.getCostumeItems())
+    // .then(costumeItems => this.setState({
+    //   costumeItems: costumeItems
+    // })
+  // )
+
+  copyNewCostumeItem = (response) => {
+    console.log("item.costumeId", response.costumeId)
+    const conCostumes = this.state.conCostumes;
+    const filteredCostumes = conCostumes.filter( conCostume => conCostume.costumeId === response.costumeId)
+    // console.log(conCostumes.map ( conCostume => conCostume.costumeId))
+    console.log("filteredCostumes", filteredCostumes)
+    filteredCostumes.map( conCostume => {
+        const conCostumeItem = {
+          conCostumeId: conCostume.id,
+          costumeItemId: response.id,
+          checked: false
+        }
+        console.log(conCostumeItem)
+        AppManager.postConCostumeItem(conCostumeItem)
     })
-  )
+  }
 
   addCostumeToCon = (costume) =>
     AppManager.postConCostume(costume)
@@ -152,7 +180,7 @@ export default class ApplicationViews extends Component {
 
   copyCostumeItems = (response) => {
     console.log(response.id)
-    let costumeItems = this.state.costumeItems;
+    const costumeItems = this.state.costumeItems;
     console.log(costumeItems)
     costumeItems.forEach( item => {
         console.log("itemId", item.costumeId, "costumeId", response.costumeId, "conCostumeId", response.id)
@@ -287,6 +315,7 @@ export default class ApplicationViews extends Component {
                     costumes={this.state.costumes}
                     conCostumes={this.state.conCostumes}
                     deleteConCostume={this.deleteConCostume}
+                    deleteConCostumeItem={this.deleteConCostumeItem}
                     addCostumeToCon={this.addCostumeToCon}
                     getConCostumes={this.getConCostumes}
                     addConventionItem={this.addConventionItem}

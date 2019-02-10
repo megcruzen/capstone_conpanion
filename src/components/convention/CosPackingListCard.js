@@ -53,6 +53,7 @@ export default class CosPackingListCard extends Component {
         // console.log("conCostumeItems", this.props.conCostumeItems)
 
         console.log("costume id", this.props.conCostume.costume.id)
+        console.log("concostume id", this.props.conCostume.id)
 
         return (
 
@@ -74,7 +75,8 @@ export default class CosPackingListCard extends Component {
 
                                 {
                                     this.props.conCostumeItems
-                                    .filter(item => item.costumeItem.costumeId === this.props.conCostume.costume.id)
+                                    // .filter(item => item.costumeItem.costumeId === this.props.conCostume.costume.id)
+                                    .filter(item => item.costumeItem.costumeId === this.props.conCostume.costume.id && item.conCostumeId === this.props.conCostume.id)
                                     .map(item => <ConCosItemCard key={item.id} item={item} conCostumeId={this.props.conCostume.id} {...this.props} />)
                                 }
 

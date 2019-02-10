@@ -227,7 +227,7 @@ export default {
     },
 
     getConCostumeItems() {
-        return fetch(`${remoteURL}/conCostumeItems?_expand=costumeItem`)
+        return fetch(`${remoteURL}/conCostumeItems?_expand=costumeItem&_expand=conCostume`)
         .then(response => response.json())
     },
 

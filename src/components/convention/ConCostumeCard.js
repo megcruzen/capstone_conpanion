@@ -18,15 +18,16 @@ export default class ConCostumeCard extends Component {
     }
 
     removeCostumeAndDeleteItems = (conCostumeId) => {
+        this.props.deleteConCostume(this.props.conCostume.id)
+        .then(() => this.deleteItems(conCostumeId))
+        .then(() => this.props.history.push("/costumes"))
+    }
 
-        // console.log("conCostumeId", conCostumeId)
+    deleteItems = (conCostumeId) => {
         let conCostumeItems = this.props.conCostumeItems;
-        conCostumeItems.filter(conItem => conItem.conCostumeId === conCostumeId).map(item =>
+        return conCostumeItems.filter(conItem => conItem.conCostumeId === conCostumeId).map(item =>
             this.props.deleteConCostumeItem(item.id)
         )
-
-        this.props.deleteConCostume(this.props.conCostume.id)
-
     }
 
     render() {

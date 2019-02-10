@@ -37,10 +37,6 @@ export default class CostumeDetails extends Component {
         });
     }
 
-    // addItemAndConItem = () => {
-    //     this.addItem()
-    // }
-
      // Add new item to costume
      addItem = event => {
         const costume = this.props.costumes.find(costume => costume.id === parseInt(this.props.match.params.costumeId)) || {}
@@ -54,6 +50,20 @@ export default class CostumeDetails extends Component {
 
         // Create the item
         this.props.addCostumeItem(newItem);
+    }
+
+    // deleteCostumeAndConCostume = (costumeId) => {
+    //     this.props.deleteCostume(costumeId);
+
+    //     console.log(this.props.conCostumes)
+    //     const conCostumes = this.props.conCostumes;
+    //     conCostumes.filter(conCostume => conCostume.costumeId === costumeId).map(
+    //         conCostume => this.props.deleteConCostume(conCostume.id))
+    // }
+
+    delete = (id) => {
+        this.props.deleteCostumeAndDependents(id);
+        this.props.history.push("/costumes/");
     }
 
     render() {
@@ -117,7 +127,7 @@ export default class CostumeDetails extends Component {
                             Are you sure you want to delete <strong>{costume.name}</strong>?
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={() => this.props.deleteCostume(costume.id).then(() => this.props.history.push("/costumes"))}>Yes, Please Delete</Button>{' '}
+                            <Button color="primary" onClick={() => this.delete(costume.id)}>Yes, Please Delete</Button>{' '}
                             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
                     </Modal>

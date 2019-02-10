@@ -223,11 +223,62 @@ export default class ApplicationViews extends Component {
     )
   }
 
+  deleteCostumeAndDependents = (id) => {
+
+    this.deleteConCostumes(id);
+    this.deleteCostume(id);
+
+    // .then(() => AppManager.deleteCostume(id))
+
+    // const setNewState =
+    //     AppManager.getCostumes().then(costumes => this.setState({ costumes: costumes }))
+    //     AppManager.getConCostumes().then(conCostumes => { this.setState({ conCostumes: conCostumes })})
+
+    // Promise.all([deleteCostume, setNewState])
+
+    // const deleteCostume = AppManager.deleteCostume(id);
+    // const deleteConCostume = this.state.conCostumes
+    //                           .filter(conCostume =>
+    //                           conCostume.costumeId === id)
+    //                           .map(conCostume =>
+    //                           this.deleteConCostume(conCostume.id))
+
+    // Promise.all([deleteConCostume, deleteCostume])
+
+    // .then(conCostumes => {
+    //     this.setState({ conCostumes: conCostumes })
+    // })
+    // .then(() => AppManager.getCostumes())
+    // .then(costumes =>
+    //     this.setState({ costumes: costumes })
+    // )
+    // .then(() => AppManager.getConCostumes())
+    // .then(conCostumes => {
+    //     this.setState({ conCostumes: conCostumes })
+    // })
+
+    // .then(() => this.getConCostumes())
+    // .then(conCostumes => conCostumes.filter(conCostume => conCostume.costumeId === id).map(
+    //   conCostume => this.deleteConCostume(conCostume.id)))
+    // .then(() => this.getCostumes())
+    // .then(costumes =>
+    //     this.setState({ costumes: costumes })
+    // )
+  }
+
   deleteConCostume = (id) => {
     return AppManager.deleteConCostume(id)
     .then(conCostumes =>
         this.setState({ conCostumes: conCostumes })
     )
+  }
+
+  deleteConCostumes = (costumeId) => {
+    return this.state.conCostumes
+              .filter(conCostume =>
+                conCostume.costumeId === costumeId)
+              .map(conCostume =>
+                this.deleteConCostume(conCostume.id))
   }
 
   deleteCostumeItem = (id) => {
@@ -342,12 +393,15 @@ export default class ApplicationViews extends Component {
             return <CostumeDetails {...props}
                     costumes={this.state.costumes}
                     costumeItems={this.state.costumeItems}
+                    conCostumes={this.state.conCostumes}
                     addCostumeItem={this.addCostumeItem}
                     deleteCostumeItem={this.deleteCostumeItem}
                     deleteCostume={this.deleteCostume}
                     editCostume={this.editCostume}
+                    deleteConCostume={this.deleteConCostume}
                     conCostumeItems={this.state.conCostumeItems}
-                    deleteConCostumeItem={this.deleteConCostumeItem} />
+                    deleteConCostumeItem={this.deleteConCostumeItem}
+                    deleteCostumeAndDependents={this.deleteCostumeAndDependents} />
         }} />
 
         <Route path="/costumes/edit" render={(props) => {

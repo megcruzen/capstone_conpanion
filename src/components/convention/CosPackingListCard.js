@@ -61,7 +61,6 @@ export default class CosPackingListCard extends Component {
 
                                 {
                                     this.props.conCostumeItems
-                                    // .filter(item => item.costumeItem.costumeId === this.props.conCostume.costume.id)
                                     .filter(item => item.costumeItem.costumeId === this.props.conCostume.costume.id && item.conCostumeId === this.props.conCostume.id)
                                     .map(item => <ConCosItemCard key={item.id} item={item} conCostumeId={this.props.conCostume.id} {...this.props} />)
                                 }

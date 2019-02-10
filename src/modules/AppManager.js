@@ -2,30 +2,25 @@ const remoteURL = "http://localhost:5002"
 
 export default {
 
-    // USERS, SIGNUP, LOGIN
-
-    getAllUsers() {
-        return fetch(`${remoteURL}/users`)
-        .then(response => response.json())
-    },
+    // ETC
 
     checkForUser(username, password) {
         return fetch(`${remoteURL}/users?username=${username}&password=${password}`)
         .then(response => response.json())
     },
 
-    postUser(newUser) {
-        return fetch(`${remoteURL}/users`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(newUser)
-        })
-        // .then(response => response.json())
+    searchConventions(query) {
+        return fetch(`${remoteURL}/conventions/?q=${query}`)
+        .then(response => response.json())
     },
 
-    // CONVENTIONS
+
+    // GET
+
+    getAllUsers() {
+        return fetch(`${remoteURL}/users`)
+        .then(response => response.json())
+    },
 
     getAllConventions() {
         return fetch(`${remoteURL}/conventions`)
@@ -44,9 +39,58 @@ export default {
         )
     },
 
-    searchConventions(query) {
-        return fetch(`${remoteURL}/conventions/?q=${query}`)
+    getConventionItems() {
+        return fetch(`${remoteURL}/conventionItems/`)
         .then(response => response.json())
+    },
+
+    getCostumeItems() {
+        return fetch(`${remoteURL}/costumeItems/?_expand=costume`)
+        .then(response => response.json())
+    },
+
+    getCostumes() {
+        return fetch(`${remoteURL}/costumes?userId=1`)
+        .then(response => response.json())
+    },
+
+    getSpecificCostume(costumeId) {
+        return fetch(`${remoteURL}/costumes/${costumeId}`)
+        .then(response => response.json())
+    },
+
+    getConCostumes() {
+        return fetch(`${remoteURL}/conCostumes?_expand=costume`)
+        .then(response => response.json())
+    },
+
+    getCostumesForCon(userConId) {
+        return fetch(`${remoteURL}/conCostumes?userConventionId=${userConId}&_expand=costume`)
+        .then(response => response.json())
+    },
+
+    getConCostumeItems() {
+        return fetch(`${remoteURL}/conCostumeItems?_expand=costumeItem&_expand=conCostume`)
+        .then(response => response.json())
+    },
+
+    getGenres() {
+        return fetch(`${remoteURL}/genres`)
+        .then(response => response.json())
+    },
+
+
+    // POST
+
+    postUser(newUser) {
+        return fetch(`${remoteURL}/users`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newUser)
+        })
+        // .then(response => response.json())
     },
 
     postConvention(newCon) {
@@ -69,8 +113,6 @@ export default {
         // .then(() => this.getMyConventions())
     },
 
-    // USER-CONVENTION CONNECTIONS
-
     createUserConvention(newCon) {
         // console.log(newCon)
         return fetch(`${remoteURL}/userConventions`, {
@@ -80,20 +122,6 @@ export default {
           },
           body: JSON.stringify(newCon)
         })
-        .then(response => response.json())
-    },
-
-    deleteUserConvention(id) {
-        return fetch(`${remoteURL}/userConventions/${id}`, {
-            method: "DELETE"
-        })
-        .then(() => this.getMyConventions())
-    },
-
-    // CONVENTION ITEMS
-
-    getConventionItems() {
-        return fetch(`${remoteURL}/conventionItems/`)
         .then(response => response.json())
     },
 
@@ -108,40 +136,6 @@ export default {
         .then(response => response.json())
     },
 
-    deleteConventionItem(id) {
-        return fetch(`${remoteURL}/conventionItems/${id}`, {
-            method: "DELETE"
-        })
-        .then(() => this.getConventionItems())
-    },
-
-    editConventionItem(itemId, editedItem) {
-        return fetch(`${remoteURL}/conventionItems/${itemId}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(editedItem)
-        })
-    },
-
-    getGenres() {
-        return fetch(`${remoteURL}/genres`)
-        .then(response => response.json())
-    },
-
-    // COSTUMES
-
-    getCostumes() {
-        return fetch(`${remoteURL}/costumes?userId=1`)
-        .then(response => response.json())
-    },
-
-    getSpecificCostume(costumeId) {
-        return fetch(`${remoteURL}/costumes/${costumeId}`)
-        .then(response => response.json())
-    },
-
     postCostume(newCostume) {
         return fetch(`${remoteURL}/costumes`, {
           method: "POST",
@@ -150,30 +144,6 @@ export default {
           },
           body: JSON.stringify(newCostume)
         })
-        .then(response => response.json())
-    },
-
-    deleteCostume(id) {
-        return fetch(`${remoteURL}/costumes/${id}`, {
-            method: "DELETE"
-        })
-        .then(() => this.getCostumes())
-    },
-
-    editCostume(costumeId, editedCostume) {
-        return fetch(`${remoteURL}/costumes/${costumeId}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(editedCostume)
-        })
-    },
-
-    // COSTUME ITEMS
-
-    getCostumeItems() {
-        return fetch(`${remoteURL}/costumeItems/?_expand=costume`)
         .then(response => response.json())
     },
 
@@ -188,32 +158,6 @@ export default {
         .then(response => response.json())
     },
 
-    deleteCostumeItem(id) {
-        return fetch(`${remoteURL}/costumeItems/${id}`, {
-            method: "DELETE"
-        })
-        .then(() => this.getCostumeItems())
-    },
-
-    // COSTUMES PER EACH USER-CONVENTION
-
-    getConCostumes() {
-        return fetch(`${remoteURL}/conCostumes?_expand=costume`)
-        .then(response => response.json())
-    },
-
-    getCostumesForCon(userConId) {
-        return fetch(`${remoteURL}/conCostumes?userConventionId=${userConId}&_expand=costume`)
-        .then(response => response.json())
-    },
-
-    deleteConCostume(id) {
-        return fetch(`${remoteURL}/conCostumes/${id}`, {
-            method: "DELETE"
-        })
-        .then(() => this.getConCostumes())
-    },
-
     postConCostume(newCostume) {
         return fetch(`${remoteURL}/conCostumes`, {
           method: "POST",
@@ -224,11 +168,6 @@ export default {
         })
         .then(response => response.json())
         // .then(result => console.log(result.id))
-    },
-
-    getConCostumeItems() {
-        return fetch(`${remoteURL}/conCostumeItems?_expand=costumeItem&_expand=conCostume`)
-        .then(response => response.json())
     },
 
     postConCostumeItem(newItem) {
@@ -242,14 +181,43 @@ export default {
         .then(response => response.json())
     },
 
-    editConCostumeItem(itemId, editedItem) {
-        return fetch(`${remoteURL}/conCostumeItems/${itemId}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(editedItem)
+
+    // DELETE
+
+    deleteUserConvention(id) {
+        return fetch(`${remoteURL}/userConventions/${id}`, {
+            method: "DELETE"
         })
+        .then(() => this.getMyConventions())
+    },
+
+    deleteConventionItem(id) {
+        return fetch(`${remoteURL}/conventionItems/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getConventionItems())
+    },
+
+    deleteCostume(id) {
+        return fetch(`${remoteURL}/costumes/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getCostumes())
+    },
+
+    deleteConCostume(id) {
+        return fetch(`${remoteURL}/conCostumes/${id}`, {
+            method: "DELETE"
+        })
+        // .then(() => this.getConCostumes())
+        // .then(() => this.getConCostumeItems())
+    },
+
+    deleteCostumeItem(id) {
+        return fetch(`${remoteURL}/costumeItems/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getCostumeItems())
     },
 
     deleteConCostumeItem(id) {
@@ -258,4 +226,37 @@ export default {
         })
         .then(() => this.getConCostumeItems())
     },
+
+
+    // PUT
+
+    editCostume(costumeId, editedCostume) {
+        return fetch(`${remoteURL}/costumes/${costumeId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedCostume)
+        })
+    },
+
+    editConventionItem(itemId, editedItem) {
+        return fetch(`${remoteURL}/conventionItems/${itemId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedItem)
+        })
+    },
+
+    editConCostumeItem(itemId, editedItem) {
+        return fetch(`${remoteURL}/conCostumeItems/${itemId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedItem)
+        })
+    }
 }

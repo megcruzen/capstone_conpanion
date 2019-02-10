@@ -146,8 +146,8 @@ export default class ApplicationViews extends Component {
 
   addCostumeToCon = (costume) =>
     AppManager.postConCostume(costume)
-    // POST
-    //.then(response => response.json())
+    // AppManager: POST
+    // AppManager: .then(response => response.json())
     .then(response => this.copyCostumeItems(response))
 
   copyCostumeItems = (response) => {
@@ -207,6 +207,13 @@ export default class ApplicationViews extends Component {
     .then(costumeItems =>
         this.setState({ costumeItems: costumeItems })
     )
+  }
+
+  deleteConCostumeItem = (id) => {
+    AppManager.deleteConCostumeItem(id)
+    .then(conCostumeItems =>
+      this.setState({ conCostumeItems: conCostumeItems })
+  )
   }
 
   /* EDIT */
@@ -309,7 +316,9 @@ export default class ApplicationViews extends Component {
                     addCostumeItem={this.addCostumeItem}
                     deleteCostumeItem={this.deleteCostumeItem}
                     deleteCostume={this.deleteCostume}
-                    editCostume={this.editCostume} />
+                    editCostume={this.editCostume}
+                    conCostumeItems={this.state.conCostumeItems}
+                    deleteConCostumeItem={this.deleteConCostumeItem} />
         }} />
 
         <Route path="/costumes/edit" render={(props) => {

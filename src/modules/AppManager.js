@@ -251,4 +251,11 @@ export default {
             body: JSON.stringify(editedItem)
         })
     },
+
+    deleteConCostumeItem(id) {
+        return fetch(`${remoteURL}/conCostumeItems/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getConCostumeItems())
+    },
 }

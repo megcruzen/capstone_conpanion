@@ -36,24 +36,10 @@ export default class CosPackingListCard extends Component {
         this.props.addCostumeItemToCon(newItem);
     }
 
-    // getCostumesForCon = (userConId) => {
-    //     AppManager.getCostumesForCon(userConId)
-    //     .then(allConnections => allConnections.map(connection =>
-    //         console.log("connection:", connection.userConventionId)))
-    // }
-
     render() {
 
-        // console.log("userconvention Id", this.props.userConventionId)
-
-        // console.log("costume name/id:", this.props.conCostume.costume.name, this.props.conCostume.costume.id)
-        // console.log("userConventionId:", this.props.conCostumes.map(conCostume => conCostume.userConventionId))
-
-        // console.log("conCostumeItems", this.props.conCostumeItems.filter(item => item.costumeItem.costumeId === this.props.conCostume.costume.id))
-        // console.log("conCostumeItems", this.props.conCostumeItems)
-
-        console.log("costume id", this.props.conCostume.costume.id)
-        console.log("concostume id", this.props.conCostume.id)
+        // console.log("costume id", this.props.conCostume.costume.id)
+        // console.log("concostume id", this.props.conCostume.id)
 
         return (
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { Media, Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
-import "../CosBuddy.css"
-import thumb from "./64x64.jpg"
-import AppManager from "../../modules/AppManager"
+import "../../CosBuddy.css"
+import thumb from "./../64x64.jpg"
+import AppManager from "../../../modules/AppManager"
 
-export default class ConSearchName extends Component {
+export default class SearchResults extends Component {
 
     state = {
         searchQuery: "",

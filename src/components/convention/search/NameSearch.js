@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { FormGroup, Form, Input, Table } from 'reactstrap';
-import "../CosBuddy.css"
-import AppManager from "../../modules/AppManager"
-import ConSearchResults from "./ConSearchResults"
+import "../../CosBuddy.css"
+import AppManager from "../../../modules/AppManager"
+import ConSearchResults from "./SearchResults"
 
-export default class ConSearchName extends Component {
+export default class NameSearch extends Component {
 
     state = {
         searchQuery: "",

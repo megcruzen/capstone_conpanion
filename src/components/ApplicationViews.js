@@ -8,7 +8,7 @@ import Login from './authentication/Login'
 import Register from './authentication/Register'
 
 import ConventionList from './convention/ConventionList'
-import ConventionSearch from './convention/ConventionSearch'
+import ConventionSearch from './convention/search/SearchPage'
 import ConventionForm from './convention/ConventionForm'
 import ConventionDetails from './convention/ConventionDetails'
 

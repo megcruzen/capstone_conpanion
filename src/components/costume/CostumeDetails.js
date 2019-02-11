@@ -52,16 +52,7 @@ export default class CostumeDetails extends Component {
         this.props.addCostumeItem(newItem);
     }
 
-    // deleteCostumeAndConCostume = (costumeId) => {
-    //     this.props.deleteCostume(costumeId);
-
-    //     console.log(this.props.conCostumes)
-    //     const conCostumes = this.props.conCostumes;
-    //     conCostumes.filter(conCostume => conCostume.costumeId === costumeId).map(
-    //         conCostume => this.props.deleteConCostume(conCostume.id))
-    // }
-
-    delete = (id) => {
+    deleteCostume = (id) => {
         this.props.deleteCostumeAndDependents(id);
         this.props.history.push("/costumes/");
     }
@@ -127,7 +118,7 @@ export default class CostumeDetails extends Component {
                             Are you sure you want to delete <strong>{costume.name}</strong>?
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={() => this.delete(costume.id)}>Yes, Please Delete</Button>{' '}
+                            <Button color="primary" onClick={() => this.deleteCostume(costume.id)}>Yes, Please Delete</Button>{' '}
                             <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
                     </Modal>

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import "../CosBuddy.css";
-import AppManager from '../../modules/AppManager';
-import CosPackingListCard from './CosPackingListCard'
+import "../../CosBuddy.css";
+import CostumePackingList from './CostumePackingList'
 
-export default class CostumePackingList extends Component {
+export default class CostumeListSection extends Component {
 
     // Set initial state
     state = {
@@ -44,10 +43,12 @@ export default class CostumePackingList extends Component {
         return (
                 <section className="costume_packing_lists mr-2 mb-3">
 
-                    {this.props.conCostumes.filter(conCostume =>
-                            conCostume.userConventionId === this.props.convention.userConventionId)
-                        .map(conCostume =>
-                        <CosPackingListCard key={conCostume.id} conCostume={conCostume} userConventionId={this.props.convention.userConventionId} {...this.props} />
+                    {/* {this.props.conCostumes.filter(conCostume =>
+                            conCostume.userConventionId === this.props.convention.userConventionId) */}
+
+                        {this.props.currentCostumes.map(conCostume =>
+                        <CostumePackingList key={conCostume.id} conCostume={conCostume} {...this.props} />
+                        // userConventionId={this.props.convention.userConventionId}
                     )}
 
                 </section>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import "../CosBuddy.css";
-export default class ConCosItemCard extends Component {
+import "../../CosBuddy.css";
+
+export default class ConCostumeItem extends Component {
 
     updateItem = (itemId) => {
 

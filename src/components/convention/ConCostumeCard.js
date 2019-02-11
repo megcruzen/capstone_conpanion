@@ -19,8 +19,8 @@ export default class ConCostumeCard extends Component {
 
     removeCostumeAndDeleteItems = (conCostumeId) => {
         this.props.deleteConCostume(this.props.conCostume.id)
-        .then(() => this.deleteItems(conCostumeId))
-        .then(() => this.props.history.push("/costumes"))
+        // .then(() => this.deleteItems(conCostumeId))
+        // .then(() => this.props.history.push("/costumes"))
     }
 
     deleteItems = (conCostumeId) => {
@@ -43,9 +43,9 @@ export default class ConCostumeCard extends Component {
                             <CardSubtitle className="text-uppercase subtitle mt-1">{this.props.conCostume.costume.series}</CardSubtitle>
                             <CardTitle><h3>{this.props.conCostume.costume.name}</h3></CardTitle>
                             <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.conCostume.costume.outfit}</CardText>
-                            <br />
+                            {/* <br />
                             costumeId: {this.props.conCostume.costume.id}<br />
-                            conCostumeId: {this.props.conCostume.id}
+                            conCostumeId: {this.props.conCostume.id} */}
                         </div>
                         <div>
                             <i className="fas fa-times-circle text-danger" onClick={this.toggle} style={{cursor:'pointer'}}></i>

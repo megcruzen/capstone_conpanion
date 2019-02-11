@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Button, Table, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
-import "../CosBuddy.css";
-// import AppManager from '../../modules/AppManager';
-import ConCosItemCard from "./ConCosItemCard"
-import CostumeItemCard from "../costume/CostumeItemCard"
+import "../../CosBuddy.css";
+import ConCostumeItem from "./CostumeItem"
+import CostumeItemCard from "../../costume/CostumeItemCard"
 
-export default class CosPackingListCard extends Component {
+export default class CostumePackingList extends Component {
 
     // Set initial state
     state = {
@@ -70,7 +69,7 @@ export default class CosPackingListCard extends Component {
                                 {
                                     this.props.conCostumeItems
                                     .filter(item => item.costumeItem.costumeId === this.props.conCostume.costume.id && item.conCostumeId === this.props.conCostume.id)
-                                    .map(item => <ConCosItemCard key={item.id} item={item} conCostumeId={this.props.conCostume.id} {...this.props} />)
+                                    .map(item => <ConCostumeItem key={item.id} item={item} conCostumeId={this.props.conCostume.id} {...this.props} />)
                                 }
 
                             </tbody>

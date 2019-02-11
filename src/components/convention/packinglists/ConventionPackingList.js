@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Table } from 'reactstrap';
-import "../CosBuddy.css";
-import ConItemCard from "./ConItemCard"
+import "../../CosBuddy.css";
+import ConventionItem from "./ConventionItem"
 
 export default class ConventionPackingList extends Component {
 
@@ -54,7 +54,7 @@ export default class ConventionPackingList extends Component {
                                 {
                                 this.props.conventionItems
                                 .filter(item => item.userConventionId === this.props.convention.userConventionId)
-                                .map(item => <ConItemCard key={item.id} item={item} {...this.props} />)
+                                .map(item => <ConventionItem key={item.id} item={item} {...this.props} />)
                                 }
                             </tbody>
                         </Table>

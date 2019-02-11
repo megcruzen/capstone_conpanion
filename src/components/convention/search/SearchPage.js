@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { TabContent, TabPane, Button } from 'reactstrap';
 // import classnames from 'classnames';
-import "../CosBuddy.css"
-import ConSearchName from './ConSearchName';
+import "../../CosBuddy.css"
+import NameSearch from './NameSearch';
 
 export default class ConventionSearch extends Component {
 
@@ -39,7 +39,7 @@ export default class ConventionSearch extends Component {
                 </div>
                 <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="1" className="mt-4">
-                        <ConSearchName allConventions={this.props.allConventions} {...this.props} />
+                        <NameSearch allConventions={this.props.allConventions} {...this.props} />
                     </TabPane>
                     <TabPane tabId="2" className="mt-4">
                         <h4>Search by Date</h4>

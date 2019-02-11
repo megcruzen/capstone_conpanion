@@ -37,12 +37,10 @@ export default class ConventionDetails extends Component {
 
     render() {
 
-        //  .filter(conCostume => this.props.convention.userConventionId === conCostume.userConventionId)
-
         const convention = this.props.myConventions.find(convention => convention.id === parseInt(this.props.match.params.conventionId)) || {}
         const currentCostumes = this.props.conCostumes.filter(conCostume => conCostume.userConventionId === convention.userConventionId) || {}
 
-        console.log("currentCostumes", currentCostumes)
+        // console.log("currentCostumes", currentCostumes)
 
         return (
                 <section className="mr-2 mb-3 convention_details">
@@ -53,10 +51,9 @@ export default class ConventionDetails extends Component {
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div>
-                                <h3 className="mb-0">{convention.name} [id: {convention.id}]</h3>
+                                <h3 className="mb-0">{convention.name}</h3>
                                 <span className="text-uppercase subtitle">{convention.displayDate}</span>
-                                <br />
-                                userConventionId: {convention.userConventionId}
+                                {/* userConventionId: {convention.userConventionId} */}
                             </div>
                             <div>
                                 <i className="fas fa-edit mr-2 text-secondary" onClick={this.toggle2}></i>

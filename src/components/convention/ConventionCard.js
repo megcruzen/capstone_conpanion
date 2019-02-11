@@ -39,12 +39,11 @@ export default class ConventionCard extends Component {
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div className="con_details">
                                 <Link to={`/conventions/${this.props.convention.id}/${this.props.convention.name}`}>
-                                <h4>{this.props.convention.name} [id: {this.props.convention.id}]</h4>
+                                <h4>{this.props.convention.name}</h4>
                                 {this.props.convention.startDate} - {this.props.convention.endDate}
                                 <br />
                                 {this.props.convention.city}, {this.props.convention.state}
-                                <br />
-                                userConventionId: {this.props.convention.userConventionId}
+                                {/* userConventionId: {this.props.convention.userConventionId} */}
                                 </Link>
                             </div>
                             <div>

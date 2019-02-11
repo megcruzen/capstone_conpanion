@@ -99,19 +99,23 @@ export default class ApplicationViews extends Component {
         }))
     }
 
-  addConvention = (convention) =>
-    AppManager.postConvention(convention)
+  addConvention = (convention) => {
+    let conventions = {}
+    return AppManager.postConvention(convention)
     .then(newCon => {
       const newUserCon = {
           userId: newCon.userId,
           conventionId: newCon.id
       }
       console.log(newUserCon)
-      AppManager.createUserConvention(newUserCon);
+      return AppManager.createUserConvention(newUserCon);
     })
     .then(() => AppManager.getMyConventions())
-    .then(myConventions => this.setState({ myConventions: myConventions })
-  )
+    .then(response => conventions.myConventions = response)
+    .then(() => AppManager.getAllConventions())
+    .then(response => conventions.allConventions = response)
+    .then(() => { this.setState(conventions) })
+  }
 
   addUserConvention = (newUserCon) =>
     AppManager.createUserConvention(newUserCon)
@@ -173,11 +177,12 @@ export default class ApplicationViews extends Component {
   }
 
   copyCostumeItems = (response) => {
-    console.log(response.id)
+    // console.log(response.id)
     const costumeItems = this.state.costumeItems;
-    console.log(costumeItems)
-    costumeItems.forEach( item => {
-        console.log("itemId", item.costumeId, "costumeId", response.costumeId, "conCostumeId", response.id)
+    // console.log(costumeItems)
+
+    return Promise.all(costumeItems.map( item => {
+        // console.log("itemId", item.costumeId, "costumeId", response.costumeId, "conCostumeId", response.id)
         if (item.costumeId === response.costumeId) {
             const conCostumeItem = {
                 conCostumeId: response.id,
@@ -185,9 +190,10 @@ export default class ApplicationViews extends Component {
                 checked: false
             }
             // console.log(conCostumeItem)
-            AppManager.postConCostumeItem(conCostumeItem)
+            return AppManager.postConCostumeItem(conCostumeItem)
         }
     })
+    )
   }
 
   /* DELETE */

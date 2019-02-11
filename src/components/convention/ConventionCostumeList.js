@@ -23,7 +23,7 @@ export default class ConventionCostumeList extends Component {
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = {}
-        console.log(evt.target.id, evt.target.value);
+        // console.log(evt.target.id, evt.target.value);
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }

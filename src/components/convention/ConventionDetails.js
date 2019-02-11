@@ -36,9 +36,13 @@ export default class ConventionDetails extends Component {
       }
 
     render() {
+
+        //  .filter(conCostume => this.props.convention.userConventionId === conCostume.userConventionId)
+
         const convention = this.props.myConventions.find(convention => convention.id === parseInt(this.props.match.params.conventionId)) || {}
-        // const conventionName = myConvention.convention ? myConvention.name : ""
-        // const conventionDate = myConvention.convention ? myConvention.displayDate : ""
+        const currentCostumes = this.props.conCostumes.filter(conCostume => conCostume.userConventionId === convention.userConventionId) || {}
+
+        console.log("currentCostumes", currentCostumes)
 
         return (
                 <section className="mr-2 mb-3 convention_details">
@@ -76,7 +80,7 @@ export default class ConventionDetails extends Component {
                         <TabPane tabId="1">
                             <Row>
                                 <Col sm="12">
-                                    <ConventionCostumeList key={convention.id} convention={convention} {...this.props} />
+                                    <ConventionCostumeList key={convention.id} convention={convention} currentCostumes={currentCostumes} {...this.props} />
                                 </Col>
                             </Row>
                         </TabPane>
@@ -86,7 +90,7 @@ export default class ConventionDetails extends Component {
                                     <ConventionPackingList convention={convention} {...this.props} />
                                 </Col>
                                 <Col sm="6">
-                                    <CostumeListSection convention={convention} conCostumes={this.props.conCostumes} {...this.props} />
+                                    <CostumeListSection convention={convention} currentCostumes={currentCostumes} {...this.props} />
                                 </Col>
                             </Row>
                         </TabPane>

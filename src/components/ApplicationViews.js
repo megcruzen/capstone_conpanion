@@ -129,23 +129,18 @@ export default class ApplicationViews extends Component {
     .then(costumes => this.setState({ costumes: costumes })
   )
 
-//   addCostumeItem = (item) => AppManager.postCostumeItem(item)
-//   .then(() => AppManager.getCostumeItems())
-//   .then(costumeItems => this.setState({
-//     costumeItems: costumeItems
-//   })
-// )
-
-  addCostumeItem = (item) => AppManager.postCostumeItem(item)
+  addCostumeItem = (item) => {
+    let newItems = {}
+    return AppManager.postCostumeItem(item)
     // AppManager: POST
     // AppManager: .then(response => response.json())
     .then(response => this.copyNewCostumeItem(response))
-
-    // .then(() => AppManager.getCostumeItems())
-    // .then(costumeItems => this.setState({
-    //   costumeItems: costumeItems
-    // })
-  // )
+    .then(() => AppManager.getCostumeItems())
+    .then(response => newItems.costumeItems = response)
+    .then(() => AppManager.getConCostumeItems())
+    .then(response => newItems.conCostumeItems = response)
+    .then(() => { this.setState(newItems) })
+  }
 
   copyNewCostumeItem = (response) => {
     console.log("item.costumeId", response.costumeId)
@@ -193,9 +188,6 @@ export default class ApplicationViews extends Component {
             AppManager.postConCostumeItem(conCostumeItem)
         }
     })
-    // .then(() => AppManager.getConCostumeItems())
-    // .then(() => this.getConCostumeItems())
-    // .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems }))
   }
 
   /* DELETE */

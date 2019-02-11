@@ -43,10 +43,12 @@ export default class CostumeListSection extends Component {
         return (
                 <section className="costume_packing_lists mr-2 mb-3">
 
-                    {this.props.conCostumes.filter(conCostume =>
-                            conCostume.userConventionId === this.props.convention.userConventionId)
-                        .map(conCostume =>
-                        <CostumePackingList key={conCostume.id} conCostume={conCostume} userConventionId={this.props.convention.userConventionId} {...this.props} />
+                    {/* {this.props.conCostumes.filter(conCostume =>
+                            conCostume.userConventionId === this.props.convention.userConventionId) */}
+
+                        {this.props.currentCostumes.map(conCostume =>
+                        <CostumePackingList key={conCostume.id} conCostume={conCostume} {...this.props} />
+                        // userConventionId={this.props.convention.userConventionId}
                     )}
 
                 </section>

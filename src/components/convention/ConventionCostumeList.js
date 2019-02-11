@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import ConCostumeCard from "./ConCostumeCard"
-import AppManager from '../../modules/AppManager';
+// import AppManager from '../../modules/AppManager';
 
 export default class ConventionCostumeList extends Component {
 
@@ -28,23 +28,22 @@ export default class ConventionCostumeList extends Component {
         this.setState(stateToChange)
     }
 
-    connectionCheck = () => {
+    displayOptions = () => {
 
         // if an id in array1 matches an id in array2
         // then remove it
         // and then map through remaining items
 
         let costumeArray = this.props.costumes.map(costume => costume.id);
-        console.log("props concostumes: ", this.props)
-        let conCostumeArray = this.props.conCostumes.map(conCostume => conCostume.costumeId);
+        let conCostumeArray = this.props.currentCostumes.map(conCostume => conCostume.costumeId);
 
-        console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
+        // console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
 
         // costumeArray = costumeArray.filter(val => !conCostumeArray.includes(val));
         // console.log("filteredArray", costumeArray)
 
         costumeArray = this.props.costumes.filter(val => !conCostumeArray.includes(val.id));
-        console.log("filteredArray", costumeArray)
+        // console.log("filteredArray", costumeArray)
 
         return costumeArray.map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
 
@@ -84,11 +83,7 @@ export default class ConventionCostumeList extends Component {
                             <Input type="select" required name="costumeId" id="costumeId"
                             onChange={this.handleFieldChange}>
                             <option value="" id="" selected>Select a costume</option>
-                                {/* {
-                                    this.props.costumes
-                                    .map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
-                                } */}
-                                {this.connectionCheck()}
+                                {this.displayOptions()}
                             </Input>
                         </FormGroup>
                         <div><Button color="primary">Add</Button></div>

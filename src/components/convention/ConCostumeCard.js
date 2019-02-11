@@ -19,8 +19,8 @@ export default class ConCostumeCard extends Component {
 
     removeCostumeAndDeleteItems = (conCostumeId) => {
         this.props.deleteConCostume(this.props.conCostume.id)
-        .then(() => this.deleteItems(conCostumeId))
-        .then(() => this.props.history.push("/costumes"))
+        // .then(() => this.deleteItems(conCostumeId))
+        // .then(() => this.props.history.push("/costumes"))
     }
 
     deleteItems = (conCostumeId) => {

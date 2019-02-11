@@ -7,17 +7,18 @@ export default class ConventionCostumeList extends Component {
 
     // Set initial state
     state = {
+        costumes: [],
         conCostumes: [],
         filteredCostumes: [],
         costumeId: ""
       }
 
-    componentDidMount() {
-        AppManager.getCostumesForCon(this.props.convention.userConventionId)
-        .then(conCostumes => {
-            this.setState({ conCostumes: conCostumes })
-        })
-    }
+    // componentDidMount() {
+    //     AppManager.getCostumesForCon(this.props.convention.userConventionId)
+    //     .then(conCostumes => {
+    //         this.setState({ conCostumes: conCostumes })
+    //     })
+    // }
 
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
@@ -34,22 +35,18 @@ export default class ConventionCostumeList extends Component {
         // and then map through remaining items
 
         let costumeArray = this.props.costumes.map(costume => costume.id);
-        let conCostumeArray = this.state.conCostumes.map(conCostume => conCostume.costumeId);
+        console.log("props concostumes: ", this.props)
+        let conCostumeArray = this.props.conCostumes.map(conCostume => conCostume.costumeId);
 
-        // console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
+        console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
 
-        costumeArray = costumeArray.filter(val => !conCostumeArray.includes(val));
-        console.log("costumeArray", costumeArray)
+        // costumeArray = costumeArray.filter(val => !conCostumeArray.includes(val));
+        // console.log("filteredArray", costumeArray)
 
-        // costumeArray.map(costume => console.log("costumeArray", costume))
+        costumeArray = this.props.costumes.filter(val => !conCostumeArray.includes(val.id));
+        console.log("filteredArray", costumeArray)
 
-
-
-        // .then(filteredCostumes =>
-        //     filteredCostumes.map(costume =>
-        //         costume => <div key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</div>
-        //     )
-        // )
+        return costumeArray.map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
 
     }
 
@@ -82,15 +79,15 @@ export default class ConventionCostumeList extends Component {
                 </div>
                 <div className="costume_selector d-flex flex-wrap align-items-end">
                     <Form onSubmit={this.constructConnection} className="d-flex w-75 mr-2 align-items-end">
-                        <FormGroup className="w-100 mr-2 mb-0" onSubmit={this.constructConnection}>
+                        <FormGroup className="w-100 mr-2 mb-0">
                             <Label for="costumeId" hidden>Add a costume:</Label>
                             <Input type="select" required name="costumeId" id="costumeId"
                             onChange={this.handleFieldChange}>
                             <option value="" id="" selected>Select a costume</option>
-                                {
+                                {/* {
                                     this.props.costumes
                                     .map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
-                                }
+                                } */}
                                 {this.connectionCheck()}
                             </Input>
                         </FormGroup>
@@ -99,9 +96,6 @@ export default class ConventionCostumeList extends Component {
                     <div>
                         <Button color="primary" onClick={() => this.props.history.push("/costumes/new")}>Create New Costume</Button>
                     </div>
-                </div>
-                <div>
-                    <h4 onClick={() => this.connectionCheck}>Connection Check</h4>
                 </div>
                 <div className="d-flex justify-content-between flex-wrap mt-4">
                 {

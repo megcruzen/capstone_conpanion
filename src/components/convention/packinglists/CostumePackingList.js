@@ -4,7 +4,7 @@ import "../../CosBuddy.css";
 import ConCostumeItem from "./CostumeItem"
 import CostumeItemCard from "../../costume/CostumeItemCard"
 
-export default class CosPackingList extends Component {
+export default class CostumePackingList extends Component {
 
     // Set initial state
     state = {

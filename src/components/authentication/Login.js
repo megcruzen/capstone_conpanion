@@ -33,8 +33,8 @@ export default class Login extends Component {
                             loggedIn = true;
                         }
                         if (loggedIn === true) {
-                            sessionStorage.setItem("User", user.id)
-                            let sessionUser = sessionStorage.getItem("User")
+                            sessionStorage.setItem("UserId", user.id)
+                            let sessionUser = sessionStorage.getItem("UserId")
                             console.log("sessionUser", sessionUser)
                             this.props.history.push("/conventions")
                         }
@@ -67,7 +67,6 @@ export default class Login extends Component {
                     <div className="text-center">
                         New to CosBuddy? <a href="#" onClick={() => this.props.history.push("/register")} className="link">Sign up now!</a>
                     </div>
-
             </section>
         )
     }

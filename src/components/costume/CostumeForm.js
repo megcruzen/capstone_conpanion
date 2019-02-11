@@ -26,6 +26,7 @@ export default class CostumeForm extends Component {
         evt.preventDefault()
         let d = new Date();
         let timestamp = d.getTime();
+        let sessionUser = sessionStorage.getItem("User");
         const costume = {
             name: this.state.characterName,
             series: this.state.series,
@@ -33,7 +34,7 @@ export default class CostumeForm extends Component {
             notes: "",
             timestamp: timestamp,
             image: this.state.image,
-            userId: 1
+            userId: Number(sessionUser)
         }
 
         // Create the costume and then redirect user to their costume list

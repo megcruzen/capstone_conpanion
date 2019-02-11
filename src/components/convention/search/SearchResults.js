@@ -49,8 +49,9 @@ export default class SearchResults extends Component {
     }
 
     addConToList = (result) => {
+        let sessionUser = sessionStorage.getItem("User");
         const newUserCon = {
-            userId: 1,
+            userId: Number(sessionUser),
             conventionId: result.id
         }
         this.props.addUserConvention(newUserCon)

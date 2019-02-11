@@ -2,21 +2,6 @@ import React, { Component } from 'react';
 
 export default class ConventionItem extends Component {
 
-
-    // // Update state whenever an item is clicked
-    // checkOffItem = (itemId) => {
-    //     if (this.state.checked === false) {
-    //         this.setState({
-    //           checked: true
-    //         });
-    //       }
-    //     else {
-    //         this.setState({
-    //             checked: false
-    //         });
-    //     }
-    // }
-
     updateItem = (itemId) => {
 
         const existingItem = {

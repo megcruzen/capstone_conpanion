@@ -1,5 +1,4 @@
-// import { Route, Redirect } from "react-router-dom";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import AppManager from "../modules/AppManager"
 import "./CosBuddy.css";
@@ -34,7 +33,7 @@ export default class ApplicationViews extends Component {
   }
 
   // Check if credentials are in local storage
-  // isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
+  isAuthenticated = () => sessionStorage.getItem("User") !== null
 
   componentDidMount() {
     AppManager.getAllUsers()
@@ -90,13 +89,7 @@ export default class ApplicationViews extends Component {
   .then(newUser => { this.setSessionAfterRegister(newUser) })
 
   setSessionAfterRegister = (newUser) => {
-    sessionStorage.setItem(
-        "credentials",
-        JSON.stringify({
-            name: newUser.username,
-            email: newUser.email,
-            id: newUser.id
-        }))
+    sessionStorage.setItem("UserId", JSON.stringify(newUser.id))
     }
 
   addConvention = (convention) => {
@@ -282,29 +275,39 @@ export default class ApplicationViews extends Component {
                   addUser={this.addUser} />
         }} />
 
-        <Route exact path="/" render={props => {
-            return null
-          }} />
-
         <Route exact path="/conventions" render={props => {
-            return <ConventionList {...props}
+            if (this.isAuthenticated()) {
+              return <ConventionList {...props}
                     myConventions={this.state.myConventions}
                     removeConvention={this.removeConvention} />
+            } else {
+                  return <Redirect to="/login" />
+            }
           }} />
 
+
         <Route exact path="/conventions/search" render={props => {
-            return <ConventionSearch {...props}
+            if (this.isAuthenticated()) {
+              return <ConventionSearch {...props}
                     allConventions={this.state.allConventions}
                     addUserConvention={this.addUserConvention} />
+            } else {
+              return <Redirect to="/login" />
+            }
           }} />
 
         <Route exact path="/conventions/new" render={(props) => {
+          if (this.isAuthenticated()) {
             return <ConventionForm {...props}
                     addConvention={this.addConvention}
                     genres={this.state.genres} />
+            } else {
+              return <Redirect to="/login" />
+            }
         }} />
 
         <Route path="/conventions/:conventionId(\d+)" render={(props) => {
+          if (this.isAuthenticated()) {
             return <ConventionDetails {...props}
                     allConventions={this.state.allConventions}
                     myConventions={this.state.myConventions}
@@ -324,19 +327,31 @@ export default class ApplicationViews extends Component {
                     updateConCostumeItem={this.updateConCostumeItem}
                     addCostumeItem={this.addCostumeItem}
                     deleteCostumeItem={this.deleteCostumeItem} />
+          } else {
+            return <Redirect to="/login" />
+          }
         }} />
 
         <Route exact path="/costumes" render={props => {
+          if (this.isAuthenticated()) {
             return <CostumeList {...props}
                     costumes={this.state.costumes} />
-          }} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
 
         <Route exact path="/costumes/new" render={(props) => {
+          if (this.isAuthenticated()) {
             return <CostumeForm {...props}
                     addCostume={this.addCostume} />
+          } else {
+            return <Redirect to="/login" />
+          }
         }} />
 
         <Route path="/costumes/:costumeId(\d+)" render={(props) => {
+          if (this.isAuthenticated()) {
             return <CostumeDetails {...props}
                     costumes={this.state.costumes}
                     costumeItems={this.state.costumeItems}
@@ -349,16 +364,27 @@ export default class ApplicationViews extends Component {
                     conCostumeItems={this.state.conCostumeItems}
                     deleteConCostumeItem={this.deleteConCostumeItem}
                     deleteCostumeAndDependents={this.deleteCostumeAndDependents} />
+          } else {
+            return <Redirect to="/login" />
+          }
         }} />
 
         <Route path="/costumes/edit" render={(props) => {
+          if (this.isAuthenticated()) {
             return <CostumeEditForm {...props}
                     costumes={this.state.costumes}
                     editCostume={this.editCostume} />
+          } else {
+            return <Redirect to="/login" />
+          }
         }} />
 
         <Route exact path="/contact/" render={(props) => {
+          if (this.isAuthenticated()) {
             return <Contact />
+          } else {
+            return <Redirect to="/login" />
+          }
         }} />
 
       </div>

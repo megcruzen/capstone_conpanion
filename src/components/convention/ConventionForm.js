@@ -27,6 +27,7 @@ export default class ConventionForm extends Component {
 
     constructNewConvention = evt => {
         evt.preventDefault()
+        let sessionUser = sessionStorage.getItem("User");
         const convention = {
             name: this.state.conventionName,
             startDate: this.state.startDate,
@@ -37,7 +38,7 @@ export default class ConventionForm extends Component {
             website: this.state.website,
             thumbnail: this.state.thumbnail,
             genreId: this.state.select,
-            userId: 1
+            userId: Number(sessionUser)
         }
 
         // Create the convention and then redirect user to their convention list

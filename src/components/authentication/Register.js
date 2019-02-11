@@ -62,7 +62,6 @@ export default class Register extends Component {
                 this.toggleEmail();
             }
             else {
-                // alert(`Welcome, ${this.state.username}!`)
                 this.toggleWelcome();
 
                 let d = new Date();
@@ -76,12 +75,6 @@ export default class Register extends Component {
                     usertype: "cosplayer"
                 }
                 this.props.addUser(newUser)
-                    // .then(() => {
-                    //     AppManager.getAllUsers()
-                    //         .then(() => {
-                    //         this.props.history.push("/conventions")
-                    //         })
-                    // })
             }
         })
     }

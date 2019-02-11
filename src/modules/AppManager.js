@@ -28,7 +28,8 @@ export default {
     },
 
     getMyConventions() {
-        return fetch(`${remoteURL}/userConventions?userId=1&_expand=convention`)
+        let sessionUser = sessionStorage.getItem("User");
+        return fetch(`${remoteURL}/userConventions?userId=${sessionUser}&_expand=convention`)
         .then(response => response.json())
         .then(connections => connections.map(
             connection => {
@@ -50,7 +51,8 @@ export default {
     },
 
     getCostumes() {
-        return fetch(`${remoteURL}/costumes?userId=1`)
+        let sessionUser = sessionStorage.getItem("User");
+        return fetch(`${remoteURL}/costumes?userId=${sessionUser}`)
         .then(response => response.json())
     },
 
@@ -167,7 +169,6 @@ export default {
           body: JSON.stringify(newCostume)
         })
         .then(response => response.json())
-        // .then(result => console.log(result.id))
     },
 
     postConCostumeItem(newItem) {
@@ -209,8 +210,6 @@ export default {
         return fetch(`${remoteURL}/conCostumes/${id}`, {
             method: "DELETE"
         })
-        // .then(() => this.getConCostumes())
-        // .then(() => this.getConCostumeItems())
     },
 
     deleteCostumeItem(id) {

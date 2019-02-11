@@ -47,7 +47,7 @@ import {
                       <NavLink href="/friends">Friends</NavLink>
                     </NavItem> */}
                     <NavItem>
-                        <NavLink onClick={this.clearSession} tag={Link} to="/">Logout</NavLink>
+                        <NavLink onClick={this.clearSession} tag={Link} to="/login">Logout</NavLink>
                     </NavItem>
                   </Nav>
                 </Collapse>

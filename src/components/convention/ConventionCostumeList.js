@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col } from 'reactstrap';
 import ConCostumeCard from "./ConCostumeCard"
-// import AppManager from '../../modules/AppManager';
 
 export default class ConventionCostumeList extends Component {
 
@@ -13,12 +12,20 @@ export default class ConventionCostumeList extends Component {
         costumeId: ""
       }
 
-    // componentDidMount() {
-    //     AppManager.getCostumesForCon(this.props.convention.userConventionId)
-    //     .then(conCostumes => {
-    //         this.setState({ conCostumes: conCostumes })
-    //     })
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+          modal: false
+        };
+
+        this.toggle = this.toggle.bind(this);
+    }
+
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
 
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
@@ -69,6 +76,25 @@ export default class ConventionCostumeList extends Component {
         }
     }
 
+    constructNewCostume = evt => {
+        evt.preventDefault()
+        let d = new Date();
+        let timestamp = d.getTime();
+        let sessionUser = sessionStorage.getItem("User");
+        const costume = {
+            name: this.state.characterName,
+            series: this.state.series,
+            outfit: this.state.outfit,
+            notes: "",
+            timestamp: timestamp,
+            image: this.state.image,
+            userId: Number(sessionUser)
+        }
+
+        // Create the costume
+        this.props.addCostume(costume)
+    }
+
     render() {
 
         return (
@@ -89,20 +115,58 @@ export default class ConventionCostumeList extends Component {
                         <div><Button color="primary">Add</Button></div>
                     </Form>
                     <div>
-                        <Button color="primary" onClick={() => this.props.history.push("/costumes/new")}>Create New Costume</Button>
+                        {/* <Button color="primary" onClick={() => this.props.history.push("/costumes/new")}>Create New Costume</Button> */}
+                        <Button color="primary" onClick={this.toggle}>Create New Costume</Button>
                     </div>
                 </div>
-                <div className="d-flex justify-content-between flex-wrap mt-4">
+                {/* <div className="d-flex justify-content-between flex-wrap mt-4"> */}
+                <Row className="mt-4">
                 {
                     // get all conCostume objects
                     this.props.conCostumes
                     // only show those objects where this.props.myConventionId (current convention) = conCostume.userConId
                     .filter(conCostume => this.props.convention.userConventionId === conCostume.userConventionId)
                     .map(conCostume =>
-                        <ConCostumeCard key={conCostume.id} conCostume={conCostume} {...this.props} />
+                        <Col xs="6" sm="2">
+                            <ConCostumeCard key={conCostume.id} conCostume={conCostume} {...this.props} />
+                        </Col>
                     )
                 }
-                </div>
+                </Row>
+                {/* </div> */}
+                <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>Create New Costume</ModalHeader>
+                    <ModalBody>
+                        <section className="costume_form">
+                            <h1>Add New Costume</h1>
+                            <Form onSubmit={this.constructNewCostume} className="form_width mt-4">
+                                <FormGroup>
+                                    <Label for="characterName">Character Name</Label>
+                                    <Input type="text" required name="characterName" id="characterName"
+                                    onChange={this.handleFieldChange} />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="series">Outfit</Label>
+                                    <Input type="text" name="outfit" id="outfit"
+                                    onChange={this.handleFieldChange} />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="series">Series</Label>
+                                    <Input type="text" required name="series" id="series"
+                                    onChange={this.handleFieldChange} />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for="image">Image</Label>
+                                    <Input type="url" required name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange} />
+                                </FormGroup>
+                                <Button type="submit" onClick={this.toggle} color="primary" className="mr-3">Save Costume</Button>
+                            </Form>
+                        </section>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="primary" onClick={this.toggle}>Done</Button>{' '}
+                    </ModalFooter>
+                </Modal>
             </section>
         )
     }

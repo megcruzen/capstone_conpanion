@@ -8,7 +8,9 @@ export default class Timeslot extends Component {
     // Set initial state
     state = {
         "title": "",
-        "text": ""
+        "text": "",
+        "titleCheck": false,
+        "textCheck": false
     }
 
     // Update state whenever an input field is edited
@@ -22,22 +24,22 @@ export default class Timeslot extends Component {
     clickToEditTitle = () => {
         AppManager.getTimeslotById(this.props.timeslot.id)
         .then(timeslot => {
-            this.setState({ title: timeslot.title })
+            this.setState({ title: timeslot.title, titleCheck: true })
         })
     }
 
     clickToEditText = () => {
         AppManager.getTimeslotById(this.props.timeslot.id)
         .then(timeslot => {
-            this.setState({ text: timeslot.text })
+            this.setState({ text: timeslot.text, textCheck: true })
         })
     }
 
     returnFormOrTitle = (timeslot) => {
-        if (this.state.title !== "") {
+        if (this.state.titleCheck) {
             return (
                 <div className="timeslot_title">
-                    <form className="title_edit" onSubmit={this.updateTimeslotTitle} onBlur={this.updateTimeslotTitle}>
+                    <form className="title_edit" onSubmit={this.updateTimeslotTitle}>
                         <input type="text" required
                         className="form-control"
                         onChange={this.handleFieldChange}
@@ -58,10 +60,10 @@ export default class Timeslot extends Component {
     }
 
     returnFormOrText = (timeslot) => {
-        if (this.state.text !== "") {
+        if (this.state.textCheck) {
             return (
                 <div className="timeslot_text">
-                    <form className="text_edit" onSubmit={this.updateTimeslotText} onBlur={this.updateTimeslotText}>
+                    <form className="text_edit" onSubmit={this.updateTimeslotText}>
                         <input type="text" required
                         className="form-control"
                         onChange={this.handleFieldChange}
@@ -83,11 +85,11 @@ export default class Timeslot extends Component {
         const timeslot = {
             title: this.state.title,
             text: this.props.timeslot.text,
-            dayId: this.props.timeslot.dayId
+            dayId: this.props.timeslot.dayId,
         }
 
         this.props.updateTimeslot(this.props.timeslot.id, timeslot)
-        .then(() => { this.setState({ title: "" }) })
+        .then(() => { this.setState({ titleCheck: false }) })
     }
 
     updateTimeslotText = evt => {
@@ -100,7 +102,7 @@ export default class Timeslot extends Component {
         }
 
         this.props.updateTimeslot(this.props.timeslot.id, timeslot)
-        .then(() => { this.setState({ text: "" }) })
+        .then(() => { this.setState({ textCheck: false }) })
     }
 
     render() {

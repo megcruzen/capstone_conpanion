@@ -11,7 +11,7 @@ export default class CostumeCard extends Component {
                     <CardBody>
                         <CardSubtitle className="text-uppercase subtitle">{this.props.costume.series}</CardSubtitle>
                         <CardTitle><h3>{this.props.costume.name}</h3></CardTitle>
-                        <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.costume.outfit}</CardText>
+                        <CardText className="outfit mt-1">{this.props.costume.outfit}</CardText>
                     </CardBody>
                 </Link>
                 </Card>

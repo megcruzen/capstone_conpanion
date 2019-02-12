@@ -42,7 +42,8 @@ export default class ConCostumeCard extends Component {
                         <div>
                             <CardSubtitle className="text-uppercase subtitle mt-1">{this.props.conCostume.costume.series}</CardSubtitle>
                             <CardTitle><h3>{this.props.conCostume.costume.name}</h3></CardTitle>
-                            <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.conCostume.costume.outfit}</CardText>
+                            <CardText className="outfit mt-1">{this.props.conCostume.costume.outfit}</CardText>
+                            {/* <i class="fas fa-user-circle"></i> */}
                             {/* <br />
                             costumeId: {this.props.conCostume.costume.id}<br />
                             conCostumeId: {this.props.conCostume.id} */}

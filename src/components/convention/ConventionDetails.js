@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import { Button, Media, Row, Col, TabContent, TabPane, Nav, NavItem, NavLink, Modal, ModalBody, ModalFooter} from 'reactstrap';
+import { Button, Media, Row, Col, TabContent, TabPane, Nav, NavItem, NavLink, Table, Modal, ModalBody, ModalFooter} from 'reactstrap';
 import classnames from 'classnames';
 import "../CosBuddy.css";
 import thumb from "./64x64.jpg"
 import ConventionCostumeList from "./ConventionCostumeList";
 import ConventionPackingList from './packinglists/ConventionPackingList';
 import CostumeListSection from './packinglists/CostumeListSection';
+import Lineup from './Lineup';
 
 export default class ConventionDetails extends Component {
 
@@ -69,6 +70,11 @@ export default class ConventionDetails extends Component {
                         </NavItem>
                         <NavItem>
                             <NavLink
+                            className={classnames({ active: this.state.activeTab === '3' })}
+                            onClick={() => { this.toggle('3'); }}>Lineup</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink
                             className={classnames({ active: this.state.activeTab === '2' })}
                             onClick={() => { this.toggle('2'); }}>Packing Lists</NavLink>
                         </NavItem>
@@ -80,6 +86,9 @@ export default class ConventionDetails extends Component {
                                     <ConventionCostumeList key={convention.id} convention={convention} currentCostumes={currentCostumes} {...this.props} />
                                 </Col>
                             </Row>
+                        </TabPane>
+                        <TabPane tabId="3">
+                            <Lineup convention={convention} lineupDays={this.props.lineupDays} timeslots={this.props.timeslots} {...this.props} />
                         </TabPane>
                         <TabPane tabId="2">
                             <Row>

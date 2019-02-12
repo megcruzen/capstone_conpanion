@@ -29,7 +29,7 @@ export default {
 
     getMyConventions() {
         let sessionUser = sessionStorage.getItem("User");
-        return fetch(`${remoteURL}/userConventions?userId=${sessionUser}&_expand=convention`)
+        return fetch(`${remoteURL}/userConventions?userId=${Number(sessionUser)}&_expand=convention`)
         .then(response => response.json())
         .then(connections => connections.map(
             connection => {
@@ -52,7 +52,7 @@ export default {
 
     getCostumes() {
         let sessionUser = sessionStorage.getItem("User");
-        return fetch(`${remoteURL}/costumes?userId=${sessionUser}`)
+        return fetch(`${remoteURL}/costumes?userId=${Number(sessionUser)}`)
         .then(response => response.json())
     },
 
@@ -78,6 +78,16 @@ export default {
 
     getGenres() {
         return fetch(`${remoteURL}/genres`)
+        .then(response => response.json())
+    },
+
+    getDays() {
+        return fetch(`${remoteURL}/days?_embed=timeslots`)
+        .then(response => response.json())
+    },
+
+    getTimeslots() {
+        return fetch(`${remoteURL}/timeslots`)
         .then(response => response.json())
     },
 

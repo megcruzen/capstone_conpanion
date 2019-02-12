@@ -30,6 +30,8 @@ export default class ApplicationViews extends Component {
     costumes: [],
     costumeItems: [],
     conCostumes: [],
+    lineupDays: [],
+    timeslots: []
   }
 
   // Check if credentials are in local storage
@@ -80,6 +82,16 @@ export default class ApplicationViews extends Component {
     .then(conCostumeItems => {
         this.setState({ conCostumeItems: conCostumeItems })
     })
+
+    AppManager.getDays()
+    .then(lineupDays => {
+        this.setState({ lineupDays: lineupDays })
+    })
+
+    AppManager.getTimeslots()
+    .then(timeslots => {
+        this.setState({ timeslots: timeslots })
+    })
   }
 
   /* ADD NEW */
@@ -89,7 +101,7 @@ export default class ApplicationViews extends Component {
   .then(newUser => { this.setSessionAfterRegister(newUser) })
 
   setSessionAfterRegister = (newUser) => {
-    sessionStorage.setItem("UserId", JSON.stringify(newUser.id))
+    sessionStorage.setItem("User", JSON.stringify(newUser.id))
     }
 
   addConvention = (convention) => {
@@ -326,7 +338,9 @@ export default class ApplicationViews extends Component {
                     copyCostumeItems={this.copyCostumeItems}
                     updateConCostumeItem={this.updateConCostumeItem}
                     addCostumeItem={this.addCostumeItem}
-                    deleteCostumeItem={this.deleteCostumeItem} />
+                    deleteCostumeItem={this.deleteCostumeItem}
+                    lineupDays={this.state.lineupDays}
+                    timeslots={this.state.timeslots} />
           } else {
             return <Redirect to="/login" />
           }

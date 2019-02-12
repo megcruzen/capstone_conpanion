@@ -2,7 +2,7 @@
     padding: 20px;
 }
 
-/* Links */
+/****** Links ******/
 
 a.link {
     color: #74c2a7;
@@ -31,7 +31,8 @@ a.return {
     color: #999;
 }
 
-/* Forms */
+
+/****** Forms ******/
 
 .form_width {
     max-width: 500px;
@@ -46,7 +47,7 @@ a.return {
     margin-bottom: 0px;
 }
 
-/* Convention List */
+/****** Convention List ******/
 
 .con_details {
     font-size: .9rem;
@@ -62,7 +63,7 @@ a.return {
     text-decoration: line-through;
 }
 
-/* Costume List */
+/****** Costume List ******/
 .costume_list {
     max-width: 1050px;
 }
@@ -109,7 +110,7 @@ a.return {
     font-size: .8em;
 }
 
-/* Convention Details */
+/****** Convention Details ******/
 .convention_costume_list .card {
     max-width: 200px;
     height: auto;
@@ -121,4 +122,34 @@ a.return {
 
 .convention_costume_list .card-title h3 {
     font-size: 1.4em;
+}
+
+/****** Lineup ******/
+
+.lineup_day {
+    border: 1px solid #999;
+    width: 200px;
+}
+
+.lineup_day h4 {
+    padding-top: 5px;
+    text-align: center;
+}
+
+.timeslot {
+    background-color: #eee;
+    border-radius: 10px;
+    margin: 5px 10px 20px 10px;
+}
+
+.time_title {
+    background-color: #999;
+    border-radius: 10px 10px 0px 0px;
+    padding: 5px 0px;
+    text-align: center;
+}
+
+.time_text {
+    display: inline-block;
+    margin: 10px;
 }

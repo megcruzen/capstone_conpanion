@@ -363,6 +363,7 @@ export default class ApplicationViews extends Component {
                     allConventions={this.state.allConventions}
                     myConventions={this.state.myConventions}
                     costumes={this.state.costumes}
+                    addCostume={this.addCostume}
                     addConventionItem={this.addConventionItem}
                     conventionItems={this.state.conventionItems}
                     deleteConItem={this.deleteConItem}

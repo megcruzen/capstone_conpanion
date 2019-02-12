@@ -83,7 +83,7 @@ export default class ConventionDetails extends Component {
                         <TabPane tabId="1">
                             <Row>
                                 <Col sm="12">
-                                    <ConventionCostumeList key={convention.id} convention={convention} currentCostumes={currentCostumes} {...this.props} />
+                                    <ConventionCostumeList key={convention.id} convention={convention} currentCostumes={currentCostumes} addCostume={this.props.addCostume} {...this.props} />
                                 </Col>
                             </Row>
                         </TabPane>
@@ -109,9 +109,9 @@ export default class ConventionDetails extends Component {
                             <Link to="/contact"><Button color="primary">Contact Us</Button>{' '}</Link>
                             <Button color="secondary" onClick={this.toggle2}>Cancel</Button>
                         </ModalFooter>
-                        </Modal>
-                    </div>
-                </section>
+                    </Modal>
+                </div>
+            </section>
         )
     }
 }

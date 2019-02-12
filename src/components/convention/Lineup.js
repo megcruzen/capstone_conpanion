@@ -49,7 +49,7 @@ export default class Lineup extends Component {
                 <Row>
                 {
                     days.map(day =>
-                        <Col key={day.id}>
+                        <Col sm="2" key={day.id}>
                             <LineupDay day={day} {...this.props}  />
                         </Col>
                     )

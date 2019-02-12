@@ -91,6 +91,11 @@ export default {
         .then(response => response.json())
     },
 
+    getTimeslotById(id) {
+        return fetch(`${remoteURL}/timeslots/${id}`)
+        .then(response => response.json())
+    },
+
 
     // POST
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import "../CosBuddy.css";
 import Timeslot from "./LineupTimeslot"
 
@@ -11,9 +11,11 @@ export default class Lineup extends Component {
         const days = this.props.lineupDays.filter(day => day.userConventionId === this.props.convention.userConventionId) || {}
 
         return(
-            <section className="lineup_container d-flex justify-content-between flex-wrap">
+            <section className="lineup_container">
+                <Row>
                 {
                     days.map(day =>
+                        <Col sm="3">
                         <div className={ `day${day.id} lineup_day` }>
                             <h4>{day.title}</h4>
                             <div className="timeslots_container">
@@ -27,8 +29,10 @@ export default class Lineup extends Component {
                                 }
                             </div>
                         </div>
+                        </Col>
                     )
                 }
+                </Row>
             </section>
 
         )

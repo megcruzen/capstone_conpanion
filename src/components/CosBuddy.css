@@ -126,9 +126,17 @@ a.return {
 
 /****** Lineup ******/
 
+/* .lineup_container .col-sm-3:nth-child(2) {
+    background-color: teal;
+}
+
+.lineup_container .col-sm-3:nth-child(3) {
+    background-color: red;
+} */
+
 .lineup_day {
-    border: 1px solid #999;
-    width: 200px;
+    background-color: #eee;
+    padding: 10px 15px;
 }
 
 .lineup_day h4 {
@@ -137,14 +145,15 @@ a.return {
 }
 
 .timeslot {
-    background-color: #eee;
+    background-color: #fff;
     border-radius: 10px;
-    margin: 5px 10px 20px 10px;
+    margin: 20px 0px;
 }
 
 .time_title {
     background-color: #999;
     border-radius: 10px 10px 0px 0px;
+    font-weight: bold;
     padding: 5px 0px;
     text-align: center;
 }

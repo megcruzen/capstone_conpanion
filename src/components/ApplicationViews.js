@@ -263,6 +263,11 @@ export default class ApplicationViews extends Component {
     .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems }))
   }
 
+  deleteDay = (id) => {
+    AppManager.deleteDay(id)
+    .then(lineupDays => this.setState({ lineupDays: lineupDays }))
+  }
+
   deleteTimeslot = (id) => {
     AppManager.deleteTimeslot(id)
     .then(timeslots => this.setState({ timeslots: timeslots }))
@@ -366,6 +371,7 @@ export default class ApplicationViews extends Component {
                     deleteCostumeItem={this.deleteCostumeItem}
                     lineupDays={this.state.lineupDays}
                     addNewDay={this.addNewDay}
+                    deleteDay={this.deleteDay}
                     timeslots={this.state.timeslots}
                     addTimeslot={this.addTimeslot}
                     updateTimeslot={this.updateTimeslot}

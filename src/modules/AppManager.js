@@ -263,6 +263,13 @@ export default {
         .then(() => this.getConCostumeItems())
     },
 
+    deleteDay(id) {
+        return fetch(`${remoteURL}/days/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getDays())
+    },
+
     deleteTimeslot(id) {
         return fetch(`${remoteURL}/timeslots/${id}`, {
             method: "DELETE"

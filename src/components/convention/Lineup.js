@@ -17,7 +17,7 @@ export default class Lineup extends Component {
 
     render() {
 
-        console.log("this.props.convention.userConventionId", this.props.convention.userConventionId)
+        // console.log("this.props.convention.userConventionId", this.props.convention.userConventionId)
         const days = this.props.lineupDays.filter(day => day.userConventionId === this.props.convention.userConventionId) || {}
 
         return(
@@ -28,22 +28,6 @@ export default class Lineup extends Component {
                         <Col sm="3" key={day.id}>
                             <LineupDay day={day} {...this.props}  />
                         </Col>
-
-                        // <Col sm="3">
-                        // <div className={ `day${day.id} lineup_day` }>
-                        //     <h4>{day.title}</h4>
-                        //     <div className="timeslots_container">
-                        //         {
-                        //             this.props.timeslots.filter(timeslot => timeslot.dayId === day.id)
-                        //             .map(timeslot =>
-                        //                 <div key={timeslot.id}>
-                        //                     <Timeslot timeslot={timeslot} dayId={day.id} {...this.props}  />
-                        //                 </div>
-                        //             )
-                        //         }
-                        //     </div>
-                        // </div>
-                        // </Col>
                     )
                 }
                 <Col><Button color="primary" onClick={this.addDay}>add day</Button></Col>

@@ -24,7 +24,11 @@ export default class LineupDay extends Component {
 
         return (
             <div className={ `day${this.props.day.id} lineup_day` }>
-                <h4>{this.props.day.title}</h4>
+                <div className="d-flex justify-content-between px-2">
+                    <div className="w15">&nbsp;</div>
+                    <div><h5>{this.props.day.title}</h5></div>
+                    <div className="w15"><i className="fas fa-times-circle text-dark" onClick={() => this.props.deleteDay(this.props.day.id)} style={{cursor:'pointer'}}></i></div>
+                </div>
                 <div className="timeslots_container">
                     {
                         this.props.timeslots.filter(timeslot => timeslot.dayId === this.props.day.id)

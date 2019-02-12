@@ -27,6 +27,20 @@ export default class ConventionCard extends Component {
         let str = this.props.convention.name;
         str = str.replace(/\s+/g, '-').toLowerCase();
 
+        let months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "12"]
+
+        let start = new Date(this.props.convention.startDate);
+        let startMonth = start.getMonth();
+        let startDate = start.getUTCDate();
+        // let startYear = start.getFullYear();
+
+        let end = new Date(this.props.convention.endDate);
+        let endMonth = end.getMonth();
+        let endDate = end.getUTCDate();
+        let endYear = end.getFullYear();
+
+        let dateDisplay = months[startMonth] + " " + startDate + " - " + months[endMonth] + " " + endDate + ", " + endYear;
+
         return (
             <tr>
                 <td>
@@ -40,7 +54,7 @@ export default class ConventionCard extends Component {
                             <div className="con_details">
                                 <Link to={`/conventions/${this.props.convention.id}/${this.props.convention.name}`}>
                                 <h4>{this.props.convention.name}</h4>
-                                {this.props.convention.startDate} - {this.props.convention.endDate}
+                                {dateDisplay}
                                 <br />
                                 {this.props.convention.city}, {this.props.convention.state}
                                 {/* userConventionId: {this.props.convention.userConventionId} */}

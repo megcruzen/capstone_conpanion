@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col } from 'reactstrap';
 import ConCostumeCard from "./ConCostumeCard"
-import CostumeForm from "../costume/CostumeForm"
-// import AppManager from '../../modules/AppManager';
 
 export default class ConventionCostumeList extends Component {
 
@@ -121,17 +119,21 @@ export default class ConventionCostumeList extends Component {
                         <Button color="primary" onClick={this.toggle}>Create New Costume</Button>
                     </div>
                 </div>
-                <div className="d-flex justify-content-between flex-wrap mt-4">
+                {/* <div className="d-flex justify-content-between flex-wrap mt-4"> */}
+                <Row className="mt-4">
                 {
                     // get all conCostume objects
                     this.props.conCostumes
                     // only show those objects where this.props.myConventionId (current convention) = conCostume.userConId
                     .filter(conCostume => this.props.convention.userConventionId === conCostume.userConventionId)
                     .map(conCostume =>
-                        <ConCostumeCard key={conCostume.id} conCostume={conCostume} {...this.props} />
+                        <Col xs="6" sm="2">
+                            <ConCostumeCard key={conCostume.id} conCostume={conCostume} {...this.props} />
+                        </Col>
                     )
                 }
-                </div>
+                </Row>
+                {/* </div> */}
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                     <ModalHeader toggle={this.toggle}>Create New Costume</ModalHeader>
                     <ModalBody>

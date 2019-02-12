@@ -12,6 +12,7 @@ export default class ConventionList extends Component {
     }
 
     render() {
+
         // console.log("this.props.myConventions", this.props.myConventions.map(convention => convention.userConventionId))
         return (
             <section className="convention_list_personal">

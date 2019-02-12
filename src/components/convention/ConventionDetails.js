@@ -41,7 +41,19 @@ export default class ConventionDetails extends Component {
         const convention = this.props.myConventions.find(convention => convention.id === parseInt(this.props.match.params.conventionId)) || {}
         const currentCostumes = this.props.conCostumes.filter(conCostume => conCostume.userConventionId === convention.userConventionId) || {}
 
-        // console.log("currentCostumes", currentCostumes)
+        let months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "12"]
+
+        let start = new Date(convention.startDate);
+        let startMonth = start.getMonth();
+        let startDate = start.getUTCDate();
+        // let startYear = start.getFullYear();
+
+        let end = new Date(convention.endDate);
+        let endMonth = end.getMonth();
+        let endDate = end.getUTCDate();
+        let endYear = end.getFullYear();
+
+        let dateDisplay = months[startMonth] + " " + startDate + " - " + months[endMonth] + " " + endDate + ", " + endYear;
 
         return (
                 <section className="mr-2 mb-3 convention_details">
@@ -53,7 +65,7 @@ export default class ConventionDetails extends Component {
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div>
                                 <h3 className="mb-0">{convention.name}</h3>
-                                <span className="text-uppercase subtitle">{convention.displayDate}</span>
+                                <span className="text-uppercase subtitle">{dateDisplay}</span>
                                 {/* userConventionId: {convention.userConventionId} */}
                             </div>
                             <div>

@@ -59,6 +59,21 @@ export default class SearchResults extends Component {
     }
 
     render() {
+
+        let months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "12"]
+
+        let start = new Date(this.props.result.startDate);
+        let startMonth = start.getMonth();
+        let startDate = start.getUTCDate();
+        // let startYear = start.getFullYear();
+
+        let end = new Date(this.props.result.endDate);
+        let endMonth = end.getMonth();
+        let endDate = end.getUTCDate();
+        let endYear = end.getFullYear();
+
+        let dateDisplay = months[startMonth] + " " + startDate + " - " + months[endMonth] + " " + endDate + ", " + endYear;
+
         return (
             <tr>
                 <td>
@@ -69,7 +84,7 @@ export default class SearchResults extends Component {
                         <Media body className="d-flex flex-wrap justify-content-between align-items-center">
                             <div className="con_details">
                                 <h4>{this.props.result.name}</h4>
-                                {this.props.result.startDate} - {this.props.result.endDate}
+                                {dateDisplay}
                                 <br />
                                 {this.props.result.city}, {this.props.result.state}
                             </div>

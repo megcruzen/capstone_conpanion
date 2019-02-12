@@ -32,8 +32,6 @@ export default class ConCostumeCard extends Component {
 
     render() {
 
-        // console.log("this.props.conCostume", this.props.conCostume)
-
         return (
             <div className="con_costume_card">
                 <Card key={this.props.conCostume.costume.id} className="mr-2 mb-3">

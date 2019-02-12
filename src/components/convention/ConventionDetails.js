@@ -60,7 +60,7 @@ export default class ConventionDetails extends Component {
                     <a href="#" onClick={() => this.props.history.push("/conventions/")} className="return">&laquo; Return to conventions</a>
                     <Media className="mt-4 pt-2">
                         <Media left href="#" className="mr-3">
-                            <Media object src={thumb} className="thumb" alt="" />
+                            <Media object src={convention.thumbnail} className="thumb" alt="" />
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div>

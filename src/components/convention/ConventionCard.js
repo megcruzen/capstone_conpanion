@@ -22,6 +22,15 @@ export default class ConventionCard extends Component {
         });
     }
 
+    getImageUrl = (convention) => {
+        if (this.props.convention.thumbnail === "") {
+            return "https://i.imgur.com/noKpjHE.jpg"
+        }
+        else {
+            return this.props.convention.thumbnail
+        }
+    }
+
     render() {
 
         let str = this.props.convention.name;
@@ -47,7 +56,7 @@ export default class ConventionCard extends Component {
                     <Media className="pt-2 px-2">
                         <Media left href="#" className="mr-3">
                             <Link to={`/conventions/${this.props.convention.id}/${str}`}>
-                                <Media object src={thumb} className="thumb" alt="" />
+                                <Media object src={this.getImageUrl(this.props.convention)} className="thumb" alt="" />
                             </Link>
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">

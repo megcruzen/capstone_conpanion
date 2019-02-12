@@ -86,6 +86,11 @@ export default {
         .then(response => response.json())
     },
 
+    getDayById(id) {
+        return fetch(`${remoteURL}/days/${id}`)
+        .then(response => response.json())
+    },
+
     getTimeslots() {
         return fetch(`${remoteURL}/timeslots`)
         .then(response => response.json())
@@ -310,6 +315,16 @@ export default {
         })
     },
 
+    editDay(dayId, editedDay) {
+        return fetch(`${remoteURL}/days/${dayId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedDay)
+        })
+    },
+
     editTimeslot(timeslotId, editedTimeslot) {
         return fetch(`${remoteURL}/timeslots/${timeslotId}`, {
             method: "PUT",
@@ -318,5 +333,5 @@ export default {
             },
             body: JSON.stringify(editedTimeslot)
         })
-    },
+    }
 }

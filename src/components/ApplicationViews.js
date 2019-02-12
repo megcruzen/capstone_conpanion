@@ -297,7 +297,14 @@ export default class ApplicationViews extends Component {
     AppManager.editTimeslot(timeslotId, editedTimeslot)
     .then(() => AppManager.getTimeslots())
     .then(timeslots => this.setState({ timeslots: timeslots })
-)
+  )
+
+  updateDay = (dayId, editedDay) =>
+    AppManager.editDay(dayId, editedDay)
+    .then(() => AppManager.getDays())
+    .then(lineupDays => this.setState({ lineupDays: lineupDays })
+  )
+
 
   /********/
 
@@ -354,15 +361,15 @@ export default class ApplicationViews extends Component {
                     allConventions={this.state.allConventions}
                     myConventions={this.state.myConventions}
                     costumes={this.state.costumes}
-                    conCostumes={this.state.conCostumes}
-                    deleteConCostume={this.deleteConCostume}
-                    deleteConCostumeItem={this.deleteConCostumeItem}
-                    addCostumeToCon={this.addCostumeToCon}
-                    getConCostumes={this.getConCostumes}
                     addConventionItem={this.addConventionItem}
                     conventionItems={this.state.conventionItems}
                     deleteConItem={this.deleteConItem}
                     updateItem={this.updateItem}
+                    conCostumes={this.state.conCostumes}
+                    getConCostumes={this.getConCostumes}
+                    addCostumeToCon={this.addCostumeToCon}
+                    deleteConCostume={this.deleteConCostume}
+                    deleteConCostumeItem={this.deleteConCostumeItem}
                     conCostumeItems={this.state.conCostumeItems}
                     costumeItems={this.state.costumeItems}
                     copyCostumeItems={this.copyCostumeItems}
@@ -371,6 +378,7 @@ export default class ApplicationViews extends Component {
                     deleteCostumeItem={this.deleteCostumeItem}
                     lineupDays={this.state.lineupDays}
                     addNewDay={this.addNewDay}
+                    updateDay={this.updateDay}
                     deleteDay={this.deleteDay}
                     timeslots={this.state.timeslots}
                     addTimeslot={this.addTimeslot}

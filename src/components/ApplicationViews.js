@@ -38,60 +38,42 @@ export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("User") !== null
 
   componentDidMount() {
+    this.getAllData();
+  }
+
+  getAllData = () => {
     AppManager.getAllUsers()
-    .then(allUsers => {
-      this.setState({ users: allUsers });
-    })
+    .then(users => { this.setState({ users: users }) })
 
     AppManager.getAllConventions()
-    .then(allConventions => {
-        this.setState({ allConventions: allConventions })
-    })
+    .then(allConventions => { this.setState({ allConventions: allConventions }) })
 
     AppManager.getMyConventions()
-    .then(myConventions => {
-        this.setState({ myConventions: myConventions })
-    })
+    .then(myConventions => { this.setState({ myConventions: myConventions }) })
 
     AppManager.getConventionItems()
-    .then(conventionItems => {
-        this.setState({ conventionItems: conventionItems })
-    })
+    .then(conventionItems => { this.setState({ conventionItems: conventionItems }) })
 
     AppManager.getGenres()
-    .then(genres => {
-        this.setState({ genres: genres })
-    })
+    .then(genres => { this.setState({ genres: genres }) })
 
     AppManager.getCostumes()
-    .then(costumes => {
-        this.setState({ costumes: costumes })
-    })
+    .then(costumes => { this.setState({ costumes: costumes }) })
 
     AppManager.getCostumeItems()
-    .then(costumeItems => {
-        this.setState({ costumeItems: costumeItems })
-    })
+    .then(costumeItems => { this.setState({ costumeItems: costumeItems }) })
 
     AppManager.getConCostumes()
-    .then(conCostumes => {
-        this.setState({ conCostumes: conCostumes })
-    })
+    .then(conCostumes => { this.setState({ conCostumes: conCostumes }) })
 
     AppManager.getConCostumeItems()
-    .then(conCostumeItems => {
-        this.setState({ conCostumeItems: conCostumeItems })
-    })
+    .then(conCostumeItems => { this.setState({ conCostumeItems: conCostumeItems }) })
 
     AppManager.getDays()
-    .then(lineupDays => {
-        this.setState({ lineupDays: lineupDays })
-    })
+    .then(lineupDays => { this.setState({ lineupDays: lineupDays }) })
 
     AppManager.getTimeslots()
-    .then(timeslots => {
-        this.setState({ timeslots: timeslots })
-    })
+    .then(timeslots => { this.setState({ timeslots: timeslots }) })
   }
 
   /* ADD NEW */
@@ -99,6 +81,7 @@ export default class ApplicationViews extends Component {
   addUser = (user) => AppManager.postUser(user)
   .then(response => response.json())
   .then(newUser => { this.setSessionAfterRegister(newUser) })
+  .then(() => this.getAllData())
 
   setSessionAfterRegister = (newUser) => {
     // let ConsAndCostumes = {}
@@ -318,7 +301,7 @@ export default class ApplicationViews extends Component {
         <Route path="/login" render={(props) => {
             return <Login {...props}
                     users={this.state.users}
-                    updateComponent={this.updateComponent} />
+                    getAllData={this.getAllData} />
         }} />
 
         <Route path="/register" render={(props) => {

@@ -208,6 +208,17 @@ export default {
         .then(response => response.json())
     },
 
+    postTimeslot(newTimeslot) {
+        return fetch(`${remoteURL}/timeslots`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newTimeslot)
+        })
+        .then(response => response.json())
+    },
+
 
     // DELETE
 
@@ -250,6 +261,13 @@ export default {
             method: "DELETE"
         })
         .then(() => this.getConCostumeItems())
+    },
+
+    deleteTimeslot(id) {
+        return fetch(`${remoteURL}/timeslots/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getTimeslots())
     },
 
 

@@ -202,9 +202,15 @@ export default class ApplicationViews extends Component {
   }
 
   addNewDay = (newDay) =>
-  AppManager.postNewDay(newDay)
+    AppManager.postNewDay(newDay)
     .then(() => AppManager.getDays())
     .then(lineupDays => this.setState({ lineupDays: lineupDays })
+  )
+
+  addTimeslot = (newTimeslot) =>
+    AppManager.postTimeslot(newTimeslot)
+    .then(() => AppManager.getTimeslots())
+    .then(timeslots => this.setState({ timeslots: timeslots })
   )
 
   /* DELETE */
@@ -255,6 +261,11 @@ export default class ApplicationViews extends Component {
   deleteConCostumeItem = (id) => {
     AppManager.deleteConCostumeItem(id)
     .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems }))
+  }
+
+  deleteTimeslot = (id) => {
+    AppManager.deleteTimeslot(id)
+    .then(timeslots => this.setState({ timeslots: timeslots }))
   }
 
   /* EDIT */
@@ -356,7 +367,9 @@ export default class ApplicationViews extends Component {
                     lineupDays={this.state.lineupDays}
                     addNewDay={this.addNewDay}
                     timeslots={this.state.timeslots}
-                    updateTimeslot={this.updateTimeslot} />
+                    addTimeslot={this.addTimeslot}
+                    updateTimeslot={this.updateTimeslot}
+                    deleteTimeslot={this.deleteTimeslot} />
           } else {
             return <Redirect to="/login" />
           }

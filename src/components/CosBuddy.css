@@ -153,6 +153,7 @@ a.return {
 .time_title {
     background-color: #999;
     border-radius: 10px 10px 0px 0px;
+    display: inline-block;
     font-weight: bold;
     padding: 5px 0px;
     text-align: center;
@@ -161,4 +162,8 @@ a.return {
 .time_text {
     display: inline-block;
     margin: 10px;
+}
+
+.w15 {
+    width: 15px;
 }

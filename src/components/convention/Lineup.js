@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Row, Col, Button } from 'reactstrap';
 import "../CosBuddy.css";
-import Timeslot from "./LineupTimeslot"
+import LineupDay from "./LineupDay"
 
 export default class Lineup extends Component {
 
@@ -25,21 +25,25 @@ export default class Lineup extends Component {
                 <Row>
                 {
                     days.map(day =>
-                        <Col sm="3">
-                        <div className={ `day${day.id} lineup_day` }>
-                            <h4>{day.title}</h4>
-                            <div className="timeslots_container">
-                                {
-                                    this.props.timeslots.filter(timeslot => timeslot.dayId === day.id)
-                                    .map(timeslot =>
-                                        <div key={timeslot.id}>
-                                            <Timeslot timeslot={timeslot} {...this.props}  />
-                                        </div>
-                                    )
-                                }
-                            </div>
-                        </div>
+                        <Col sm="3" key={day.id}>
+                            <LineupDay day={day} {...this.props}  />
                         </Col>
+
+                        // <Col sm="3">
+                        // <div className={ `day${day.id} lineup_day` }>
+                        //     <h4>{day.title}</h4>
+                        //     <div className="timeslots_container">
+                        //         {
+                        //             this.props.timeslots.filter(timeslot => timeslot.dayId === day.id)
+                        //             .map(timeslot =>
+                        //                 <div key={timeslot.id}>
+                        //                     <Timeslot timeslot={timeslot} dayId={day.id} {...this.props}  />
+                        //                 </div>
+                        //             )
+                        //         }
+                        //     </div>
+                        // </div>
+                        // </Col>
                     )
                 }
                 <Col><Button color="primary" onClick={this.addDay}>add day</Button></Col>

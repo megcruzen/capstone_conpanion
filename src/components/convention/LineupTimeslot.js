@@ -37,7 +37,7 @@ export default class Timeslot extends Component {
         if (this.state.title !== "") {
             return (
                 <div className="timeslot_title">
-                    <form className="title_edit" onSubmit={this.updateTimeslotTitle} onMouseLeave={this.updateTimeslotTitle}>
+                    <form className="title_edit" onSubmit={this.updateTimeslotTitle} onBlur={this.updateTimeslotTitle}>
                         <input type="text" required
                         className="form-control"
                         onChange={this.handleFieldChange}
@@ -48,7 +48,11 @@ export default class Timeslot extends Component {
             )
         } else {
             return (
-                <div className="time_title" onClick={this.clickToEditTitle}>{this.props.timeslot.title}</div>
+                <div className="time_title d-flex justify-content-between px-2">
+                    <div className="w15">&nbsp;</div>
+                    <div onClick={this.clickToEditTitle}>{this.props.timeslot.title}</div>
+                    <div className="w15"><i className="fas fa-times-circle text-dark" onClick={() => this.props.deleteTimeslot(this.props.timeslot.id)} style={{cursor:'pointer'}}></i></div>
+                </div>
             )
         }
     }
@@ -57,7 +61,7 @@ export default class Timeslot extends Component {
         if (this.state.text !== "") {
             return (
                 <div className="timeslot_text">
-                    <form className="text_edit" onSubmit={this.updateTimeslotText} onMouseLeave={this.updateTimeslotText}>
+                    <form className="text_edit" onSubmit={this.updateTimeslotText} onBlur={this.updateTimeslotText}>
                         <input type="text" required
                         className="form-control"
                         onChange={this.handleFieldChange}
@@ -100,8 +104,6 @@ export default class Timeslot extends Component {
     }
 
     render() {
-
-        // console.log("this.props.timeslot.title", this.props.timeslot.title)
 
         return (
 

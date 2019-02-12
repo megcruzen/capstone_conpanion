@@ -42,10 +42,20 @@ export default class SearchResults extends Component {
         return AppManager.searchConventions(searchQuery)
         .then(response => newSearchResults.conventions = response)
         .then(() => this.setState(newSearchResults))
+    }
 
-        // .then(conventions => {
-        //     this.setState({ conventions: newSearchResults })
-        // })
+    checkConnection = (result) => {
+        console.log("myConventions", this.props.myConventions)
+        console.log("filter", this.props.myConventions.filter(myConvention => myConvention))
+        console.log("this.props.result.id", this.props.result.id)
+
+        if (this.props.myConventions.find(myConvention =>
+            myConvention.id === this.props.result.id)) {
+            return <Button color="secondary" disabled>Already Added</Button>
+        }
+        else {
+            return <Button color="primary" onClick={(() => this.addConToList(this.props.result))}>Add to My Conventions</Button>
+        }
     }
 
     addConToList = (result) => {
@@ -88,9 +98,7 @@ export default class SearchResults extends Component {
                                 <br />
                                 {this.props.result.city}, {this.props.result.state}
                             </div>
-                            <div>
-                                <Button color="primary" onClick={(() => this.addConToList(this.props.result))}>Add to My Conventions</Button>
-                            </div>
+                            <div className="w-25 text-center">{this.checkConnection(this.props.result.id)}</div>
                         </Media>
                     </Media>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>

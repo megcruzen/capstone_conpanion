@@ -101,6 +101,7 @@ export default class ApplicationViews extends Component {
   .then(newUser => { this.setSessionAfterRegister(newUser) })
 
   setSessionAfterRegister = (newUser) => {
+    // let ConsAndCostumes = {}
     sessionStorage.setItem("User", JSON.stringify(newUser.id))
     }
 
@@ -266,7 +267,7 @@ export default class ApplicationViews extends Component {
   deleteDay = (id) => {
     return AppManager.deleteDay(id)
     .then(lineupDays => this.setState({ lineupDays: lineupDays }))
-    .then(() => AppManager.deleteTimeslot(id))
+    .then(() => AppManager.getTimeslots(id))
     .then(timeslots => this.setState({ timeslots: timeslots }))
   }
 
@@ -341,7 +342,8 @@ export default class ApplicationViews extends Component {
             if (this.isAuthenticated()) {
               return <ConventionSearch {...props}
                     allConventions={this.state.allConventions}
-                    addUserConvention={this.addUserConvention} />
+                    addUserConvention={this.addUserConvention}
+                    myConventions={this.state.myConventions} />
             } else {
               return <Redirect to="/login" />
             }

@@ -136,7 +136,8 @@ a.return {
 
 .lineup_day {
     background-color: #eee;
-    padding: 10px 15px;
+    margin-bottom: 20px;
+    padding: 2px 5px 10px 5px;
 }
 
 .lineup_day h4 {
@@ -144,16 +145,21 @@ a.return {
     text-align: center;
 }
 
+.timeslots_container {
+    margin: 0px 15px;
+}
+
 .timeslot {
     background-color: #fff;
     border-radius: 10px;
-    margin: 20px 0px;
+    margin: 20px 0px 10px 0px;
 }
 
 .time_title {
     background-color: #999;
     border-radius: 10px 10px 0px 0px;
     display: inline-block;
+    font-size: .8em;
     font-weight: bold;
     padding: 5px 0px;
     text-align: center;
@@ -161,9 +167,21 @@ a.return {
 
 .time_text {
     display: inline-block;
+    font-size: .7em;
     margin: 10px;
 }
 
 .w15 {
     width: 15px;
+}
+
+.add_timeslot {
+    color: #999;
+    font-size: 2em;
+    text-align: center;
+}
+
+.add_day {
+    color: #999;
+    font-size: 3em;
 }

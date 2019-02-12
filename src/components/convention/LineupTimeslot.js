@@ -107,10 +107,10 @@ export default class Timeslot extends Component {
 
         return (
 
-            <section className="timeslot">
+            <div className="timeslot">
                 {this.returnFormOrTitle(this.props.timeslot)}
                 {this.returnFormOrText(this.props.timeslot)}
-            </section>
+            </div>
 
         )
 

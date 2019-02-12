@@ -40,10 +40,9 @@ export default class LineupDay extends Component {
             )
         } else {
             return (
-                <div className="d-flex justify-content-between px-2">
-                    <div className="w15">&nbsp;</div>
-                    <div onClick={this.clickToEditTitle}><h5>{this.props.day.title}</h5></div>
-                    <div className="w15"><i className="fas fa-times-circle text-dark" onClick={() => this.props.deleteDay(this.props.day.id)} style={{cursor:'pointer'}}></i></div>
+                <div>
+                    <div className="text-right"><i className="fas fa-times-circle text-dark" onClick={() => this.props.deleteDay(this.props.day.id)} style={{cursor:'pointer'}}></i></div>
+                    <div className="text-center" onClick={this.clickToEditTitle}><h5>{this.props.day.title}</h5></div>
                 </div>
             )
         }
@@ -91,7 +90,7 @@ export default class LineupDay extends Component {
                         )
                     }
                 </div>
-                <div className="text-center"><Button color="primary" onClick={this.addTimeslot}>add timeslot</Button></div>
+                <div className="add_timeslot"><i class="fas fa-plus-circle" onClick={this.addTimeslot}></i></div>
             </div>
 
         )

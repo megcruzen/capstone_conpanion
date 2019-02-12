@@ -15,6 +15,14 @@ export default class Lineup extends Component {
         this.props.addNewDay(newDay)
     }
 
+    showAddDayButton = () => {
+        if (this.props.lineupDays.length < 5) {
+            return (
+                <i class="far fa-calendar-plus" onClick={this.addDay}></i>
+            )
+        }
+    }
+
     render() {
 
         // console.log("this.props.convention.userConventionId", this.props.convention.userConventionId)
@@ -30,7 +38,9 @@ export default class Lineup extends Component {
                         </Col>
                     )
                 }
-                <Col><Button color="primary" onClick={this.addDay}>add day</Button></Col>
+                    <Col className="add_day">
+                        {this.showAddDayButton()}
+                    </Col>
                 </Row>
             </section>
 

@@ -33,7 +33,7 @@ import {
           return (
             <div id="nav">
               <Navbar color="light" light expand="md">
-                <NavbarBrand tag={Link} to="/">CosBuddy</NavbarBrand>
+                <NavbarBrand tag={Link} to="/">ConPanion</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>

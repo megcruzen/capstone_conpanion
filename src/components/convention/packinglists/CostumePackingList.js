@@ -59,7 +59,6 @@ export default class CostumePackingList extends Component {
                 <div className="con_costume_card">
                     <div className="d-flex justify-content-between align-items-center">
                         <div><h4>{this.props.conCostume.costume.name}</h4></div>
-                        {/* <div><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push(`/costumes/${costumeId}`)} style={{cursor:'pointer'}}></i></div> */}
                         <div><i className="fas fa-edit mr-2 text-secondary" onClick={this.toggle} style={{cursor:'pointer'}}></i></div>
                     </div>
                     <div className="items_box">
@@ -78,8 +77,8 @@ export default class CostumePackingList extends Component {
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Update Costume</ModalHeader>
                         <ModalBody>
-                            Edit {this.props.conCostume.costume.name}!
                             <div className="item_input">
+                                <h3>{this.props.conCostume.costume.name}</h3>
                                 <Form onSubmit={this.addItem} className="d-flex">
                                     <FormGroup className="w-100 mr-2">
                                         <Label for="itemName" hidden>Item Name</Label>

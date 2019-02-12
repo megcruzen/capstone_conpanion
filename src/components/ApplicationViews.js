@@ -30,6 +30,8 @@ export default class ApplicationViews extends Component {
     costumes: [],
     costumeItems: [],
     conCostumes: [],
+    lineupDays: [],
+    timeslots: []
   }
 
   // Check if credentials are in local storage
@@ -80,6 +82,16 @@ export default class ApplicationViews extends Component {
     .then(conCostumeItems => {
         this.setState({ conCostumeItems: conCostumeItems })
     })
+
+    AppManager.getDays()
+    .then(lineupDays => {
+        this.setState({ lineupDays: lineupDays })
+    })
+
+    AppManager.getTimeslots()
+    .then(timeslots => {
+        this.setState({ timeslots: timeslots })
+    })
   }
 
   /* ADD NEW */
@@ -89,7 +101,7 @@ export default class ApplicationViews extends Component {
   .then(newUser => { this.setSessionAfterRegister(newUser) })
 
   setSessionAfterRegister = (newUser) => {
-    sessionStorage.setItem("UserId", JSON.stringify(newUser.id))
+    sessionStorage.setItem("User", JSON.stringify(newUser.id))
     }
 
   addConvention = (convention) => {
@@ -189,6 +201,18 @@ export default class ApplicationViews extends Component {
     )
   }
 
+  addNewDay = (newDay) =>
+    AppManager.postNewDay(newDay)
+    .then(() => AppManager.getDays())
+    .then(lineupDays => this.setState({ lineupDays: lineupDays })
+  )
+
+  addTimeslot = (newTimeslot) =>
+    AppManager.postTimeslot(newTimeslot)
+    .then(() => AppManager.getTimeslots())
+    .then(timeslots => this.setState({ timeslots: timeslots })
+  )
+
   /* DELETE */
 
   removeConvention = (id) => {
@@ -239,6 +263,18 @@ export default class ApplicationViews extends Component {
     .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems }))
   }
 
+  deleteDay = (id) => {
+    return AppManager.deleteDay(id)
+    .then(lineupDays => this.setState({ lineupDays: lineupDays }))
+    .then(() => AppManager.deleteTimeslot(id))
+    .then(timeslots => this.setState({ timeslots: timeslots }))
+  }
+
+  deleteTimeslot = (id) => {
+    AppManager.deleteTimeslot(id)
+    .then(timeslots => this.setState({ timeslots: timeslots }))
+  }
+
   /* EDIT */
 
   editCostume = (costumeId, editedCostume) =>
@@ -258,6 +294,21 @@ export default class ApplicationViews extends Component {
     .then(() => AppManager.getConCostumeItems())
     .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems })
   )
+
+  updateTimeslot = (timeslotId, editedTimeslot) =>
+    AppManager.editTimeslot(timeslotId, editedTimeslot)
+    .then(() => AppManager.getTimeslots())
+    .then(timeslots => this.setState({ timeslots: timeslots })
+  )
+
+  updateDay = (dayId, editedDay) =>
+    AppManager.editDay(dayId, editedDay)
+    .then(() => AppManager.getDays())
+    .then(lineupDays => this.setState({ lineupDays: lineupDays })
+  )
+
+
+  /********/
 
   render() {
     return (
@@ -312,21 +363,29 @@ export default class ApplicationViews extends Component {
                     allConventions={this.state.allConventions}
                     myConventions={this.state.myConventions}
                     costumes={this.state.costumes}
-                    conCostumes={this.state.conCostumes}
-                    deleteConCostume={this.deleteConCostume}
-                    deleteConCostumeItem={this.deleteConCostumeItem}
-                    addCostumeToCon={this.addCostumeToCon}
-                    getConCostumes={this.getConCostumes}
                     addConventionItem={this.addConventionItem}
                     conventionItems={this.state.conventionItems}
                     deleteConItem={this.deleteConItem}
                     updateItem={this.updateItem}
+                    conCostumes={this.state.conCostumes}
+                    getConCostumes={this.getConCostumes}
+                    addCostumeToCon={this.addCostumeToCon}
+                    deleteConCostume={this.deleteConCostume}
+                    deleteConCostumeItem={this.deleteConCostumeItem}
                     conCostumeItems={this.state.conCostumeItems}
                     costumeItems={this.state.costumeItems}
                     copyCostumeItems={this.copyCostumeItems}
                     updateConCostumeItem={this.updateConCostumeItem}
                     addCostumeItem={this.addCostumeItem}
-                    deleteCostumeItem={this.deleteCostumeItem} />
+                    deleteCostumeItem={this.deleteCostumeItem}
+                    lineupDays={this.state.lineupDays}
+                    addNewDay={this.addNewDay}
+                    updateDay={this.updateDay}
+                    deleteDay={this.deleteDay}
+                    timeslots={this.state.timeslots}
+                    addTimeslot={this.addTimeslot}
+                    updateTimeslot={this.updateTimeslot}
+                    deleteTimeslot={this.deleteTimeslot} />
           } else {
             return <Redirect to="/login" />
           }

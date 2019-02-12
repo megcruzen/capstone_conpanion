@@ -29,7 +29,7 @@ export default {
 
     getMyConventions() {
         let sessionUser = sessionStorage.getItem("User");
-        return fetch(`${remoteURL}/userConventions?userId=${sessionUser}&_expand=convention`)
+        return fetch(`${remoteURL}/userConventions?userId=${Number(sessionUser)}&_expand=convention`)
         .then(response => response.json())
         .then(connections => connections.map(
             connection => {
@@ -52,7 +52,7 @@ export default {
 
     getCostumes() {
         let sessionUser = sessionStorage.getItem("User");
-        return fetch(`${remoteURL}/costumes?userId=${sessionUser}`)
+        return fetch(`${remoteURL}/costumes?userId=${Number(sessionUser)}`)
         .then(response => response.json())
     },
 
@@ -78,6 +78,26 @@ export default {
 
     getGenres() {
         return fetch(`${remoteURL}/genres`)
+        .then(response => response.json())
+    },
+
+    getDays() {
+        return fetch(`${remoteURL}/days?_embed=timeslots`)
+        .then(response => response.json())
+    },
+
+    getDayById(id) {
+        return fetch(`${remoteURL}/days/${id}`)
+        .then(response => response.json())
+    },
+
+    getTimeslots() {
+        return fetch(`${remoteURL}/timeslots`)
+        .then(response => response.json())
+    },
+
+    getTimeslotById(id) {
+        return fetch(`${remoteURL}/timeslots/${id}`)
         .then(response => response.json())
     },
 
@@ -182,6 +202,28 @@ export default {
         .then(response => response.json())
     },
 
+    postNewDay(newDay) {
+        return fetch(`${remoteURL}/days`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newDay)
+        })
+        .then(response => response.json())
+    },
+
+    postTimeslot(newTimeslot) {
+        return fetch(`${remoteURL}/timeslots`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newTimeslot)
+        })
+        .then(response => response.json())
+    },
+
 
     // DELETE
 
@@ -226,6 +268,20 @@ export default {
         .then(() => this.getConCostumeItems())
     },
 
+    deleteDay(id) {
+        return fetch(`${remoteURL}/days/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getDays())
+    },
+
+    deleteTimeslot(id) {
+        return fetch(`${remoteURL}/timeslots/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getTimeslots())
+    },
+
 
     // PUT
 
@@ -256,6 +312,26 @@ export default {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(editedItem)
+        })
+    },
+
+    editDay(dayId, editedDay) {
+        return fetch(`${remoteURL}/days/${dayId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedDay)
+        })
+    },
+
+    editTimeslot(timeslotId, editedTimeslot) {
+        return fetch(`${remoteURL}/timeslots/${timeslotId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedTimeslot)
         })
     }
 }

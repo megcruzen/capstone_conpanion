@@ -33,9 +33,9 @@ export default class Login extends Component {
                             loggedIn = true;
                         }
                         if (loggedIn === true) {
-                            sessionStorage.setItem("UserId", user.id)
-                            let sessionUser = sessionStorage.getItem("UserId")
-                            console.log("sessionUser", sessionUser)
+                            sessionStorage.setItem("User", user.id)
+                            // let sessionUser = sessionStorage.getItem("UserId")
+                            // console.log("sessionUser", sessionUser)
                             this.props.history.push("/conventions")
                         }
                     })

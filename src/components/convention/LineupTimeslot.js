@@ -101,7 +101,7 @@ export default class Timeslot extends Component {
 
     render() {
 
-        console.log("this.props.timeslot.title", this.props.timeslot.title)
+        // console.log("this.props.timeslot.title", this.props.timeslot.title)
 
         return (
 

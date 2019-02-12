@@ -201,6 +201,12 @@ export default class ApplicationViews extends Component {
     )
   }
 
+  addNewDay = (newDay) =>
+  AppManager.postNewDay(newDay)
+    .then(() => AppManager.getDays())
+    .then(lineupDays => this.setState({ lineupDays: lineupDays })
+  )
+
   /* DELETE */
 
   removeConvention = (id) => {
@@ -348,6 +354,7 @@ export default class ApplicationViews extends Component {
                     addCostumeItem={this.addCostumeItem}
                     deleteCostumeItem={this.deleteCostumeItem}
                     lineupDays={this.state.lineupDays}
+                    addNewDay={this.addNewDay}
                     timeslots={this.state.timeslots}
                     updateTimeslot={this.updateTimeslot} />
           } else {

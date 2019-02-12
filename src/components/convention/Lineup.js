@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import "../CosBuddy.css";
 import Timeslot from "./LineupTimeslot"
 
 export default class Lineup extends Component {
 
+    addDay = () => {
+
+        const newDay = {
+            userConventionId: this.props.convention.userConventionId,
+            title: "New Day"
+        }
+
+        this.props.addNewDay(newDay)
+    }
+
     render() {
 
-        console.log("this.props.days", this.props)
+        console.log("this.props.convention.userConventionId", this.props.convention.userConventionId)
         const days = this.props.lineupDays.filter(day => day.userConventionId === this.props.convention.userConventionId) || {}
 
         return(
@@ -32,6 +42,7 @@ export default class Lineup extends Component {
                         </Col>
                     )
                 }
+                <Col><Button color="primary" onClick={this.addDay}>add day</Button></Col>
                 </Row>
             </section>
 

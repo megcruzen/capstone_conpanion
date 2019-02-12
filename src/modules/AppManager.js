@@ -197,6 +197,17 @@ export default {
         .then(response => response.json())
     },
 
+    postNewDay(newDay) {
+        return fetch(`${remoteURL}/days`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newDay)
+        })
+        .then(response => response.json())
+    },
+
 
     // DELETE
 

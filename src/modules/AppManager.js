@@ -272,5 +272,15 @@ export default {
             },
             body: JSON.stringify(editedItem)
         })
-    }
+    },
+
+    editTimeslot(timeslotId, editedTimeslot) {
+        return fetch(`${remoteURL}/timeslots/${timeslotId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedTimeslot)
+        })
+    },
 }

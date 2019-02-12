@@ -271,6 +271,14 @@ export default class ApplicationViews extends Component {
     .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems })
   )
 
+  updateTimeslot = (timeslotId, editedTimeslot) =>
+    AppManager.editTimeslot(timeslotId, editedTimeslot)
+    .then(() => AppManager.getTimeslots())
+    .then(timeslots => this.setState({ timeslots: timeslots })
+)
+
+  /********/
+
   render() {
     return (
       <div id="appviews">
@@ -340,7 +348,8 @@ export default class ApplicationViews extends Component {
                     addCostumeItem={this.addCostumeItem}
                     deleteCostumeItem={this.deleteCostumeItem}
                     lineupDays={this.state.lineupDays}
-                    timeslots={this.state.timeslots} />
+                    timeslots={this.state.timeslots}
+                    updateTimeslot={this.updateTimeslot} />
           } else {
             return <Redirect to="/login" />
           }

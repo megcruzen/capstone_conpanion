@@ -8,8 +8,7 @@ export default class Timeslot extends Component {
     // Set initial state
     state = {
         "title": "",
-        "text": "",
-        "dayId": ""
+        "text": ""
     }
 
     // Update state whenever an input field is edited
@@ -20,15 +19,17 @@ export default class Timeslot extends Component {
         this.setState(stateToChange)
     }
 
-    clickToEdit = () => {
-        console.log("Click!")
+    clickToEditTitle = () => {
         AppManager.getTimeslotById(this.props.timeslot.id)
         .then(timeslot => {
-            this.setState({
-                title: timeslot.title,
-                text: timeslot.text,
-                dayId: timeslot.dayId
-             })
+            this.setState({ title: timeslot.title })
+        })
+    }
+
+    clickToEditText = () => {
+        AppManager.getTimeslotById(this.props.timeslot.id)
+        .then(timeslot => {
+            this.setState({ text: timeslot.text })
         })
     }
 
@@ -36,7 +37,7 @@ export default class Timeslot extends Component {
         if (this.state.title !== "") {
             return (
                 <div className="timeslot_title">
-                    <form className="title_edit" onSubmit={console.log("Save me!")} onMouseLeave={console.log("Save me!")}>
+                    <form className="title_edit" onSubmit={this.updateTimeslotTitle} onMouseLeave={this.updateTimeslotTitle}>
                         <input type="text" required
                         className="form-control"
                         onChange={this.handleFieldChange}
@@ -47,7 +48,7 @@ export default class Timeslot extends Component {
             )
         } else {
             return (
-                <div className="time_title" onClick={this.clickToEdit}>{this.props.timeslot.title}</div>
+                <div className="time_title" onClick={this.clickToEditTitle}>{this.props.timeslot.title}</div>
             )
         }
     }
@@ -56,7 +57,7 @@ export default class Timeslot extends Component {
         if (this.state.text !== "") {
             return (
                 <div className="timeslot_text">
-                    <form className="text_edit" onSubmit={console.log("Save me!")} onMouseLeave={console.log("Save me!")}>
+                    <form className="text_edit" onSubmit={this.updateTimeslotText} onMouseLeave={this.updateTimeslotText}>
                         <input type="text" required
                         className="form-control"
                         onChange={this.handleFieldChange}
@@ -67,14 +68,40 @@ export default class Timeslot extends Component {
             )
         } else {
             return (
-                <div className="time_text" onClick={this.clickToEdit}>{this.props.timeslot.text}</div>
+                <div className="time_text" onClick={this.clickToEditText}>{this.props.timeslot.text}</div>
             )
         }
     }
 
+    updateTimeslotTitle = evt => {
+        evt.preventDefault();
+
+        const timeslot = {
+            title: this.state.title,
+            text: this.props.timeslot.text,
+            dayId: this.props.timeslot.dayId
+        }
+
+        this.props.updateTimeslot(this.props.timeslot.id, timeslot)
+        .then(() => { this.setState({ title: "" }) })
+    }
+
+    updateTimeslotText = evt => {
+        evt.preventDefault();
+
+        const timeslot = {
+            title: this.props.timeslot.title,
+            text: this.state.text,
+            dayId: this.props.timeslot.dayId
+        }
+
+        this.props.updateTimeslot(this.props.timeslot.id, timeslot)
+        .then(() => { this.setState({ text: "" }) })
+    }
+
     render() {
 
-        console.log("this.props.timeslot", this.props.timeslot)
+        console.log("this.props.timeslot.title", this.props.timeslot.title)
 
         return (
 

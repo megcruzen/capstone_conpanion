@@ -15,10 +15,26 @@ export default class Lineup extends Component {
         this.props.addNewDay(newDay)
     }
 
+    addDayExample = () => {
+
+        const exampleDay = {
+            userConventionId: this.props.convention.userConventionId,
+            title: "Friday"
+        }
+
+        this.props.addNewDay(exampleDay)
+    }
+
     showAddDayButton = () => {
-        if (this.props.lineupDays.length < 5) {
+        const days = this.props.lineupDays.filter(day => day.userConventionId === this.props.convention.userConventionId)
+        if (days.length === 0) {
             return (
-                <i class="far fa-calendar-plus" onClick={this.addDay}></i>
+                <Button color="primary" className="build_lineup" onClick={this.addDayExample}><i className="far fa-calendar-plus mr-2"></i>Start Building Your Lineup!</Button>
+            )
+        }
+        else if (days.length < 5) {
+            return (
+                <Button color="primary" onClick={this.addDay}><i className="far fa-calendar-plus mr-2"></i> Add Day</Button>
             )
         }
     }
@@ -33,7 +49,7 @@ export default class Lineup extends Component {
                 <Row>
                 {
                     days.map(day =>
-                        <Col sm="3" key={day.id}>
+                        <Col key={day.id}>
                             <LineupDay day={day} {...this.props}  />
                         </Col>
                     )

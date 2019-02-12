@@ -264,8 +264,10 @@ export default class ApplicationViews extends Component {
   }
 
   deleteDay = (id) => {
-    AppManager.deleteDay(id)
+    return AppManager.deleteDay(id)
     .then(lineupDays => this.setState({ lineupDays: lineupDays }))
+    .then(() => AppManager.deleteTimeslot(id))
+    .then(timeslots => this.setState({ timeslots: timeslots }))
   }
 
   deleteTimeslot = (id) => {

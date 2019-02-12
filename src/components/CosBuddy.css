@@ -136,6 +136,7 @@ a.return {
 
 .lineup_day {
     background-color: #eee;
+    border-radius: 10px;
     margin-bottom: 20px;
     padding: 2px 5px 10px 5px;
 }
@@ -146,7 +147,7 @@ a.return {
 }
 
 .timeslots_container {
-    margin: 0px 15px;
+    margin: 0px 10px;
 }
 
 .timeslot {
@@ -184,4 +185,12 @@ a.return {
 .add_day {
     color: #999;
     font-size: 3em;
+}
+
+button.build_lineup {
+    display: block;
+    font-size: 20px;
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 40%;
 }

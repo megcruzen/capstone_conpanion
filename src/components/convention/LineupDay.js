@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
 import "../CosBuddy.css";
 import Timeslot from "./LineupTimeslot"
 import AppManager from "../../modules/AppManager"
@@ -25,7 +24,7 @@ export default class LineupDay extends Component {
         })
     }
 
-    returnFormOrText = (timeslot) => {
+    returnFormOrText = (day) => {
         if (this.state.title !== "") {
             return (
                 <div className="day_title">
@@ -42,7 +41,7 @@ export default class LineupDay extends Component {
             return (
                 <div>
                     <div className="text-right"><i className="fas fa-times-circle text-dark" onClick={() => this.props.deleteDay(this.props.day.id)} style={{cursor:'pointer'}}></i></div>
-                    <div className="text-center" onClick={this.clickToEditTitle}><h5>{this.props.day.title}</h5></div>
+                    <div className="text-center" onClick={this.clickToEditTitle}><h5>{this.props.day.title} {this.props.day.id}</h5></div>
                 </div>
             )
         }
@@ -72,7 +71,6 @@ export default class LineupDay extends Component {
     }
 
     render() {
-        console.log("this.props.dayId", this.props.day.id)
 
         console.log("this.props.convention.userConventionId", this.props.convention.userConventionId)
         // const days = this.props.lineupDays.filter(day => day.userConventionId === this.props.convention.userConventionId) || {}

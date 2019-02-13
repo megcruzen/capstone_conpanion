@@ -56,10 +56,10 @@ export default class CostumePackingList extends Component {
 
         return (
 
-                <div className="con_costume_card">
+                <div className="costume_packing_list py-4">
                     <div className="d-flex justify-content-between align-items-center">
-                        <div><h4>{this.props.conCostume.costume.name}</h4></div>
-                        <div><i className="fas fa-edit mr-2 text-secondary" onClick={this.toggle} style={{cursor:'pointer'}}></i></div>
+                        <div><h5>{this.props.conCostume.costume.name}</h5></div>
+                        <div><i className="fas fa-edit text-secondary d-print-none" onClick={this.toggle} style={{cursor:'pointer'}}></i></div>
                     </div>
                     <div className="items_box">
                         <Table borderless striped>
@@ -75,7 +75,7 @@ export default class CostumePackingList extends Component {
                         </Table>
                     </div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle}>Update Costume</ModalHeader>
+                        <ModalHeader toggle={this.toggle}>Update Costume Items</ModalHeader>
                         <ModalBody>
                             <div className="item_input">
                                 <h3>{this.props.conCostume.costume.name}</h3>

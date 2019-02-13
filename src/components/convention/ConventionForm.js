@@ -47,7 +47,7 @@ export default class ConventionForm extends Component {
 
     render() {
         return (
-            <section className="convention_form">
+            <section className="convention_form mb-4">
                 <h1>Add a Convention</h1>
                 <Form onSubmit={this.constructNewConvention} className="form_width mt-4">
                 <Row form>

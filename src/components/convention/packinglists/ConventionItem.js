@@ -32,7 +32,7 @@ export default class ConventionItem extends Component {
                     <div className="d-flex justify-content-between">
                         <div className={this.itemConditionalStyle(this.props.item.id)}>{this.props.item.name}</div>
                         <div>
-                            <i className="fas fa-times-circle delete" onClick={() => this.props.deleteConItem(this.props.item.id)} style={{cursor:'pointer'}}></i>
+                            <i className="fas fa-times-circle delete d-print-none" onClick={() => this.props.deleteConItem(this.props.item.id)} style={{cursor:'pointer'}}></i>
                         </div>
                     </div>
                 </td>

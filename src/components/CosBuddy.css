@@ -19,11 +19,11 @@
     color: #812bb2;
 }
 
-a.nav-link {
+.navbar-light .navbar-nav a.nav-link {
     color: #812bb2;
 }
 
-a.nav-link:hover {
+.navbar-light .navbar-nav a.nav-link:hover {
     color: #2d283e;
 }
 
@@ -31,9 +31,8 @@ a.nav-link:hover {
     background-color: #fff;
     font-family: 'Nunito', sans-serif;
     margin: 0 auto;
-    margin-bottom: 30px;
     max-width: 1000px;
-    padding: 20px 20px 40px 20px;
+    padding: 20px 20px 10px 20px;
 }
 
 
@@ -101,16 +100,18 @@ button.btn-primary:not(:disabled):not(.disabled):active {
 }
 
 
+
+
+
 /****** Forms ******/
 
 #appviews label {
     margin-bottom: 0px;
 }
 
-/* #appviews .form-control {
-    height: auto;
+#appviews .form-control {
     padding: 3px 8px;
-} */
+}
 
 .form_width, .searchForm {
     max-width: 500px;
@@ -129,6 +130,10 @@ select#costumeId {
     width: 300px;
 }
 
+
+
+
+
 /****** Convention List ******/
 
 .con_details {
@@ -145,15 +150,11 @@ select#costumeId {
     text-decoration: line-through;
 }
 
+
+
+
+
 /****** Costume List ******/
-
-/* .costume_list {
-    max-width: 1050px;
-} */
-
-/* .costume_list .card {
-    max-width: 318px;
-} */
 
 .costume_list .card a, .con_details a, .costume_list .card a:hover, .con_details a:hover {
     color: #212529;
@@ -198,12 +199,10 @@ select#costumeId {
     background-color: #f5f4f8;
 }
 
-/****** Convention Details ******/
 
-/* .convention_costume_list .card {
-    max-width: 200px;
-    height: auto;
-} */
+
+
+/****** Convention Details ******/
 
 .convention_costume_list .card-body {
     padding: 10px;
@@ -213,11 +212,36 @@ select#costumeId {
     font-size: 1.4em;
 }
 
+.convention_details .nav-item {
+    padding: 0px 5px;
+}
+
+.convention_details .nav-link {
+    padding: 5px 13px;
+}
+
+.convention_details .nav-tabs .nav-link {
+    color: #5d5380;
+}
+
+.convention_details .nav-tabs .nav-link.active {
+    color: #812bb2;
+}
+
+
+
+
 /****** Convention Search ******/
-.add_result {width: 70px;}
+
+.add_result {
+    color: #a8a4be;
+    width: 70px;
+}
 
 
-/****** Lineup ******/
+
+
+/****** Convention Lineup ******/
 
 @media (max-width: 500px) {
 .lineup_container .col {
@@ -306,7 +330,6 @@ select#costumeId {
 button.build_lineup {
     display: block;
     font-size: 20px;
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 50px auto;
     width: 40%;
 }

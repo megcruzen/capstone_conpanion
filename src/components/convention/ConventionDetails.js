@@ -20,21 +20,20 @@ export default class ConventionDetails extends Component {
           activeTab: '1',
           modal: false
         };
-      }
+    }
 
-      toggle(tab) {
+    toggle(tab) {
         if (this.state.activeTab !== tab) {
-          this.setState({
-            activeTab: tab
-          });
-        }
-      }
+            this.setState({ activeTab: tab })}
+    }
 
-      toggle2() {
-        this.setState({
-          modal: !this.state.modal
-        });
-      }
+    toggle2() {
+        this.setState({ modal: !this.state.modal });
+    }
+
+    print = () => {
+        window.print()
+    }
 
     render() {
 
@@ -57,7 +56,7 @@ export default class ConventionDetails extends Component {
 
         return (
                 <section className="mr-2 mb-3 convention_details">
-                    <a href="#" onClick={() => this.props.history.push("/conventions/")} className="return">&laquo; Return to conventions</a>
+                    <a href="#" onClick={() => this.props.history.push("/conventions/")} className="return d-print-none">&laquo; Return to conventions</a>
                     <Media className="mt-4 pt-2">
                         <Media left href="#" className="mr-3">
                             <Media object src={convention.thumbnail} className="thumb" alt="" />
@@ -66,15 +65,14 @@ export default class ConventionDetails extends Component {
                             <div>
                                 <h3 className="mb-0">{convention.name}</h3>
                                 <span className="text-uppercase subtitle">{dateDisplay}</span>
-                                {/* userConventionId: {convention.userConventionId} */}
                             </div>
                             <div>
-                                <i className="fas fa-edit mr-2 text-secondary" onClick={this.toggle2}></i>
+                                <i className="fas fa-edit mr-2 text-secondary d-print-none" onClick={this.toggle2}></i>
                             </div>
                         </Media>
                     </Media>
                     <div className="tabs mt-4">
-                    <Nav tabs>
+                    <Nav tabs className="d-print-none">
                         <NavItem>
                             <NavLink
                             className={classnames({ active: this.state.activeTab === '1' })}
@@ -103,6 +101,10 @@ export default class ConventionDetails extends Component {
                             <Lineup convention={convention} lineupDays={this.props.lineupDays} timeslots={this.props.timeslots} {...this.props} />
                         </TabPane>
                         <TabPane tabId="2">
+                            <div className="d-flex justify-content-between mb-4">
+                                <div><h4 className="mb-0">Convention Packing Lists</h4></div>
+                                <div onClick={this.print} className="mt-1 mr-2 text-secondary d-print-none"><i class="fas fa-print"></i></div>
+                            </div>
                             <Row>
                                 <Col sm="6">
                                     <ConventionPackingList convention={convention} {...this.props} />

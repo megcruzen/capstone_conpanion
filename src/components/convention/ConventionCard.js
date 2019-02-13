@@ -62,7 +62,7 @@ export default class ConventionCard extends Component {
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div className="con_details">
                                 <Link to={`/conventions/${this.props.convention.id}/${this.props.convention.name}`}>
-                                <h4>{this.props.convention.name}</h4>
+                                <h4 className="mb-0">{this.props.convention.name}</h4>
                                 {dateDisplay}
                                 <br />
                                 {this.props.convention.city}, {this.props.convention.state}

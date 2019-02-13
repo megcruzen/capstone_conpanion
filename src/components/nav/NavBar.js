@@ -32,7 +32,7 @@ import {
         render() {
           return (
             <div id="nav">
-              <Navbar expand="md">
+              <Navbar light expand="md">
                 <NavbarBrand tag={Link} to="/"><span className="nav-highlight">con</span>panion</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>

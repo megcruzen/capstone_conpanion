@@ -25,7 +25,7 @@ export default class ConventionSearch extends Component {
 
     render() {
         return (
-            <section className="convention_search">
+            <section className="convention_search mb-4">
                 <h1>Find a Convention</h1>
                 <div className="mt-3">
                     {/* <Button color="primary"

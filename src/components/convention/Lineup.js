@@ -37,27 +37,31 @@ export default class Lineup extends Component {
                 <Button color="primary" onClick={this.addDay}><i className="far fa-calendar-plus mr-2"></i> Add Day</Button>
             )
         }
+        else if (days.length >= 5) {
+            return (
+                <Button disabled title="Max days reached"><i className="far fa-calendar-plus mr-2"></i> Add Day</Button>
+            )
+        }
     }
 
     render() {
-
-        // console.log("this.props.convention.userConventionId", this.props.convention.userConventionId)
         const days = this.props.lineupDays.filter(day => day.userConventionId === this.props.convention.userConventionId) || {}
 
         return(
             <section className="lineup_container">
-            <h4>Lineup</h4>
+            <div className="d-flex justify-content-between">
+                <h4>Lineup</h4>
+                {this.showAddDayButton()}
+            </div>
                 <Row>
-                {
-                    days.map(day =>
-                        <Col sm="2" key={day.id} className={ `day${day.id} lineup_day` }>
-                            <LineupDay day={day} {...this.props}  />
-                        </Col>
-                    )
-                }
-                    <Col className="add_day">
-                        {this.showAddDayButton()}
-                    </Col>
+                    {
+                        days.map(day =>
+                            // sm="2"
+                            <Col key={day.id} className={ `day${day.id} lineup_day` }>
+                                <LineupDay day={day} {...this.props}  />
+                            </Col>
+                        )
+                    }
                 </Row>
             </section>
 

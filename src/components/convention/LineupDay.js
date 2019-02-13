@@ -27,7 +27,6 @@ export default class LineupDay extends Component {
     returnFormOrText = (day) => {
         if (this.state.title !== "") {
             return (
-                <div className="day_title">
                     <form className="title_edit" onSubmit={this.updateDayTitle} onBlur={this.updateDayTitle}>
                         <input type="text" required
                         className="form-control"
@@ -35,14 +34,10 @@ export default class LineupDay extends Component {
                         id="title"
                         value={this.state.title} />
                     </form>
-                </div>
             )
         } else {
             return (
-                <div className="day_top">
-                    <div className="text-right"><i className="fas fa-times-circle text-dark" onClick={() => this.props.deleteDay(this.props.day.id)} style={{cursor:'pointer'}}></i></div>
                     <div className="text-center" onClick={this.clickToEditTitle}><h5>{this.props.day.title}</h5></div>
-                </div>
             )
         }
     }
@@ -77,7 +72,11 @@ export default class LineupDay extends Component {
 
         return (
                 <>
-                {this.returnFormOrText(this.props.day)}
+                    <div className="day_top">
+                        <div className="text-right"><i className="fas fa-times-circle text-dark" onClick={() => this.props.deleteDay(this.props.day.id)} style={{cursor:'pointer'}}></i></div>
+                        {this.returnFormOrText(this.props.day)}
+                    </div>
+                    {/* {this.returnFormOrText(this.props.day)} */}
                     {
                         this.props.timeslots.filter(timeslot => timeslot.dayId === this.props.day.id)
                         .map(timeslot =>

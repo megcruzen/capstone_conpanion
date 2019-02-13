@@ -219,7 +219,15 @@ select#costumeId {
 
 /****** Lineup ******/
 
-.lineup_container .col-sm-2 {
+@media (max-width: 500px) {
+.lineup_container .col {
+    padding: 0px 0px 10px 0px;
+    flex-basis: unset;
+}
+}
+
+
+.lineup_container .col {
     padding: 0px 0px 10px 0px;
 }
 
@@ -275,9 +283,9 @@ select#costumeId {
 }
 
 .timeslot_text {
-    display: inline-block;
-    font-size: .8em;
-    margin: 10px;
+    font-size: .9em;
+    padding: 15px 10px;
+    text-align: center;
 }
 
 .w15 {

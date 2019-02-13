@@ -43,14 +43,7 @@ export default class ConventionCostumeList extends Component {
 
         let costumeArray = this.props.costumes.map(costume => costume.id);
         let conCostumeArray = this.props.currentCostumes.map(conCostume => conCostume.costumeId);
-
-        // console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
-
-        // costumeArray = costumeArray.filter(val => !conCostumeArray.includes(val));
-        // console.log("filteredArray", costumeArray)
-
         costumeArray = this.props.costumes.filter(val => !conCostumeArray.includes(val.id));
-        // console.log("filteredArray", costumeArray)
 
         return costumeArray.map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
 
@@ -59,8 +52,8 @@ export default class ConventionCostumeList extends Component {
 
     // Create the conCostume object
     constructConnection = event => {
-        event.preventDefault();     // Cancels the default action of the submit.
-        event.target.reset();       // Resets select after submit.
+        event.preventDefault();
+        event.target.reset();
 
         if (this.state.costumeId === "") {      // if costume select is empty, alert to select costume
             window.alert("Please select a costume.")
@@ -115,9 +108,6 @@ export default class ConventionCostumeList extends Component {
                         <div><Button color="primary">Add</Button></div>
                     </Form>
                     <FormText onClick={this.toggle} className="pt-1 pl-1"><a href="#" className="link">Create a new costume &raquo;</a></FormText>
-                    {/* <div className="text-center">
-                        <Button color="primary" className="mb-2" onClick={this.toggle}>Create New Costume</Button>
-                    </div> */}
                 </div>
                 <Row className="mt-4">
                 {

@@ -108,7 +108,7 @@ export default class ConventionForm extends Component {
                         <Input type="url" required name="website" id="website" placeholder="http://conventionname.com"
                         onChange={this.handleFieldChange} />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="mb-4">
                         <Label for="thumbnail">Logo</Label>
                         <Input type="url" name="thumbnail" id="thumbnail" placeholder="Enter an image link" onChange={this.handleFieldChange} />
                     </FormGroup>

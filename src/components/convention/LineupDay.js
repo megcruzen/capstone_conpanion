@@ -39,9 +39,9 @@ export default class LineupDay extends Component {
             )
         } else {
             return (
-                <div>
+                <div className="day_top">
                     <div className="text-right"><i className="fas fa-times-circle text-dark" onClick={() => this.props.deleteDay(this.props.day.id)} style={{cursor:'pointer'}}></i></div>
-                    <div className="text-center" onClick={this.clickToEditTitle}><h5>{this.props.day.title} {this.props.day.id}</h5></div>
+                    <div className="text-center" onClick={this.clickToEditTitle}><h5>{this.props.day.title}</h5></div>
                 </div>
             )
         }
@@ -76,21 +76,18 @@ export default class LineupDay extends Component {
         // const days = this.props.lineupDays.filter(day => day.userConventionId === this.props.convention.userConventionId) || {}
 
         return (
-            <div className={ `day${this.props.day.id} lineup_day` }>
+                <>
                 {this.returnFormOrText(this.props.day)}
-                <div className="timeslots_container">
                     {
                         this.props.timeslots.filter(timeslot => timeslot.dayId === this.props.day.id)
                         .map(timeslot =>
-                            <div key={timeslot.id}>
+                            <div key={timeslot.id} className="timeslot">
                                 <Timeslot timeslot={timeslot} dayId={this.props.day.id} {...this.props}  />
                             </div>
                         )
                     }
-                </div>
                 <div className="add_timeslot"><i class="fas fa-plus-circle" onClick={this.addTimeslot}></i></div>
-            </div>
-
+                </>
         )
 
     }

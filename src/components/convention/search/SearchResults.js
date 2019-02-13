@@ -59,10 +59,11 @@ export default class SearchResults extends Component {
 
         if (this.props.myConventions.find(myConvention =>
             myConvention.id === this.props.result.id)) {
-            return <Button color="secondary" disabled>Already Added</Button>
+            // return <Button color="secondary" disabled>Already Added</Button>
+            return <i class="fas fa-check"></i>
         }
         else {
-            return <Button color="primary" onClick={(() => this.addConToList(this.props.result))}>Add to My Conventions</Button>
+            return <Button color="primary" onClick={(() => this.addConToList(this.props.result))}>Add</Button>
         }
     }
 
@@ -96,8 +97,8 @@ export default class SearchResults extends Component {
             <tr>
                 <td>
                     <Media className="pt-2 px-2">
-                        <Media left href="#" className="mr-3">
-                            <Media object src={this.getImageUrl(this.props.result)} className="thumb" alt="" />
+                        <Media left className="mr-3">
+                            <Media object src={this.getImageUrl(this.props.result)} className="thumb" alt={this.props.result.name} />
                         </Media>
                         <Media body className="d-flex flex-wrap justify-content-between align-items-center">
                             <div className="con_details">
@@ -106,7 +107,7 @@ export default class SearchResults extends Component {
                                 <br />
                                 {this.props.result.city}, {this.props.result.state}
                             </div>
-                            <div className="w-25 text-center">{this.checkConnection(this.props.result.id)}</div>
+                            <div className="add_result text-center">{this.checkConnection(this.props.result.id)}</div>
                         </Media>
                     </Media>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>

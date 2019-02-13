@@ -46,10 +46,11 @@ export default class Lineup extends Component {
 
         return(
             <section className="lineup_container">
+            <h4>Lineup</h4>
                 <Row>
                 {
                     days.map(day =>
-                        <Col sm="2" key={day.id}>
+                        <Col sm="2" key={day.id} className={ `day${day.id} lineup_day` }>
                             <LineupDay day={day} {...this.props}  />
                         </Col>
                     )

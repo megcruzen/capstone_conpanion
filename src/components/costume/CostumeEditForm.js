@@ -49,7 +49,7 @@ export default class CostumeEditForm extends Component {
     render() {
         return (
             <section className="costume_form">
-                <h1>Add New Costume</h1>
+                <h1>Edit Costume</h1>
                 <Form onSubmit={this.reconstructCostume} className="form_width mt-4">
                     <FormGroup>
                         <Label for="characterName">Character Name</Label>
@@ -69,7 +69,7 @@ export default class CostumeEditForm extends Component {
                         onChange={this.handleFieldChange}
                         value={`${this.state.series}`} />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="mb-4">
                         <Label for="image">Image</Label>
                         <Input type="url" required name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange}
                         value={`${this.state.image}`} />

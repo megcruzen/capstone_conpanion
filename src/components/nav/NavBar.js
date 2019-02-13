@@ -32,8 +32,8 @@ import {
         render() {
           return (
             <div id="nav">
-              <Navbar color="light" light expand="md">
-                <NavbarBrand tag={Link} to="/">ConPanion</NavbarBrand>
+              <Navbar expand="md">
+                <NavbarBrand tag={Link} to="/"><span className="nav-highlight">con</span>panion</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                   <Nav className="ml-auto" navbar>

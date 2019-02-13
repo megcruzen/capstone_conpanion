@@ -19,8 +19,6 @@ export default class ConCostumeCard extends Component {
 
     removeCostumeAndDeleteItems = (conCostumeId) => {
         this.props.deleteConCostume(this.props.conCostume.id)
-        // .then(() => this.deleteItems(conCostumeId))
-        // .then(() => this.props.history.push("/costumes"))
     }
 
     deleteItems = (conCostumeId) => {
@@ -34,20 +32,16 @@ export default class ConCostumeCard extends Component {
 
         return (
             <div className="con_costume_card">
-                <Card key={this.props.conCostume.costume.id} className="mr-2 mb-3">
-                    <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+                <Card key={this.props.conCostume.costume.id} className="mb-3">
+                    <CardImg top width="100%" src={this.props.conCostume.costume.image} alt={this.props.conCostume.costume.name} />
                     <CardBody className="d-flex justify-content-between">
                         <div>
                             <CardSubtitle className="text-uppercase subtitle mt-1">{this.props.conCostume.costume.series}</CardSubtitle>
                             <CardTitle><h3>{this.props.conCostume.costume.name}</h3></CardTitle>
-                            <CardText className="outfit mt-1">{this.props.conCostume.costume.outfit}</CardText>
-                            {/* <i class="fas fa-user-circle"></i> */}
-                            {/* <br />
-                            costumeId: {this.props.conCostume.costume.id}<br />
-                            conCostumeId: {this.props.conCostume.id} */}
+                            <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.conCostume.costume.outfit}</CardText>
                         </div>
                         <div>
-                            <i className="fas fa-times-circle text-danger" onClick={this.toggle} style={{cursor:'pointer'}}></i>
+                            <i className="fas fa-times-circle delete" onClick={this.toggle} style={{cursor:'pointer'}}></i>
                         </div>
                     </CardBody>
                 </Card>

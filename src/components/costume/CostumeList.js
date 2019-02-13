@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'reactstrap';
+import { Button, Row } from 'reactstrap';
 import CostumeCard from "./CostumeCard"
 
 export default class CostumeList extends Component {
@@ -10,13 +10,13 @@ export default class CostumeList extends Component {
                     <div><h1 className="text-center">My Costumes</h1></div>
                     <div className="text-center"><Button color="primary" onClick={() => this.props.history.push("/costumes/new")}>Add Costume</Button></div>
                 </div>
-                <div className="d-flex justify-content-between flex-wrap">
+                <Row>
                 {
                     this.props.costumes.map(costume =>
                         <CostumeCard key={costume.id} costume={costume} {...this.props} />
                     )
                 }
-                </div>
+                </Row>
             </section>
         )
     }

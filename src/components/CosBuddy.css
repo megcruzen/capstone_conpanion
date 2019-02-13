@@ -1,26 +1,69 @@
-#appviews {
+.navbar {
+    font-family: 'Nunito', sans-serif;
+    margin: 0 auto;
+    max-width: 1000px;
     padding: 20px;
 }
 
-/****** Links ******/
-
-a.link {
-    color: #74c2a7;
-    text-decoration: underline;
+.navbar-brand {
+    color: #2d283e;
+    font-size: 30px !important;
+    font-weight: 600;
 }
 
-a.cancel {
-    color: #636363;
-    text-decoration: underline;
+.navbar-brand:hover {
+    color: #2d283e;
 }
 
-a.delete {
-    color: red;
-    text-decoration: underline;
+.nav-highlight {
+    color: #812bb2;
+}
+
+a.nav-link {
+    color: #812bb2;
+}
+
+a.nav-link:hover {
+    color: #2d283e;
+}
+
+#appviews {
+    background-color: #fff;
+    font-family: 'Nunito', sans-serif;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    max-width: 1000px;
+    padding: 20px 20px 40px 20px;
+}
+
+
+
+/****** Links and Buttons ******/
+
+a.link, a.return {
+    color: #812bb2;
+}
+
+a.link:hover, a.return:hover {
+    color: #2d283e;
+    text-decoration: none;
 }
 
 a.return {
     font-size: .8em;
+}
+
+a.cancel {
+    color: #4c495c;
+    text-decoration: underline;
+}
+
+a.cancel:hover {
+    color: #812bb2;
+}
+
+.delete {
+    color: #ff0090;
 }
 
 .costume_links {
@@ -31,10 +74,45 @@ a.return {
     color: #999;
 }
 
+button.btn { border: 0 none; }
+
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+button.btn-primary {
+    background-color: #812bb2;
+}
+
+button.btn-secondary {
+    background-color: #77797e;
+}
+
+button.btn-primary:hover, button.btn-primary:active, button.btn-primary:focus, button.btn-primary:active:focus,
+    .show>button.btn-primary.dropdown-toggle{
+        color: #fff;
+        background-color: #564f70;
+    }
+
+button.btn-primary:not(:disabled):not(.disabled).active,
+button.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #3a344f;
+}
+
 
 /****** Forms ******/
 
-.form_width {
+#appviews label {
+    margin-bottom: 0px;
+}
+
+/* #appviews .form-control {
+    height: auto;
+    padding: 3px 8px;
+} */
+
+.form_width, .searchForm {
     max-width: 500px;
 }
 
@@ -45,6 +123,10 @@ a.return {
 
 .convention_form label {
     margin-bottom: 0px;
+}
+
+select#costumeId {
+    width: 300px;
 }
 
 /****** Convention List ******/
@@ -64,13 +146,14 @@ a.return {
 }
 
 /****** Costume List ******/
-.costume_list {
-    max-width: 1050px;
-}
 
-.costume_list .card {
+/* .costume_list {
+    max-width: 1050px;
+} */
+
+/* .costume_list .card {
     max-width: 318px;
-}
+} */
 
 .costume_list .card a, .con_details a, .costume_list .card a:hover, .con_details a:hover {
     color: #212529;
@@ -90,6 +173,11 @@ a.return {
     font-style: italic;
 }
 
+.costume_details_section .thumb {
+    width: 150px;
+    height: 150px;
+}
+
 .costume_details {
     line-height: .9em;
 }
@@ -97,10 +185,6 @@ a.return {
 .costume_details h4 {
     margin-bottom: 5px;
 }
-
-/* .costume_details .table {
-    margin-bottom: 0px;
-} */
 
 .costume_details .table td {
     padding: 7px 5px;
@@ -110,11 +194,16 @@ a.return {
     font-size: .8em;
 }
 
+#appviews .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f5f4f8;
+}
+
 /****** Convention Details ******/
-.convention_costume_list .card {
+
+/* .convention_costume_list .card {
     max-width: 200px;
     height: auto;
-}
+} */
 
 .convention_costume_list .card-body {
     padding: 10px;
@@ -124,26 +213,45 @@ a.return {
     font-size: 1.4em;
 }
 
+/****** Convention Search ******/
+.add_result {width: 70px;}
+
+
 /****** Lineup ******/
 
-/* .lineup_container .col-sm-3:nth-child(2) {
-    background-color: teal;
+.lineup_container .col-sm-2 {
+    padding: 0px 0px 10px 0px;
 }
 
-.lineup_container .col-sm-3:nth-child(3) {
-    background-color: red;
-} */
+.lineup_container .row .lineup_day:nth-child(2) {
+    background-color: #d3d1df;
+}
+
+.lineup_container .row .lineup_day:nth-child(3) {
+    background-color: #bdbace;
+}
+
+.lineup_container .row .lineup_day:nth-child(4) {
+    background-color: #a7a3be;
+}
+
+.lineup_container .row .lineup_day:nth-child(5) {
+    background-color: #918bae;
+}
 
 .lineup_day {
-    background-color: #eee;
+    background-color: #e9e8ef;
     border-radius: 10px;
-    margin-bottom: 20px;
-    padding: 2px 5px 10px 5px;
+    margin: 10px 10px 20px 10px;
 }
 
 .lineup_day h4 {
     padding-top: 5px;
     text-align: center;
+}
+
+.day_top {
+    padding: 2px 4px;
 }
 
 .timeslots_container {
@@ -153,22 +261,22 @@ a.return {
 .timeslot {
     background-color: #fff;
     border-radius: 10px;
-    margin: 20px 0px 10px 0px;
+    margin: 20px 10px 10px 10px;
 }
 
-.time_title {
-    background-color: #999;
+.timeslot_title {
+    background-color: #f1f4f9;
     border-radius: 10px 10px 0px 0px;
     display: inline-block;
-    font-size: .8em;
+    font-size: .9em;
     font-weight: bold;
-    padding: 5px 0px;
+    padding: 1px 4px;
     text-align: center;
 }
 
-.time_text {
+.timeslot_text {
     display: inline-block;
-    font-size: .7em;
+    font-size: .8em;
     margin: 10px;
 }
 
@@ -177,7 +285,7 @@ a.return {
 }
 
 .add_timeslot {
-    color: #999;
+    color: #fff;
     font-size: 2em;
     text-align: center;
 }

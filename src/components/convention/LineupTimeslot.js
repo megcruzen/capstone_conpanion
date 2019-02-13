@@ -50,7 +50,7 @@ export default class Timeslot extends Component {
             )
         } else {
             return (
-                <div className="time_title d-flex justify-content-between px-2">
+                <div className="timeslot_title d-flex justify-content-between">
                     <div className="w15">&nbsp;</div>
                     <div onClick={this.clickToEditTitle}>{this.props.timeslot.title}</div>
                     <div className="w15"><i className="fas fa-times-circle text-dark" onClick={() => this.props.deleteTimeslot(this.props.timeslot.id)} style={{cursor:'pointer'}}></i></div>
@@ -74,7 +74,7 @@ export default class Timeslot extends Component {
             )
         } else {
             return (
-                <div className="time_text" onClick={this.clickToEditText}>{this.props.timeslot.text}</div>
+                <div className="timeslot_text" onClick={this.clickToEditText}>{this.props.timeslot.text}</div>
             )
         }
     }
@@ -109,10 +109,10 @@ export default class Timeslot extends Component {
 
         return (
 
-            <div className="timeslot">
+            <>
                 {this.returnFormOrTitle(this.props.timeslot)}
                 {this.returnFormOrText(this.props.timeslot)}
-            </div>
+            </>
 
         )
 

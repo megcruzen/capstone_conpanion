@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Table, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Table, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import "../../CosBuddy.css";
 import ConCostumeItem from "./CostumeItem"
 import CostumeItemCard from "../../costume/CostumeItemCard"
@@ -38,8 +38,8 @@ export default class CostumePackingList extends Component {
 
     // Add new item to costume
     addItem = event => {
-        event.preventDefault();     // Cancels the default action of the submit.
-        event.target.reset();       // Resets values after submit.
+        event.preventDefault();
+        event.target.reset();
 
         const newItem = {
             name: this.state.itemName,
@@ -56,9 +56,16 @@ export default class CostumePackingList extends Component {
 
         return (
 
-                <div className="costume_packing_list py-4">
-                    <div className="d-flex justify-content-between align-items-center">
-                        <div><h5>{this.props.conCostume.costume.name}</h5></div>
+                <Col sm="3" className="costume_packing_list py-4">
+                    <div className="d-flex justify-content-between mb-2">
+                        <div>
+                            <div>
+                                <h6 className="mb-0 mr-2">{this.props.conCostume.costume.name}</h6>
+                            </div>
+                            <div className="subtitle">
+                                {this.props.conCostume.costume.outfit}
+                            </div>
+                        </div>
                         <div><i className="fas fa-edit text-secondary d-print-none" onClick={this.toggle} style={{cursor:'pointer'}}></i></div>
                     </div>
                     <div className="items_box">
@@ -106,7 +113,7 @@ export default class CostumePackingList extends Component {
                             <Button color="primary" onClick={this.toggle}>Done</Button>{' '}
                         </ModalFooter>
                     </Modal>
-                </div>
+                </Col>
         )
     }
 }

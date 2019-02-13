@@ -24,7 +24,7 @@ export default class ConventionCard extends Component {
 
     getImageUrl = (convention) => {
         if (this.props.convention.thumbnail === "") {
-            return "https://i.imgur.com/noKpjHE.jpg"
+            return "https://i.imgur.com/5QVJ5at.png"
         }
         else {
             return this.props.convention.thumbnail
@@ -53,7 +53,7 @@ export default class ConventionCard extends Component {
         return (
             <tr>
                 <td>
-                    <Media className="pt-2 px-2">
+                    <Media className="p-2">
                         <Media left href="#" className="mr-3">
                             <Link to={`/conventions/${this.props.convention.id}/${str}`}>
                                 <Media object src={this.getImageUrl(this.props.convention)} className="thumb" alt={this.props.convention.name} />

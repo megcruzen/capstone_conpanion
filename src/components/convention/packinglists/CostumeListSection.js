@@ -37,11 +37,13 @@ export default class CostumeListSection extends Component {
     render() {
 
         return (
-                <section className="costume_packing_lists mr-2 mb-3">
+                // <div className="costume_packing_lists mr-2 mb-3">
+                <>
                     {this.props.currentCostumes.map(conCostume =>
                         <CostumePackingList key={conCostume.id} conCostume={conCostume} {...this.props} />
                     )}
-                </section>
+                </>
+                // </div>
         )
     }
 }

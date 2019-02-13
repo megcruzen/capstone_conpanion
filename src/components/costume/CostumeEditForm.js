@@ -14,10 +14,6 @@ export default class CostumeEditForm extends Component {
         userId: this.props.location.state.userId
     }
 
-    // consoleLog() {
-    //     console.log("state:", this.props.location.state);
-    // }
-
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = {}

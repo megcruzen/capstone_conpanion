@@ -72,7 +72,7 @@ export default class CostumeDetails extends Component {
                                 <h3>{costume.name}</h3>
                                 <i class="fas fa-user-circle"></i> <span className="series">{costume.outfit}</span>
                             </div>
-                            <div className="pt-5">
+                            <div className="pt-4">
                                 <Link to={{pathname:"/costumes/edit/", state:{id: costume.id, name: costume.name, series: costume.series, outfit: costume.outfit, notes: costume.notes, image: costume.image, timestamp: costume.timestamp, userId: costume.userId}}}><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push("/costumes/edit")} style={{cursor:'pointer'}}></i></Link>
                                 <i className="fas fa-times-circle delete" onClick={this.toggle} style={{cursor:'pointer'}}></i>
                             </div>

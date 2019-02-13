@@ -132,6 +132,13 @@ select#costumeId {
 
 
 
+/****** Login ******/
+
+.login {
+    background-color: #ffffff;
+}
+
+
 
 
 /****** Convention List ******/
@@ -146,10 +153,9 @@ select#costumeId {
     height: 64px;
 }
 
-.convention_packing_list .checked, .costume_packing_lists .checked {
+.convention_packing_list .checked, .costume_packing_list .checked {
     text-decoration: line-through;
 }
-
 
 
 
@@ -167,6 +173,8 @@ select#costumeId {
 
 .subtitle {
     font-size: .7em;
+    height: 15px;
+    padding-bottom: 1px;
 }
 
 .outfit {
@@ -203,6 +211,12 @@ select#costumeId {
 
 
 /****** Convention Details ******/
+
+@media print {
+    .items_box td {
+      padding: 0 !important;
+    }
+}
 
 .convention_costume_list .card-body {
     padding: 10px;

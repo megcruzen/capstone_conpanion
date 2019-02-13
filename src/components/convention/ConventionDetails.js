@@ -58,13 +58,13 @@ export default class ConventionDetails extends Component {
                 <section className="mr-2 mb-3 convention_details">
                     <a href="#" onClick={() => this.props.history.push("/conventions/")} className="return d-print-none">&laquo; Return to conventions</a>
                     <Media className="mt-4 pt-2">
-                        <Media left href="#" className="mr-3">
+                        <Media left href="#" className="mr-3 d-print-none">
                             <Media object src={convention.thumbnail} className="thumb" alt="" />
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div>
                                 <h3 className="mb-0">{convention.name}</h3>
-                                <span className="text-uppercase subtitle">{dateDisplay}</span>
+                                <span className="text-uppercase subtitle d-print-none">{dateDisplay}</span>
                             </div>
                             <div>
                                 <i className="fas fa-edit mr-2 text-secondary d-print-none" onClick={this.toggle2}></i>
@@ -102,16 +102,16 @@ export default class ConventionDetails extends Component {
                         </TabPane>
                         <TabPane tabId="2">
                             <div className="d-flex justify-content-between mb-4">
-                                <div><h4 className="mb-0">Convention Packing Lists</h4></div>
+                                <div><h4 className="mb-0 d-print-none">Convention Packing Lists</h4></div>
                                 <div onClick={this.print} className="mt-1 mr-2 text-secondary d-print-none"><i class="fas fa-print"></i></div>
                             </div>
                             <Row>
-                                <Col sm="6">
+                                <Col sm="3">
                                     <ConventionPackingList convention={convention} {...this.props} />
                                 </Col>
-                                <Col sm="6">
-                                    <CostumeListSection convention={convention} currentCostumes={currentCostumes} {...this.props} />
-                                </Col>
+                                {/* <Col sm="6"> */}
+                                <CostumeListSection convention={convention} currentCostumes={currentCostumes} {...this.props} />
+                                {/* </Col> */}
                             </Row>
                         </TabPane>
                     </TabContent>

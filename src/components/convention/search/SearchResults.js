@@ -45,7 +45,7 @@ export default class SearchResults extends Component {
 
     getImageUrl = (convention) => {
         if (this.props.result.thumbnail === "") {
-            return "https://i.imgur.com/noKpjHE.jpg"
+            return "https://i.imgur.com/5QVJ5at.png"
         }
         else {
             return this.props.result.thumbnail
@@ -53,9 +53,6 @@ export default class SearchResults extends Component {
     }
 
     checkConnection = (result) => {
-        console.log("myConventions", this.props.myConventions)
-        console.log("filter", this.props.myConventions.filter(myConvention => myConvention))
-        console.log("this.props.result.id", this.props.result.id)
 
         if (this.props.myConventions.find(myConvention =>
             myConvention.id === this.props.result.id)) {
@@ -96,7 +93,7 @@ export default class SearchResults extends Component {
         return (
             <tr>
                 <td>
-                    <Media className="pt-2 px-2">
+                    <Media className="p-2">
                         <Media left className="mr-3">
                             <Media object src={this.getImageUrl(this.props.result)} className="thumb" alt={this.props.result.name} />
                         </Media>

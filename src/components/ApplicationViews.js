@@ -16,8 +16,11 @@ import CostumeForm from './costume/CostumeForm'
 import CostumeEditForm from './costume/CostumeEditForm'
 import CostumeDetails from './costume/CostumeDetails'
 
+import GroupList from './group/GroupList'
+import GroupDetails from './group/GroupDetails'
+
 import Contact from './Contact'
-import Callback from '../Callback'
+// import Callback from '../Callback'
 // import auth0Client from '../Auth'
 
 export default class ApplicationViews extends Component {
@@ -33,7 +36,9 @@ export default class ApplicationViews extends Component {
     costumeItems: [],
     conCostumes: [],
     lineupDays: [],
-    timeslots: []
+    timeslots: [],
+    allGroups: [],
+    myGroups: []
   }
 
   // Check if credentials are in local storage
@@ -76,6 +81,12 @@ export default class ApplicationViews extends Component {
 
     AppManager.getTimeslots()
     .then(timeslots => { this.setState({ timeslots: timeslots }) })
+
+    AppManager.getAllGroups()
+    .then(allGroups => { this.setState({ allGroups: allGroups }) })
+
+    AppManager.getMyGroups()
+    .then(myGroups => { this.setState({ myGroups: myGroups }) })
 
     AppManager.getMessages()
     .then(messages => { this.setState({ messages: messages }) })
@@ -442,6 +453,27 @@ export default class ApplicationViews extends Component {
             return <CostumeEditForm {...props}
                     costumes={this.state.costumes}
                     editCostume={this.editCostume} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route exact path="/groups" render={(props) => {
+          if (this.isAuthenticated()) {
+            return <GroupList {...props}
+                    myGroups={this.state.myGroups}
+                    allConventions={this.state.allConventions} />
+            } else {
+              return <Redirect to="/login" />
+            }
+        }} />
+
+        <Route path="/groups/:groupId(\d+)" render={(props) => {
+          if (this.isAuthenticated()) {
+            return <GroupDetails {...props}
+                    myGroups={this.state.myGroups}
+                    allGroups={this.state.allGroups}
+                    allConventions={this.state.allConventions} />
           } else {
             return <Redirect to="/login" />
           }

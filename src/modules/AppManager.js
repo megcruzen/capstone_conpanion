@@ -101,6 +101,17 @@ export default {
         .then(response => response.json())
     },
 
+    getAllGroups() {
+        return fetch(`${remoteURL}/groups?_expand=convention`)
+        .then(response => response.json())
+    },
+
+    getMyGroups() {
+        let sessionUser = sessionStorage.getItem("User");
+        return fetch(`${remoteURL}/userGroups?userId=${Number(sessionUser)}&_expand=group`)
+        .then(response => response.json())
+    },
+
     getMessages() {
         return fetch(`${remoteURL}/messages`)
         .then(response => response.json())

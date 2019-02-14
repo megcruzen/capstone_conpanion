@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "auth0-js": "^9.10.0",
     "bootbox": "^4.4.0",
     "bootstrap": "^4.2.1",
     "bootstrap-select": "^1.13.5",

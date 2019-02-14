@@ -16,7 +16,9 @@ import CostumeForm from './costume/CostumeForm'
 import CostumeEditForm from './costume/CostumeEditForm'
 import CostumeDetails from './costume/CostumeDetails'
 
-import Contact from './Contact.js'
+import Contact from './Contact'
+import Callback from '../Callback'
+// import auth0Client from '../Auth'
 
 export default class ApplicationViews extends Component {
 
@@ -74,6 +76,9 @@ export default class ApplicationViews extends Component {
 
     AppManager.getTimeslots()
     .then(timeslots => { this.setState({ timeslots: timeslots }) })
+
+    AppManager.getMessages()
+    .then(messages => { this.setState({ messages: messages }) })
   }
 
   /* ADD NEW */
@@ -303,6 +308,8 @@ export default class ApplicationViews extends Component {
                     getAllData={this.getAllData} />
         }} />
 
+        {/* <Route exact path='/callback' component={Callback}/> */}
+
         <Route path="/register" render={(props) => {
             return <Register {...props}
                   allUsers={this.state.allUsers}
@@ -310,6 +317,11 @@ export default class ApplicationViews extends Component {
         }} />
 
         <div id="appviews">
+
+        {/* if (!auth0Client.isAuthenticated()) {
+          auth0Client.signIn();
+          return <div></div>;
+        } */}
 
         <Route exact path="/" render={props => {
             if (this.isAuthenticated()) {

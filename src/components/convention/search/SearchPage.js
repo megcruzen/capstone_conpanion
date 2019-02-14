@@ -25,7 +25,7 @@ export default class ConventionSearch extends Component {
 
     render() {
         return (
-            <section className="convention_search mb-4">
+            <section className="find_convention mb-4">
                 <h1>Find a Convention</h1>
                 <div className="mt-3">
                     {/* <Button color="primary"
@@ -41,9 +41,9 @@ export default class ConventionSearch extends Component {
                     <TabPane tabId="1" className="mt-4">
                         <NameSearch allConventions={this.props.allConventions} {...this.props} />
                     </TabPane>
-                    <TabPane tabId="2" className="mt-4">
+                    {/* <TabPane tabId="2" className="mt-4">
                         <h4>Search by Date</h4>
-                    </TabPane>
+                    </TabPane> */}
                 </TabContent>
             </section>
         )

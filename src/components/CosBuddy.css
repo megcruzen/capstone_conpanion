@@ -5,10 +5,13 @@
     padding: 20px;
 }
 
-.navbar-brand {
+a.navbar-brand {
     color: #2d283e;
-    font-size: 30px !important;
     font-weight: 600;
+}
+
+a.navbar-brand {
+    font-size: 30px;
 }
 
 .navbar-brand:hover {
@@ -32,7 +35,29 @@
     font-family: 'Nunito', sans-serif;
     margin: 0 auto;
     max-width: 1000px;
-    padding: 20px 20px 10px 20px;
+}
+
+.login, .register {
+    padding: 0px 20px;
+    margin: 0 auto;
+    margin-top: 100px;
+    max-width: 550px;
+}
+
+.logo .navbar-brand {
+    font-size: 50px;
+}
+
+@media (max-width: 500px) {
+    .login .form-group, .login button, .register .form-group, .register button {
+        width: 100%;
+    }
+}
+
+.convention_list_personal, .convention_details, .find_convention, .convention_form,
+.costume_list, .costume_details_section, .costume_form {
+    padding: 20px;
+    background-color: #fff;
 }
 
 
@@ -132,35 +157,7 @@ select#costumeId {
 
 
 
-/****** Login ******/
-
-.login {
-    background-color: #ffffff;
-}
-
-
-
-
-/****** Convention List ******/
-
-.con_details {
-    font-size: .9rem;
-    line-height: 1.3em;
-}
-
-.thumb {
-    width: 64px;
-    height: 64px;
-}
-
-.convention_packing_list .checked, .costume_packing_list .checked {
-    text-decoration: line-through;
-}
-
-
-
-
-/****** Costume List ******/
+/****** Costumes ******/
 
 .costume_list .card a, .con_details a, .costume_list .card a:hover, .con_details a:hover {
     color: #212529;
@@ -210,7 +207,21 @@ select#costumeId {
 
 
 
-/****** Convention Details ******/
+/****** Conventions ******/
+
+.con_details {
+    font-size: .9rem;
+    line-height: 1.3em;
+}
+
+.thumb {
+    width: 64px;
+    height: 64px;
+}
+
+.convention_packing_list .checked, .costume_packing_list .checked {
+    text-decoration: line-through;
+}
 
 @media print {
     .items_box td {
@@ -231,11 +242,12 @@ select#costumeId {
 }
 
 .convention_details .nav-link {
-    padding: 5px 13px;
+    padding: 5px 12px;
 }
 
 .convention_details .nav-tabs .nav-link {
     color: #5d5380;
+    font-size: 14px;
 }
 
 .convention_details .nav-tabs .nav-link.active {

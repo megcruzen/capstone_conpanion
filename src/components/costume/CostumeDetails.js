@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Table, Row, Col, Media, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label } from 'reactstrap';
 import "../CosBuddy.css";
-import thumb from "./64x64.jpg"
 import CostumeItemCard from "./CostumeItemCard"
 
 export default class CostumeDetails extends Component {

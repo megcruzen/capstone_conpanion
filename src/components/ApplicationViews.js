@@ -84,7 +84,6 @@ export default class ApplicationViews extends Component {
   .then(() => this.getAllData())
 
   setSessionAfterRegister = (newUser) => {
-    // let ConsAndCostumes = {}
     sessionStorage.setItem("User", JSON.stringify(newUser.id))
     }
 
@@ -296,7 +295,7 @@ export default class ApplicationViews extends Component {
 
   render() {
     return (
-      <div id="appviews">
+        <>
 
         <Route path="/login" render={(props) => {
             return <Login {...props}
@@ -309,6 +308,18 @@ export default class ApplicationViews extends Component {
                   allUsers={this.state.allUsers}
                   addUser={this.addUser} />
         }} />
+
+        <div id="appviews">
+
+        <Route exact path="/" render={props => {
+            if (this.isAuthenticated()) {
+              return <ConventionList {...props}
+                    myConventions={this.state.myConventions}
+                    removeConvention={this.removeConvention} />
+            } else {
+                  return <Redirect to="/login" />
+            }
+          }} />
 
         <Route exact path="/conventions" render={props => {
             if (this.isAuthenticated()) {
@@ -433,6 +444,7 @@ export default class ApplicationViews extends Component {
         }} />
 
       </div>
+      </>
     );
   }
 }

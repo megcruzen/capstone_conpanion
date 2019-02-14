@@ -21,8 +21,8 @@ export default class CostumeListSection extends Component {
 
     // Add new item to costume
     addItem = event => {
-        event.preventDefault();     // Cancels the default action of the submit.
-        event.target.reset();       // Resets values after submit.
+        event.preventDefault();
+        event.target.reset();
 
         const newItem = {
             name: this.state.itemName,
@@ -36,22 +36,14 @@ export default class CostumeListSection extends Component {
 
     render() {
 
-        // console.log("props", this.props)
-        // console.log("global packing list conCostume", this.props.conCostumes.map(conCostume => conCostume.userConventionId))
-        // this.getCostumesForCon(this.props.myConventionId);
-
         return (
-                <section className="costume_packing_lists mr-2 mb-3">
-
-                    {/* {this.props.conCostumes.filter(conCostume =>
-                            conCostume.userConventionId === this.props.convention.userConventionId) */}
-
-                        {this.props.currentCostumes.map(conCostume =>
+                // <div className="costume_packing_lists mr-2 mb-3">
+                <>
+                    {this.props.currentCostumes.map(conCostume =>
                         <CostumePackingList key={conCostume.id} conCostume={conCostume} {...this.props} />
-                        // userConventionId={this.props.convention.userConventionId}
                     )}
-
-                </section>
+                </>
+                // </div>
         )
     }
 }

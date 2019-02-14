@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 export default class CostumeForm extends Component {
 
@@ -62,9 +62,10 @@ export default class CostumeForm extends Component {
                         <Input type="text" required name="series" id="series"
                         onChange={this.handleFieldChange} />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="mb-4">
                         <Label for="image">Image</Label>
                         <Input type="url" required name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange} />
+                        <FormText>Note: Square images work best.</FormText>
                     </FormGroup>
                     <Button type="submit" color="primary" className="mr-3">Save Costume</Button>
                     <a href="#" onClick={() => this.props.history.push("/costumes/")} className="cancel">Cancel</a>

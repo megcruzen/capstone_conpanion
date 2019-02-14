@@ -38,13 +38,13 @@ export default class ConventionPackingList extends Component {
     render() {
 
         return (
-                <section className="convention_packing_list mr-2 mb-3">
-                    <h4>Convention Packing List</h4>
-                    <Form onSubmit={this.addItem} className="d-flex">
+                <section className="convention_packing_list my-4">
+                    <h6>General</h6>
+                    <Form onSubmit={this.addItem} className="d-flex d-print-none">
                         <FormGroup className="w-100 mr-2">
                             <Label for="itemName" hidden>Item Name</Label>
                             <Input type="text" required name="itemName" id="itemName"
-                            onChange={this.handleFieldChange} placeholder="Enter an item name" />
+                            onChange={this.handleFieldChange} placeholder="Enter item name" />
                         </FormGroup>
                         <div><Button color="primary">Add</Button></div>
                     </Form>

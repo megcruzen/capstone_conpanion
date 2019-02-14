@@ -27,6 +27,7 @@ export default class ConventionForm extends Component {
     constructNewConvention = evt => {
         evt.preventDefault()
         let sessionUser = sessionStorage.getItem("User");
+
         const convention = {
             name: this.state.conventionName,
             startDate: this.state.startDate,
@@ -46,7 +47,7 @@ export default class ConventionForm extends Component {
 
     render() {
         return (
-            <section className="convention_form">
+            <section className="convention_form mb-4">
                 <h1>Add a Convention</h1>
                 <Form onSubmit={this.constructNewConvention} className="form_width mt-4">
                 <Row form>
@@ -107,9 +108,9 @@ export default class ConventionForm extends Component {
                         <Input type="url" required name="website" id="website" placeholder="http://conventionname.com"
                         onChange={this.handleFieldChange} />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="mb-4">
                         <Label for="thumbnail">Logo</Label>
-                        <Input type="url" required name="thumbnail" id="thumbnail" placeholder="Enter an image link" onChange={this.handleFieldChange} />
+                        <Input type="url" name="thumbnail" id="thumbnail" placeholder="Enter an image link" onChange={this.handleFieldChange} />
                     </FormGroup>
                     <Button type="submit" color="primary" className="mr-3">Save Convention</Button>
                     <a href="#" onClick={() => this.props.history.push("/conventions/search")} className="cancel">Cancel</a>

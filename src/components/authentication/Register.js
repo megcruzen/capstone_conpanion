@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button, Form, FormGroup, Label, Input, Modal, ModalBody, ModalFooter, Jumbotron } from 'reactstrap';
+import { Link } from "react-router-dom";
+import { NavbarBrand, Button, Form, FormGroup, Label, Input, Modal, ModalBody, ModalFooter, Jumbotron } from 'reactstrap';
 import "../CosBuddy.css";
 import AppManager from '../../modules/AppManager';
 
@@ -83,7 +84,8 @@ export default class Register extends Component {
     render() {
         return (
             <section className="register">
-                    <h2>Create an Account</h2>
+                <div className="logo text-center"><NavbarBrand tag={Link} to="/"><span className="nav-highlight">con</span>panion</NavbarBrand></div>
+                    <h5 className="text-center pt-2">Create Account</h5>
 
                     <Form onSubmit={this.constructUser}>
                         <FormGroup>
@@ -101,7 +103,7 @@ export default class Register extends Component {
                             <Input type="password" name="password" id="password" placeholder="Password"
                             onChange={this.handleFieldChange} required />
                         </FormGroup>
-                        <Button color="primary">Submit</Button>
+                        <Button color="primary w-100">Submit</Button>
                     </Form>
 
                     <Modal isOpen={this.state.nameModal} toggleUsername={this.toggleUsername} className={this.props.className}>

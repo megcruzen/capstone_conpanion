@@ -60,21 +60,21 @@ export default class CostumeDetails extends Component {
     render() {
         const costume = this.props.costumes.find(costume => costume.id === parseInt(this.props.match.params.costumeId)) || {}
         return (
-                <section key={costume.id} className="mr-2 mb-3 costume_details">
+                <section key={costume.id} className="mr-2 mb-3 costume_details_section">
                     <a href="#" onClick={() => this.props.history.push("/costumes/")} className="return">&laquo; Return to costumes</a>
                     <Media className="mt-4 pt-2">
-                        <Media left className="mr-3">
-                            <Media object src={thumb} className="thumb" alt="" />
+                        <Media left className="mr-3 d-flex justify-content-between align-items-center">
+                            <Media object src={costume.image} className="thumb" alt={costume.name} />
                         </Media>
-                        <Media body className="d-flex justify-content-between align-items-center">
+                        <Media body>
                             <div className="costume_details">
                                 <span className="text-uppercase subtitle">{costume.series}</span>
-                                <h4>{costume.name}</h4>
+                                <h3>{costume.name}</h3>
                                 <i class="fas fa-user-circle"></i> <span className="series">{costume.outfit}</span>
                             </div>
-                            <div>
-                            <Link to={{pathname:"/costumes/edit/", state:{id: costume.id, name: costume.name, series: costume.series, outfit: costume.outfit, notes: costume.notes, image: costume.image, timestamp: costume.timestamp, userId: costume.userId}}}><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push("/costumes/edit")} style={{cursor:'pointer'}}></i></Link>
-                            <i className="fas fa-times-circle text-danger" onClick={this.toggle} style={{cursor:'pointer'}}></i>
+                            <div className="pt-4">
+                                <Link to={{pathname:"/costumes/edit/", state:{id: costume.id, name: costume.name, series: costume.series, outfit: costume.outfit, notes: costume.notes, image: costume.image, timestamp: costume.timestamp, userId: costume.userId}}}><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push("/costumes/edit")} style={{cursor:'pointer'}}></i></Link>
+                                <i className="fas fa-times-circle delete" onClick={this.toggle} style={{cursor:'pointer'}}></i>
                             </div>
                         </Media>
                     </Media>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Table, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Table, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Col } from 'reactstrap';
 import "../../CosBuddy.css";
 import ConCostumeItem from "./CostumeItem"
 import CostumeItemCard from "../../costume/CostumeItemCard"
@@ -38,8 +38,8 @@ export default class CostumePackingList extends Component {
 
     // Add new item to costume
     addItem = event => {
-        event.preventDefault();     // Cancels the default action of the submit.
-        event.target.reset();       // Resets values after submit.
+        event.preventDefault();
+        event.target.reset();
 
         const newItem = {
             name: this.state.itemName,
@@ -56,10 +56,17 @@ export default class CostumePackingList extends Component {
 
         return (
 
-                <div className="con_costume_card">
-                    <div className="d-flex justify-content-between align-items-center">
-                        <div><h4>{this.props.conCostume.costume.name}</h4></div>
-                        <div><i className="fas fa-edit mr-2 text-secondary" onClick={this.toggle} style={{cursor:'pointer'}}></i></div>
+                <Col sm="3" className="costume_packing_list py-4">
+                    <div className="d-flex justify-content-between mb-2">
+                        <div>
+                            <div>
+                                <h6 className="mb-0 mr-2">{this.props.conCostume.costume.name}</h6>
+                            </div>
+                            <div className="subtitle">
+                                {this.props.conCostume.costume.outfit}
+                            </div>
+                        </div>
+                        <div><i className="fas fa-edit text-secondary d-print-none" onClick={this.toggle} style={{cursor:'pointer'}}></i></div>
                     </div>
                     <div className="items_box">
                         <Table borderless striped>
@@ -75,7 +82,7 @@ export default class CostumePackingList extends Component {
                         </Table>
                     </div>
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle}>Update Costume</ModalHeader>
+                        <ModalHeader toggle={this.toggle}>Update Costume Items</ModalHeader>
                         <ModalBody>
                             <div className="item_input">
                                 <h3>{this.props.conCostume.costume.name}</h3>
@@ -106,7 +113,7 @@ export default class CostumePackingList extends Component {
                             <Button color="primary" onClick={this.toggle}>Done</Button>{' '}
                         </ModalFooter>
                     </Modal>
-                </div>
+                </Col>
         )
     }
 }

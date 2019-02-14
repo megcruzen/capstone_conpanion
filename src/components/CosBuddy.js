@@ -15,11 +15,11 @@ class CosBuddy extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div id="conpanion">
         {/* <NavBar /> */}
         {this.showNav()}
         <ApplicationViews />
-      </React.Fragment>
+      </div>
     );
   }
 }

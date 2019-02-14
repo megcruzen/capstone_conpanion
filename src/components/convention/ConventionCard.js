@@ -22,6 +22,15 @@ export default class ConventionCard extends Component {
         });
     }
 
+    getImageUrl = (convention) => {
+        if (this.props.convention.thumbnail === "") {
+            return "https://i.imgur.com/5QVJ5at.png"
+        }
+        else {
+            return this.props.convention.thumbnail
+        }
+    }
+
     render() {
 
         let str = this.props.convention.name;
@@ -44,24 +53,23 @@ export default class ConventionCard extends Component {
         return (
             <tr>
                 <td>
-                    <Media className="pt-2 px-2">
+                    <Media className="p-2">
                         <Media left href="#" className="mr-3">
                             <Link to={`/conventions/${this.props.convention.id}/${str}`}>
-                                <Media object src={thumb} className="thumb" alt="" />
+                                <Media object src={this.getImageUrl(this.props.convention)} className="thumb" alt={this.props.convention.name} />
                             </Link>
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div className="con_details">
                                 <Link to={`/conventions/${this.props.convention.id}/${this.props.convention.name}`}>
-                                <h4>{this.props.convention.name}</h4>
+                                <h4 className="mb-0">{this.props.convention.name}</h4>
                                 {dateDisplay}
                                 <br />
                                 {this.props.convention.city}, {this.props.convention.state}
-                                {/* userConventionId: {this.props.convention.userConventionId} */}
                                 </Link>
                             </div>
                             <div>
-                                <i className="fas fa-times-circle text-danger" onClick={this.toggle} style={{cursor:'pointer'}}></i>
+                                <i className="fas fa-times-circle delete" onClick={this.toggle} style={{cursor:'pointer'}}></i>
                             </div>
                         </Media>
                     </Media>

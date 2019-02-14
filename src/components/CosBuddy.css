@@ -1,26 +1,93 @@
-#appviews {
+.navbar {
+    font-family: 'Nunito', sans-serif;
+    margin: 0 auto;
+    max-width: 1000px;
     padding: 20px;
 }
 
-/****** Links ******/
-
-a.link {
-    color: #74c2a7;
-    text-decoration: underline;
+a.navbar-brand {
+    color: #2d283e;
+    font-weight: 600;
 }
 
-a.cancel {
-    color: #636363;
-    text-decoration: underline;
+a.navbar-brand {
+    font-size: 30px;
 }
 
-a.delete {
-    color: red;
-    text-decoration: underline;
+.navbar-brand:hover {
+    color: #2d283e;
+}
+
+.nav-highlight {
+    color: #812bb2;
+}
+
+.navbar-light .navbar-nav a.nav-link {
+    color: #812bb2;
+}
+
+.navbar-light .navbar-nav a.nav-link:hover {
+    color: #2d283e;
+}
+
+#appviews {
+    background-color: #fff;
+    font-family: 'Nunito', sans-serif;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+.login, .register {
+    padding: 0px 20px;
+    margin: 0 auto;
+    margin-top: 100px;
+    max-width: 550px;
+}
+
+.logo .navbar-brand {
+    font-size: 50px;
+}
+
+@media (max-width: 500px) {
+    .login .form-group, .login button, .register .form-group, .register button {
+        width: 100%;
+    }
+}
+
+.convention_list_personal, .convention_details, .find_convention, .convention_form,
+.costume_list, .costume_details_section, .costume_form {
+    padding: 20px;
+    background-color: #fff;
+}
+
+
+
+/****** Links and Buttons ******/
+
+a.link, a.return {
+    color: #812bb2;
+}
+
+a.link:hover, a.return:hover {
+    color: #2d283e;
+    text-decoration: none;
 }
 
 a.return {
     font-size: .8em;
+}
+
+a.cancel {
+    color: #4c495c;
+    text-decoration: underline;
+}
+
+a.cancel:hover {
+    color: #812bb2;
+}
+
+.delete {
+    color: #ff0090;
 }
 
 .costume_links {
@@ -31,10 +98,47 @@ a.return {
     color: #999;
 }
 
+button.btn { border: 0 none; }
+
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+button.btn-primary {
+    background-color: #812bb2;
+}
+
+button.btn-secondary {
+    background-color: #77797e;
+}
+
+button.btn-primary:hover, button.btn-primary:active, button.btn-primary:focus, button.btn-primary:active:focus,
+    .show>button.btn-primary.dropdown-toggle{
+        color: #fff;
+        background-color: #564f70;
+    }
+
+button.btn-primary:not(:disabled):not(.disabled).active,
+button.btn-primary:not(:disabled):not(.disabled):active {
+    background-color: #3a344f;
+}
+
+
+
+
 
 /****** Forms ******/
 
-.form_width {
+#appviews label {
+    margin-bottom: 0px;
+}
+
+#appviews .form-control {
+    padding: 3px 8px;
+}
+
+.form_width, .searchForm {
     max-width: 500px;
 }
 
@@ -47,30 +151,13 @@ a.return {
     margin-bottom: 0px;
 }
 
-/****** Convention List ******/
-
-.con_details {
-    font-size: .9rem;
-    line-height: 1.3em;
+select#costumeId {
+    width: 300px;
 }
 
-.thumb {
-    width: 64px;
-    height: 64px;
-}
 
-.convention_packing_list .checked, .costume_packing_lists .checked {
-    text-decoration: line-through;
-}
 
-/****** Costume List ******/
-.costume_list {
-    max-width: 1050px;
-}
-
-.costume_list .card {
-    max-width: 318px;
-}
+/****** Costumes ******/
 
 .costume_list .card a, .con_details a, .costume_list .card a:hover, .con_details a:hover {
     color: #212529;
@@ -83,11 +170,18 @@ a.return {
 
 .subtitle {
     font-size: .7em;
+    height: 15px;
+    padding-bottom: 1px;
 }
 
 .outfit {
     font-size: .8em;
     font-style: italic;
+}
+
+.costume_details_section .thumb {
+    width: 150px;
+    height: 150px;
 }
 
 .costume_details {
@@ -98,10 +192,6 @@ a.return {
     margin-bottom: 5px;
 }
 
-/* .costume_details .table {
-    margin-bottom: 0px;
-} */
-
 .costume_details .table td {
     padding: 7px 5px;
 }
@@ -110,10 +200,33 @@ a.return {
     font-size: .8em;
 }
 
-/****** Convention Details ******/
-.convention_costume_list .card {
-    max-width: 200px;
-    height: auto;
+#appviews .table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f5f4f8;
+}
+
+
+
+
+/****** Conventions ******/
+
+.con_details {
+    font-size: .9rem;
+    line-height: 1.3em;
+}
+
+.thumb {
+    width: 64px;
+    height: 64px;
+}
+
+.convention_packing_list .checked, .costume_packing_list .checked {
+    text-decoration: line-through;
+}
+
+@media print {
+    .items_box td {
+      padding: 0 !important;
+    }
 }
 
 .convention_costume_list .card-body {
@@ -124,26 +237,79 @@ a.return {
     font-size: 1.4em;
 }
 
-/****** Lineup ******/
-
-/* .lineup_container .col-sm-3:nth-child(2) {
-    background-color: teal;
+.convention_details .nav-item {
+    padding: 0px 5px;
 }
 
-.lineup_container .col-sm-3:nth-child(3) {
-    background-color: red;
-} */
+.convention_details .nav-link {
+    padding: 5px 12px;
+}
+
+.convention_details .nav-tabs .nav-link {
+    color: #5d5380;
+    font-size: 14px;
+}
+
+.convention_details .nav-tabs .nav-link.active {
+    color: #812bb2;
+}
+
+
+
+
+/****** Convention Search ******/
+
+.add_result {
+    color: #a8a4be;
+    width: 70px;
+}
+
+
+
+
+/****** Convention Lineup ******/
+
+@media (max-width: 500px) {
+.lineup_container .col {
+    padding: 0px 0px 10px 0px;
+    flex-basis: unset;
+}
+}
+
+
+.lineup_container .col {
+    padding: 0px 0px 10px 0px;
+}
+
+.lineup_container .row .lineup_day:nth-child(2) {
+    background-color: #d3d1df;
+}
+
+.lineup_container .row .lineup_day:nth-child(3) {
+    background-color: #bdbace;
+}
+
+.lineup_container .row .lineup_day:nth-child(4) {
+    background-color: #a7a3be;
+}
+
+.lineup_container .row .lineup_day:nth-child(5) {
+    background-color: #918bae;
+}
 
 .lineup_day {
-    background-color: #eee;
+    background-color: #e9e8ef;
     border-radius: 10px;
-    margin-bottom: 20px;
-    padding: 2px 5px 10px 5px;
+    margin: 10px 10px 20px 10px;
 }
 
 .lineup_day h4 {
     padding-top: 5px;
     text-align: center;
+}
+
+.day_top {
+    padding: 2px 4px;
 }
 
 .timeslots_container {
@@ -153,23 +319,23 @@ a.return {
 .timeslot {
     background-color: #fff;
     border-radius: 10px;
-    margin: 20px 0px 10px 0px;
+    margin: 20px 10px 10px 10px;
 }
 
-.time_title {
-    background-color: #999;
+.timeslot_title {
+    background-color: #f1f4f9;
     border-radius: 10px 10px 0px 0px;
     display: inline-block;
-    font-size: .8em;
+    font-size: .9em;
     font-weight: bold;
-    padding: 5px 0px;
+    padding: 1px 4px;
     text-align: center;
 }
 
-.time_text {
-    display: inline-block;
-    font-size: .7em;
-    margin: 10px;
+.timeslot_text {
+    font-size: .9em;
+    padding: 15px 10px;
+    text-align: center;
 }
 
 .w15 {
@@ -177,7 +343,7 @@ a.return {
 }
 
 .add_timeslot {
-    color: #999;
+    color: #fff;
     font-size: 2em;
     text-align: center;
 }
@@ -190,7 +356,6 @@ a.return {
 button.build_lineup {
     display: block;
     font-size: 20px;
-    margin: 0 auto;
-    margin-top: 50px;
+    margin: 50px auto;
     width: 40%;
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter, Row, Col } from 'reactstrap';
+import { Button, Form, FormGroup, FormText, Label, Input, Modal, ModalHeader, ModalBody, Row, Col } from 'reactstrap';
 import ConCostumeCard from "./ConCostumeCard"
 
 export default class ConventionCostumeList extends Component {
@@ -43,14 +43,7 @@ export default class ConventionCostumeList extends Component {
 
         let costumeArray = this.props.costumes.map(costume => costume.id);
         let conCostumeArray = this.props.currentCostumes.map(conCostume => conCostume.costumeId);
-
-        // console.log("costumeIdArray", costumeArray, "conCostumeIdArray:", conCostumeArray);
-
-        // costumeArray = costumeArray.filter(val => !conCostumeArray.includes(val));
-        // console.log("filteredArray", costumeArray)
-
         costumeArray = this.props.costumes.filter(val => !conCostumeArray.includes(val.id));
-        // console.log("filteredArray", costumeArray)
 
         return costumeArray.map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
 
@@ -59,8 +52,8 @@ export default class ConventionCostumeList extends Component {
 
     // Create the conCostume object
     constructConnection = event => {
-        event.preventDefault();     // Cancels the default action of the submit.
-        event.target.reset();       // Resets select after submit.
+        event.preventDefault();
+        event.target.reset();
 
         if (this.state.costumeId === "") {      // if costume select is empty, alert to select costume
             window.alert("Please select a costume.")
@@ -102,9 +95,9 @@ export default class ConventionCostumeList extends Component {
                 <div className="d-sm-flex justify-content-between flex-wrap align-items-center">
                     <h4>Costume List</h4>
                 </div>
-                <div className="costume_selector d-flex flex-wrap align-items-end">
-                    <Form onSubmit={this.constructConnection} className="d-flex w-75 mr-2 align-items-end">
-                        <FormGroup className="w-100 mr-2 mb-0">
+                <div className="costume_selector">
+                    <Form onSubmit={this.constructConnection} className="d-flex">
+                        <FormGroup className="mr-2 mb-0">
                             <Label for="costumeId" hidden>Add a costume:</Label>
                             <Input type="select" required name="costumeId" id="costumeId"
                             onChange={this.handleFieldChange}>
@@ -114,12 +107,8 @@ export default class ConventionCostumeList extends Component {
                         </FormGroup>
                         <div><Button color="primary">Add</Button></div>
                     </Form>
-                    <div>
-                        {/* <Button color="primary" onClick={() => this.props.history.push("/costumes/new")}>Create New Costume</Button> */}
-                        <Button color="primary" onClick={this.toggle}>Create New Costume</Button>
-                    </div>
+                    <FormText onClick={this.toggle} className="pt-1 pl-1"><a href="#" className="link">Create a new costume &raquo;</a></FormText>
                 </div>
-                {/* <div className="d-flex justify-content-between flex-wrap mt-4"> */}
                 <Row className="mt-4">
                 {
                     // get all conCostume objects
@@ -127,7 +116,7 @@ export default class ConventionCostumeList extends Component {
                     // only show those objects where this.props.myConventionId (current convention) = conCostume.userConId
                     .filter(conCostume => this.props.convention.userConventionId === conCostume.userConventionId)
                     .map(conCostume =>
-                        <Col xs="6" sm="2">
+                        <Col sm="4">
                             <ConCostumeCard key={conCostume.id} conCostume={conCostume} {...this.props} />
                         </Col>
                     )
@@ -138,8 +127,7 @@ export default class ConventionCostumeList extends Component {
                     <ModalHeader toggle={this.toggle}>Create New Costume</ModalHeader>
                     <ModalBody>
                         <section className="costume_form">
-                            <h1>Add New Costume</h1>
-                            <Form onSubmit={this.constructNewCostume} className="form_width mt-4">
+                            <Form onSubmit={this.constructNewCostume} className="form_width">
                                 <FormGroup>
                                     <Label for="characterName">Character Name</Label>
                                     <Input type="text" required name="characterName" id="characterName"
@@ -158,14 +146,12 @@ export default class ConventionCostumeList extends Component {
                                 <FormGroup>
                                     <Label for="image">Image</Label>
                                     <Input type="url" required name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange} />
+                                    <FormText>Note: Square images work best.</FormText>
                                 </FormGroup>
-                                <Button type="submit" onClick={this.toggle} color="primary" className="mr-3">Save Costume</Button>
+                                <Button type="submit" onClick={this.toggle} color="primary" className="mr-3 my-2">Save Costume</Button>
                             </Form>
                         </section>
                     </ModalBody>
-                    <ModalFooter>
-                        <Button color="primary" onClick={this.toggle}>Done</Button>{' '}
-                    </ModalFooter>
                 </Modal>
             </section>
         )

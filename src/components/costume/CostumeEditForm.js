@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button, Form, FormGroup, FormText, Label, Input } from 'reactstrap';
 
 export default class CostumeEditForm extends Component {
 
@@ -13,10 +13,6 @@ export default class CostumeEditForm extends Component {
         image: this.props.location.state.image,
         userId: this.props.location.state.userId
     }
-
-    // consoleLog() {
-    //     console.log("state:", this.props.location.state);
-    // }
 
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
@@ -49,8 +45,8 @@ export default class CostumeEditForm extends Component {
     render() {
         return (
             <section className="costume_form">
-                <h1>Add New Costume</h1>
-                <Form onSubmit={this.reconstructCostume} className="form_width mt-4">
+                <h1>Edit Costume</h1>
+                <Form onSubmit={this.reconstructCostume} className="form_width mt-4 mb-4">
                     <FormGroup>
                         <Label for="characterName">Character Name</Label>
                         <Input type="text" required name="characterName" id="characterName"
@@ -69,10 +65,11 @@ export default class CostumeEditForm extends Component {
                         onChange={this.handleFieldChange}
                         value={`${this.state.series}`} />
                     </FormGroup>
-                    <FormGroup>
+                    <FormGroup className="mb-4">
                         <Label for="image">Image</Label>
                         <Input type="url" required name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange}
                         value={`${this.state.image}`} />
+                        <FormText>Note: Square images work best.</FormText>
                     </FormGroup>
                     <Button type="submit" color="primary" className="mr-3">Save Costume</Button>
                     <a href="#" onClick={() => this.props.history.push(`/costumes/${this.props.location.state.id}`)} className="cancel">Cancel</a>

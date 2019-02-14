@@ -23,7 +23,7 @@ export default class CostumeItemCard extends Component {
                     <div className="d-flex justify-content-between">
                         <div className="item_name">{this.props.item.name}</div>
                         <div>
-                            <i className="fas fa-times-circle text-danger" onClick={() => this.deleteCostumeItemAndConItem(this.props.item.id)} style={{cursor:'pointer'}}></i>
+                            <i className="fas fa-times-circle delete" onClick={() => this.deleteCostumeItemAndConItem(this.props.item.id)} style={{cursor:'pointer'}}></i>
                         </div>
                     </div>
                 </td>

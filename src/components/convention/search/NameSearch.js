@@ -43,7 +43,6 @@ export default class NameSearch extends Component {
                 <div className="my-1">
                     <FormGroup>
                         <Form className="searchForm" onSubmit={this.handleSearch}>
-                        {/* The input field id must match the key of the property that reflects the user input in state */}
                             <Input type="text"
                                     required
                                     className="form-control"
@@ -56,7 +55,6 @@ export default class NameSearch extends Component {
 
                 <Table striped borderless className="name_results">
                     <tbody>
-                        {/* loop through array of results and render */}
                         {this.state.conventions.map(result => (
                             <ConSearchResults key={result.id} result={result} {...this.props} />
                     ))}

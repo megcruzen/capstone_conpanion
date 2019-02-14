@@ -101,6 +101,16 @@ export default {
         .then(response => response.json())
     },
 
+    getMessages() {
+        return fetch(`${remoteURL}/messages`)
+        .then(response => response.json())
+    },
+
+    getMessage(id) {
+        return fetch(`${remoteURL}/messages/${id}`)
+        .then(response => response.json())
+    },
+
 
     // POST
 

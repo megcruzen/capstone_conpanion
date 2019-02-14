@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { NavbarBrand, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import AppManager from '../../modules/AppManager';
 import "../CosBuddy.css";
+import auth0Client from "../../Auth"
 
 
 export default class Login extends Component {
@@ -43,6 +44,11 @@ export default class Login extends Component {
             .then(() => this.props.history.push("/conventions"))
     }
 
+    signOut = () => {
+        auth0Client.signOut();
+        this.props.history.replace('/');
+    }
+
     render() {
         return (
             <section className="login">
@@ -62,6 +68,21 @@ export default class Login extends Component {
                         <Button color="primary">Submit</Button>
                     </Form>
                 </div>
+
+                {/* <div>
+                    Auth0 code that checks if user is logged in. If they are, display profile name and sign out button. If they are not, display sign in button.
+                    {
+                        !auth0Client.isAuthenticated() &&
+                        <button className="btn btn-dark" onClick={auth0Client.signIn}>Sign In</button>
+                    }
+                    {
+                        auth0Client.isAuthenticated() &&
+                        <div>
+                        <label className="mr-2">{auth0Client.getProfile().name}</label>
+                        <button className="btn btn-dark" onClick={() => {this.signOut()}}>Sign Out</button>
+                        </div>
+                    }
+                </div> */}
 
                 <div className="text-center">
                     New to ConPanion? <a href="#" onClick={() => this.props.history.push("/register")} className="link">Sign up now!</a>

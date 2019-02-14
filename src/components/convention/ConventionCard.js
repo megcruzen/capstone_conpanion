@@ -50,6 +50,9 @@ export default class ConventionCard extends Component {
 
         let dateDisplay = months[startMonth] + " " + startDate + " - " + months[endMonth] + " " + endDate + ", " + endYear;
 
+        // let conYear = new Date(this.props.convention.startDate);
+        // conYear = conYear.getFullYear();
+
         return (
             <tr>
                 <td>
@@ -61,7 +64,7 @@ export default class ConventionCard extends Component {
                         </Media>
                         <Media body className="d-flex justify-content-between align-items-center">
                             <div className="con_details">
-                                <Link to={`/conventions/${this.props.convention.id}/${this.props.convention.name}`}>
+                                <Link to={`/conventions/${this.props.convention.id}/${str}`}>
                                 <h4 className="mb-0">{this.props.convention.name}</h4>
                                 {dateDisplay}
                                 <br />

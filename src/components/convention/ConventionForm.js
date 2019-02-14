@@ -53,14 +53,14 @@ export default class ConventionForm extends Component {
                 <Row form>
                         <Col md={8}>
                             <FormGroup>
-                                <Label for="conventionName">Convention Name</Label>
+                                <Label for="conventionName">Convention Name</Label><span className="required">*</span>
                                 <Input type="text" required name="conventionName" id="conventionName"
                                 onChange={this.handleFieldChange} placeholder="e.g. DragonCon" />
                             </FormGroup>
                         </Col>
                         <Col md={4}>
                             <FormGroup>
-                                <Label for="genre">Genre</Label>
+                                <Label for="genre">Genre</Label><span className="required">*</span>
                                 <Input type="select" required name="select" id="select"
                                 onChange={this.handleFieldChange}>
                                 <option value="">Select a genre</option>
@@ -74,14 +74,14 @@ export default class ConventionForm extends Component {
                     <Row form>
                         <Col md={6}>
                             <FormGroup>
-                                <Label for="startDate">Start Date</Label>
+                                <Label for="startDate">Start Date</Label><span className="required">*</span>
                                 <Input type="date" required name="startDate" id="startDate"
                                 onChange={this.handleFieldChange} />
                             </FormGroup>
                         </Col>
                         <Col md={6}>
                             <FormGroup>
-                            <Label for="endDate">End Date</Label>
+                            <Label for="endDate">End Date</Label><span className="required">*</span>
                             <Input type="date" required name="endDate" id="endDate"
                             onChange={this.handleFieldChange} />
                             </FormGroup>
@@ -90,21 +90,21 @@ export default class ConventionForm extends Component {
                     <Row form>
                         <Col md={8}>
                             <FormGroup>
-                                <Label for="city">City</Label>
+                                <Label for="city">City</Label><span className="required">*</span>
                                 <Input type="text" required name="city" id="city"
                                 onChange={this.handleFieldChange} />
                             </FormGroup>
                         </Col>
                         <Col md={4}>
                             <FormGroup>
-                                <Label for="state">State</Label>
+                                <Label for="state">State</Label><span className="required">*</span>
                                 <Input type="text" required name="state" id="state"
                                 onChange={this.handleFieldChange} />
                             </FormGroup>
                         </Col>
                     </Row>
                     <FormGroup>
-                        <Label for="website">Website</Label>
+                        <Label for="website">Website</Label><span className="required">*</span>
                         <Input type="url" required name="website" id="website" placeholder="http://conventionname.com"
                         onChange={this.handleFieldChange} />
                     </FormGroup>
@@ -115,6 +115,7 @@ export default class ConventionForm extends Component {
                     <Button type="submit" color="primary" className="mr-3">Save Convention</Button>
                     <a href="#" onClick={() => this.props.history.push("/conventions/search")} className="cancel">Cancel</a>
                 </Form>
+                <div className="required-text">* Required field</div>
             </section>
         )
     }

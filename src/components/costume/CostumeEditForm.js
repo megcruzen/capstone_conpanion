@@ -48,7 +48,7 @@ export default class CostumeEditForm extends Component {
                 <h1>Edit Costume</h1>
                 <Form onSubmit={this.reconstructCostume} className="form_width mt-4 mb-4">
                     <FormGroup>
-                        <Label for="characterName">Character Name</Label>
+                        <Label for="characterName">Character Name</Label><span className="required">*</span>
                         <Input type="text" required name="characterName" id="characterName"
                         onChange={this.handleFieldChange}
                         value={`${this.state.name}`} />
@@ -60,7 +60,7 @@ export default class CostumeEditForm extends Component {
                         value={`${this.state.outfit}`}/>
                     </FormGroup>
                     <FormGroup>
-                        <Label for="series">Series</Label>
+                        <Label for="series">Series</Label><span className="required">*</span>
                         <Input type="text" required name="series" id="series"
                         onChange={this.handleFieldChange}
                         value={`${this.state.series}`} />
@@ -74,6 +74,7 @@ export default class CostumeEditForm extends Component {
                     <Button type="submit" color="primary" className="mr-3">Save Costume</Button>
                     <a href="#" onClick={() => this.props.history.push(`/costumes/${this.props.location.state.id}`)} className="cancel">Cancel</a>
                 </Form>
+                <div className="required-text">* Required field</div>
             </section>
         )
     }

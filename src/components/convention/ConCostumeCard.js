@@ -28,12 +28,21 @@ export default class ConCostumeCard extends Component {
         )
     }
 
+    getImageUrl = (costume) => {
+        if (this.props.conCostume.costume.image === "") {
+            return "https://i.imgur.com/XqKx1qt.png"
+        }
+        else {
+            return this.props.conCostume.costume.image
+        }
+    }
+
     render() {
 
         return (
             <div className="con_costume_card">
                 <Card key={this.props.conCostume.costume.id} className="mb-3">
-                    <CardImg top width="100%" src={this.props.conCostume.costume.image} alt={this.props.conCostume.costume.name} />
+                    <CardImg top width="100%" src={this.getImageUrl(this.props.conCostume.costume.id)} alt={this.props.conCostume.costume.name} />
                     <CardBody className="d-flex justify-content-between">
                         <div>
                             <CardSubtitle className="text-uppercase subtitle mt-1">{this.props.conCostume.costume.series}</CardSubtitle>

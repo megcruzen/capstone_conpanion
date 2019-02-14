@@ -54,8 +54,9 @@ a.navbar-brand {
     }
 }
 
-.convention_list_personal, .convention_details, .find_convention, .convention_form,
-.costume_list, .costume_details_section, .costume_form, .group_list, .group_details_section {
+.contact, .convention_list_personal, .convention_details, .find_convention, .convention_form,
+.costume_list, .costume_details_section, .costume_form,
+.group_list, .group_details_section {
     padding: 20px;
     background-color: #fff;
 }
@@ -69,7 +70,7 @@ a.link, a.return {
 }
 
 a.link:hover, a.return:hover {
-    color: #2d283e;
+    color: #efecf7;
     text-decoration: none;
 }
 
@@ -155,6 +156,16 @@ select#costumeId {
     width: 300px;
 }
 
+.required {
+    color: #ff0090;
+}
+
+.required-text {
+    color: #ff0090;
+    font-size: 12px;
+    margin-top: 20px;
+}
+
 
 
 /****** Costumes ******/
@@ -209,6 +220,39 @@ select#costumeId {
 
 /****** Conventions ******/
 
+@media (max-width: 500px) {
+    .lineup_container .col {
+        padding: 0px 0px 10px 0px;
+        flex-basis: unset;
+    }
+
+    .convention_details .nav-item {
+        padding: 0 10px 5px 0;
+    }
+
+    .convention_details .nav-item .nav-link {
+        background-color: #f1f4f9;
+        border-radius: 5px;
+        border: 0;
+    }
+    .convention_details .nav-tabs, .nav-tabs .nav-link.active {
+        border: 0;
+    }
+    .convention_details .nav-tabs .nav-link {
+        color: #564f70 !important;
+    }
+    .nav-tabs .nav-link.active {
+        background-color: #812bb2 !important;
+        color: #fff !important;
+    }
+}
+
+@media print {
+    .items_box td {
+        padding: 0 !important;
+    }
+}
+
 .con_details {
     font-size: .9rem;
     line-height: 1.3em;
@@ -223,22 +267,12 @@ select#costumeId {
     text-decoration: line-through;
 }
 
-@media print {
-    .items_box td {
-      padding: 0 !important;
-    }
-}
-
 .convention_costume_list .card-body {
     padding: 10px;
 }
 
 .convention_costume_list .card-title h3 {
     font-size: 1.4em;
-}
-
-.convention_details .nav-item {
-    padding: 0px 5px;
 }
 
 .convention_details .nav-link {
@@ -357,5 +391,6 @@ button.build_lineup {
     display: block;
     font-size: 20px;
     margin: 50px auto;
-    width: 40%;
+    padding-left: 20px;
+    padding-right: 20px;
 }

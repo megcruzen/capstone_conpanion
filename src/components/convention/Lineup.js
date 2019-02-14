@@ -25,14 +25,20 @@ export default class Lineup extends Component {
         this.props.addNewDay(exampleDay)
     }
 
-    showAddDayButton = () => {
+    showBuildLineupBtn = () => {
         const days = this.props.lineupDays.filter(day => day.userConventionId === this.props.convention.userConventionId)
         if (days.length === 0) {
             return (
-                <Button color="primary" className="build_lineup" onClick={this.addDayExample}><i className="far fa-calendar-plus mr-2"></i>Start Building Your Lineup!</Button>
+                <div>
+                    <Button color="primary" className="build_lineup" onClick={this.addDayExample}><i className="far fa-calendar-plus mr-2"></i>Start Building Your Lineup!</Button>
+                </div>
             )
         }
-        else if (days.length < 5) {
+    }
+
+    showAddDayButton = () => {
+        const days = this.props.lineupDays.filter(day => day.userConventionId === this.props.convention.userConventionId)
+        if (days.length > 0 && days.length < 5) {
             return (
                 <Button color="primary" onClick={this.addDay}><i className="far fa-calendar-plus mr-2"></i> Add Day</Button>
             )
@@ -49,10 +55,11 @@ export default class Lineup extends Component {
 
         return(
             <section className="lineup_container">
-            <div className="d-flex justify-content-between">
-                <h4>Lineup</h4>
-                {this.showAddDayButton()}
-            </div>
+                <div className="d-flex justify-content-between">
+                    <h4>Lineup</h4>
+                    {this.showAddDayButton()}
+                </div>
+                {this.showBuildLineupBtn()}
                 <Row>
                     {
                         days.map(day =>

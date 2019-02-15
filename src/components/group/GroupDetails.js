@@ -10,10 +10,10 @@ export default class GroupDetails extends Component {
 
         const myGroup = this.props.myGroups.find(myGroup => myGroup.group.id === parseInt(this.props.match.params.groupId)) || {}
         const group = this.props.allGroups.find(group => group.id === myGroup.groupId) || {}
-        const convention = this.props.allConventions.find(convention => convention.id === group.conventionId) || {}
+        // const convention = this.props.allConventions.find(convention => convention.id === group.conventionId) || {}
 
-        const startDate = new Date(convention.startDate);
-        const startYear = startDate.getFullYear();
+        // const startDate = new Date(convention.startDate);
+        // const startYear = startDate.getFullYear();
 
         return (
                 <section key={group.id} className="mr-2 mb-3 group_details_section">
@@ -21,11 +21,11 @@ export default class GroupDetails extends Component {
 
                     <div className="group_details">
                         <h3>{group.name} {group.id}</h3>
-                        <p>{convention.name} {startYear}</p>
+                        {/* <p>{convention.name} {startYear}</p> */}
                     </div>
 
                     <Row>
-                        <CharacterList />
+                        {/* <CharacterList /> */}
                         <GroupChat myGroup={myGroup} messages={this.props.messages} users={this.props.users} {...this.props} />
                     </Row>
 

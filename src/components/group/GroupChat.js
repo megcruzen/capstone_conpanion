@@ -73,7 +73,7 @@ export default class GroupChat extends Component {
 
         return (
             <Col sm="6" className="chatroom">
-                <h5>Chat</h5>
+                {/* <h5>Chat</h5> */}
                 <div className="chat_box" ref={`chatBox`}>
                     {
                         groupMessages.map(message =>

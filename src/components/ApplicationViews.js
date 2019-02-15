@@ -494,7 +494,8 @@ export default class ApplicationViews extends Component {
         <Route exact path="/groups/new" render={(props) => {
           if (this.isAuthenticated()) {
             return <GroupForm {...props}
-                    createGroup={this.createGroup} />
+                    createGroup={this.createGroup}
+                    allConventions={this.state.allConventions} />
             } else {
               return <Redirect to="/login" />
             }

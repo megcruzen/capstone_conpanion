@@ -8,7 +8,6 @@ export default class GroupForm extends Component {
         name: "",
         description: "",
         timestamp: "",
-        conventionId: "",
         userId: ""
     }
 
@@ -30,7 +29,6 @@ export default class GroupForm extends Component {
             name: this.state.groupName,
             description: this.state.description,
             timestamp: timestamp,
-            conventionId: 1,
             userId: Number(sessionUser)
         }
 
@@ -54,6 +52,16 @@ export default class GroupForm extends Component {
                         <Input type="text" required name="description" id="description"
                         onChange={this.handleFieldChange} />
                     </FormGroup>
+                    {/* <FormGroup>
+                        <Label for="convention">Convention</Label>
+                        <Input type="select" name="convention" id="convention"
+                        onChange={this.handleFieldChange}>
+                        <option value="0">N/A</option>
+                            {
+                                this.props.allConventions.map(convention => <option key={convention.id} id={convention.id} value={convention.id}>{convention.name}</option>)
+                            }
+                        </Input>
+                    </FormGroup> */}
                     <Button type="submit" color="primary" className="mr-3">Save Group</Button>
                     <a href="#" onClick={() => this.props.history.push("/groups/")} className="cancel">Cancel</a>
                 </Form>

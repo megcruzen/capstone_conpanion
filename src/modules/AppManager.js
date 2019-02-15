@@ -102,7 +102,7 @@ export default {
     },
 
     getAllGroups() {
-        return fetch(`${remoteURL}/groups?_expand=convention`)
+        return fetch(`${remoteURL}/groups`)
         .then(response => response.json())
     },
 

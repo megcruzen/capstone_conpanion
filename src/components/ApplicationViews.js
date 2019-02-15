@@ -17,6 +17,7 @@ import CostumeEditForm from './costume/CostumeEditForm'
 import CostumeDetails from './costume/CostumeDetails'
 
 import GroupList from './group/GroupList'
+import GroupForm from './group/GroupForm'
 import GroupDetails from './group/GroupDetails'
 
 import Contact from './Contact'
@@ -214,6 +215,24 @@ export default class ApplicationViews extends Component {
   addMessage = (message) => AppManager.postMessage(message)
     .then(() => AppManager.getMessages())
     .then(messages => this.setState({ messages: messages }))
+
+  createGroup = (group) => {
+      let groups = {}
+      return AppManager.postGroup(group)
+      .then(newGroup => {
+        const newUserGroup = {
+            userId: newGroup.userId,
+            groupId: newGroup.id
+        }
+        console.log(newUserGroup)
+        return AppManager.createUserGroup(newUserGroup);
+      })
+      .then(() => AppManager.getMyGroups())
+      .then(response => groups.myGroups = response)
+      .then(() => AppManager.getAllGroups())
+      .then(response => groups.allGroups = response)
+      .then(() => { this.setState(groups) })
+    }
 
 
   /* DELETE */
@@ -467,6 +486,15 @@ export default class ApplicationViews extends Component {
             return <GroupList {...props}
                     myGroups={this.state.myGroups}
                     allConventions={this.state.allConventions} />
+            } else {
+              return <Redirect to="/login" />
+            }
+        }} />
+
+        <Route exact path="/groups/new" render={(props) => {
+          if (this.isAuthenticated()) {
+            return <GroupForm {...props}
+                    createGroup={this.createGroup} />
             } else {
               return <Redirect to="/login" />
             }

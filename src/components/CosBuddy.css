@@ -56,7 +56,7 @@ a.navbar-brand {
 
 .contact, .convention_list_personal, .convention_details, .find_convention, .convention_form,
 .costume_list, .costume_details_section, .costume_form,
-.group_list, .group_details_section {
+.group_list, .group_form, .group_details_section {
     padding: 20px;
     background-color: #fff;
 }

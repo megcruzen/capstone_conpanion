@@ -5,7 +5,8 @@ export default class Contact extends Component {
     render() {
         return (
             <section className="contact">
-                Need to contact us? <a href="mailto:megcruzen@gmail.com">Just shoot us an email!</a>
+                <h1>Contact Us</h1>
+                <p>Need to contact us? <a href="mailto:megcruzen@gmail.com" className="link">Just shoot us an email!</a></p>
             </section>
         )
     }

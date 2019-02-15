@@ -56,6 +56,16 @@ export default class CostumeDetails extends Component {
         this.props.history.push("/costumes/");
     }
 
+    getImageUrl = (costume) => {
+        const thisCostume = this.props.costumes.find(costume => costume.id === parseInt(this.props.match.params.costumeId)) || {}
+        if (thisCostume.image === "") {
+            return "https://i.imgur.com/XqKx1qt.png"
+        }
+        else {
+            return thisCostume.image
+        }
+    }
+
     render() {
         const costume = this.props.costumes.find(costume => costume.id === parseInt(this.props.match.params.costumeId)) || {}
         return (
@@ -63,7 +73,7 @@ export default class CostumeDetails extends Component {
                     <a href="#" onClick={() => this.props.history.push("/costumes/")} className="return">&laquo; Return to costumes</a>
                     <Media className="mt-4 pt-2">
                         <Media left className="mr-3 d-flex justify-content-between align-items-center">
-                            <Media object src={costume.image} className="thumb" alt={costume.name} />
+                            <Media object src={this.getImageUrl(costume.id)} className="thumb" alt={costume.name} />
                         </Media>
                         <Media body>
                             <div className="costume_details">

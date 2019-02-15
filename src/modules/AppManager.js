@@ -113,7 +113,7 @@ export default {
     },
 
     getMessages() {
-        return fetch(`${remoteURL}/messages`)
+        return fetch(`${remoteURL}/messages?_expand=user`)
         .then(response => response.json())
     },
 
@@ -244,6 +244,17 @@ export default {
         })
         .then(response => response.json())
     },
+
+    postMessage(newMessage) {
+        return fetch(`${remoteURL}/messages`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newMessage)
+        })
+        .then(data => data.json())
+      },
 
 
     // DELETE

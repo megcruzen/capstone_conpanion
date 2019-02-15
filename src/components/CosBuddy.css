@@ -394,3 +394,75 @@ button.build_lineup {
     padding-left: 20px;
     padding-right: 20px;
 }
+
+
+
+/****** Group Chat ******/
+
+/* .chatroom {
+    margin: 10px;
+    max-width: 400px;
+} */
+
+.chat_box {
+    border: 1px solid #666;
+    height: 500px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+}
+
+.current_user .message_box {
+    float: right;
+    margin: 10px;
+    width: 80%;
+}
+
+.other_user .message_box {
+    float: left;
+    margin: 10px;
+    width: 80%;
+}
+
+.message_text {
+    background-color: #f8f8f8;
+    border-radius: 15px;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.current_user .message_text {
+    background-color: lavender;
+    clear: right;
+}
+
+.username {
+    color: #222;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0px 10px;
+}
+
+.current_user .username, .current_user .bottom_info {
+    float: right;
+}
+
+.other_user .hover_friend {
+    color: red;
+}
+
+.bottom_info {
+    font-size: 10px;
+    margin: 3px 10px;
+}
+
+.edit_link {
+    text-decoration: underline;
+}
+
+.message_input {
+    width: 100%;
+}
+
+.message_btn {
+    padding-left: 10px;
+}

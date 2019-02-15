@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Table, Row, Col, Media, Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Input, Label } from 'reactstrap';
 import "../CosBuddy.css";
-// import CostumeItemCard from "./CostumeItemCard"
+import CharacterList from "./CharacterList"
+import GroupChat from "./GroupChat"
 
 export default class GroupDetails extends Component {
 
@@ -15,13 +16,19 @@ export default class GroupDetails extends Component {
         const startYear = startDate.getFullYear();
 
         return (
-                <section key="" className="mr-2 mb-3 group_details_section">
+                <section key={group.id} className="mr-2 mb-3 group_details_section">
                     <a href="#" onClick={() => this.props.history.push("/groups/")} className="return">&laquo; Return to groups</a>
 
                     <div className="group_details">
-                        <h3>{group.name}</h3>
+                        <h3>{group.name} {group.id}</h3>
                         <p>{convention.name} {startYear}</p>
                     </div>
+
+                    <Row>
+                        <CharacterList />
+                        <GroupChat myGroup={myGroup} messages={this.props.messages} users={this.props.users} {...this.props} />
+                    </Row>
+
                 </section>
         )
     }

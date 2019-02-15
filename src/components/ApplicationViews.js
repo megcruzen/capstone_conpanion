@@ -38,7 +38,8 @@ export default class ApplicationViews extends Component {
     lineupDays: [],
     timeslots: [],
     allGroups: [],
-    myGroups: []
+    myGroups: [],
+    messages: []
   }
 
   // Check if credentials are in local storage
@@ -203,14 +204,17 @@ export default class ApplicationViews extends Component {
   addNewDay = (newDay) =>
     AppManager.postNewDay(newDay)
     .then(() => AppManager.getDays())
-    .then(lineupDays => this.setState({ lineupDays: lineupDays })
-  )
+    .then(lineupDays => this.setState({ lineupDays: lineupDays }))
 
   addTimeslot = (newTimeslot) =>
     AppManager.postTimeslot(newTimeslot)
     .then(() => AppManager.getTimeslots())
-    .then(timeslots => this.setState({ timeslots: timeslots })
-  )
+    .then(timeslots => this.setState({ timeslots: timeslots }))
+
+  addMessage = (message) => AppManager.postMessage(message)
+    .then(() => AppManager.getMessages())
+    .then(messages => this.setState({ messages: messages }))
+
 
   /* DELETE */
 
@@ -473,7 +477,10 @@ export default class ApplicationViews extends Component {
             return <GroupDetails {...props}
                     myGroups={this.state.myGroups}
                     allGroups={this.state.allGroups}
-                    allConventions={this.state.allConventions} />
+                    allConventions={this.state.allConventions}
+                    messages={this.state.messages}
+                    users={this.state.users}
+                    addMessage={this.addMessage} />
           } else {
             return <Redirect to="/login" />
           }

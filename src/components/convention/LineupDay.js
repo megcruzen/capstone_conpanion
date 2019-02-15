@@ -6,7 +6,8 @@ export default class LineupDay extends Component {
 
     // Set initial state
     state = {
-        "title": ""
+        "title": "",
+        "titleCheck": false
     }
 
     // Update state whenever an input field is edited
@@ -20,12 +21,12 @@ export default class LineupDay extends Component {
     clickToEditTitle = () => {
         AppManager.getDayById(this.props.day.id)
         .then(day => {
-            this.setState({ title: day.title })
+            this.setState({ title: day.title, titleCheck: true })
         })
     }
 
     returnFormOrText = (day) => {
-        if (this.state.title !== "") {
+        if (this.state.titleCheck) {
             return (
                     <form className="title_edit" onSubmit={this.updateDayTitle} onBlur={this.updateDayTitle}>
                         <input type="text" required
@@ -51,7 +52,7 @@ export default class LineupDay extends Component {
         }
 
         this.props.updateDay(this.props.day.id, day)
-        .then(() => { this.setState({ title: "" }) })
+        .then(() => { this.setState({ titleCheck: false }) })
     }
 
     addTimeslot = () => {

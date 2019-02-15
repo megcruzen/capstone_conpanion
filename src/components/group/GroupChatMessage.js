@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import "../CosBuddy.css";
 import AppManager from "../../modules/AppManager"
 
-export default class GroupChat extends Component {
+export default class GroupChatMessage extends Component {
 
     // Set initial state
     state = {
@@ -77,7 +77,8 @@ export default class GroupChat extends Component {
             message: this.state.message,
             timeDisplay: this.state.timeDisplay,
             timestamp: this.state.timestamp,
-            userId: this.state.userId
+            userId: this.state.userId,
+            groupId: 1
         }
 
         this.props.updateMessage(this.props.message.id, existingMessage)
@@ -88,13 +89,13 @@ export default class GroupChat extends Component {
     }
 
     render() {
+        // console.log(this.props.message.user)
         return (
                 <div key={this.props.message.id} className={this.userConditionalStyle(this.props.message.userId)}>
                     <div className="message_box">
-                        <span className="username" onClick={this.addFriend}>{this.props.message.user.name}</span>
+                        <span className="username">{this.props.message.user.username}</span>
 
                         {this.returnFormOrText(this.props.message.message)}
-                        {/* {this.userConditionalEdit(this.props.message.userId)} */}
                         <div className="bottom_info">{this.props.message.timeDisplay}</div>
 
                     </div>

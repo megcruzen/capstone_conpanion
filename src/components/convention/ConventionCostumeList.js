@@ -45,7 +45,7 @@ export default class ConventionCostumeList extends Component {
         let conCostumeArray = this.props.currentCostumes.map(conCostume => conCostume.costumeId);
         costumeArray = this.props.costumes.filter(val => !conCostumeArray.includes(val.id));
 
-        return costumeArray.map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
+        return costumeArray.map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} {costume.outfit}</option>)
 
     }
 

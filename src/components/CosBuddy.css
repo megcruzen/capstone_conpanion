@@ -187,7 +187,6 @@ select#costumeId {
 
 .outfit {
     font-size: .8em;
-    font-style: italic;
 }
 
 .costume_details_section .thumb {
@@ -288,6 +287,19 @@ select#costumeId {
     color: #812bb2;
 }
 
+.delete_costume {
+    text-align: right;
+    position: relative;
+    top: 26px;
+    right: 5px;
+    z-index: 2;
+}
+
+.delete_costume i {
+    color: #fff;
+    text-shadow: 0px 0px 1px #000;
+}
+
 
 
 
@@ -333,7 +345,7 @@ select#costumeId {
 
 .lineup_day {
     background-color: #e9e8ef;
-    border-radius: 10px;
+    border-radius: 6px;
     margin: 10px 10px 20px 10px;
 }
 
@@ -343,7 +355,7 @@ select#costumeId {
 }
 
 .day_top {
-    padding: 2px 4px;
+    padding: 1px 4px;
 }
 
 .timeslots_container {
@@ -352,17 +364,17 @@ select#costumeId {
 
 .timeslot {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 6px;
     margin: 20px 10px 10px 10px;
 }
 
 .timeslot_title {
     background-color: #f1f4f9;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 6px 6px 0px 0px;
     display: inline-block;
     font-size: .9em;
     font-weight: bold;
-    padding: 1px 4px;
+    padding: 1px 3px;
     text-align: center;
 }
 

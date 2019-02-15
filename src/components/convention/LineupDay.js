@@ -28,7 +28,7 @@ export default class LineupDay extends Component {
     returnFormOrText = (day) => {
         if (this.state.titleCheck) {
             return (
-                    <form className="title_edit" onSubmit={this.updateDayTitle} onBlur={this.updateDayTitle}>
+                    <form className="title_edit" onSubmit={this.updateDayTitle} onMouseLeave={this.updateDayTitle} autocomplete="off">
                         <input type="text" required
                         className="form-control"
                         onChange={this.handleFieldChange}
@@ -59,7 +59,7 @@ export default class LineupDay extends Component {
 
         const newTimeslot = {
             title: "Title",
-            text: "Enter details here",
+            text: "",
             dayId: this.props.day.id
         }
 

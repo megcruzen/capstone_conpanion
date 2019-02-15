@@ -37,21 +37,34 @@ export default class ConCostumeCard extends Component {
         }
     }
 
+    getOutfit = (costume) => {
+        if (this.props.conCostume.costume.outfit !== "") {
+            return <CardText className="outfit">// {this.props.conCostume.costume.outfit}</CardText>
+        }
+        else {
+            return <CardText className="outfit">&nbsp;</CardText>
+        }
+    }
+
     render() {
 
         return (
             <div className="con_costume_card">
+                <div className="delete_costume">
+                    <i className="fas fa-times-circle delete" onClick={this.toggle} style={{cursor:'pointer'}}></i>
+                </div>
                 <Card key={this.props.conCostume.costume.id} className="mb-3">
                     <CardImg top width="100%" src={this.getImageUrl(this.props.conCostume.costume.id)} alt={this.props.conCostume.costume.name} />
                     <CardBody className="d-flex justify-content-between">
                         <div>
                             <CardSubtitle className="text-uppercase subtitle mt-1">{this.props.conCostume.costume.series}</CardSubtitle>
-                            <CardTitle><h3>{this.props.conCostume.costume.name}</h3></CardTitle>
-                            <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.conCostume.costume.outfit}</CardText>
+                            <CardTitle className="mb-0"><h3 className="mb-0">{this.props.conCostume.costume.name}</h3></CardTitle>
+                            {this.getOutfit(this.props.conCostume.costume.id)}
+                            {/* <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.conCostume.costume.outfit}</CardText> */}
                         </div>
-                        <div>
+                        {/* <div>
                             <i className="fas fa-times-circle delete" onClick={this.toggle} style={{cursor:'pointer'}}></i>
-                        </div>
+                        </div> */}
                     </CardBody>
                 </Card>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>

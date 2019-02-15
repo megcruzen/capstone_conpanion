@@ -66,6 +66,12 @@ export default class CostumeDetails extends Component {
         }
     }
 
+    getOutfit = (outfit) => {
+        if (outfit !== "") {
+            return <span className="outfit">// {outfit}</span>
+        }
+    }
+
     render() {
         const costume = this.props.costumes.find(costume => costume.id === parseInt(this.props.match.params.costumeId)) || {}
         return (
@@ -79,7 +85,8 @@ export default class CostumeDetails extends Component {
                             <div className="costume_details">
                                 <span className="text-uppercase subtitle">{costume.series}</span>
                                 <h3>{costume.name}</h3>
-                                <i class="fas fa-user-circle"></i> <span className="series">{costume.outfit}</span>
+                                {this.getOutfit(costume.outfit)}
+                                {/* <i class="fas fa-user-circle"></i> <span className="series">{costume.outfit}</span> */}
                             </div>
                             <div className="pt-4">
                                 <Link to={{pathname:"/costumes/edit/", state:{id: costume.id, name: costume.name, series: costume.series, outfit: costume.outfit, notes: costume.notes, image: costume.image, timestamp: costume.timestamp, userId: costume.userId}}}><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push("/costumes/edit")} style={{cursor:'pointer'}}></i></Link>

@@ -52,7 +52,7 @@ export default {
 
     getCostumes() {
         let sessionUser = sessionStorage.getItem("User");
-        return fetch(`${remoteURL}/costumes?userId=${Number(sessionUser)}`)
+        return fetch(`${remoteURL}/costumes?userId=${Number(sessionUser)}&_sort=timestamp&_order=desc`)
         .then(response => response.json())
     },
 
@@ -62,7 +62,7 @@ export default {
     },
 
     getConCostumes() {
-        return fetch(`${remoteURL}/conCostumes?_expand=costume`)
+        return fetch(`${remoteURL}/conCostumes?_expand=costume&_sort=id&_order=desc`)
         .then(response => response.json())
     },
 

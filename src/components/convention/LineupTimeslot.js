@@ -38,7 +38,7 @@ export default class Timeslot extends Component {
     returnFormOrTitle = (timeslot) => {
         if (this.state.titleCheck) {
             return (
-                <form className="title_edit" onSubmit={this.updateTimeslotTitle}>
+                <form className="title_edit" onSubmit={this.updateTimeslotTitle} onMouseLeave={this.updateTimeslotTitle} autocomplete="off">
                     <input type="text" required
                     className="form-control"
                     onChange={this.handleFieldChange}
@@ -57,12 +57,13 @@ export default class Timeslot extends Component {
         if (this.state.textCheck) {
             return (
                 <div className="timeslot_text">
-                    <form className="text_edit" onSubmit={this.updateTimeslotText}>
+                    <form className="text_edit" onSubmit={this.updateTimeslotText} onMouseLeave={this.updateTimeslotText} autocomplete="off">
                         <input type="text" required
                         className="form-control"
                         onChange={this.handleFieldChange}
                         id="text"
-                        value={this.state.text} />
+                        value={this.state.text}
+                        placeholder="Enter details" />
                     </form>
                 </div>
             )

@@ -112,6 +112,11 @@ export default {
         .then(response => response.json())
     },
 
+    getGroupMembers() {
+        return fetch(`${remoteURL}/userGroups?_expand=user`)
+        .then(response => response.json())
+    },
+
     getMessages() {
         return fetch(`${remoteURL}/messages?_expand=user`)
         .then(response => response.json())
@@ -119,6 +124,11 @@ export default {
 
     getMessage(id) {
         return fetch(`${remoteURL}/messages/${id}`)
+        .then(response => response.json())
+    },
+
+    getCharacters() {
+        return fetch(`${remoteURL}/characters?_sort=name`)
         .then(response => response.json())
     },
 
@@ -278,6 +288,17 @@ export default {
         .then(data => data.json())
       },
 
+      postCharacter(newCharacter) {
+        return fetch(`${remoteURL}/characters`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newCharacter)
+        })
+        .then(data => data.json())
+      },
+
 
     // DELETE
 
@@ -334,6 +355,13 @@ export default {
             method: "DELETE"
         })
         .then(() => this.getTimeslots())
+    },
+
+    deleteCharacter(id) {
+        return fetch(`${remoteURL}/characters/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getCharacters())
     },
 
 

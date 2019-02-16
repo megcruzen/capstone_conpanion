@@ -40,7 +40,9 @@ export default class ApplicationViews extends Component {
     timeslots: [],
     allGroups: [],
     myGroups: [],
-    messages: []
+    groupMembers: [],
+    messages: [],
+    characters: []
   }
 
   // Check if credentials are in local storage
@@ -90,8 +92,14 @@ export default class ApplicationViews extends Component {
     AppManager.getMyGroups()
     .then(myGroups => { this.setState({ myGroups: myGroups }) })
 
+    AppManager.getGroupMembers()
+    .then(groupMembers => { this.setState({ groupMembers: groupMembers }) })
+
     AppManager.getMessages()
     .then(messages => { this.setState({ messages: messages }) })
+
+    AppManager.getCharacters()
+    .then(characters => { this.setState({ characters: characters }) })
   }
 
   /* ADD NEW */
@@ -234,6 +242,10 @@ export default class ApplicationViews extends Component {
       .then(() => { this.setState(groups) })
     }
 
+    addCharacter = (character) => AppManager.postCharacter(character)
+    .then(() => AppManager.getCharacters())
+    .then(characters => this.setState({ characters: characters }))
+
 
   /* DELETE */
 
@@ -295,6 +307,11 @@ export default class ApplicationViews extends Component {
   deleteTimeslot = (id) => {
     AppManager.deleteTimeslot(id)
     .then(timeslots => this.setState({ timeslots: timeslots }))
+  }
+
+  deleteCharacter = (id) => {
+    AppManager.deleteCharacter(id)
+    .then(characters => this.setState({ characters: characters }))
   }
 
   /* EDIT */
@@ -485,7 +502,8 @@ export default class ApplicationViews extends Component {
           if (this.isAuthenticated()) {
             return <GroupList {...props}
                     myGroups={this.state.myGroups}
-                    allConventions={this.state.allConventions} />
+                    allConventions={this.state.allConventions}
+                    groupMembers={this.state.groupMembers} />
             } else {
               return <Redirect to="/login" />
             }
@@ -508,8 +526,12 @@ export default class ApplicationViews extends Component {
                     allGroups={this.state.allGroups}
                     allConventions={this.state.allConventions}
                     messages={this.state.messages}
+                    groupMembers={this.state.groupMembers}
                     users={this.state.users}
-                    addMessage={this.addMessage} />
+                    addMessage={this.addMessage}
+                    characters={this.state.characters}
+                    addCharacter={this.addCharacter}
+                    deleteCharacter={this.deleteCharacter} />
           } else {
             return <Redirect to="/login" />
           }

@@ -7,10 +7,10 @@ export default class Timeslot extends Component {
 
     // Set initial state
     state = {
-        "title": "",
-        "text": "",
-        "titleCheck": false,
-        "textCheck": false
+        title: "",
+        text: "",
+        titleCheck: false,
+        textCheck: false
     }
 
     // Update state whenever an input field is edited

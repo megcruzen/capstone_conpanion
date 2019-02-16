@@ -346,6 +346,12 @@ export default class ApplicationViews extends Component {
     .then(lineupDays => this.setState({ lineupDays: lineupDays })
   )
 
+  updateCharacter = (characterId, editedCharacter) =>
+    AppManager.editCharacter(characterId, editedCharacter)
+    .then(() => AppManager.getCharacters())
+    .then(characters => this.setState({ characters: characters })
+  )
+
 
   /********/
 
@@ -531,7 +537,8 @@ export default class ApplicationViews extends Component {
                     addMessage={this.addMessage}
                     characters={this.state.characters}
                     addCharacter={this.addCharacter}
-                    deleteCharacter={this.deleteCharacter} />
+                    deleteCharacter={this.deleteCharacter}
+                    updateCharacter={this.updateCharacter} />
           } else {
             return <Redirect to="/login" />
           }

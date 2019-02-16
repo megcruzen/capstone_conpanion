@@ -436,6 +436,26 @@ button.build_lineup {
     font-size: 10px;
 }
 
+.character_list {
+    font-size: 14px;
+}
+
+.character_list .table td {
+    padding: 5px;
+}
+
+.character_list td.character {
+    width: 150px;
+}
+
+.character_list td.user {
+    width: 150px;
+}
+
+.character_list td.user_update {
+    padding: 5px 0px 0px;
+}
+
 
 /****** Group Chat ******/
 

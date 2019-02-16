@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Form, FormGroup, Label, Input, Button } from 'reactstrap';
+import CharacterCard from './CharacterCard'
 
 export default class CharacterList extends Component {
 
@@ -30,10 +31,6 @@ export default class CharacterList extends Component {
         this.props.addCharacter(newCharacter);
     }
 
-    deleteCharacter = (id) => {
-        this.props.deleteCharacter(id);
-    }
-
     render() {
 
         return (
@@ -44,11 +41,7 @@ export default class CharacterList extends Component {
                         {
                             this.props.characters.filter(character => character.groupId === this.props.myGroup.id)
                             .map(character =>
-                                <tr>
-                                    <td>{character.name}</td>
-                                    <td>{character.user}</td>
-                                    <td><i className="fas fa-times-circle delete" onClick={() => this.deleteCharacter(character.id)} style={{cursor:'pointer'}}></i></td>
-                                </tr>
+                                <CharacterCard character={character} deleteCharacter={this.props.deleteCharacter} updateCharacter={this.props.updateCharacter} groupId={this.props.myGroup.id} />
                             )
                         }
                         </tbody>

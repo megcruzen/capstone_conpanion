@@ -132,6 +132,11 @@ export default {
         .then(response => response.json())
     },
 
+    getCharacterById(id) {
+        return fetch(`${remoteURL}/characters/${id}`)
+        .then(response => response.json())
+    },
+
 
     // POST
 
@@ -414,6 +419,16 @@ export default {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(editedTimeslot)
+        })
+    },
+
+    editCharacter(characterId, editedCharacter) {
+        return fetch(`${remoteURL}/timeslots/${characterId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedCharacter)
         })
     }
 }

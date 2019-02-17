@@ -309,6 +309,11 @@ export default class ApplicationViews extends Component {
     .then(timeslots => this.setState({ timeslots: timeslots }))
   }
 
+  deleteGroup = (id) => {
+    AppManager.deleteGroup(id)
+    .then(myGroups => this.setState({ myGroups: myGroups }))
+  }
+
   deleteCharacter = (id) => {
     AppManager.deleteCharacter(id)
     .then(characters => this.setState({ characters: characters }))
@@ -531,6 +536,7 @@ export default class ApplicationViews extends Component {
                     myGroups={this.state.myGroups}
                     allGroups={this.state.allGroups}
                     allConventions={this.state.allConventions}
+                    deleteGroup={this.deleteGroup}
                     messages={this.state.messages}
                     groupMembers={this.state.groupMembers}
                     users={this.state.users}

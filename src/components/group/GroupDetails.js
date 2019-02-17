@@ -7,18 +7,28 @@ import GroupChat from "./GroupChat"
 export default class GroupDetails extends Component {
 
     state = {
-        modal: false
+        modal: false,
+        modal2: false
     }
 
-    constructor(props) {
-        super(props);
-        this.toggle = this.toggle.bind(this);
+    toggle = () => {
+        this.setState({  modal: !this.state.modal });
     }
 
-    toggle() {
-        this.setState({
-            modal: !this.state.modal
-        });
+    toggle2 = () => {
+        this.setState({  modal2: !this.state.modal2 });
+    }
+
+    deleteGroup = (id) => {
+        this.props.deleteGroup(id);
+        this.toggle();
+        this.props.history.push("/groups/");
+    }
+
+    addMember = (event) => {
+        event.preventDefault();
+        console.log("Click!")
+        this.toggle();
     }
 
 
@@ -42,7 +52,7 @@ export default class GroupDetails extends Component {
                             {/* <p>{convention.name} {startYear}</p> */}
                         </div>
                         <div className="small">
-                            <a href="#" className="link" onClick={this.toggle}>Add Member</a> | <a href="#" className="link">Leave Group</a>
+                            <a href="#" className="link" onClick={this.toggle}>Add Member</a> | <a href="#" className="link">Leave Group | <a href="#" className="link" onClick={this.toggle2}>Delete Group</a></a>
                         </div>
                     </div>
 
@@ -56,7 +66,7 @@ export default class GroupDetails extends Component {
                             Add New Member
                         </ModalHeader>
                         <ModalBody>
-                            <Form onSubmit={this.addItem} className="d-flex">
+                            <Form className="d-flex">
                                 <FormGroup className="w-100 mr-2">
                                     <Label for="username" hidden>Username</Label>
                                     <Input type="text" required name="username" id="username"
@@ -65,7 +75,20 @@ export default class GroupDetails extends Component {
                             </Form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.toggle}>Add Member</Button>
+                            <Button color="primary" onClick={this.addMember}>Add Member</Button>
+                        </ModalFooter>
+                    </Modal>
+
+                    <Modal isOpen={this.state.modal2} toggle={this.toggle2} className={this.props.className}>
+                        <ModalHeader>
+                            Delete Group
+                        </ModalHeader>
+                        <ModalBody>
+                            Are you sure you want to delete this group?
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onClick={() => this.deleteGroup(group.id)}>Yes, Delete Group</Button>{' '}
+                            <Button color="secondary" onClick={this.toggle2}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
 

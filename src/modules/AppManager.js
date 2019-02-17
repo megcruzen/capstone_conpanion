@@ -362,6 +362,13 @@ export default {
         .then(() => this.getTimeslots())
     },
 
+    deleteGroup(id) {
+        return fetch(`${remoteURL}/groups/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getMyGroups())
+    },
+
     deleteCharacter(id) {
         return fetch(`${remoteURL}/characters/${id}`, {
             method: "DELETE"

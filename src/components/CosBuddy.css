@@ -452,38 +452,15 @@ button.build_lineup {
     width: 150px;
 }
 
-.character_list td.user_update {
-    padding: 5px 0px 0px;
+#appviews .character_list .user_edit .form-control {
+    padding: 0px 5px;
 }
 
-/* .member_list .accordion .accordion-item .title {
-    background-color: #812bb2;
-    color: #fff;
+.character_list input {
+    font-size: 14px;
+    padding: 0 5px;
+    height: auto;
 }
-
-.member_list .accordion .accordion-item.active .title {
-    background-color: #918bae;
-} */
-
-/* .member_list .accordion {
-    border: none;
-}
-
-.member_list .accordion .accordion-item .title {
-    background-color: #fff;
-    color: #212529;
-    font-size: 1.25rem;
-    padding: 0px;
-    width: 170px;
-}
-
-.member_list .accordion .accordion-item.active .title {
-    background-color: #fff;
-}
-
-.accordion .accordion-item .title:after {
-    margin-top: 7px;
-} */
 
 .collapse_title .btn::before{
     padding-right: 10px;

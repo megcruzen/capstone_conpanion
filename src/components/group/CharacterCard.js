@@ -32,11 +32,9 @@ export default class CharacterCard extends Component {
                         <FormGroup className="mb-0">
                             <Input type="text"
                                 required
-                                className="form-control"
                                 onChange={this.handleFieldChange}
                                 id="user"
-                                value={this.state.user}
-                                placeholder="Enter details" />
+                                value={this.state.user} />
                         </FormGroup>
                     </Form>
                 </td>

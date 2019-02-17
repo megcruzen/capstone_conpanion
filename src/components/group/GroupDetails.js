@@ -8,7 +8,8 @@ export default class GroupDetails extends Component {
 
     state = {
         modal: false,
-        modal2: false
+        modal2: false,
+        modal3: false
     }
 
     toggle = () => {
@@ -17,6 +18,19 @@ export default class GroupDetails extends Component {
 
     toggle2 = () => {
         this.setState({  modal2: !this.state.modal2 });
+    }
+
+    toggle3 = () => {
+        this.setState({  modal3: !this.state.modal3 });
+    }
+
+    leaveGroup = () => {
+        const group = parseInt(this.props.match.params.groupId);
+        const user = sessionStorage.getItem("User");
+        const userGroupId = this.props.groupMembers.find(member =>
+           member.groupId = group && member.userId === Number(user)).id
+        this.props.leaveGroup(userGroupId)
+        this.props.history.push("/groups/");
     }
 
     deleteGroup = (id) => {
@@ -52,7 +66,7 @@ export default class GroupDetails extends Component {
                             {/* <p>{convention.name} {startYear}</p> */}
                         </div>
                         <div className="small">
-                            <a href="#" className="link" onClick={this.toggle}>Add Member</a> | <a href="#" className="link">Leave Group | <a href="#" className="link" onClick={this.toggle2}>Delete Group</a></a>
+                            <a href="#" className="link" onClick={this.toggle}>Add Member</a> | <a href="#" className="link" onClick={this.toggle3}>Leave Group | <a href="#" className="link" onClick={this.toggle2}>Delete Group</a></a>
                         </div>
                     </div>
 
@@ -80,7 +94,7 @@ export default class GroupDetails extends Component {
                     </Modal>
 
                     <Modal isOpen={this.state.modal2} toggle={this.toggle2} className={this.props.className}>
-                        <ModalHeader>
+                        <ModalHeader toggle={this.toggle2}>
                             Delete Group
                         </ModalHeader>
                         <ModalBody>
@@ -89,6 +103,17 @@ export default class GroupDetails extends Component {
                         <ModalFooter>
                             <Button color="primary" onClick={() => this.deleteGroup(group.id)}>Yes, Delete Group</Button>{' '}
                             <Button color="secondary" onClick={this.toggle2}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
+
+                    <Modal isOpen={this.state.modal3} toggle={this.toggle3} className={this.props.className}>
+                        <ModalHeader toggle={this.toggle3}>Remove Convention</ModalHeader>
+                        <ModalBody>
+                            Are you sure you want to leave this group?
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="primary" onClick={() => this.leaveGroup()}>Yes, Remove Me From This Group</Button>{' '}
+                            <Button color="secondary" onClick={this.toggle3}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
 

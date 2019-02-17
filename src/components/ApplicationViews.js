@@ -314,6 +314,11 @@ export default class ApplicationViews extends Component {
     .then(myGroups => this.setState({ myGroups: myGroups }))
   }
 
+  leaveGroup = (id) => {
+    return AppManager.deleteUserGroup(id)
+    .then(myGroups => this.setState({ myGroups: myGroups }))
+  }
+
   deleteCharacter = (id) => {
     AppManager.deleteCharacter(id)
     .then(characters => this.setState({ characters: characters }))
@@ -536,6 +541,7 @@ export default class ApplicationViews extends Component {
                     myGroups={this.state.myGroups}
                     allGroups={this.state.allGroups}
                     allConventions={this.state.allConventions}
+                    leaveGroup={this.leaveGroup}
                     deleteGroup={this.deleteGroup}
                     messages={this.state.messages}
                     groupMembers={this.state.groupMembers}

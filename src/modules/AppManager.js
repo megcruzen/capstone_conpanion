@@ -160,15 +160,6 @@ export default {
           body: JSON.stringify(newCon)
         })
         .then(response => response.json())
-        // .then(newCon => {
-        //     const newUserCon = {
-        //         userId: newCon.userId,
-        //         conventionId: newCon.id
-        //     }
-        //     console.log(newUserCon)
-        //     this.createUserConvention(newUserCon);
-        //     })
-        // .then(() => this.getMyConventions())
     },
 
     createUserConvention(newCon) {
@@ -364,6 +355,13 @@ export default {
 
     deleteGroup(id) {
         return fetch(`${remoteURL}/groups/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getMyGroups())
+    },
+
+    deleteUserGroup(id) {
+        return fetch(`${remoteURL}/userGroups/${id}`, {
             method: "DELETE"
         })
         .then(() => this.getMyGroups())

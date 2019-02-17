@@ -114,7 +114,7 @@ button.btn-secondary {
     background-color: #77797e;
 }
 
-button.btn-primary:hover, button.btn-primary:active, button.btn-primary:focus, button.btn-primary:active:focus,
+button.btn-primary:hover, button.btn-primary:active,
     .show>button.btn-primary.dropdown-toggle{
         color: #fff;
         background-color: #564f70;
@@ -456,6 +456,77 @@ button.build_lineup {
     padding: 5px 0px 0px;
 }
 
+/* .member_list .accordion .accordion-item .title {
+    background-color: #812bb2;
+    color: #fff;
+}
+
+.member_list .accordion .accordion-item.active .title {
+    background-color: #918bae;
+} */
+
+/* .member_list .accordion {
+    border: none;
+}
+
+.member_list .accordion .accordion-item .title {
+    background-color: #fff;
+    color: #212529;
+    font-size: 1.25rem;
+    padding: 0px;
+    width: 170px;
+}
+
+.member_list .accordion .accordion-item.active .title {
+    background-color: #fff;
+}
+
+.accordion .accordion-item .title:after {
+    margin-top: 7px;
+} */
+
+.collapse_title .btn::before{
+    padding-right: 10px;
+    font-family: "Font Awesome 5 Free";
+    content: "\f004";
+}
+
+.collapse_title .btn:not(.collapse):before {
+    content: "▸";
+    margin-right: 0px;
+}
+.collapse_title .btn:before {
+    content: "▾";
+    margin-right: 0px;
+}
+
+.Collapsible__trigger {
+    /* display: block; */
+    font-size: 18px;
+    /* position: relative; */
+    /* padding: 10px; */
+    cursor: pointer;
+}
+
+.Collapsible__trigger:before {
+      /* font-family: "Font Awesome 5 Free"; */
+      content: '\002B';
+      /* position: absolute;
+      left: 10px;
+      top: 10px;
+      display: block; */
+      /* transition: transform 500ms !important; */
+      padding-right: 5px;
+    }
+
+.Collapsible__trigger.is-open:before {
+      /* transform: rotateZ(180deg); */
+      content: '\2212';
+    }
+
+.Collapsible__contentOuter {
+    transition: height 100ms linear 0s !important;
+}
 
 /****** Group Chat ******/
 

@@ -3,7 +3,9 @@ import { Button, Row } from 'reactstrap';
 import CostumeCard from "./CostumeCard"
 
 export default class CostumeList extends Component {
+
     render() {
+
         return (
             <section className="costume_list">
                 <div className="d-sm-flex justify-content-between flex-wrap align-items-center mb-3">

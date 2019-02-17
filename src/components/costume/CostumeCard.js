@@ -13,6 +13,15 @@ export default class CostumeCard extends Component {
         }
     }
 
+    getOutfit = (costume) => {
+        if (this.props.costume.outfit !== "") {
+            return <CardText className="outfit">// {this.props.costume.outfit}</CardText>
+        }
+        else {
+            return <CardText className="outfit">&nbsp;</CardText>
+        }
+    }
+
     render() {
         let name = this.props.costume.name;
         name = name.replace(/\s+/g, '-').toLowerCase();
@@ -27,8 +36,9 @@ export default class CostumeCard extends Component {
                         <CardImg top width="100%" src={this.getImageUrl(this.props.costume.id)} alt={this.props.costume.name} />
                         <CardBody>
                             <CardSubtitle className="text-uppercase subtitle">{this.props.costume.series}</CardSubtitle>
-                            <CardTitle><h5>{this.props.costume.name}</h5></CardTitle>
-                            <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.costume.outfit}</CardText>
+                            <CardTitle><h5 className="mb-0">{this.props.costume.name}</h5></CardTitle>
+                            {/* <CardText className="outfit mt-1"><i class="fas fa-user-circle"></i> {this.props.costume.outfit}</CardText> */}
+                            {this.getOutfit(this.props.costume.id)}
                         </CardBody>
                     </Link>
                     </Card>

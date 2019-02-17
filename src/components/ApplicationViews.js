@@ -17,6 +17,7 @@ import CostumeEditForm from './costume/CostumeEditForm'
 import CostumeDetails from './costume/CostumeDetails'
 
 import GroupList from './group/GroupList'
+import GroupForm from './group/GroupForm'
 import GroupDetails from './group/GroupDetails'
 
 import Contact from './Contact'
@@ -38,7 +39,10 @@ export default class ApplicationViews extends Component {
     lineupDays: [],
     timeslots: [],
     allGroups: [],
-    myGroups: []
+    myGroups: [],
+    groupMembers: [],
+    messages: [],
+    characters: []
   }
 
   // Check if credentials are in local storage
@@ -88,8 +92,14 @@ export default class ApplicationViews extends Component {
     AppManager.getMyGroups()
     .then(myGroups => { this.setState({ myGroups: myGroups }) })
 
+    AppManager.getGroupMembers()
+    .then(groupMembers => { this.setState({ groupMembers: groupMembers }) })
+
     AppManager.getMessages()
     .then(messages => { this.setState({ messages: messages }) })
+
+    AppManager.getCharacters()
+    .then(characters => { this.setState({ characters: characters }) })
   }
 
   /* ADD NEW */
@@ -203,14 +213,39 @@ export default class ApplicationViews extends Component {
   addNewDay = (newDay) =>
     AppManager.postNewDay(newDay)
     .then(() => AppManager.getDays())
-    .then(lineupDays => this.setState({ lineupDays: lineupDays })
-  )
+    .then(lineupDays => this.setState({ lineupDays: lineupDays }))
 
   addTimeslot = (newTimeslot) =>
     AppManager.postTimeslot(newTimeslot)
     .then(() => AppManager.getTimeslots())
-    .then(timeslots => this.setState({ timeslots: timeslots })
-  )
+    .then(timeslots => this.setState({ timeslots: timeslots }))
+
+  addMessage = (message) => AppManager.postMessage(message)
+    .then(() => AppManager.getMessages())
+    .then(messages => this.setState({ messages: messages }))
+
+  createGroup = (group) => {
+      let groups = {}
+      return AppManager.postGroup(group)
+      .then(newGroup => {
+        const newUserGroup = {
+            userId: newGroup.userId,
+            groupId: newGroup.id
+        }
+        console.log(newUserGroup)
+        return AppManager.createUserGroup(newUserGroup);
+      })
+      .then(() => AppManager.getMyGroups())
+      .then(response => groups.myGroups = response)
+      .then(() => AppManager.getAllGroups())
+      .then(response => groups.allGroups = response)
+      .then(() => { this.setState(groups) })
+    }
+
+    addCharacter = (character) => AppManager.postCharacter(character)
+    .then(() => AppManager.getCharacters())
+    .then(characters => this.setState({ characters: characters }))
+
 
   /* DELETE */
 
@@ -274,6 +309,11 @@ export default class ApplicationViews extends Component {
     .then(timeslots => this.setState({ timeslots: timeslots }))
   }
 
+  deleteCharacter = (id) => {
+    AppManager.deleteCharacter(id)
+    .then(characters => this.setState({ characters: characters }))
+  }
+
   /* EDIT */
 
   editCostume = (costumeId, editedCostume) =>
@@ -304,6 +344,12 @@ export default class ApplicationViews extends Component {
     AppManager.editDay(dayId, editedDay)
     .then(() => AppManager.getDays())
     .then(lineupDays => this.setState({ lineupDays: lineupDays })
+  )
+
+  updateCharacter = (characterId, editedCharacter) =>
+    AppManager.editCharacter(characterId, editedCharacter)
+    .then(() => AppManager.getCharacters())
+    .then(characters => this.setState({ characters: characters })
   )
 
 
@@ -462,6 +508,17 @@ export default class ApplicationViews extends Component {
           if (this.isAuthenticated()) {
             return <GroupList {...props}
                     myGroups={this.state.myGroups}
+                    allConventions={this.state.allConventions}
+                    groupMembers={this.state.groupMembers} />
+            } else {
+              return <Redirect to="/login" />
+            }
+        }} />
+
+        <Route exact path="/groups/new" render={(props) => {
+          if (this.isAuthenticated()) {
+            return <GroupForm {...props}
+                    createGroup={this.createGroup}
                     allConventions={this.state.allConventions} />
             } else {
               return <Redirect to="/login" />
@@ -473,7 +530,15 @@ export default class ApplicationViews extends Component {
             return <GroupDetails {...props}
                     myGroups={this.state.myGroups}
                     allGroups={this.state.allGroups}
-                    allConventions={this.state.allConventions} />
+                    allConventions={this.state.allConventions}
+                    messages={this.state.messages}
+                    groupMembers={this.state.groupMembers}
+                    users={this.state.users}
+                    addMessage={this.addMessage}
+                    characters={this.state.characters}
+                    addCharacter={this.addCharacter}
+                    deleteCharacter={this.deleteCharacter}
+                    updateCharacter={this.updateCharacter} />
           } else {
             return <Redirect to="/login" />
           }

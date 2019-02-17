@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import "./ChatRoom.css"
-import ChatCard from "./ChatCard"
+import { Col } from 'reactstrap';
+import "../CosBuddy.css";
+import GroupChatMessage from "./GroupChatMessage"
 
-export default class ChatRoom extends Component {
+export default class GroupChat extends Component {
 
     // Set initial state
     state = {
@@ -41,14 +42,15 @@ export default class ChatRoom extends Component {
 		    suffix = "PM";
         }
         let dateDisplay = months[month] + "/" + date + "/" + year + " at " + hours + ":" + minutes + " " + suffix;
-
         let timestamp = d.getTime();
+        let sessionUser = sessionStorage.getItem("User");
 
         const newMessage = {
             message: this.state.message,
             timeDisplay: dateDisplay,
             timestamp: timestamp,
-            userId: 1
+            userId: Number(sessionUser),
+            groupId: Number(this.props.match.params.groupId)
         }
 
         // Create the message and then refresh chatroom
@@ -66,15 +68,18 @@ export default class ChatRoom extends Component {
     }
 
     render() {
+
+        const groupMessages = this.props.messages.filter(message => message.groupId === Number(this.props.match.params.groupId))
+
         return (
-            <section className="chatroom">
-                <h1>Chat</h1>
+            <Col sm="6" className="chatroom">
+                {/* <h5>Chat</h5> */}
                 <div className="chat_box" ref={`chatBox`}>
-                {
-                    this.props.messages.map(message =>
-                        <ChatCard key={message.id} message={message} {...this.props} />
-                    )
-                }
+                    {
+                        groupMessages.map(message =>
+                            <GroupChatMessage key={message.id} message={message} users={this.props.users} {...this.props} />
+                        )
+                    }
                 </div>
                 <form id="chatMessageForm" className="d-flex justify-content-between" onSubmit={this.addNewMessage}>
                     <div className="message_input">
@@ -88,7 +93,7 @@ export default class ChatRoom extends Component {
                         <button type="submit" className="btn btn-primary">Submit</button>
                     </div>
                 </form>
-            </section>
+            </Col>
         )
     }
 }

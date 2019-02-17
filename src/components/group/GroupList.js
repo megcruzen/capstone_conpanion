@@ -10,13 +10,13 @@ export default class GroupList extends Component {
                     <div><h1 className="text-center">My Groups</h1></div>
                     <div className="text-center"><Button color="primary" onClick={() => this.props.history.push("/groups/new")}>Add Group</Button></div>
                 </div>
-                <ul>
+                <Row>
                     {
                     this.props.myGroups.map(myGroup =>
                         <GroupCard key={myGroup.id} myGroup={myGroup} {...this.props} />
                     )
                     }
-                </ul>
+                </Row>
             </section>
         )
     }

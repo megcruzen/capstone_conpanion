@@ -56,7 +56,7 @@ a.navbar-brand {
 
 .contact, .convention_list_personal, .convention_details, .find_convention, .convention_form,
 .costume_list, .costume_details_section, .costume_form,
-.group_list, .group_details_section {
+.group_list, .group_form, .group_details_section {
     padding: 20px;
     background-color: #fff;
 }
@@ -70,7 +70,7 @@ a.link, a.return {
 }
 
 a.link:hover, a.return:hover {
-    color: #efecf7;
+    color: #4c495c;
     text-decoration: none;
 }
 
@@ -114,7 +114,7 @@ button.btn-secondary {
     background-color: #77797e;
 }
 
-button.btn-primary:hover, button.btn-primary:active, button.btn-primary:focus, button.btn-primary:active:focus,
+button.btn-primary:hover, button.btn-primary:active,
     .show>button.btn-primary.dropdown-toggle{
         color: #fff;
         background-color: #564f70;
@@ -187,7 +187,6 @@ select#costumeId {
 
 .outfit {
     font-size: .8em;
-    font-style: italic;
 }
 
 .costume_details_section .thumb {
@@ -288,6 +287,19 @@ select#costumeId {
     color: #812bb2;
 }
 
+.delete_costume {
+    text-align: right;
+    position: relative;
+    top: 26px;
+    right: 5px;
+    z-index: 2;
+}
+
+.delete_costume i {
+    color: #fff;
+    text-shadow: 0px 0px 1px #000;
+}
+
 
 
 
@@ -333,7 +345,7 @@ select#costumeId {
 
 .lineup_day {
     background-color: #e9e8ef;
-    border-radius: 10px;
+    border-radius: 6px;
     margin: 10px 10px 20px 10px;
 }
 
@@ -343,7 +355,7 @@ select#costumeId {
 }
 
 .day_top {
-    padding: 2px 4px;
+    padding: 1px 4px;
 }
 
 .timeslots_container {
@@ -352,17 +364,17 @@ select#costumeId {
 
 .timeslot {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 6px;
     margin: 20px 10px 10px 10px;
 }
 
 .timeslot_title {
     background-color: #f1f4f9;
-    border-radius: 10px 10px 0px 0px;
+    border-radius: 6px 6px 0px 0px;
     display: inline-block;
     font-size: .9em;
     font-weight: bold;
-    padding: 1px 4px;
+    padding: 1px 3px;
     text-align: center;
 }
 
@@ -393,4 +405,169 @@ button.build_lineup {
     margin: 50px auto;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+
+/****** Groups ******/
+
+.group_list .group_card {
+    border: 1px solid #d0d7e1;
+    border-radius: 0.25rem;
+    font-size: 15px;
+    margin: 10px 0px;
+    padding: 20px;
+}
+
+.group_list .group_card a {
+    color: #212529;
+    text-decoration: none;
+}
+
+.group_list .group_card a:hover {
+    color: #812bb2;
+    text-decoration: none;
+}
+
+.group_list .group_card hr {
+    margin: 10px 0px;
+}
+
+.small {
+    font-size: 10px;
+}
+
+.character_list {
+    font-size: 14px;
+}
+
+.character_list .table td {
+    padding: 5px;
+}
+
+.character_list td.character {
+    width: 150px;
+}
+
+.character_list td.user {
+    width: 150px;
+}
+
+#appviews .character_list .user_edit .form-control {
+    padding: 0px 5px;
+}
+
+.character_list input {
+    font-size: 14px;
+    padding: 0 5px;
+    height: auto;
+}
+
+.collapse_title .btn::before{
+    padding-right: 10px;
+    font-family: "Font Awesome 5 Free";
+    content: "\f004";
+}
+
+.collapse_title .btn:not(.collapse):before {
+    content: "▸";
+    margin-right: 0px;
+}
+.collapse_title .btn:before {
+    content: "▾";
+    margin-right: 0px;
+}
+
+.Collapsible__trigger {
+    /* display: block; */
+    font-size: 18px;
+    /* position: relative; */
+    /* padding: 10px; */
+    cursor: pointer;
+}
+
+.Collapsible__trigger:before {
+      /* font-family: "Font Awesome 5 Free"; */
+      content: '\002B';
+      /* position: absolute;
+      left: 10px;
+      top: 10px;
+      display: block; */
+      /* transition: transform 500ms !important; */
+      padding-right: 5px;
+    }
+
+.Collapsible__trigger.is-open:before {
+      /* transform: rotateZ(180deg); */
+      content: '\2212';
+    }
+
+.Collapsible__contentOuter {
+    transition: height 100ms linear 0s !important;
+}
+
+/****** Group Chat ******/
+
+/* .chatroom {
+    margin: 10px;
+    max-width: 400px;
+} */
+
+.chat_box {
+    border: 1px solid #666;
+    height: 500px;
+    margin-bottom: 10px;
+    overflow-y: auto;
+}
+
+.current_user .message_box {
+    float: right;
+    margin: 10px;
+    width: 80%;
+}
+
+.other_user .message_box {
+    float: left;
+    margin: 10px;
+    width: 80%;
+}
+
+.message_text {
+    background-color: #f5f4f8;
+    border-radius: 15px;
+    font-size: 14px;
+    padding: 10px;
+}
+
+.current_user .message_text {
+    background-color: #a564ca;
+    color: #fff;
+    clear: right;
+}
+
+.username {
+    color: #222;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0px 10px;
+}
+
+.current_user .username, .current_user .bottom_info {
+    float: right;
+}
+
+.bottom_info {
+    font-size: 10px;
+    margin: 3px 10px;
+}
+
+.edit_link {
+    text-decoration: underline;
+}
+
+.message_input {
+    width: 100%;
+}
+
+.message_btn {
+    padding-left: 10px;
 }

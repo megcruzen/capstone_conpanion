@@ -17,7 +17,7 @@ export default class CostumeEditForm extends Component {
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = {}
-        console.log(evt.target.id, evt.target.value);
+        // console.log(evt.target.id, evt.target.value);
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
@@ -48,8 +48,8 @@ export default class CostumeEditForm extends Component {
                 <h1>Edit Costume</h1>
                 <Form onSubmit={this.reconstructCostume} className="form_width mt-4 mb-4">
                     <FormGroup>
-                        <Label for="characterName">Character Name</Label><span className="required">*</span>
-                        <Input type="text" required name="characterName" id="characterName"
+                        <Label for="name">Character Name</Label><span className="required">*</span>
+                        <Input type="text" required name="name" id="name"
                         onChange={this.handleFieldChange}
                         value={`${this.state.name}`} />
                     </FormGroup>
@@ -67,7 +67,7 @@ export default class CostumeEditForm extends Component {
                     </FormGroup>
                     <FormGroup className="mb-4">
                         <Label for="image">Image</Label>
-                        <Input type="url" required name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange}
+                        <Input type="url" name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange}
                         value={`${this.state.image}`} />
                         <FormText>Note: Square images work best.</FormText>
                     </FormGroup>

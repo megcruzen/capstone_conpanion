@@ -52,7 +52,7 @@ export default {
 
     getCostumes() {
         let sessionUser = sessionStorage.getItem("User");
-        return fetch(`${remoteURL}/costumes?userId=${Number(sessionUser)}`)
+        return fetch(`${remoteURL}/costumes?userId=${Number(sessionUser)}&_sort=timestamp&_order=desc`)
         .then(response => response.json())
     },
 
@@ -62,7 +62,7 @@ export default {
     },
 
     getConCostumes() {
-        return fetch(`${remoteURL}/conCostumes?_expand=costume`)
+        return fetch(`${remoteURL}/conCostumes?_expand=costume&_sort=id&_order=desc`)
         .then(response => response.json())
     },
 
@@ -102,7 +102,7 @@ export default {
     },
 
     getAllGroups() {
-        return fetch(`${remoteURL}/groups?_expand=convention`)
+        return fetch(`${remoteURL}/groups`)
         .then(response => response.json())
     },
 
@@ -112,13 +112,28 @@ export default {
         .then(response => response.json())
     },
 
+    getGroupMembers() {
+        return fetch(`${remoteURL}/userGroups?_expand=user`)
+        .then(response => response.json())
+    },
+
     getMessages() {
-        return fetch(`${remoteURL}/messages`)
+        return fetch(`${remoteURL}/messages?_expand=user`)
         .then(response => response.json())
     },
 
     getMessage(id) {
         return fetch(`${remoteURL}/messages/${id}`)
+        .then(response => response.json())
+    },
+
+    getCharacters() {
+        return fetch(`${remoteURL}/characters?_sort=name`)
+        .then(response => response.json())
+    },
+
+    getCharacterById(id) {
+        return fetch(`${remoteURL}/characters/${id}`)
         .then(response => response.json())
     },
 
@@ -245,6 +260,50 @@ export default {
         .then(response => response.json())
     },
 
+    postGroup(newGroup) {
+        return fetch(`${remoteURL}/groups`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newGroup)
+        })
+        .then(response => response.json())
+    },
+
+    createUserGroup(newUserGroup) {
+        return fetch(`${remoteURL}/userGroups`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newUserGroup)
+        })
+        .then(response => response.json())
+    },
+
+    postMessage(newMessage) {
+        return fetch(`${remoteURL}/messages`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newMessage)
+        })
+        .then(data => data.json())
+      },
+
+      postCharacter(newCharacter) {
+        return fetch(`${remoteURL}/characters`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newCharacter)
+        })
+        .then(data => data.json())
+      },
+
 
     // DELETE
 
@@ -303,6 +362,13 @@ export default {
         .then(() => this.getTimeslots())
     },
 
+    deleteCharacter(id) {
+        return fetch(`${remoteURL}/characters/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getCharacters())
+    },
+
 
     // PUT
 
@@ -353,6 +419,16 @@ export default {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(editedTimeslot)
+        })
+    },
+
+    editCharacter(characterId, editedCharacter) {
+        return fetch(`${remoteURL}/timeslots/${characterId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedCharacter)
         })
     }
 }

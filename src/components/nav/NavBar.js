@@ -2,15 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "./NavBar.css";
 import "bootstrap/dist/css/bootstrap.min.css"
-import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink } from 'reactstrap';
-
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
     export default class NavBar extends React.Component {
         constructor(props) {
@@ -41,11 +33,11 @@ import {
                         <NavLink tag={Link} to="/conventions">Conventions</NavLink>
                     </NavItem>
                     <NavItem>
-                    <NavLink tag={Link} to="/costumes">Costumes</NavLink>
+                      <NavLink tag={Link} to="/costumes">Costumes</NavLink>
                     </NavItem>
-                    {/* <NavItem>
-                      <NavLink href="/friends">Friends</NavLink>
-                    </NavItem> */}
+                    <NavItem>
+                      <NavLink tag={Link} to="/groups">Groups</NavLink>
+                    </NavItem>
                     <NavItem>
                         <NavLink onClick={this.clearSession} tag={Link} to="/login">Logout</NavLink>
                     </NavItem>

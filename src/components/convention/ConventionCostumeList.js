@@ -45,7 +45,7 @@ export default class ConventionCostumeList extends Component {
         let conCostumeArray = this.props.currentCostumes.map(conCostume => conCostume.costumeId);
         costumeArray = this.props.costumes.filter(val => !conCostumeArray.includes(val.id));
 
-        return costumeArray.map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} ({costume.outfit})</option>)
+        return costumeArray.map(costume => <option key={costume.id} id={costume.id} value={costume.id}>{costume.name} {costume.outfit}</option>)
 
     }
 
@@ -129,7 +129,7 @@ export default class ConventionCostumeList extends Component {
                         <section className="costume_form">
                             <Form onSubmit={this.constructNewCostume} className="form_width">
                                 <FormGroup>
-                                    <Label for="characterName">Character Name</Label>
+                                    <Label for="characterName">Character Name</Label><span className="required">*</span>
                                     <Input type="text" required name="characterName" id="characterName"
                                     onChange={this.handleFieldChange} />
                                 </FormGroup>
@@ -139,16 +139,17 @@ export default class ConventionCostumeList extends Component {
                                     onChange={this.handleFieldChange} />
                                 </FormGroup>
                                 <FormGroup>
-                                    <Label for="series">Series</Label>
+                                    <Label for="series">Series</Label><span className="required">*</span>
                                     <Input type="text" required name="series" id="series"
                                     onChange={this.handleFieldChange} />
                                 </FormGroup>
                                 <FormGroup>
                                     <Label for="image">Image</Label>
-                                    <Input type="url" required name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange} />
+                                    <Input type="url" name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange} />
                                     <FormText>Note: Square images work best.</FormText>
                                 </FormGroup>
                                 <Button type="submit" onClick={this.toggle} color="primary" className="mr-3 my-2">Save Costume</Button>
+                                <div className="required-text">* Required field</div>
                             </Form>
                         </section>
                     </ModalBody>

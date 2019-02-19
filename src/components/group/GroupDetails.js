@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { Row, Modal, ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import "../CosBuddy.css";
 import GroupAddons from "./GroupAddons"
@@ -34,15 +35,12 @@ export default class GroupDetails extends Component {
     }
 
     showDelete = (userId) => {
+        const myGroup = this.props.myGroups.find(myGroup => myGroup.group.id === parseInt(this.props.match.params.groupId)) || {}
+        const group = this.props.allGroups.find(group => group.id === myGroup.groupId) || {}
         const currentUser = sessionStorage.getItem("User");
         if (Number(currentUser) === Number(userId)) {
-            return <div className="small">
-                    <a href="#" className="link" onClick={this.toggle}>Add Member</a> | <a href="#" className="link" onClick={this.toggle3}>Leave Group</a> | <a href="#" className="link" onClick={this.toggle2}>Delete Group</a>
-                    </div>
-        }
-        else {
-            return <div className="small">
-                    <a href="#" className="link" onClick={this.toggle}>Add Member</a> | <a href="#" className="link" onClick={this.toggle3}>Leave Group</a>
+            return <div className="text-right">
+                        <Link to={{pathname:"/groups/edit/", state:{id: group.id, name: group.name, description: group.description, timestamp: group.timestamp, userId: group.userId}}}><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push("/costumes/edit")} style={{cursor:'pointer'}}></i></Link><i className="fas fa-times-circle delete" onClick={this.toggle2} style={{cursor:'pointer'}}></i>
                     </div>
         }
     }
@@ -74,7 +72,12 @@ export default class GroupDetails extends Component {
                             <div>{group.description}</div>
                             {/* <p>{convention.name} {startYear}</p> */}
                         </div>
-                        {this.showDelete(group.userId)}
+                        <div>
+                            <div className="small">
+                                <a href="#" className="link" onClick={this.toggle}>Add Member</a> | <a href="#" className="link" onClick={this.toggle3}>Leave Group</a>
+                            </div>
+                            {this.showDelete(group.userId)}
+                        </div>
                     </div>
 
                     <Row className="mt-4">

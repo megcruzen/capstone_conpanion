@@ -18,6 +18,7 @@ import CostumeDetails from './costume/CostumeDetails'
 
 import GroupList from './group/GroupList'
 import GroupForm from './group/GroupForm'
+import GroupEditForm from './group/GroupEditForm'
 import GroupDetails from './group/GroupDetails'
 
 import Contact from './Contact'
@@ -365,6 +366,13 @@ export default class ApplicationViews extends Component {
     .then(characters => this.setState({ characters: characters })
   )
 
+  editGroup = (groupId, editedGroup) =>
+  AppManager.editGroup(groupId, editedGroup)
+  .then(() => AppManager.getAllGroups())
+  .then(allGroups => this.setState({ allGroups: allGroups }))
+  .then(() => AppManager.getMyGroups())
+  .then(myGroups => this.setState({ myGroups: myGroups }))
+
 
   /********/
 
@@ -554,6 +562,17 @@ export default class ApplicationViews extends Component {
                     addCharacter={this.addCharacter}
                     deleteCharacter={this.deleteCharacter}
                     updateCharacter={this.updateCharacter} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route path="/groups/edit" render={(props) => {
+          if (this.isAuthenticated()) {
+            return <GroupEditForm {...props}
+                    myGroups={this.state.myGroups}
+                    allGroups={this.state.allGroups}
+                    editGroup={this.editGroup} />
           } else {
             return <Redirect to="/login" />
           }

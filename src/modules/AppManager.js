@@ -434,5 +434,15 @@ export default {
             },
             body: JSON.stringify(editedCharacter)
         })
+    },
+
+    editGroup(groupId, editedGroup) {
+        return fetch(`${remoteURL}/groups/${groupId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedGroup)
+        })
     }
 }

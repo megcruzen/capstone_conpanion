@@ -418,6 +418,10 @@ button.build_lineup {
     padding: 20px;
 }
 
+.group_list .group_card:hover {
+    background-color:#f5f4f8;
+}
+
 .group_list .group_card a {
     color: #212529;
     text-decoration: none;
@@ -427,6 +431,7 @@ button.build_lineup {
     color: #812bb2;
     text-decoration: none;
 }
+
 
 .group_list .group_card hr {
     margin: 10px 0px;
@@ -462,21 +467,6 @@ button.build_lineup {
     height: auto;
 }
 
-.collapse_title .btn::before{
-    padding-right: 10px;
-    font-family: "Font Awesome 5 Free";
-    content: "\f004";
-}
-
-.collapse_title .btn:not(.collapse):before {
-    content: "▸";
-    margin-right: 0px;
-}
-.collapse_title .btn:before {
-    content: "▾";
-    margin-right: 0px;
-}
-
 .Collapsible__trigger {
     /* display: block; */
     font-size: 18px;
@@ -486,8 +476,8 @@ button.build_lineup {
 }
 
 .Collapsible__trigger:before {
-      /* font-family: "Font Awesome 5 Free"; */
-      content: '\002B';
+      font-family: "Font Awesome 5 Free";
+      content: '\f0fe';
       /* position: absolute;
       left: 10px;
       top: 10px;
@@ -498,11 +488,15 @@ button.build_lineup {
 
 .Collapsible__trigger.is-open:before {
       /* transform: rotateZ(180deg); */
-      content: '\2212';
+      content: '\f146';
     }
 
 .Collapsible__contentOuter {
     transition: height 100ms linear 0s !important;
+}
+
+.Collapsible__trigger:hover {
+    color: #812bb2;
 }
 
 /****** Group Chat ******/

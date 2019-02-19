@@ -33,6 +33,20 @@ export default class GroupDetails extends Component {
         this.props.history.push("/groups/");
     }
 
+    showDelete = (userId) => {
+        const currentUser = sessionStorage.getItem("User");
+        if (Number(currentUser) === Number(userId)) {
+            return <div className="small">
+                    <a href="#" className="link" onClick={this.toggle}>Add Member</a> | <a href="#" className="link" onClick={this.toggle3}>Leave Group</a> | <a href="#" className="link" onClick={this.toggle2}>Delete Group</a>
+                    </div>
+        }
+        else {
+            return <div className="small">
+                    <a href="#" className="link" onClick={this.toggle}>Add Member</a> | <a href="#" className="link" onClick={this.toggle3}>Leave Group</a>
+                    </div>
+        }
+    }
+
     deleteGroup = (id) => {
         this.props.deleteGroup(id);
         this.toggle();
@@ -41,7 +55,6 @@ export default class GroupDetails extends Component {
 
     addMember = (event) => {
         event.preventDefault();
-        console.log("Click!")
         this.toggle();
     }
 
@@ -50,10 +63,6 @@ export default class GroupDetails extends Component {
 
         const myGroup = this.props.myGroups.find(myGroup => myGroup.group.id === parseInt(this.props.match.params.groupId)) || {}
         const group = this.props.allGroups.find(group => group.id === myGroup.groupId) || {}
-        // const convention = this.props.allConventions.find(convention => convention.id === group.conventionId) || {}
-
-        // const startDate = new Date(convention.startDate);
-        // const startYear = startDate.getFullYear();
 
         return (
                 <section key={group.id} className="mr-2 mb-3 group_details_section">
@@ -65,13 +74,11 @@ export default class GroupDetails extends Component {
                             <div>{group.description}</div>
                             {/* <p>{convention.name} {startYear}</p> */}
                         </div>
-                        <div className="small">
-                            <a href="#" className="link" onClick={this.toggle}>Add Member</a> | <a href="#" className="link" onClick={this.toggle3}>Leave Group | <a href="#" className="link" onClick={this.toggle2}>Delete Group</a></a>
-                        </div>
+                        {this.showDelete(group.userId)}
                     </div>
 
                     <Row className="mt-4">
-                        <GroupAddons myGroup={myGroup} characters={this.props.characters} addCharacter={this.props.addCharacter} deleteCharacter={this.props.deleteCharacter} {...this.props} />
+                        <GroupAddons group={group} characters={this.props.characters} addCharacter={this.props.addCharacter} deleteCharacter={this.props.deleteCharacter} leaveGroup={this.leaveGroup} {...this.props} />
                         <GroupChat myGroup={myGroup} messages={this.props.messages} users={this.props.users} {...this.props} />
                     </Row>
 

@@ -364,7 +364,6 @@ export default {
         return fetch(`${remoteURL}/userGroups/${id}`, {
             method: "DELETE"
         })
-        .then(() => this.getMyGroups())
     },
 
     deleteCharacter(id) {

@@ -316,7 +316,10 @@ export default class ApplicationViews extends Component {
 
   leaveGroup = (id) => {
     return AppManager.deleteUserGroup(id)
+    .then(() => AppManager.getMyGroups())
     .then(myGroups => this.setState({ myGroups: myGroups }))
+    .then(() => AppManager.getGroupMembers())
+    .then(groupMembers => this.setState({ groupMembers: groupMembers }))
   }
 
   deleteCharacter = (id) => {

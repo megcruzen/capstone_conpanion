@@ -8,8 +8,8 @@ export default class GroupAddons extends Component {
 
         return (
                 <Col sm="6">
-                    <MemberList myGroup={this.props.myGroup} groupMembers={this.props.groupMembers} {...this.props} />
-                    <CharacterList myGroup={this.props.myGroup} characters={this.props.characters} addCharacter={this.props.addCharacter} deleteCharacter={this.props.deleteCharacter} {...this.props} />
+                    <MemberList group={this.props.group} groupMembers={this.props.groupMembers} leaveGroup={this.leaveGroup} {...this.props} />
+                    <CharacterList group={this.props.group} characters={this.props.characters} addCharacter={this.props.addCharacter} deleteCharacter={this.props.deleteCharacter} {...this.props} />
                 </Col>
 
         )

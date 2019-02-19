@@ -24,7 +24,7 @@ export default class CharacterList extends Component {
         const newCharacter = {
             name: this.state.character,
             user: "",
-            groupId: Number(this.props.myGroup.id)
+            groupId: Number(this.props.group.id)
         }
 
         this.props.addCharacter(newCharacter);
@@ -39,9 +39,9 @@ export default class CharacterList extends Component {
                         <Table>
                             <tbody>
                             {
-                                this.props.characters.filter(character => character.groupId === this.props.myGroup.id)
+                                this.props.characters.filter(character => character.groupId === this.props.group.id)
                                 .map(character =>
-                                    <CharacterCard character={character} deleteCharacter={this.props.deleteCharacter} updateCharacter={this.props.updateCharacter} groupId={this.props.myGroup.id} />
+                                    <CharacterCard character={character} deleteCharacter={this.props.deleteCharacter} updateCharacter={this.props.updateCharacter} groupId={this.props.group.id} />
                                 )
                             }
                             </tbody>

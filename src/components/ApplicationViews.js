@@ -18,6 +18,7 @@ import CostumeDetails from './costume/CostumeDetails'
 
 import GroupList from './group/GroupList'
 import GroupForm from './group/GroupForm'
+import GroupEditForm from './group/GroupEditForm'
 import GroupDetails from './group/GroupDetails'
 
 import Contact from './Contact'
@@ -309,6 +310,19 @@ export default class ApplicationViews extends Component {
     .then(timeslots => this.setState({ timeslots: timeslots }))
   }
 
+  deleteGroup = (id) => {
+    AppManager.deleteGroup(id)
+    .then(myGroups => this.setState({ myGroups: myGroups }))
+  }
+
+  leaveGroup = (id) => {
+    return AppManager.deleteUserGroup(id)
+    .then(() => AppManager.getMyGroups())
+    .then(myGroups => this.setState({ myGroups: myGroups }))
+    .then(() => AppManager.getGroupMembers())
+    .then(groupMembers => this.setState({ groupMembers: groupMembers }))
+  }
+
   deleteCharacter = (id) => {
     AppManager.deleteCharacter(id)
     .then(characters => this.setState({ characters: characters }))
@@ -351,6 +365,13 @@ export default class ApplicationViews extends Component {
     .then(() => AppManager.getCharacters())
     .then(characters => this.setState({ characters: characters })
   )
+
+  editGroup = (groupId, editedGroup) =>
+  AppManager.editGroup(groupId, editedGroup)
+  .then(() => AppManager.getAllGroups())
+  .then(allGroups => this.setState({ allGroups: allGroups }))
+  .then(() => AppManager.getMyGroups())
+  .then(myGroups => this.setState({ myGroups: myGroups }))
 
 
   /********/
@@ -531,6 +552,8 @@ export default class ApplicationViews extends Component {
                     myGroups={this.state.myGroups}
                     allGroups={this.state.allGroups}
                     allConventions={this.state.allConventions}
+                    leaveGroup={this.leaveGroup}
+                    deleteGroup={this.deleteGroup}
                     messages={this.state.messages}
                     groupMembers={this.state.groupMembers}
                     users={this.state.users}
@@ -539,6 +562,17 @@ export default class ApplicationViews extends Component {
                     addCharacter={this.addCharacter}
                     deleteCharacter={this.deleteCharacter}
                     updateCharacter={this.updateCharacter} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route path="/groups/edit" render={(props) => {
+          if (this.isAuthenticated()) {
+            return <GroupEditForm {...props}
+                    myGroups={this.state.myGroups}
+                    allGroups={this.state.allGroups}
+                    editGroup={this.editGroup} />
           } else {
             return <Redirect to="/login" />
           }

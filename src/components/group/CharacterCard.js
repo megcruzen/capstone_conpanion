@@ -61,8 +61,6 @@ export default class CharacterCard extends Component {
 
     render() {
 
-        console.log(this.props.character.id)
-
         return (
                 <tr key={this.props.character.id}>
                     <td className="character">{this.props.character.name}</td>

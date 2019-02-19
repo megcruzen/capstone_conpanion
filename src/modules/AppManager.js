@@ -160,15 +160,6 @@ export default {
           body: JSON.stringify(newCon)
         })
         .then(response => response.json())
-        // .then(newCon => {
-        //     const newUserCon = {
-        //         userId: newCon.userId,
-        //         conventionId: newCon.id
-        //     }
-        //     console.log(newUserCon)
-        //     this.createUserConvention(newUserCon);
-        //     })
-        // .then(() => this.getMyConventions())
     },
 
     createUserConvention(newCon) {
@@ -362,6 +353,19 @@ export default {
         .then(() => this.getTimeslots())
     },
 
+    deleteGroup(id) {
+        return fetch(`${remoteURL}/groups/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => this.getMyGroups())
+    },
+
+    deleteUserGroup(id) {
+        return fetch(`${remoteURL}/userGroups/${id}`, {
+            method: "DELETE"
+        })
+    },
+
     deleteCharacter(id) {
         return fetch(`${remoteURL}/characters/${id}`, {
             method: "DELETE"
@@ -429,6 +433,16 @@ export default {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(editedCharacter)
+        })
+    },
+
+    editGroup(groupId, editedGroup) {
+        return fetch(`${remoteURL}/groups/${groupId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(editedGroup)
         })
     }
 }

@@ -10,7 +10,8 @@ export default class GroupDetails extends Component {
     state = {
         modal: false,
         modal2: false,
-        modal3: false
+        modal3: false,
+        username: ""
     }
 
     toggle = () => {
@@ -23,6 +24,12 @@ export default class GroupDetails extends Component {
 
     toggle3 = () => {
         this.setState({  modal3: !this.state.modal3 });
+    }
+
+    handleFieldChange = evt => {
+        const stateToChange = {}
+        stateToChange[evt.target.id] = evt.target.value
+        this.setState(stateToChange)
     }
 
     leaveGroup = () => {
@@ -53,7 +60,44 @@ export default class GroupDetails extends Component {
 
     addMember = (event) => {
         event.preventDefault();
-        this.toggle();
+        const myGroup = this.props.myGroups.find(myGroup => myGroup.group.id === parseInt(this.props.match.params.groupId)) || {}
+        const group = this.props.allGroups.find(group => group.id === myGroup.groupId) || {}
+
+        const userToAdd = this.props.users.find(user => user.username === this.state.username);
+        const currentMembers = this.props.groupMembers.filter(groupMember => groupMember.groupId === group.id);
+
+        // console.log("currentMembers", currentMembers)
+        // console.log("member.userId ", currentMembers.map(member => member.userId ))
+        // console.log("userToAdd", userToAdd.id)
+
+        // If the user does not exist, show alert.
+        if ( !userToAdd ) {
+            alert("User not found.")
+        }
+        // If the user is already in the group, show alert.
+        else if ( currentMembers.find(member => member.userId === userToAdd.id)) {
+            alert("This user is already in the group.")
+        }
+        // Otherwise, add the user.
+        else {
+            alert("Add user!")
+
+            const newMember = {
+                userId: userToAdd.id,
+                groupId: group.id
+            }
+
+            this.props.addMember(newMember);
+            this.toggle();
+        }
+
+        // const newMember = {
+        //     userId: 3,
+        //     groupId: Number(group.id)
+        // }
+
+        // this.props.createUserGroup(newMember);
+        // this.toggle();
     }
 
 
@@ -93,13 +137,17 @@ export default class GroupDetails extends Component {
                             <Form className="d-flex">
                                 <FormGroup className="w-100 mr-2">
                                     <Label for="username" hidden>Username</Label>
-                                    <Input type="text" required name="username" id="username"
-                                    onChange={this.handleFieldChange} placeholder="Enter username" />
+                                    <Input type="text"
+                                        required name="username"
+                                        id="username"
+                                        onChange={this.handleFieldChange}
+                                        placeholder="Enter username" />
                                 </FormGroup>
                             </Form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.addMember}>Add Member</Button>
+                            <Button color="primary" onClick={this.addMember}>Add Member</Button>{' '}
+                            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
 

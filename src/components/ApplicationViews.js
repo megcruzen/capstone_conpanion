@@ -243,6 +243,10 @@ export default class ApplicationViews extends Component {
       .then(() => { this.setState(groups) })
     }
 
+    addMember = (member) => AppManager.postMember(member)
+    .then(() => AppManager.getGroupMembers())
+    .then(groupMembers => this.setState({ groupMembers: groupMembers }))
+
     addCharacter = (character) => AppManager.postCharacter(character)
     .then(() => AppManager.getCharacters())
     .then(characters => this.setState({ characters: characters }))
@@ -556,6 +560,7 @@ export default class ApplicationViews extends Component {
                     deleteGroup={this.deleteGroup}
                     messages={this.state.messages}
                     groupMembers={this.state.groupMembers}
+                    addMember={this.addMember}
                     users={this.state.users}
                     addMessage={this.addMessage}
                     characters={this.state.characters}

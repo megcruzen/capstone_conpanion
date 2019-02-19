@@ -14,7 +14,6 @@ export default class GroupForm extends Component {
     // Update state whenever an input field is edited
     handleFieldChange = evt => {
         const stateToChange = {}
-        console.log(evt.target.id, evt.target.value);
         stateToChange[evt.target.id] = evt.target.value
         this.setState(stateToChange)
     }
@@ -44,13 +43,19 @@ export default class GroupForm extends Component {
                 <Form onSubmit={this.constructNewGroup} className="form_width mt-4">
                     <FormGroup>
                         <Label for="groupName">Group Name</Label><span className="required">*</span>
-                        <Input type="text" required name="groupName" id="groupName"
-                        onChange={this.handleFieldChange} />
+                        <Input type="text"
+                            required
+                            name="groupName"
+                            id="groupName"
+                            onChange={this.handleFieldChange} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="description">Description</Label><span className="required">*</span>
-                        <Input type="text" required name="description" id="description"
-                        onChange={this.handleFieldChange} />
+                        <Input type="text"
+                            required
+                            name="description"
+                            id="description"
+                            onChange={this.handleFieldChange} />
                     </FormGroup>
                     {/* <FormGroup>
                         <Label for="convention">Convention</Label>

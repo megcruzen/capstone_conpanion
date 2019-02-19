@@ -273,6 +273,17 @@ export default {
         .then(response => response.json())
     },
 
+    postMember(newMember) {
+        return fetch(`${remoteURL}/userGroups`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(newMember)
+        })
+        .then(data => data.json())
+      },
+
     postMessage(newMessage) {
         return fetch(`${remoteURL}/messages`, {
           method: "POST",

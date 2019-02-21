@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, FormText, Label, Input, Modal, ModalHeader, ModalBody, Row, Col } from 'reactstrap';
 import ConCostumeCard from "./ConCostumeCard"
+import AppManager from "../../modules/AppManager"
 
 export default class ConventionCostumeList extends Component {
 
@@ -9,19 +10,17 @@ export default class ConventionCostumeList extends Component {
         costumes: [],
         conCostumes: [],
         filteredCostumes: [],
-        costumeId: ""
+        costumeId: "",
+        modal: false,
+        name: "",
+        series: "",
+        outfit: "",
+        notes: "",
+        image: ""
       }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-          modal: false
-        };
 
-        this.toggle = this.toggle.bind(this);
-    }
-
-    toggle() {
+    toggle = () => {
         this.setState({
             modal: !this.state.modal
         });
@@ -84,8 +83,15 @@ export default class ConventionCostumeList extends Component {
             userId: Number(sessionUser)
         }
 
-        // Create the costume
-        this.props.addCostume(costume)
+        // Create the costume and add costume to convention
+        AppManager.postCostume(costume)
+        .then(response => {
+            const conCostume = {
+                costumeId: Number(response.id),
+                userConventionId: this.props.convention.userConventionId
+            }
+            this.props.addCostumeToCon(conCostume)
+        })
     }
 
     render() {

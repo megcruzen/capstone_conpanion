@@ -32,6 +32,7 @@ export default class ApplicationViews extends Component {
     genres: [],
     allConventions: [],
     myConventions: [],
+    userConventions: [],
     conventionItems: [],
     conCostumeItems: [],
     costumes: [],
@@ -63,6 +64,9 @@ export default class ApplicationViews extends Component {
 
     AppManager.getMyConventions()
     .then(myConventions => { this.setState({ myConventions: myConventions }) })
+
+    AppManager.getUserConventions()
+    .then(userConventions => { this.setState({ userConventions: userConventions }) })
 
     AppManager.getConventionItems()
     .then(conventionItems => { this.setState({ conventionItems: conventionItems }) })
@@ -192,6 +196,8 @@ export default class ApplicationViews extends Component {
     .then(response => newConCostumesAndItems.conCostumeItems = response)
     .then(() => AppManager.getConCostumes())
     .then(response => newConCostumesAndItems.conCostumes = response)
+    .then(() => AppManager.getCostumes())
+    .then(response => newConCostumesAndItems.costumes = response)
     .then(() => { this.setState(newConCostumesAndItems) })
   }
 
@@ -456,6 +462,7 @@ export default class ApplicationViews extends Component {
             return <ConventionDetails {...props}
                     allConventions={this.state.allConventions}
                     myConventions={this.state.myConventions}
+                    userConventions={this.state.userConventions}
                     costumes={this.state.costumes}
                     addCostume={this.addCostume}
                     addConventionItem={this.addConventionItem}

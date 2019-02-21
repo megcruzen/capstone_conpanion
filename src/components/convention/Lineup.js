@@ -61,8 +61,6 @@ export default class Lineup extends Component {
                         <PopoverBody>Max number of days added.</PopoverBody>
                     </Popover>
                 </div>
-
-
             )
         }
     }

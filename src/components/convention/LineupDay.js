@@ -68,7 +68,7 @@ export default class LineupDay extends Component {
 
     render() {
 
-        console.log("this.props.convention.userConventionId", this.props.convention.userConventionId)
+        // console.log("this.props.convention.userConventionId", this.props.convention.userConventionId)
         // const days = this.props.lineupDays.filter(day => day.userConventionId === this.props.convention.userConventionId) || {}
 
         return (

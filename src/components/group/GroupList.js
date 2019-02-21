@@ -13,7 +13,7 @@ export default class GroupList extends Component {
                 <Row>
                     {
                     this.props.myGroups.map(myGroup =>
-                        <GroupCard key={myGroup.id} myGroup={myGroup} {...this.props} />
+                        <GroupCard key={myGroup.id} myGroup={myGroup} conGroups={this.props.conGroups} {...this.props} />
                     )
                     }
                 </Row>

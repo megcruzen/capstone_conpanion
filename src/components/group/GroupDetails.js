@@ -47,7 +47,7 @@ export default class GroupDetails extends Component {
         const currentUser = sessionStorage.getItem("User");
         if (Number(currentUser) === Number(userId)) {
             return <div className="text-right">
-                        <Link to={{pathname:"/groups/edit/", state:{id: group.id, name: group.name, description: group.description, timestamp: group.timestamp, userId: group.userId}}}><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push("/costumes/edit")} style={{cursor:'pointer'}}></i></Link><i className="fas fa-times-circle delete" onClick={this.toggle2} style={{cursor:'pointer'}}></i>
+                        <Link to={{pathname:"/groups/edit/", state:{id: group.id, name: group.name, description: group.description, timestamp: group.timestamp, userId: group.userId, conventionId: group.conventionId}}}><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push("/costumes/edit")} style={{cursor:'pointer'}}></i></Link><i className="fas fa-times-circle delete" onClick={this.toggle2} style={{cursor:'pointer'}}></i>
                     </div>
         }
     }
@@ -63,16 +63,12 @@ export default class GroupDetails extends Component {
         const myGroup = this.props.myGroups.find(myGroup => myGroup.group.id === parseInt(this.props.match.params.groupId)) || {}
         const group = this.props.allGroups.find(group => group.id === myGroup.groupId) || {}
 
-        const userToAdd = this.props.users.find(user => user.username === this.state.username);
+        const userToAdd = this.props.users.find(user => user.username.toLowerCase() === this.state.username.toLowerCase());
         const currentMembers = this.props.groupMembers.filter(groupMember => groupMember.groupId === group.id);
-
-        // console.log("currentMembers", currentMembers)
-        // console.log("member.userId ", currentMembers.map(member => member.userId ))
-        // console.log("userToAdd", userToAdd.id)
 
         // If the user does not exist, show alert.
         if ( !userToAdd ) {
-            alert("User not found.")
+            alert("User not found. Please make sure you typed their username correctly.")
         }
         // If the user is already in the group, show alert.
         else if ( currentMembers.find(member => member.userId === userToAdd.id)) {
@@ -80,7 +76,7 @@ export default class GroupDetails extends Component {
         }
         // Otherwise, add the user.
         else {
-            alert("Add user!")
+            alert(`${this.state.username} added to group!`)
 
             const newMember = {
                 userId: userToAdd.id,
@@ -90,16 +86,15 @@ export default class GroupDetails extends Component {
             this.props.addMember(newMember);
             this.toggle();
         }
-
-        // const newMember = {
-        //     userId: 3,
-        //     groupId: Number(group.id)
-        // }
-
-        // this.props.createUserGroup(newMember);
-        // this.toggle();
     }
 
+    showConvention = (group) => {
+        if (group.conventionId !== 0 && group.convention !== undefined) {
+            const startDate = new Date(group.convention.startDate);
+            const startYear = startDate.getFullYear();
+            return <div className="small">{group.convention.name} {startYear}</div>
+        }
+    }
 
     render() {
 
@@ -112,9 +107,10 @@ export default class GroupDetails extends Component {
 
                     <div className="d-flex justify-content-between flex-wrap mt-4">
                         <div className="group_details mb-1">
+                        {this.showConvention(group)}
                             <h3>{group.name}</h3>
                             <div>{group.description}</div>
-                            {/* <p>{convention.name} {startYear}</p> */}
+
                         </div>
                         <div>
                             <div className="small">
@@ -165,7 +161,7 @@ export default class GroupDetails extends Component {
                     </Modal>
 
                     <Modal isOpen={this.state.modal3} toggle={this.toggle3} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle3}>Remove Convention</ModalHeader>
+                        <ModalHeader toggle={this.toggle3}>Leave Group</ModalHeader>
                         <ModalBody>
                             Are you sure you want to leave this group?
                         </ModalBody>

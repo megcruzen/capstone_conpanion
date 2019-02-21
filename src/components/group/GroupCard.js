@@ -11,6 +11,7 @@ export default class GroupCard extends Component {
         // const startDate = new Date(convention.startDate);
         // const startYear = startDate.getFullYear();
 
+
         return (
                 <Col sm="6">
                     <div className="group_card">

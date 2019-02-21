@@ -12,7 +12,7 @@ export default class MemberCard extends Component {
     showDelete = () => {
         const currentUser = sessionStorage.getItem("User");
         if (Number(currentUser) === Number(this.props.group.userId)) {
-            return <i className="fas fa-times-circle delete" onClick={this.toggle} style={{cursor:'pointer'}}></i>
+            return <td className="text-right"><i className="fas fa-times-circle delete" onClick={this.toggle} style={{cursor:'pointer'}}></i></td>
         }
     }
 
@@ -24,16 +24,19 @@ export default class MemberCard extends Component {
     render() {
 
         return (
-                <div sm="6" className="member_card mb-2">
+                <div sm="6" className="member_card">
 
-                    <li>
-                        {this.props.member.user.username} {this.showDelete()}
-                    </li>
+                    <tr>
+                        <td>
+                            {this.props.member.user.username}
+                        </td>
+                        {this.showDelete()}
+                    </tr>
 
                     <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                         <ModalHeader toggle={this.toggle}>Remove Member</ModalHeader>
                         <ModalBody>
-                            Are you sure you want to remove this member from the group?
+                            Are you sure you want to remove <strong>{this.props.member.user.username}</strong> from the group?
                         </ModalBody>
                         <ModalFooter>
                             <Button color="primary" onClick={() => this.removeMember(this.props.member.id)}>Yes, Remove from Group</Button>{' '}

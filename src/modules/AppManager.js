@@ -23,7 +23,7 @@ export default {
     },
 
     getAllConventions() {
-        return fetch(`${remoteURL}/conventions`)
+        return fetch(`${remoteURL}/conventions?_sort=name`)
         .then(response => response.json())
     },
 
@@ -102,13 +102,18 @@ export default {
     },
 
     getAllGroups() {
-        return fetch(`${remoteURL}/groups`)
+        return fetch(`${remoteURL}/groups?_expand=convention`)
         .then(response => response.json())
     },
 
     getMyGroups() {
         let sessionUser = sessionStorage.getItem("User");
         return fetch(`${remoteURL}/userGroups?userId=${Number(sessionUser)}&_expand=group`)
+        .then(response => response.json())
+    },
+
+    getConGroups() {
+        return fetch(`${remoteURL}/conGroups?_expand=convention`)
         .then(response => response.json())
     },
 

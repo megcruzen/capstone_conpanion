@@ -441,19 +441,15 @@ button.build_lineup {
     font-size: 10px;
 }
 
-.character_list {
+.character_list, .member_list {
     font-size: 14px;
 }
 
-.character_list .table td {
+.character_list .table td, .member_list .table td {
     padding: 5px;
 }
 
-.character_list td.character {
-    width: 150px;
-}
-
-.character_list td.user {
+.character_list td.character, .character_list td.user, .member_list td {
     width: 150px;
 }
 
@@ -461,10 +457,22 @@ button.build_lineup {
     padding: 0px 5px;
 }
 
-.character_list input {
+.character_list .user_update input {
     font-size: 14px;
     padding: 0 5px;
     height: auto;
+}
+
+.member_list .accordion-head, .character_list .accordion-head {
+    background: none;
+    color: #212529;
+    font-size: 18px;
+    padding: 0;
+}
+
+.member_list .accordion-head:hover, .character_list .accordion-head:hover {
+    background: none;
+    color: #812bb2;
 }
 
 .Collapsible__trigger {
@@ -475,7 +483,7 @@ button.build_lineup {
     cursor: pointer;
 }
 
-.Collapsible__trigger:before {
+.Collapsible__trigger:before, .accordion-head:before {
       font-family: "Font Awesome 5 Free";
       content: '\f0fe';
       /* position: absolute;
@@ -486,7 +494,7 @@ button.build_lineup {
       padding-right: 5px;
     }
 
-.Collapsible__trigger.is-open:before {
+.Collapsible__trigger.is-open:before, .active-accordion:before{
       /* transform: rotateZ(180deg); */
       content: '\f146';
     }

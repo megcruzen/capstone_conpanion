@@ -8,7 +8,8 @@ export default class GroupForm extends Component {
         name: "",
         description: "",
         timestamp: "",
-        userId: ""
+        userId: "",
+        conventionId: ""
     }
 
     // Update state whenever an input field is edited
@@ -28,12 +29,19 @@ export default class GroupForm extends Component {
             name: this.state.groupName,
             description: this.state.description,
             timestamp: timestamp,
-            userId: Number(sessionUser)
+            userId: Number(sessionUser),
+            conventionId: Number(this.state.conventionId)
         }
 
         // Create the group and then redirect user to their group list
         this.props.createGroup(group)
         .then(() => this.props.history.push("/groups"))
+    }
+
+    getYear = (convention) => {
+        const startDate = new Date(convention.startDate);
+        const startYear = startDate.getFullYear();
+        return startYear;
     }
 
     render() {
@@ -57,16 +65,19 @@ export default class GroupForm extends Component {
                             id="description"
                             onChange={this.handleFieldChange} />
                     </FormGroup>
-                    {/* <FormGroup>
+                    <FormGroup>
                         <Label for="convention">Convention</Label>
-                        <Input type="select" name="convention" id="convention"
-                        onChange={this.handleFieldChange}>
-                        <option value="0">N/A</option>
+                        <Input type="select"
+                            name="conventionId"
+                            id="conventionId"
+                            onChange={this.handleFieldChange}
+                            value={this.state.conventionId}>
+                            <option value="0">N/A</option>
                             {
-                                this.props.allConventions.map(convention => <option key={convention.id} id={convention.id} value={convention.id}>{convention.name}</option>)
+                                this.props.allConventions.map(convention => <option key={convention.id} id={convention.id} value={convention.id}>{convention.name} {this.getYear(convention)}</option>)
                             }
                         </Input>
-                    </FormGroup> */}
+                    </FormGroup>
                     <Button type="submit" color="primary" className="mr-3">Save Group</Button>
                     <a href="#" onClick={() => this.props.history.push("/groups/")} className="cancel">Cancel</a>
                 </Form>

@@ -52,10 +52,10 @@ export default class CharacterCard extends Component {
         const character = {
             name: this.props.character.name,
             user: this.state.user,
-            groupId: this.props.groupId,
+            groupId: this.props.groupId
         }
 
-        this.props.updateCharacter(this.props.groupId, character)
+        this.props.updateCharacter(this.props.character.id, character)
         .then(() => { this.setState({ userCheck: false }) })
     }
 

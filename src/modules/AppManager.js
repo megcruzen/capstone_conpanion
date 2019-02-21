@@ -459,7 +459,7 @@ export default {
     },
 
     editCharacter(characterId, editedCharacter) {
-        return fetch(`${remoteURL}/timeslots/${characterId}`, {
+        return fetch(`${remoteURL}/characters/${characterId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

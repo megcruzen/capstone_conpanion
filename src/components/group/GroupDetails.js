@@ -10,7 +10,8 @@ export default class GroupDetails extends Component {
     state = {
         modal: false,
         modal2: false,
-        modal3: false
+        modal3: false,
+        username: ""
     }
 
     toggle = () => {
@@ -23,6 +24,12 @@ export default class GroupDetails extends Component {
 
     toggle3 = () => {
         this.setState({  modal3: !this.state.modal3 });
+    }
+
+    handleFieldChange = evt => {
+        const stateToChange = {}
+        stateToChange[evt.target.id] = evt.target.value
+        this.setState(stateToChange)
     }
 
     leaveGroup = () => {
@@ -40,7 +47,7 @@ export default class GroupDetails extends Component {
         const currentUser = sessionStorage.getItem("User");
         if (Number(currentUser) === Number(userId)) {
             return <div className="text-right">
-                        <Link to={{pathname:"/groups/edit/", state:{id: group.id, name: group.name, description: group.description, timestamp: group.timestamp, userId: group.userId}}}><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push("/costumes/edit")} style={{cursor:'pointer'}}></i></Link><i className="fas fa-times-circle delete" onClick={this.toggle2} style={{cursor:'pointer'}}></i>
+                        <Link to={{pathname:"/groups/edit/", state:{id: group.id, name: group.name, description: group.description, timestamp: group.timestamp, userId: group.userId, conventionId: group.conventionId}}}><i className="fas fa-edit mr-2 text-secondary" onClick={() => this.props.history.push("/costumes/edit")} style={{cursor:'pointer'}}></i></Link><i className="fas fa-times-circle delete" onClick={this.toggle2} style={{cursor:'pointer'}}></i>
                     </div>
         }
     }
@@ -53,9 +60,41 @@ export default class GroupDetails extends Component {
 
     addMember = (event) => {
         event.preventDefault();
-        this.toggle();
+        const myGroup = this.props.myGroups.find(myGroup => myGroup.group.id === parseInt(this.props.match.params.groupId)) || {}
+        const group = this.props.allGroups.find(group => group.id === myGroup.groupId) || {}
+
+        const userToAdd = this.props.users.find(user => user.username.toLowerCase() === this.state.username.toLowerCase());
+        const currentMembers = this.props.groupMembers.filter(groupMember => groupMember.groupId === group.id);
+
+        // If the user does not exist, show alert.
+        if ( !userToAdd ) {
+            alert("User not found. Please make sure you typed their username correctly.")
+        }
+        // If the user is already in the group, show alert.
+        else if ( currentMembers.find(member => member.userId === userToAdd.id)) {
+            alert("This user is already in the group.")
+        }
+        // Otherwise, add the user.
+        else {
+            alert(`${this.state.username} added to group!`)
+
+            const newMember = {
+                userId: userToAdd.id,
+                groupId: group.id
+            }
+
+            this.props.addMember(newMember);
+            this.toggle();
+        }
     }
 
+    showConvention = (group) => {
+        if (group.conventionId !== 0 && group.convention !== undefined) {
+            const startDate = new Date(group.convention.startDate);
+            const startYear = startDate.getFullYear();
+            return <div className="small">{group.convention.name} {startYear}</div>
+        }
+    }
 
     render() {
 
@@ -68,9 +107,10 @@ export default class GroupDetails extends Component {
 
                     <div className="d-flex justify-content-between flex-wrap mt-4">
                         <div className="group_details mb-1">
+                        {this.showConvention(group)}
                             <h3>{group.name}</h3>
                             <div>{group.description}</div>
-                            {/* <p>{convention.name} {startYear}</p> */}
+
                         </div>
                         <div>
                             <div className="small">
@@ -93,13 +133,17 @@ export default class GroupDetails extends Component {
                             <Form className="d-flex">
                                 <FormGroup className="w-100 mr-2">
                                     <Label for="username" hidden>Username</Label>
-                                    <Input type="text" required name="username" id="username"
-                                    onChange={this.handleFieldChange} placeholder="Enter username" />
+                                    <Input type="text"
+                                        required name="username"
+                                        id="username"
+                                        onChange={this.handleFieldChange}
+                                        placeholder="Enter username" />
                                 </FormGroup>
                             </Form>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="primary" onClick={this.addMember}>Add Member</Button>
+                            <Button color="primary" onClick={this.addMember}>Add Member</Button>{' '}
+                            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                         </ModalFooter>
                     </Modal>
 
@@ -117,7 +161,7 @@ export default class GroupDetails extends Component {
                     </Modal>
 
                     <Modal isOpen={this.state.modal3} toggle={this.toggle3} className={this.props.className}>
-                        <ModalHeader toggle={this.toggle3}>Remove Convention</ModalHeader>
+                        <ModalHeader toggle={this.toggle3}>Leave Group</ModalHeader>
                         <ModalBody>
                             Are you sure you want to leave this group?
                         </ModalBody>

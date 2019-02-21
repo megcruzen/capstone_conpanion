@@ -41,6 +41,7 @@ export default class ApplicationViews extends Component {
     timeslots: [],
     allGroups: [],
     myGroups: [],
+    conGroups: [],
     groupMembers: [],
     messages: [],
     characters: []
@@ -92,6 +93,9 @@ export default class ApplicationViews extends Component {
 
     AppManager.getMyGroups()
     .then(myGroups => { this.setState({ myGroups: myGroups }) })
+
+    AppManager.getConGroups()
+    .then(conGroups => { this.setState({ conGroups: conGroups }) })
 
     AppManager.getGroupMembers()
     .then(groupMembers => { this.setState({ groupMembers: groupMembers }) })
@@ -242,6 +246,10 @@ export default class ApplicationViews extends Component {
       .then(response => groups.allGroups = response)
       .then(() => { this.setState(groups) })
     }
+
+    addMember = (member) => AppManager.postMember(member)
+    .then(() => AppManager.getGroupMembers())
+    .then(groupMembers => this.setState({ groupMembers: groupMembers }))
 
     addCharacter = (character) => AppManager.postCharacter(character)
     .then(() => AppManager.getCharacters())
@@ -530,7 +538,8 @@ export default class ApplicationViews extends Component {
             return <GroupList {...props}
                     myGroups={this.state.myGroups}
                     allConventions={this.state.allConventions}
-                    groupMembers={this.state.groupMembers} />
+                    groupMembers={this.state.groupMembers}
+                    conGroups={this.state.conGroups} />
             } else {
               return <Redirect to="/login" />
             }
@@ -551,11 +560,13 @@ export default class ApplicationViews extends Component {
             return <GroupDetails {...props}
                     myGroups={this.state.myGroups}
                     allGroups={this.state.allGroups}
+                    conGroups={this.state.conGroups}
                     allConventions={this.state.allConventions}
                     leaveGroup={this.leaveGroup}
                     deleteGroup={this.deleteGroup}
                     messages={this.state.messages}
                     groupMembers={this.state.groupMembers}
+                    addMember={this.addMember}
                     users={this.state.users}
                     addMessage={this.addMessage}
                     characters={this.state.characters}
@@ -572,7 +583,8 @@ export default class ApplicationViews extends Component {
             return <GroupEditForm {...props}
                     myGroups={this.state.myGroups}
                     allGroups={this.state.allGroups}
-                    editGroup={this.editGroup} />
+                    editGroup={this.editGroup}
+                    allConventions={this.state.allConventions} />
           } else {
             return <Redirect to="/login" />
           }

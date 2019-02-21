@@ -7,7 +7,8 @@ export default class GroupEditForm extends Component {
         name: this.props.location.state.name,
         description: this.props.location.state.description,
         timestamp: this.props.location.state.timestamp,
-        userId: this.props.location.state.userId
+        userId: this.props.location.state.userId,
+        conventionId: this.props.location.state.conventionId
     }
 
     handleFieldChange = evt => {
@@ -21,18 +22,25 @@ export default class GroupEditForm extends Component {
         evt.preventDefault()
         const groupId = this.props.location.state.id;
         const editedGroup = {
-            name: `${this.state.name}`,
-            description: `${this.state.description}`,
-            timestamp: `${this.state.timestamp}`,
-            userId: `${this.state.userId}`
+            name: this.state.name,
+            description: this.state.description,
+            timestamp: this.state.timestamp,
+            userId: Number(this.state.userId),
+            conventionId: Number(this.state.conventionId)
         }
 
         this.props.editGroup(groupId, editedGroup)
         .then(() => this.props.history.push(`/groups/${this.props.location.state.id}`))
     }
 
+    getYear = (convention) => {
+        const startDate = new Date(convention.startDate);
+        const startYear = startDate.getFullYear();
+        return startYear;
+    }
+
     render() {
-        console.log(this.props.location.state.id)
+
         return (
             <section className="group_edit_form">
                 <h1>Edit Group</h1>
@@ -44,7 +52,7 @@ export default class GroupEditForm extends Component {
                             name="name"
                             id="name"
                             onChange={this.handleFieldChange}
-                            value={`${this.state.name}`} />
+                            value={this.state.name} />
                     </FormGroup>
                     <FormGroup>
                         <Label for="description">Description</Label><span className="required">*</span>
@@ -53,18 +61,21 @@ export default class GroupEditForm extends Component {
                             name="description"
                             id="description"
                             onChange={this.handleFieldChange}
-                            value={`${this.state.description}`} />
+                            value={this.state.description} />
                     </FormGroup>
-                    {/* <FormGroup>
+                    <FormGroup>
                         <Label for="convention">Convention</Label>
-                        <Input type="select" name="convention" id="convention"
-                        onChange={this.handleFieldChange}>
-                        <option value="0">N/A</option>
+                        <Input type="select"
+                            name="conventionId"
+                            id="conventionId"
+                            onChange={this.handleFieldChange}
+                            value={this.state.conventionId}>
+                            <option value="0">N/A</option>
                             {
-                                this.props.allConventions.map(convention => <option key={convention.id} id={convention.id} value={convention.id}>{convention.name}</option>)
+                                this.props.allConventions.map(convention => <option key={convention.id} id={convention.id} value={convention.id}>{convention.name} {this.getYear(convention)}</option>)
                             }
                         </Input>
-                    </FormGroup> */}
+                    </FormGroup>
                     <Button type="submit" color="primary" className="mr-3">Save Group</Button>
                     <a href="#" onClick={() => this.props.history.push(`/groups/${this.props.location.state.id}`)} className="cancel">Cancel</a>
                 </Form>

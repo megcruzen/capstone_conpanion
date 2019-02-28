@@ -10,7 +10,7 @@ ConPanion is a convention-planning app intended for cosplayers and costumers. In
 ## Testing Locally
 To run ConPanion locally:
 
-1. Create an empty directory and clone this repo: `git clone` 
+1. Clone this repo: `git clone git@github.com:megcruzen/capstone_conpanion.git` 
 1. To install all libraries and their dependencies, run `npm install`
 1. In the /api directory, run `json-server -p 5002 -w database.json`
 1. Run `npm start` in root directory to start react server

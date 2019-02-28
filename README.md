@@ -1,3 +1,5 @@
+<img src="./src/images/conpanion.png" alt="ConPanion" title="ConPanion" width="1000px">
+
 # ConPanion
 ConPanion is a single-page convention-planning application intended for cosplayers and costumers. In this app, a user can make a list of conventions they’re attending, create costume pages, and participate in groups. For each convention, the user can add their planned costumes, manage packing lists, and create a lineup/calendar.  
 

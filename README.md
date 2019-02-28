@@ -7,7 +7,7 @@ ConPanion is a convention-planning app intended for cosplayers and costumers. In
 - Reactstrap
 - Bootstrap
 
-### Testing Locally
+## Testing Locally
 To run ConPanion locally:
 
 1. Create an empty directory and clone this repo: `git clone` 

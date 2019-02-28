@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import { Button, Media, Row, Col, TabContent, TabPane, Nav, NavItem, NavLink, Table, Modal, ModalBody, ModalFooter} from 'reactstrap';
+import { Button, Media, Row, Col, TabContent, TabPane, Nav, NavItem, NavLink, Modal, ModalBody, ModalFooter} from 'reactstrap';
 import classnames from 'classnames';
 import "../CosBuddy.css";
-import thumb from "./64x64.jpg"
 import ConventionCostumeList from "./ConventionCostumeList";
 import ConventionPackingList from './packinglists/ConventionPackingList';
 import CostumeListSection from './packinglists/CostumeListSection';
 import Lineup from './Lineup';
+// import ConventionToDoList from './ToDoList'
 
 export default class ConventionDetails extends Component {
 
@@ -57,6 +57,8 @@ export default class ConventionDetails extends Component {
         // let conYear = new Date(convention.startDate);
         // conYear = conYear.getFullYear();
 
+        // const getUserCon = this.props.userConventions.find(userConvention => userConvention.id === convention.userConventionId);
+
         return (
                 <section className="mr-2 mb-3 convention_details">
                     <a href="#" onClick={() => this.props.history.push("/conventions/")} className="return d-print-none">&laquo; Return to conventions</a>
@@ -91,6 +93,11 @@ export default class ConventionDetails extends Component {
                             className={classnames({ active: this.state.activeTab === '2' })}
                             onClick={() => { this.toggle('2'); }}>Packing Lists</NavLink>
                         </NavItem>
+                        {/* <NavItem>
+                            <NavLink
+                            className={classnames({ active: this.state.activeTab === '4' })}
+                            onClick={() => { this.toggle('4'); }}>To-Do List</NavLink>
+                        </NavItem> */}
                     </Nav>
                     <TabContent activeTab={this.state.activeTab} className="mt-4">
                         <TabPane tabId="1">
@@ -112,11 +119,12 @@ export default class ConventionDetails extends Component {
                                 <Col sm="3">
                                     <ConventionPackingList convention={convention} {...this.props} />
                                 </Col>
-                                {/* <Col sm="6"> */}
                                 <CostumeListSection convention={convention} currentCostumes={currentCostumes} {...this.props} />
-                                {/* </Col> */}
                             </Row>
                         </TabPane>
+                        {/* <TabPane tabId="4">
+                            <ConventionToDoList convention={convention} getUserCon={getUserCon} userConventions={this.props.userConventions} {...this.props} />
+                        </TabPane> */}
                     </TabContent>
                     <Modal isOpen={this.state.modal} toggle={this.toggle2} className={this.props.className}>
                         <ModalBody>

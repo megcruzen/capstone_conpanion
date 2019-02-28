@@ -40,6 +40,11 @@ export default {
         )
     },
 
+    getUserConventions() {
+        return fetch(`${remoteURL}/userConventions`)
+        .then(response => response.json())
+    },
+
     getConventionItems() {
         return fetch(`${remoteURL}/conventionItems/`)
         .then(response => response.json())
@@ -311,6 +316,17 @@ export default {
         .then(data => data.json())
       },
 
+      saveToDoList(todolist) {
+        return fetch(`${remoteURL}/todolists`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(todolist)
+        })
+        .then(data => data.json())
+      },
+
 
     // DELETE
 
@@ -443,7 +459,7 @@ export default {
     },
 
     editCharacter(characterId, editedCharacter) {
-        return fetch(`${remoteURL}/timeslots/${characterId}`, {
+        return fetch(`${remoteURL}/characters/${characterId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"

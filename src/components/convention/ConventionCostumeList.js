@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Button, Form, FormGroup, FormText, Label, Input, Modal, ModalHeader, ModalBody, Row, Col } from 'reactstrap';
 import ConCostumeCard from "./ConCostumeCard"
+import AppManager from "../../modules/AppManager"
 
 export default class ConventionCostumeList extends Component {
 
@@ -9,19 +10,16 @@ export default class ConventionCostumeList extends Component {
         costumes: [],
         conCostumes: [],
         filteredCostumes: [],
-        costumeId: ""
+        costumeId: "",
+        modal: false,
+        name: "",
+        series: "",
+        outfit: "",
+        notes: "",
+        image: ""
       }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-          modal: false
-        };
-
-        this.toggle = this.toggle.bind(this);
-    }
-
-    toggle() {
+    toggle = () => {
         this.setState({
             modal: !this.state.modal
         });
@@ -49,14 +47,13 @@ export default class ConventionCostumeList extends Component {
 
     }
 
-
     // Create the conCostume object
     constructConnection = event => {
         event.preventDefault();
         event.target.reset();
 
         if (this.state.costumeId === "") {      // if costume select is empty, alert to select costume
-            window.alert("Please select a costume.")
+            alert("Please select a costume.")
         }
         else {
             const conCostume = {
@@ -84,8 +81,15 @@ export default class ConventionCostumeList extends Component {
             userId: Number(sessionUser)
         }
 
-        // Create the costume
-        this.props.addCostume(costume)
+        // Create the costume and add costume to convention
+        AppManager.postCostume(costume)
+        .then(response => {
+            const conCostume = {
+                costumeId: Number(response.id),
+                userConventionId: this.props.convention.userConventionId
+            }
+            this.props.addCostumeToCon(conCostume)
+        })
     }
 
     render() {
@@ -122,9 +126,8 @@ export default class ConventionCostumeList extends Component {
                     )
                 }
                 </Row>
-                {/* </div> */}
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Create New Costume</ModalHeader>
+                    <ModalHeader>Create New Costume</ModalHeader>
                     <ModalBody>
                         <section className="costume_form">
                             <Form onSubmit={this.constructNewCostume} className="form_width">
@@ -148,7 +151,8 @@ export default class ConventionCostumeList extends Component {
                                     <Input type="url" name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange} />
                                     <FormText>Note: Square images work best.</FormText>
                                 </FormGroup>
-                                <Button type="submit" onClick={this.toggle} color="primary" className="mr-3 my-2">Save Costume</Button>
+                                <Button type="submit" onClick={this.toggle} color="primary">Save Costume</Button>{' '}
+                                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                                 <div className="required-text">* Required field</div>
                             </Form>
                         </section>

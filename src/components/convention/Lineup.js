@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col, Button, Popover, PopoverBody } from 'reactstrap';
 import "../CosBuddy.css";
 import LineupDay from "./LineupDay"
 
 export default class Lineup extends Component {
+
+    state = { popoverOpen: false }
+
+    toggleOn = () => {
+        this.setState({ popoverOpen: true });
+    }
+
+    toggleOff = () => {
+        this.setState({ popoverOpen: false });
+    }
 
     addDay = () => {
 
@@ -45,7 +55,12 @@ export default class Lineup extends Component {
         }
         else if (days.length >= 5) {
             return (
-                <Button disabled title="Max days reached"><i className="far fa-calendar-plus mr-2"></i> Add Day</Button>
+                <div>
+                    <Button id="Popover1" onMouseOver={() => this.toggleOn()} onMouseLeave={() => this.toggleOff()}><i className="far fa-calendar-plus mr-2"></i> Add Day</Button>
+                    <Popover placement="bottom" isOpen={this.state.popoverOpen} target="Popover1">
+                        <PopoverBody>Max number of days added.</PopoverBody>
+                    </Popover>
+                </div>
             )
         }
     }

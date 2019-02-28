@@ -123,9 +123,8 @@ export default class Register extends Component {
                     <Modal isOpen={this.state.welcomeModal} toggleEmail={this.toggleWelcome} className={this.props.className}>
                         <ModalBody>
                             <Jumbotron className="text-center">
-                                <h1 className="display-3 text-center">Welcome to CosBuddy!</h1>
-                                <p className="lead text-center">We're glad you're here.</p>
-                                <Button color="primary" onClick={() => this.props.history.push("/conventions")}>Continue</Button>
+                                <h1 className="display-3 text-center mb-5">Welcome to <span className="nav-highlight">con</span>panion!</h1>
+                                <Button color="primary" onClick={() => this.props.history.push("/")}>Continue</Button>
                         </Jumbotron>
                         </ModalBody>
                     </Modal>

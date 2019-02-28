@@ -11,6 +11,9 @@ export default class GroupDetails extends Component {
         modal: false,
         modal2: false,
         modal3: false,
+        modal4: false,
+        modal5: false,
+        modal6: false,
         username: ""
     }
 
@@ -24,6 +27,18 @@ export default class GroupDetails extends Component {
 
     toggle3 = () => {
         this.setState({  modal3: !this.state.modal3 });
+    }
+
+    toggle4 = () => {
+        this.setState({  modal4: !this.state.modal4 });
+    }
+
+    toggle5 = () => {
+        this.setState({  modal5: !this.state.modal5 });
+    }
+
+    toggle6 = () => {
+        this.setState({  modal6: !this.state.modal6 });
     }
 
     handleFieldChange = evt => {
@@ -68,15 +83,18 @@ export default class GroupDetails extends Component {
 
         // If the user does not exist, show alert.
         if ( !userToAdd ) {
-            alert("User not found. Please make sure you typed their username correctly.")
+            // alert("User not found. Please make sure you typed their username correctly.")
+            this.toggle4();
         }
         // If the user is already in the group, show alert.
         else if ( currentMembers.find(member => member.userId === userToAdd.id)) {
-            alert("This user is already in the group.")
+            // alert("This user is already in the group.")
+            this.toggle5();
         }
         // Otherwise, add the user.
         else {
-            alert(`${this.state.username} added to group!`)
+            // alert(`${this.state.username} added to group!`)
+            this.toggle6();
 
             const newMember = {
                 userId: userToAdd.id,
@@ -130,7 +148,7 @@ export default class GroupDetails extends Component {
                             Add New Member
                         </ModalHeader>
                         <ModalBody>
-                            <Form className="d-flex">
+                            <Form className="d-flex" onSubmit={this.addMember}>
                                 <FormGroup className="w-100 mr-2">
                                     <Label for="username" hidden>Username</Label>
                                     <Input type="text"
@@ -168,6 +186,33 @@ export default class GroupDetails extends Component {
                         <ModalFooter>
                             <Button color="primary" onClick={() => this.leaveGroup()}>Yes, Remove Me From This Group</Button>{' '}
                             <Button color="secondary" onClick={this.toggle3}>Cancel</Button>
+                        </ModalFooter>
+                    </Modal>
+
+                    <Modal isOpen={this.state.modal4} toggle={this.toggle4} className={this.props.className}>
+                        <ModalBody>
+                            User not found. Please make sure you typed their username correctly.
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.toggle4}>Okay</Button>
+                        </ModalFooter>
+                    </Modal>
+
+                    <Modal isOpen={this.state.modal5} toggle={this.toggle5} className={this.props.className}>
+                        <ModalBody>
+                            This user is already in the group.
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.toggle5}>Okay</Button>
+                        </ModalFooter>
+                    </Modal>
+
+                    <Modal isOpen={this.state.modal6} toggle={this.toggle6} className={this.props.className}>
+                        <ModalBody>
+                            {this.state.username} added to group!
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button color="secondary" onClick={this.toggle6}>Okay</Button>
                         </ModalFooter>
                     </Modal>
 

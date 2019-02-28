@@ -19,7 +19,6 @@ export default class ConventionCostumeList extends Component {
         image: ""
       }
 
-
     toggle = () => {
         this.setState({
             modal: !this.state.modal
@@ -48,14 +47,13 @@ export default class ConventionCostumeList extends Component {
 
     }
 
-
     // Create the conCostume object
     constructConnection = event => {
         event.preventDefault();
         event.target.reset();
 
         if (this.state.costumeId === "") {      // if costume select is empty, alert to select costume
-            window.alert("Please select a costume.")
+            alert("Please select a costume.")
         }
         else {
             const conCostume = {
@@ -128,9 +126,8 @@ export default class ConventionCostumeList extends Component {
                     )
                 }
                 </Row>
-                {/* </div> */}
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-                    <ModalHeader toggle={this.toggle}>Create New Costume</ModalHeader>
+                    <ModalHeader>Create New Costume</ModalHeader>
                     <ModalBody>
                         <section className="costume_form">
                             <Form onSubmit={this.constructNewCostume} className="form_width">
@@ -154,7 +151,8 @@ export default class ConventionCostumeList extends Component {
                                     <Input type="url" name="image" id="image" placeholder="Enter an image link" onChange={this.handleFieldChange} />
                                     <FormText>Note: Square images work best.</FormText>
                                 </FormGroup>
-                                <Button type="submit" onClick={this.toggle} color="primary" className="mr-3 my-2">Save Costume</Button>
+                                <Button type="submit" onClick={this.toggle} color="primary">Save Costume</Button>{' '}
+                                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
                                 <div className="required-text">* Required field</div>
                             </Form>
                         </section>

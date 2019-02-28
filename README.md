@@ -14,4 +14,4 @@ To run ConPanion locally:
 1. To install all libraries and their dependencies, run `npm install`
 1. In the /api directory, run `json-server -p 5002 -w database.json`
 1. Run `npm start` in root directory to start react server
-1. Open http://localhost:3000 to view the app in the browser. 
+1. Open http://localhost:3000 in your browser to view the app

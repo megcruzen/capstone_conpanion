@@ -361,14 +361,12 @@ export default {
         return fetch(`${remoteURL}/costumeItems/${id}`, {
             method: "DELETE"
         })
-        .then(() => this.getCostumeItems())
     },
 
     deleteConCostumeItem(id) {
         return fetch(`${remoteURL}/conCostumeItems/${id}`, {
             method: "DELETE"
         })
-        .then(() => this.getConCostumeItems())
     },
 
     deleteDay(id) {

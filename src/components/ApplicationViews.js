@@ -303,12 +303,26 @@ export default class ApplicationViews extends Component {
   }
 
   deleteCostumeItem = (id) => {
-    return AppManager.deleteCostumeItem(id)
-    .then(costumeItems => this.setState({ costumeItems: costumeItems }))
+    let costumeItems = {}
+    AppManager.deleteCostumeItem(id)
+    .then(() => AppManager.getCostumeItems())
+    .then(response => costumeItems.costumeItems = response)
+    .then(() => AppManager.getConCostumeItems())
+    .then(response => costumeItems.conCostumeItems = response)
+    .then(() => { this.setState(costumeItems) })
   }
+
+  // deleteCostumeItem = (id) => {
+  //   return AppManager.deleteCostumeItem(id)
+  //   .then(() => AppManager.getCostumeItems())
+  //   .then(costumeItems => this.setState({ costumeItems: costumeItems }))
+  //   .then(() => AppManager.getConCostumeItems())
+  //   .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems }))
+  // }
 
   deleteConCostumeItem = (id) => {
     AppManager.deleteConCostumeItem(id)
+    .then(() => AppManager.getConCostumeItems())
     .then(conCostumeItems => this.setState({ conCostumeItems: conCostumeItems }))
   }
 

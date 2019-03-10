@@ -22,8 +22,8 @@ import GroupEditForm from './group/GroupEditForm'
 import GroupDetails from './group/GroupDetails'
 
 import Contact from './Contact'
-// import Callback from '../Callback'
-// import auth0Client from '../Auth'
+import Callback from '../Callback'
+import auth0Client from '../Auth'
 
 export default class ApplicationViews extends Component {
 
@@ -414,7 +414,7 @@ export default class ApplicationViews extends Component {
                     getAllData={this.getAllData} />
         }} />
 
-        {/* <Route exact path='/callback' component={Callback}/> */}
+        <Route exact path='/callback' component={Callback}/>
 
         <Route path="/register" render={(props) => {
             return <Register {...props}
@@ -428,6 +428,18 @@ export default class ApplicationViews extends Component {
           auth0Client.signIn();
           return <div></div>;
         } */}
+
+        {/* <Route exact path="/" render={props => {
+            if (!auth0Client.isAuthenticated())  {
+              auth0Client.signIn();
+              return <ConventionList {...props}
+                    myConventions={this.state.myConventions}
+                    removeConvention={this.removeConvention} />
+            }
+            else {
+                  return <Redirect to="/login" />
+            }
+          }} /> */}
 
         <Route exact path="/" render={props => {
             if (this.isAuthenticated()) {

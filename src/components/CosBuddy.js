@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
+import auth0Client from '../Auth';
 import "./CosBuddy.css";
 
 class CosBuddy extends Component {
@@ -9,7 +10,7 @@ class CosBuddy extends Component {
 
   showNav = () => {
     if (this.isAuthenticated()) {
-      return <NavBar />
+        return <NavBar />
     }
   }
 

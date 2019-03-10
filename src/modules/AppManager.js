@@ -4,9 +4,14 @@ export default {
 
     // ETC
 
-    checkForUser(username, password) {
-        return fetch(`${remoteURL}/users?username=${username}&password=${password}`)
-        .then(response => response.json())
+    // checkForUser(username, password) {
+    //     return fetch(`${remoteURL}/users?username=${username}&password=${password}`)
+    //     .then(response => response.json())
+    // },
+
+    checkForUser(email) {
+        return fetch(`${remoteURL}/users?email=${email}`)
+        // .then(response => response.json())
     },
 
     searchConventions(query) {

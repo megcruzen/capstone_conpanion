@@ -122,10 +122,10 @@ export default {
         .then(response => response.json())
     },
 
-    getConGroups() {
-        return fetch(`${remoteURL}/conGroups?_expand=convention`)
-        .then(response => response.json())
-    },
+    // getConGroups() {
+    //     return fetch(`${remoteURL}/conGroups?_expand=convention`)
+    //     .then(response => response.json())
+    // },
 
     getGroupMembers() {
         return fetch(`${remoteURL}/userGroups?_expand=user`)

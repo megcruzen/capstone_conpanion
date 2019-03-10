@@ -37,6 +37,10 @@ class Auth {
     this.auth0.authorize();
   }
 
+  getInfo = () => {
+    console.log(this.profile);
+  }
+
   handleAuthentication() {
     return new Promise((resolve, reject) => {
       this.auth0.parseHash((err, authResult) => {
@@ -50,32 +54,13 @@ class Auth {
         this.expiresAt = authResult.idTokenPayload.exp * 1000;
         // this.getInfo();
         this.getCurrentUser()
-        // resolve();
         .then(() => resolve());
+        // resolve();
       });
     })
   }
 
-  getInfo = () => {
-    console.log(this.profile);
-  }
-
-  // getCurrentUser = () => {
-  //   AppManager.checkForUser(this.profile.email)
-  //       .then(userData => {
-  //           if (userData.length === 0) {
-  //               alert("User not found.")
-  //           } else {
-  //             userData.forEach(user => {
-  //                 sessionStorage.setItem("User", user.id);
-  //                 this.props.getAllData();
-  //               })
-  //           }
-  //       })
-  //       // .then(() => this.props.history.push("/conventions"))
-  // }
-
-    getCurrentUser() {
+  getCurrentUser() {
     return new Promise((resolve, reject) => {
       const userId = sessionStorage.getItem("User");
       if (userId !== null) {
@@ -86,7 +71,7 @@ class Auth {
             .then(users => {
               if (users.length) {
                 sessionStorage.setItem("User", users[0].id);
-                this.props.getAllData();
+                // this.props.getAllData();
                 resolve(users[0].id);
               } else {
                 let newUser = {
@@ -106,44 +91,6 @@ class Auth {
       }
     });
   }
-
-
-  // getCurrentUser() {
-  //   let databaseURL = "http://localhost:5002";
-  //   return new Promise((resolve, reject) => {
-  //     const userId = localStorage.getItem("userId");
-  //     if (userId !== null) {
-  //       resolve(userId);
-  //     } else if (this.profile) {
-  //         fetch(`${databaseURL}/users?sub=${this.profile.sub}`)
-  //           .then(u => u.json())
-  //           .then(users => {
-  //             if (users.length) {
-  //               localStorage.setItem("userId", users[0].id);
-  //               resolve(users[0].id);
-  //             } else {
-  //               let obj = {
-  //                 "name": this.profile.nickname,
-  //                 "email": this.profile.email,
-  //                 "sub": this.profile.sub
-  //               };
-  //               fetch(`${databaseURL}/users`, {
-  //                 method: "POST",
-  //                 headers: {
-  //                   "Content-Type": "application/json"
-  //                 },
-  //                 body: JSON.stringify(obj)
-  //               })
-  //                 .then(user => user.json())
-  //                 .then(user => {
-  //                   localStorage.setItem("userId", user.id);
-  //                   resolve(user.id);
-  //                 });
-  //             }
-  //           });
-  //     }
-  //   });
-  // }
 
   signOut() {
     // clear id token, profile, and expiration

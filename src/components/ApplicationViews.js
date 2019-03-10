@@ -5,6 +5,7 @@ import "./CosBuddy.css";
 
 import Login from './authentication/Login'
 import Register from './authentication/Register'
+import Welcome from './welcome/Welcome'
 
 import ConventionList from './convention/ConventionList'
 import ConventionSearch from './convention/search/SearchPage'
@@ -23,7 +24,7 @@ import GroupDetails from './group/GroupDetails'
 
 import Contact from './Contact'
 import Callback from '../Callback'
-import auth0Client from '../Auth'
+// import auth0Client from '../Auth'
 
 export default class ApplicationViews extends Component {
 
@@ -42,13 +43,13 @@ export default class ApplicationViews extends Component {
     timeslots: [],
     allGroups: [],
     myGroups: [],
-    conGroups: [],
+    // conGroups: [],
     groupMembers: [],
     messages: [],
     characters: []
   }
 
-  // Check if credentials are in local storage
+  // Check if credentials are in session storage
   isAuthenticated = () => sessionStorage.getItem("User") !== null
 
   componentDidMount() {
@@ -98,8 +99,8 @@ export default class ApplicationViews extends Component {
     AppManager.getMyGroups()
     .then(myGroups => { this.setState({ myGroups: myGroups }) })
 
-    AppManager.getConGroups()
-    .then(conGroups => { this.setState({ conGroups: conGroups }) })
+    // AppManager.getConGroups()
+    // .then(conGroups => { this.setState({ conGroups: conGroups }) })
 
     AppManager.getGroupMembers()
     .then(groupMembers => { this.setState({ groupMembers: groupMembers }) })
@@ -408,19 +409,29 @@ export default class ApplicationViews extends Component {
     return (
         <>
 
-        <Route path="/login" render={(props) => {
+        <Route exact path='/callback' component={Callback}/>
+
+        {/* <Route path="/login" render={(props) => {
             return <Login {...props}
                     users={this.state.users}
                     getAllData={this.getAllData} />
         }} />
 
-        <Route exact path='/callback' component={Callback}/>
-
         <Route path="/register" render={(props) => {
             return <Register {...props}
                   allUsers={this.state.allUsers}
                   addUser={this.addUser} />
-        }} />
+        }} /> */}
+
+        <Route exact path="/" render={props => {
+            if (this.isAuthenticated()) {
+              return <Welcome {...props}
+                      users={this.state.users}
+                      getAllData={this.getAllData} />
+            } else {
+                  return <Login {...props} />
+            }
+          }} />
 
         <div id="appviews">
 
@@ -428,28 +439,6 @@ export default class ApplicationViews extends Component {
           auth0Client.signIn();
           return <div></div>;
         } */}
-
-        {/* <Route exact path="/" render={props => {
-            if (!auth0Client.isAuthenticated())  {
-              auth0Client.signIn();
-              return <ConventionList {...props}
-                    myConventions={this.state.myConventions}
-                    removeConvention={this.removeConvention} />
-            }
-            else {
-                  return <Redirect to="/login" />
-            }
-          }} /> */}
-
-        <Route exact path="/" render={props => {
-            if (this.isAuthenticated()) {
-              return <ConventionList {...props}
-                    myConventions={this.state.myConventions}
-                    removeConvention={this.removeConvention} />
-            } else {
-                  return <Redirect to="/login" />
-            }
-          }} />
 
         <Route exact path="/conventions" render={props => {
             if (this.isAuthenticated()) {

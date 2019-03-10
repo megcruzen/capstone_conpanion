@@ -25,7 +25,7 @@ import auth0Client from "../../Auth";
         signOut = () => {
               auth0Client.signOut();
               sessionStorage.clear();
-              this.props.history.replace('/');
+              // this.props.history.replace('/');
           }
 
         render() {
@@ -46,7 +46,7 @@ import auth0Client from "../../Auth";
                       <NavLink tag={Link} to="/groups">Groups</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink onClick={this.signOut} tag={Link} to="/login">Logout</NavLink>
+                        <NavLink onClick={this.signOut} tag={Link} to="/">Logout</NavLink>
                     </NavItem>
                   </Nav>
                 </Collapse>

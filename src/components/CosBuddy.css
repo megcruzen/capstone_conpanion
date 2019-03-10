@@ -168,6 +168,17 @@ select#costumeId {
     margin-top: 20px;
 }
 
+/******* Welcome ******/
+.welcome h2 {
+    margin-top: 40px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.welcome h2 span {
+    color: #812bb2;
+}
+
 
 
 /****** Costumes ******/

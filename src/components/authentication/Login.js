@@ -69,11 +69,11 @@ export default class Login extends Component {
                     </Form>
                 </div> */}
 
-                <div>
+                <div className="text-center mt-4">
                     {/* Auth0 code that checks if user is logged in. If they are, display profile name and sign out button. If they are not, display sign in button. */}
                     {
                         !auth0Client.isAuthenticated() &&
-                        <button className="btn btn-primary" onClick={auth0Client.signIn}>Sign In</button>
+                        <button className="btn btn-primary" onClick={auth0Client.signIn}>Log in or Register</button>
                     }
                     {
                         auth0Client.isAuthenticated() &&

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
-import auth0Client from '../Auth';
-import "./CosBuddy.css";
+// import auth0Client from '../Auth';
+import "./Conpanion.css";
 
-class CosBuddy extends Component {
+class Conpanion extends Component {
 
   isAuthenticated = () => sessionStorage.getItem("User") !== null;
 
@@ -17,7 +17,6 @@ class CosBuddy extends Component {
   render() {
     return (
       <div id="conpanion">
-        {/* <NavBar /> */}
         {this.showNav()}
         <ApplicationViews />
       </div>
@@ -25,4 +24,4 @@ class CosBuddy extends Component {
   }
 }
 
-export default CosBuddy;
+export default Conpanion;

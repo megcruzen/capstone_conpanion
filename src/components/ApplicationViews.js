@@ -1,10 +1,10 @@
 import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import AppManager from "../modules/AppManager"
-import "./CosBuddy.css";
+import "./Conpanion.css";
 
 import Login from './authentication/Login'
-import Register from './authentication/Register'
+// import Register from './authentication/Register'
 import Welcome from './welcome/Welcome'
 
 import ConventionList from './convention/ConventionList'

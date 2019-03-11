@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { NavbarBrand, Button, Form, FormGroup, Label, Input, Modal, ModalBody, ModalFooter, Jumbotron } from 'reactstrap';
-import "../CosBuddy.css";
+import "../Conpanion.css";
 import AppManager from '../../modules/AppManager';
 
 export default class Register extends Component {

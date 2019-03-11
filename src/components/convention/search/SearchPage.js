@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { TabContent, TabPane, Button } from 'reactstrap';
 // import classnames from 'classnames';
-import "../../CosBuddy.css"
+import "../../Conpanion.css"
 import NameSearch from './NameSearch';
 
 export default class ConventionSearch extends Component {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Table, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, Col } from 'reactstrap';
-import "../../CosBuddy.css";
+import "../../Conpanion.css";
 import ConCostumeItem from "./CostumeItem"
 import CostumeItemCard from "../../costume/CostumeItemCard"
 

@@ -1,0 +1,1793 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "megcruzen",
+      "email": "megcruzen@gmail.com",
+      "password": "pass123",
+      "timestamp": "1234567",
+      "usertype": "cosplayer"
+    },
+    {
+      "username": "firebird",
+      "email": "firebird@gmail.com",
+      "password": "pass123",
+      "timestamp": 1549719019437,
+      "usertype": "cosplayer",
+      "id": 3
+    },
+    {
+      "username": "ladydanger",
+      "email": "ladydanger2@gmail.com",
+      "password": "pass123",
+      "timestamp": 1549743183316,
+      "usertype": "cosplayer",
+      "id": 4
+    },
+    {
+      "username": "DESTINY",
+      "email": "destiny@gmail.com",
+      "password": "pass123",
+      "timestamp": 154974318356316,
+      "usertype": "cosplayer",
+      "id": 5
+    },
+    {
+      "username": "mbheikkinen",
+      "email": "mbheikkinen@gmail.com",
+      "timestamp": 1552238528425,
+      "usertype": "cosplayer",
+      "id": 6
+    },
+    {
+      "username": "galacticat75",
+      "email": "galacticat75@gmail.com",
+      "timestamp": 1552312065450,
+      "usertype": "cosplayer",
+      "id": 7
+    }
+  ],
+  "genres": [
+    {
+      "id": 1,
+      "name": "Comic"
+    },
+    {
+      "id": 2,
+      "name": "Anime"
+    },
+    {
+      "id": 3,
+      "name": "Sci-Fi / Fantasy"
+    },
+    {
+      "id": 4,
+      "name": "Gaming"
+    },
+    {
+      "id": 5,
+      "name": "Other"
+    }
+  ],
+  "conventions": [
+    {
+      "id": 1,
+      "name": "DragonCon",
+      "startDate": "2019-08-29",
+      "endDate": "2019-09-02",
+      "city": "Atlanta",
+      "state": "GA",
+      "country": "United States",
+      "website": "http://www.dragoncon.org/",
+      "genreId": 3,
+      "thumbnail": "https://7lwy5tgst9-flywheel.netdna-ssl.com/wp-content/uploads/2017/08/dragoncon2017-logo.jpeg",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "MomoCon",
+      "startDate": "2019-05-23",
+      "endDate": "2019-05-26",
+      "city": "Atlanta",
+      "state": "GA",
+      "country": "United States",
+      "website": "https://www.momocon.com/",
+      "genreId": 2,
+      "thumbnail": "https://sc-events.s3.amazonaws.com/4411242/main.png",
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "name": "Con of Thrones",
+      "startDate": "2019-07-12",
+      "endDate": "2019-07-14",
+      "city": "Nashville",
+      "state": "TN",
+      "country": "United States",
+      "website": "https://www.conofthrones.net/",
+      "genreId": 3,
+      "thumbnail": "https://is1-ssl.mzstatic.com/image/thumb/Purple128/v4/64/45/e6/6445e67f-0712-b697-285e-c1b14f75af11/source/256x256bb.jpg",
+      "userId": 1
+    },
+    {
+      "name": "ConNooga",
+      "startDate": "2019-02-22",
+      "endDate": "2019-02-24",
+      "city": "Chattanooga",
+      "state": "TN",
+      "website": "http://connooga.com",
+      "thumbnail": "https://i.imgur.com/MXf9n1r.jpg",
+      "genreId": "3",
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "name": "San Diego Comic-Con",
+      "startDate": "2019-07-18",
+      "endDate": "2019-07-21",
+      "city": "San Diego",
+      "state": "CA",
+      "website": "https://www.comic-con.org/cci",
+      "thumbnail": "https://i.imgur.com/1uVjbaV.png",
+      "genreId": "1",
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "name": "KatsuCon",
+      "startDate": "2019-02-15",
+      "endDate": "2019-02-17",
+      "city": "National Harbor",
+      "state": "MA",
+      "website": "https://www.katsucon.org/",
+      "thumbnail": "https://i.imgur.com/HPBh6K6.jpg",
+      "genreId": "2",
+      "userId": 1,
+      "id": 8
+    },
+    {
+      "name": "Comicpalooza",
+      "startDate": "2019-05-10",
+      "endDate": "2019-05-12",
+      "city": "Houston",
+      "state": "TX",
+      "website": "https://www.comicpalooza.com/",
+      "thumbnail": "https://i.imgur.com/MHZp8qQ.png",
+      "genreId": "1",
+      "userId": 1,
+      "id": 9
+    },
+    {
+      "name": "C2E2",
+      "startDate": "2019-03-24",
+      "endDate": "2019-02-24",
+      "city": "Chicago",
+      "state": "IL",
+      "website": "http://c2e2.com",
+      "thumbnail": "https://i.imgur.com/zxmb8NN.jpg",
+      "genreId": "1",
+      "userId": 1,
+      "id": 10
+    }
+  ],
+  "costumes": [
+    {
+      "name": "Merida",
+      "series": "Brave",
+      "outfit": "Main",
+      "notes": "",
+      "timestamp": "1549308744111",
+      "image": "https://i.imgur.com/u0aT5KY.jpg",
+      "userId": "1",
+      "id": 1
+    },
+    {
+      "name": "Brienne of Tarth",
+      "series": "Game of Thrones",
+      "outfit": "Original Armor",
+      "notes": "",
+      "timestamp": "1549308744121",
+      "image": "https://i.imgur.com/o5CZBhf.jpg",
+      "userId": "1",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "name": "Brienne of Tarth",
+      "outfit": "Pink Dress",
+      "series": "Game of Thrones",
+      "image": "https://i.imgur.com/lazCqXn.jpg",
+      "timestamp": "1549308744131",
+      "notes": "",
+      "userId": 1
+    },
+    {
+      "name": "Starbuck",
+      "series": "Battlestar Galactica",
+      "outfit": "Flightsuit",
+      "notes": "",
+      "timestamp": 1549308744161,
+      "image": "https://i.imgur.com/U4tAagv.jpg",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "name": "Supergirl",
+      "series": "Supergirl CW",
+      "outfit": "",
+      "notes": "",
+      "timestamp": 1549308817723,
+      "image": "https://i.imgur.com/EQGIx05.jpg",
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "name": "Rey",
+      "series": "Star Wars",
+      "outfit": "Scavenger",
+      "notes": "",
+      "timestamp": "1549419668578",
+      "image": "https://i.imgur.com/klDyaNg.jpg",
+      "userId": "1",
+      "id": 7
+    },
+    {
+      "name": "San",
+      "series": "Princess Mononoke",
+      "outfit": "",
+      "notes": "",
+      "timestamp": "1549913886942",
+      "image": "https://i.imgur.com/MteXhua.jpg",
+      "userId": "1",
+      "id": 8
+    },
+    {
+      "name": "Captain Marvel",
+      "series": "Marvel Comics",
+      "outfit": "Comic",
+      "notes": "",
+      "timestamp": 1549990847608,
+      "image": "https://i.imgur.com/xjZLUYl.jpg",
+      "userId": 1,
+      "id": 9
+    },
+    {
+      "name": "Merida",
+      "series": "Brave",
+      "outfit": "Renaissance",
+      "notes": "",
+      "timestamp": "1550165305687",
+      "image": "",
+      "userId": "1",
+      "id": 10
+    },
+    {
+      "name": "Dolores",
+      "series": "Westworld",
+      "outfit": "",
+      "notes": "",
+      "timestamp": 1550248783953,
+      "image": "https://i.imgur.com/rvWQUFa.jpg",
+      "userId": 1,
+      "id": 11
+    }
+  ],
+  "userConventions": [
+    {
+      "id": 2,
+      "userId": 1,
+      "conventionId": 2
+    },
+    {
+      "userId": 1,
+      "conventionId": 1,
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "conventionId": 3,
+      "id": 10
+    },
+    {
+      "userId": 3,
+      "conventionId": 1,
+      "id": 22
+    },
+    {
+      "userId": 3,
+      "conventionId": 2,
+      "id": 23
+    },
+    {
+      "userId": 1,
+      "conventionId": 10,
+      "id": 25
+    },
+    {
+      "userId": 1,
+      "conventionId": 8,
+      "id": 26
+    }
+  ],
+  "conCostumes": [
+    {
+      "costumeId": 8,
+      "userConventionId": 2,
+      "id": 57
+    },
+    {
+      "costumeId": 6,
+      "userConventionId": 2,
+      "id": 58
+    },
+    {
+      "costumeId": 9,
+      "userConventionId": 2,
+      "id": 59
+    },
+    {
+      "costumeId": 3,
+      "userConventionId": 10,
+      "id": 65
+    },
+    {
+      "costumeId": 11,
+      "userConventionId": 25,
+      "id": 75
+    },
+    {
+      "costumeId": 8,
+      "userConventionId": 25,
+      "id": 76
+    },
+    {
+      "costumeId": 10,
+      "userConventionId": 25,
+      "id": 77
+    },
+    {
+      "costumeId": 3,
+      "userConventionId": 25,
+      "id": 78
+    },
+    {
+      "costumeId": 7,
+      "userConventionId": 25,
+      "id": 79
+    },
+    {
+      "costumeId": 9,
+      "userConventionId": 25,
+      "id": 80
+    },
+    {
+      "costumeId": 4,
+      "userConventionId": 25,
+      "id": 81
+    },
+    {
+      "costumeId": 6,
+      "userConventionId": 25,
+      "id": 82
+    },
+    {
+      "costumeId": 4,
+      "userConventionId": 8,
+      "id": 83
+    },
+    {
+      "costumeId": 10,
+      "userConventionId": 8,
+      "id": 84
+    },
+    {
+      "costumeId": 8,
+      "userConventionId": 8,
+      "id": 85
+    },
+    {
+      "costumeId": 3,
+      "userConventionId": 8,
+      "id": 86
+    },
+    {
+      "costumeId": 9,
+      "userConventionId": 8,
+      "id": 87
+    },
+    {
+      "costumeId": 1,
+      "userConventionId": 8,
+      "id": 88
+    },
+    {
+      "costumeId": 7,
+      "userConventionId": 8,
+      "id": 89
+    },
+    {
+      "costumeId": 6,
+      "userConventionId": 8,
+      "id": 90
+    },
+    {
+      "costumeId": 11,
+      "userConventionId": 2,
+      "id": 91
+    },
+    {
+      "costumeId": 10,
+      "userConventionId": 2,
+      "id": 92
+    },
+    {
+      "costumeId": 5,
+      "userConventionId": 2,
+      "id": 93
+    },
+    {
+      "costumeId": 1,
+      "userConventionId": 2,
+      "id": 94
+    },
+    {
+      "costumeId": 4,
+      "userConventionId": 2,
+      "id": 95
+    },
+    {
+      "costumeId": 7,
+      "userConventionId": 2,
+      "id": 96
+    },
+    {
+      "costumeId": 3,
+      "userConventionId": 2,
+      "id": 97
+    },
+    {
+      "costumeId": 11,
+      "userConventionId": 8,
+      "id": 98
+    }
+  ],
+  "conventionItems": [
+    {
+      "checked": true,
+      "name": "Pants",
+      "userConventionId": 2,
+      "id": 2
+    },
+    {
+      "checked": false,
+      "name": "Phone Chargers",
+      "userConventionId": 2,
+      "id": 8
+    },
+    {
+      "checked": false,
+      "name": "Postcards!",
+      "userConventionId": 8,
+      "id": 9
+    },
+    {
+      "name": "Trash bags",
+      "userConventionId": 8,
+      "checked": false,
+      "id": 14
+    },
+    {
+      "name": "Batteries",
+      "userConventionId": 8,
+      "checked": false,
+      "id": 15
+    },
+    {
+      "name": "Safety pins",
+      "userConventionId": 8,
+      "checked": false,
+      "id": 16
+    },
+    {
+      "name": "Needle + thread",
+      "userConventionId": 8,
+      "checked": false,
+      "id": 17
+    },
+    {
+      "name": "Superglue",
+      "userConventionId": 8,
+      "checked": false,
+      "id": 18
+    }
+  ],
+  "costumeItems": [
+    {
+      "name": "Shirt",
+      "costumeId": 7,
+      "id": 10
+    },
+    {
+      "name": "Tabbard wraps",
+      "costumeId": 7,
+      "id": 11
+    },
+    {
+      "name": "Pants",
+      "costumeId": 7,
+      "id": 12
+    },
+    {
+      "name": "Boots",
+      "costumeId": 7,
+      "id": 13
+    },
+    {
+      "name": "Armwraps",
+      "costumeId": 7,
+      "id": 14
+    },
+    {
+      "name": "Bracer",
+      "costumeId": 7,
+      "id": 15
+    },
+    {
+      "name": "Belt",
+      "costumeId": 7,
+      "id": 16
+    },
+    {
+      "name": "Armor",
+      "costumeId": 3,
+      "id": 18
+    },
+    {
+      "name": "Sword",
+      "costumeId": 3,
+      "id": 19
+    },
+    {
+      "name": "Boots",
+      "costumeId": 3,
+      "id": 20
+    },
+    {
+      "name": "Shirt",
+      "costumeId": 3,
+      "id": 21
+    },
+    {
+      "name": "Pants",
+      "costumeId": 3,
+      "id": 22
+    },
+    {
+      "name": "Belt",
+      "costumeId": 3,
+      "id": 23
+    },
+    {
+      "name": "Dress",
+      "costumeId": 4,
+      "id": 24
+    },
+    {
+      "name": "Boots",
+      "costumeId": 4,
+      "id": 25
+    },
+    {
+      "name": "Sword",
+      "costumeId": 4,
+      "id": 26
+    },
+    {
+      "name": "Staff",
+      "costumeId": 7,
+      "id": 41
+    },
+    {
+      "name": "Suit",
+      "costumeId": 9,
+      "id": 49
+    },
+    {
+      "name": "Sash",
+      "costumeId": 9,
+      "id": 50
+    },
+    {
+      "name": "Boots",
+      "costumeId": 9,
+      "id": 51
+    },
+    {
+      "name": "Gloves",
+      "costumeId": 9,
+      "id": 52
+    },
+    {
+      "name": "Wig",
+      "costumeId": 9,
+      "id": 53
+    },
+    {
+      "name": "Pouch",
+      "costumeId": 7,
+      "id": 62
+    },
+    {
+      "name": "Underdress",
+      "costumeId": 10,
+      "id": 63
+    },
+    {
+      "name": "Overdress",
+      "costumeId": 10,
+      "id": 64
+    },
+    {
+      "name": "Chemise",
+      "costumeId": 10,
+      "id": 65
+    },
+    {
+      "name": "Sleeves",
+      "costumeId": 10,
+      "id": 66
+    },
+    {
+      "name": "Jewelry",
+      "costumeId": 10,
+      "id": 67
+    },
+    {
+      "name": "Hairpiece",
+      "costumeId": 10,
+      "id": 68
+    },
+    {
+      "name": "Wig",
+      "costumeId": 10,
+      "id": 69
+    },
+    {
+      "name": "Flightsuit",
+      "costumeId": 5,
+      "id": 97
+    },
+    {
+      "name": "Double Tanks",
+      "costumeId": 5,
+      "id": 98
+    },
+    {
+      "name": "Leotard",
+      "costumeId": 6,
+      "id": 102
+    },
+    {
+      "name": "Skirt",
+      "costumeId": 6,
+      "id": 103
+    },
+    {
+      "name": "Cape",
+      "costumeId": 6,
+      "id": 104
+    },
+    {
+      "name": "Dress",
+      "costumeId": 8,
+      "id": 105
+    },
+    {
+      "name": "Shirt",
+      "costumeId": 8,
+      "id": 106
+    },
+    {
+      "name": "Boots",
+      "costumeId": 8,
+      "id": 107
+    },
+    {
+      "name": "Shoes",
+      "costumeId": 5,
+      "id": 110
+    },
+    {
+      "name": "Belt",
+      "costumeId": 5,
+      "id": 111
+    },
+    {
+      "name": "Fur cloak",
+      "costumeId": 8,
+      "id": 112
+    }
+  ],
+  "conCostumeItems": [
+    {
+      "checked": false,
+      "conCostumeId": 59,
+      "costumeItemId": 49,
+      "id": 323
+    },
+    {
+      "conCostumeId": 59,
+      "costumeItemId": 50,
+      "checked": false,
+      "id": 325
+    },
+    {
+      "conCostumeId": 59,
+      "costumeItemId": 51,
+      "checked": false,
+      "id": 327
+    },
+    {
+      "conCostumeId": 59,
+      "costumeItemId": 52,
+      "checked": false,
+      "id": 329
+    },
+    {
+      "conCostumeId": 59,
+      "costumeItemId": 53,
+      "checked": false,
+      "id": 331
+    },
+    {
+      "checked": true,
+      "conCostumeId": 65,
+      "costumeItemId": 18,
+      "id": 393
+    },
+    {
+      "checked": true,
+      "conCostumeId": 65,
+      "costumeItemId": 19,
+      "id": 394
+    },
+    {
+      "checked": true,
+      "conCostumeId": 65,
+      "costumeItemId": 21,
+      "id": 395
+    },
+    {
+      "checked": true,
+      "conCostumeId": 65,
+      "costumeItemId": 20,
+      "id": 396
+    },
+    {
+      "conCostumeId": 65,
+      "costumeItemId": 22,
+      "checked": false,
+      "id": 397
+    },
+    {
+      "conCostumeId": 65,
+      "costumeItemId": 23,
+      "checked": false,
+      "id": 398
+    },
+    {
+      "conCostumeId": 77,
+      "costumeItemId": 65,
+      "checked": false,
+      "id": 485
+    },
+    {
+      "conCostumeId": 77,
+      "costumeItemId": 66,
+      "checked": false,
+      "id": 486
+    },
+    {
+      "conCostumeId": 77,
+      "costumeItemId": 67,
+      "checked": false,
+      "id": 487
+    },
+    {
+      "conCostumeId": 77,
+      "costumeItemId": 68,
+      "checked": false,
+      "id": 488
+    },
+    {
+      "conCostumeId": 77,
+      "costumeItemId": 69,
+      "checked": false,
+      "id": 489
+    },
+    {
+      "conCostumeId": 77,
+      "costumeItemId": 63,
+      "checked": false,
+      "id": 490
+    },
+    {
+      "conCostumeId": 77,
+      "costumeItemId": 64,
+      "checked": false,
+      "id": 491
+    },
+    {
+      "conCostumeId": 78,
+      "costumeItemId": 18,
+      "checked": false,
+      "id": 492
+    },
+    {
+      "conCostumeId": 78,
+      "costumeItemId": 19,
+      "checked": false,
+      "id": 493
+    },
+    {
+      "conCostumeId": 78,
+      "costumeItemId": 20,
+      "checked": false,
+      "id": 494
+    },
+    {
+      "conCostumeId": 78,
+      "costumeItemId": 21,
+      "checked": false,
+      "id": 495
+    },
+    {
+      "conCostumeId": 78,
+      "costumeItemId": 22,
+      "checked": false,
+      "id": 496
+    },
+    {
+      "conCostumeId": 78,
+      "costumeItemId": 23,
+      "checked": false,
+      "id": 497
+    },
+    {
+      "conCostumeId": 79,
+      "costumeItemId": 10,
+      "checked": false,
+      "id": 498
+    },
+    {
+      "conCostumeId": 79,
+      "costumeItemId": 11,
+      "checked": false,
+      "id": 499
+    },
+    {
+      "conCostumeId": 79,
+      "costumeItemId": 12,
+      "checked": false,
+      "id": 500
+    },
+    {
+      "conCostumeId": 79,
+      "costumeItemId": 13,
+      "checked": false,
+      "id": 501
+    },
+    {
+      "conCostumeId": 79,
+      "costumeItemId": 14,
+      "checked": false,
+      "id": 502
+    },
+    {
+      "conCostumeId": 79,
+      "costumeItemId": 15,
+      "checked": false,
+      "id": 503
+    },
+    {
+      "conCostumeId": 79,
+      "costumeItemId": 16,
+      "checked": false,
+      "id": 504
+    },
+    {
+      "conCostumeId": 79,
+      "costumeItemId": 41,
+      "checked": false,
+      "id": 505
+    },
+    {
+      "conCostumeId": 79,
+      "costumeItemId": 62,
+      "checked": false,
+      "id": 506
+    },
+    {
+      "conCostumeId": 80,
+      "costumeItemId": 49,
+      "checked": false,
+      "id": 507
+    },
+    {
+      "conCostumeId": 80,
+      "costumeItemId": 51,
+      "checked": false,
+      "id": 508
+    },
+    {
+      "conCostumeId": 80,
+      "costumeItemId": 52,
+      "checked": false,
+      "id": 509
+    },
+    {
+      "conCostumeId": 80,
+      "costumeItemId": 53,
+      "checked": false,
+      "id": 510
+    },
+    {
+      "conCostumeId": 80,
+      "costumeItemId": 50,
+      "checked": false,
+      "id": 511
+    },
+    {
+      "conCostumeId": 81,
+      "costumeItemId": 24,
+      "checked": false,
+      "id": 512
+    },
+    {
+      "conCostumeId": 81,
+      "costumeItemId": 25,
+      "checked": false,
+      "id": 513
+    },
+    {
+      "conCostumeId": 81,
+      "costumeItemId": 26,
+      "checked": false,
+      "id": 514
+    },
+    {
+      "conCostumeId": 82,
+      "costumeItemId": 102,
+      "checked": false,
+      "id": 515
+    },
+    {
+      "conCostumeId": 58,
+      "costumeItemId": 102,
+      "checked": false,
+      "id": 517
+    },
+    {
+      "conCostumeId": 82,
+      "costumeItemId": 103,
+      "checked": false,
+      "id": 518
+    },
+    {
+      "conCostumeId": 58,
+      "costumeItemId": 103,
+      "checked": false,
+      "id": 520
+    },
+    {
+      "conCostumeId": 82,
+      "costumeItemId": 104,
+      "checked": false,
+      "id": 521
+    },
+    {
+      "conCostumeId": 58,
+      "costumeItemId": 104,
+      "checked": false,
+      "id": 523
+    },
+    {
+      "conCostumeId": 76,
+      "costumeItemId": 105,
+      "checked": false,
+      "id": 524
+    },
+    {
+      "conCostumeId": 57,
+      "costumeItemId": 105,
+      "checked": false,
+      "id": 526
+    },
+    {
+      "conCostumeId": 76,
+      "costumeItemId": 106,
+      "checked": false,
+      "id": 527
+    },
+    {
+      "conCostumeId": 57,
+      "costumeItemId": 106,
+      "checked": false,
+      "id": 529
+    },
+    {
+      "conCostumeId": 76,
+      "costumeItemId": 107,
+      "checked": false,
+      "id": 530
+    },
+    {
+      "conCostumeId": 57,
+      "costumeItemId": 107,
+      "checked": false,
+      "id": 532
+    },
+    {
+      "conCostumeId": 76,
+      "costumeItemId": 112,
+      "checked": false,
+      "id": 541
+    },
+    {
+      "conCostumeId": 57,
+      "costumeItemId": 112,
+      "checked": false,
+      "id": 543
+    },
+    {
+      "conCostumeId": 83,
+      "costumeItemId": 24,
+      "checked": false,
+      "id": 544
+    },
+    {
+      "conCostumeId": 83,
+      "costumeItemId": 25,
+      "checked": false,
+      "id": 545
+    },
+    {
+      "conCostumeId": 83,
+      "costumeItemId": 26,
+      "checked": false,
+      "id": 546
+    },
+    {
+      "conCostumeId": 84,
+      "costumeItemId": 63,
+      "checked": false,
+      "id": 547
+    },
+    {
+      "conCostumeId": 84,
+      "costumeItemId": 64,
+      "checked": false,
+      "id": 548
+    },
+    {
+      "conCostumeId": 84,
+      "costumeItemId": 65,
+      "checked": false,
+      "id": 549
+    },
+    {
+      "conCostumeId": 84,
+      "costumeItemId": 68,
+      "checked": false,
+      "id": 550
+    },
+    {
+      "conCostumeId": 84,
+      "costumeItemId": 69,
+      "checked": false,
+      "id": 551
+    },
+    {
+      "conCostumeId": 84,
+      "costumeItemId": 66,
+      "checked": false,
+      "id": 552
+    },
+    {
+      "conCostumeId": 84,
+      "costumeItemId": 67,
+      "checked": false,
+      "id": 553
+    },
+    {
+      "conCostumeId": 85,
+      "costumeItemId": 105,
+      "checked": false,
+      "id": 554
+    },
+    {
+      "conCostumeId": 85,
+      "costumeItemId": 106,
+      "checked": false,
+      "id": 555
+    },
+    {
+      "conCostumeId": 85,
+      "costumeItemId": 107,
+      "checked": false,
+      "id": 556
+    },
+    {
+      "conCostumeId": 85,
+      "costumeItemId": 112,
+      "checked": false,
+      "id": 557
+    },
+    {
+      "conCostumeId": 86,
+      "costumeItemId": 18,
+      "checked": false,
+      "id": 558
+    },
+    {
+      "conCostumeId": 86,
+      "costumeItemId": 19,
+      "checked": false,
+      "id": 559
+    },
+    {
+      "conCostumeId": 86,
+      "costumeItemId": 20,
+      "checked": false,
+      "id": 560
+    },
+    {
+      "conCostumeId": 86,
+      "costumeItemId": 21,
+      "checked": false,
+      "id": 561
+    },
+    {
+      "conCostumeId": 86,
+      "costumeItemId": 22,
+      "checked": false,
+      "id": 562
+    },
+    {
+      "conCostumeId": 86,
+      "costumeItemId": 23,
+      "checked": false,
+      "id": 563
+    },
+    {
+      "conCostumeId": 87,
+      "costumeItemId": 49,
+      "checked": false,
+      "id": 564
+    },
+    {
+      "conCostumeId": 87,
+      "costumeItemId": 50,
+      "checked": false,
+      "id": 565
+    },
+    {
+      "conCostumeId": 87,
+      "costumeItemId": 51,
+      "checked": false,
+      "id": 566
+    },
+    {
+      "conCostumeId": 87,
+      "costumeItemId": 52,
+      "checked": false,
+      "id": 567
+    },
+    {
+      "conCostumeId": 87,
+      "costumeItemId": 53,
+      "checked": false,
+      "id": 568
+    },
+    {
+      "conCostumeId": 89,
+      "costumeItemId": 10,
+      "checked": false,
+      "id": 569
+    },
+    {
+      "conCostumeId": 89,
+      "costumeItemId": 11,
+      "checked": false,
+      "id": 570
+    },
+    {
+      "conCostumeId": 89,
+      "costumeItemId": 12,
+      "checked": false,
+      "id": 571
+    },
+    {
+      "conCostumeId": 89,
+      "costumeItemId": 13,
+      "checked": false,
+      "id": 572
+    },
+    {
+      "conCostumeId": 89,
+      "costumeItemId": 14,
+      "checked": false,
+      "id": 573
+    },
+    {
+      "conCostumeId": 89,
+      "costumeItemId": 15,
+      "checked": false,
+      "id": 574
+    },
+    {
+      "conCostumeId": 89,
+      "costumeItemId": 16,
+      "checked": false,
+      "id": 575
+    },
+    {
+      "conCostumeId": 89,
+      "costumeItemId": 41,
+      "checked": false,
+      "id": 576
+    },
+    {
+      "conCostumeId": 89,
+      "costumeItemId": 62,
+      "checked": false,
+      "id": 577
+    },
+    {
+      "conCostumeId": 90,
+      "costumeItemId": 102,
+      "checked": false,
+      "id": 578
+    },
+    {
+      "conCostumeId": 90,
+      "costumeItemId": 103,
+      "checked": false,
+      "id": 579
+    },
+    {
+      "conCostumeId": 90,
+      "costumeItemId": 104,
+      "checked": false,
+      "id": 580
+    },
+    {
+      "conCostumeId": 92,
+      "costumeItemId": 63,
+      "checked": false,
+      "id": 587
+    },
+    {
+      "conCostumeId": 92,
+      "costumeItemId": 64,
+      "checked": false,
+      "id": 588
+    },
+    {
+      "conCostumeId": 92,
+      "costumeItemId": 65,
+      "checked": false,
+      "id": 589
+    },
+    {
+      "conCostumeId": 92,
+      "costumeItemId": 66,
+      "checked": false,
+      "id": 590
+    },
+    {
+      "conCostumeId": 92,
+      "costumeItemId": 67,
+      "checked": false,
+      "id": 591
+    },
+    {
+      "conCostumeId": 92,
+      "costumeItemId": 68,
+      "checked": false,
+      "id": 592
+    },
+    {
+      "conCostumeId": 92,
+      "costumeItemId": 69,
+      "checked": false,
+      "id": 593
+    },
+    {
+      "conCostumeId": 93,
+      "costumeItemId": 97,
+      "checked": false,
+      "id": 594
+    },
+    {
+      "conCostumeId": 93,
+      "costumeItemId": 98,
+      "checked": false,
+      "id": 595
+    },
+    {
+      "conCostumeId": 93,
+      "costumeItemId": 110,
+      "checked": false,
+      "id": 596
+    },
+    {
+      "conCostumeId": 93,
+      "costumeItemId": 111,
+      "checked": false,
+      "id": 597
+    },
+    {
+      "conCostumeId": 95,
+      "costumeItemId": 24,
+      "checked": false,
+      "id": 598
+    },
+    {
+      "conCostumeId": 95,
+      "costumeItemId": 25,
+      "checked": false,
+      "id": 599
+    },
+    {
+      "conCostumeId": 95,
+      "costumeItemId": 26,
+      "checked": false,
+      "id": 600
+    },
+    {
+      "conCostumeId": 96,
+      "costumeItemId": 10,
+      "checked": false,
+      "id": 601
+    },
+    {
+      "conCostumeId": 96,
+      "costumeItemId": 11,
+      "checked": false,
+      "id": 602
+    },
+    {
+      "conCostumeId": 96,
+      "costumeItemId": 12,
+      "checked": false,
+      "id": 603
+    },
+    {
+      "conCostumeId": 96,
+      "costumeItemId": 13,
+      "checked": false,
+      "id": 604
+    },
+    {
+      "conCostumeId": 96,
+      "costumeItemId": 14,
+      "checked": false,
+      "id": 605
+    },
+    {
+      "conCostumeId": 96,
+      "costumeItemId": 15,
+      "checked": false,
+      "id": 606
+    },
+    {
+      "conCostumeId": 96,
+      "costumeItemId": 16,
+      "checked": false,
+      "id": 607
+    },
+    {
+      "conCostumeId": 96,
+      "costumeItemId": 62,
+      "checked": false,
+      "id": 608
+    },
+    {
+      "conCostumeId": 96,
+      "costumeItemId": 41,
+      "checked": false,
+      "id": 609
+    },
+    {
+      "conCostumeId": 97,
+      "costumeItemId": 18,
+      "checked": false,
+      "id": 610
+    },
+    {
+      "conCostumeId": 97,
+      "costumeItemId": 19,
+      "checked": false,
+      "id": 611
+    },
+    {
+      "conCostumeId": 97,
+      "costumeItemId": 20,
+      "checked": false,
+      "id": 612
+    },
+    {
+      "conCostumeId": 97,
+      "costumeItemId": 21,
+      "checked": false,
+      "id": 613
+    },
+    {
+      "conCostumeId": 97,
+      "costumeItemId": 22,
+      "checked": false,
+      "id": 614
+    },
+    {
+      "conCostumeId": 97,
+      "costumeItemId": 23,
+      "checked": false,
+      "id": 615
+    }
+  ],
+  "days": [
+    {
+      "userConventionId": 10,
+      "title": "Friday",
+      "id": 12
+    },
+    {
+      "userConventionId": 10,
+      "title": "New Day",
+      "id": 13
+    },
+    {
+      "userConventionId": 10,
+      "title": "New Day",
+      "id": 14
+    },
+    {
+      "userConventionId": 25,
+      "title": "Friday",
+      "id": 15
+    },
+    {
+      "userConventionId": 25,
+      "title": "New Day",
+      "id": 16
+    },
+    {
+      "userConventionId": 25,
+      "title": "New Day",
+      "id": 17
+    },
+    {
+      "userConventionId": 25,
+      "title": "New Day",
+      "id": 18
+    },
+    {
+      "userConventionId": 25,
+      "title": "New Day",
+      "id": 19
+    },
+    {
+      "title": "Thursday",
+      "userConventionId": 8,
+      "id": 20
+    },
+    {
+      "title": "Friday",
+      "userConventionId": 8,
+      "id": 21
+    },
+    {
+      "title": "Saturday",
+      "userConventionId": 8,
+      "id": 22
+    },
+    {
+      "title": "Sunday",
+      "userConventionId": 8,
+      "id": 23
+    }
+  ],
+  "timeslots": [
+    {
+      "title": "Afternoon",
+      "text": "Supergirl",
+      "dayId": 20,
+      "id": 1
+    },
+    {
+      "title": "Evening",
+      "text": "April O'Neil",
+      "dayId": 20,
+      "id": 2
+    },
+    {
+      "title": "10pm",
+      "text": "Bunny Hutch - Hilton Ballroom",
+      "dayId": 20,
+      "id": 3
+    },
+    {
+      "title": "Morning",
+      "text": "Merida",
+      "dayId": 21,
+      "id": 4
+    },
+    {
+      "title": "8am-10am",
+      "text": "Parade",
+      "dayId": 22,
+      "id": 5
+    },
+    {
+      "title": "Afternoon",
+      "text": "Brienne of Tarth",
+      "dayId": 22,
+      "id": 6
+    },
+    {
+      "title": "3pm",
+      "text": "GoT Photoshoot - Hilton 5",
+      "dayId": 22,
+      "id": 7
+    },
+    {
+      "title": "7pm",
+      "text": "Aquarium Night",
+      "dayId": 22,
+      "id": 8
+    },
+    {
+      "title": "10am",
+      "text": "BSG Photoshoot - Hilton Steps",
+      "dayId": 23,
+      "id": 9
+    },
+    {
+      "title": "Afternoon",
+      "text": "Captain Marvel",
+      "dayId": 23,
+      "id": 10
+    },
+    {
+      "title": "10am",
+      "text": "Disney Photoshoot - Hilton Steps",
+      "dayId": 21,
+      "id": 11
+    },
+    {
+      "title": "Afternoon",
+      "text": "Princess Leia",
+      "dayId": 21,
+      "id": 12
+    },
+    {
+      "title": "2pm",
+      "text": "Leia shoot - Hardy Ivy Park",
+      "dayId": 21,
+      "id": 13
+    },
+    {
+      "title": "Evening",
+      "text": "Archer Group",
+      "dayId": 21,
+      "id": 14
+    },
+    {
+      "title": "3pm",
+      "text": "Marvel Photoshoot - Hilton Steps",
+      "dayId": 23,
+      "id": 15
+    },
+    {
+      "title": "Evening",
+      "text": "Star Wars Group",
+      "dayId": 23,
+      "id": 16
+    }
+  ],
+  "groups": [
+    {
+      "name": "Game of Thrones",
+      "description": "Costume group for Con of Thrones 2019",
+      "userId": 1,
+      "conventionId": 3,
+      "id": 1
+    },
+    {
+      "name": "DragonCon Hotel",
+      "description": "Hotel group for DragonCon 2019",
+      "userId": 1,
+      "conventionId": 1,
+      "id": 2
+    }
+  ],
+  "userGroups": [
+    {
+      "id": 1,
+      "groupId": 1,
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "groupId": 2,
+      "userId": 1
+    },
+    {
+      "userId": 3,
+      "groupId": 2,
+      "id": 5
+    },
+    {
+      "userId": 5,
+      "groupId": 2,
+      "id": 6
+    },
+    {
+      "userId": 4,
+      "groupId": 1,
+      "id": 7
+    },
+    {
+      "userId": 5,
+      "groupId": 1,
+      "id": 8
+    }
+  ],
+  "messages": [
+    {
+      "message": "Curabitur lobortis pretium odio, non ultricies lacus maximus ut.",
+      "timeDisplay": "1/22/2019 at 3:18 PM",
+      "timestamp": 1548710316504,
+      "userId": 1,
+      "id": 1,
+      "groupId": 1
+    },
+    {
+      "message": "Sed sagittis facilisis neque et pharetra. Nunc hendrerit dolor dolor, id dictum metus fermentum ac. Praesent eu vulputate sapien.",
+      "timeDisplay": "1/28/2019 at 8:28 PM",
+      "timestamp": 1548728880201,
+      "userId": 3,
+      "id": 5,
+      "groupId": 1
+    },
+    {
+      "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ligula nulla, feugiat vitae mattis tincidunt, elementum eu urna. Curabitur vitae libero pretium, facilisis felis ac, euismod enim.",
+      "timeDisplay": "1/28/2019 at 8:28 PM",
+      "timestamp": 1548728908179,
+      "userId": 4,
+      "id": 6,
+      "groupId": 1
+    },
+    {
+      "message": "Where are we meeting again?",
+      "timeDisplay": "2/14/2019 at 8:05 PM",
+      "timestamp": 1550196336794,
+      "userId": 1,
+      "groupId": 1,
+      "id": 11
+    },
+    {
+      "message": "What room are we in?",
+      "timeDisplay": "2/25/2019 at 3:27 PM",
+      "timestamp": 1551130043465,
+      "userId": 1,
+      "groupId": 2,
+      "id": 12
+    },
+    {
+      "message": "2320!",
+      "timeDisplay": "2/25/2019 at 3:27 PM",
+      "timestamp": 1551130065613,
+      "userId": 3,
+      "groupId": 2,
+      "id": 13
+    },
+    {
+      "message": "Hilton 5th Floor!",
+      "timeDisplay": "2/28/2019 at 3:47 PM",
+      "timestamp": 1551390444778,
+      "userId": 1,
+      "groupId": 1,
+      "id": 14
+    }
+  ],
+  "characters": [
+    {
+      "id": 1,
+      "groupId": 1,
+      "name": "Brienne",
+      "user": "megcruzen"
+    },
+    {
+      "name": "Arya",
+      "user": "",
+      "groupId": 1,
+      "id": 2
+    },
+    {
+      "id": 3,
+      "groupId": 1,
+      "name": "Cersei",
+      "user": "ladydanger"
+    },
+    {
+      "name": "Ned Stark",
+      "user": "",
+      "groupId": 1,
+      "id": 4
+    },
+    {
+      "name": "Daenerys",
+      "user": "",
+      "groupId": 1,
+      "id": 5
+    },
+    {
+      "name": "Jon Snow",
+      "user": "",
+      "groupId": 1,
+      "id": 7
+    },
+    {
+      "name": "Sansa",
+      "user": "",
+      "groupId": 1,
+      "id": 8
+    },
+    {
+      "name": "Tyrion",
+      "user": "",
+      "groupId": 1,
+      "id": 9
+    },
+    {
+      "name": "Bran",
+      "user": "",
+      "groupId": 1,
+      "id": 10
+    }
+  ],
+  "todolists": [
+    {
+      "text": {
+        "blocks": [
+          {
+            "key": "2u5hd",
+            "text": "Something something!",
+            "type": "unstyled",
+            "depth": 0,
+            "inlineStyleRanges": [
+              {
+                "offset": 10,
+                "length": 9,
+                "style": "BOLD"
+              }
+            ],
+            "entityRanges": [],
+            "data": {}
+          }
+        ],
+        "entityMap": {}
+      },
+      "id": 1
+    }
+  ],
+  "friends": [
+    {
+      "id": 2,
+      "currentUserId": 2,
+      "userId": 1
+    }
+  ]
+}

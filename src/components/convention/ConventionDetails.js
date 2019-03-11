@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import { Button, Media, Row, Col, TabContent, TabPane, Nav, NavItem, NavLink, Modal, ModalBody, ModalFooter} from 'reactstrap';
 import classnames from 'classnames';
-import "../CosBuddy.css";
+import "../Conpanion.css";
 import ConventionCostumeList from "./ConventionCostumeList";
 import ConventionPackingList from './packinglists/ConventionPackingList';
 import CostumeListSection from './packinglists/CostumeListSection';

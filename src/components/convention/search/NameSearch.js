@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { FormGroup, Form, Input, Table } from 'reactstrap';
-import "../../CosBuddy.css"
+import "../../Conpanion.css"
 import AppManager from "../../../modules/AppManager"
 import ConSearchResults from "./SearchResults"
 

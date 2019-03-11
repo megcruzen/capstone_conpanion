@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Col } from 'reactstrap';
-import "../CosBuddy.css";
+import "../Conpanion.css";
 import GroupChatMessage from "./GroupChatMessage"
 
 export default class GroupChat extends Component {

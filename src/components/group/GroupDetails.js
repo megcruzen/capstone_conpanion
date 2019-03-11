@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Row, Modal, ModalHeader, ModalBody, ModalFooter, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import "../CosBuddy.css";
+import "../Conpanion.css";
 import GroupAddons from "./GroupAddons"
 import GroupChat from "./GroupChat"
 

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { NavbarBrand, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { NavbarBrand } from 'reactstrap';
 import AppManager from '../../modules/AppManager';
-import "../CosBuddy.css";
+import "../Conpanion.css";
 import auth0Client from "../../Auth"
 
 

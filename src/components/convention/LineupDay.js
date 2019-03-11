@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../CosBuddy.css";
+import "../Conpanion.css";
 import Timeslot from "./LineupTimeslot"
 import AppManager from "../../modules/AppManager"
 export default class LineupDay extends Component {

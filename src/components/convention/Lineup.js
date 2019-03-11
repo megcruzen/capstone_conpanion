@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row, Col, Button, Popover, PopoverBody } from 'reactstrap';
-import "../CosBuddy.css";
+import "../Conpanion.css";
 import LineupDay from "./LineupDay"
 
 export default class Lineup extends Component {

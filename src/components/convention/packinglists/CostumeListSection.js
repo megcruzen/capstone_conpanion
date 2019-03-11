@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../../CosBuddy.css";
+import "../../Conpanion.css";
 import CostumePackingList from './CostumePackingList'
 
 export default class CostumeListSection extends Component {

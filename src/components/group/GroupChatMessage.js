@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../CosBuddy.css";
+import "../Conpanion.css";
 import AppManager from "../../modules/AppManager"
 
 export default class GroupChatMessage extends Component {

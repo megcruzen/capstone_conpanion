@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import { NavbarBrand, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import "../CosBuddy.css";
+import "../Conpanion.css";
 
 export default class Welcome extends Component {
 

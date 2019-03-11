@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Button, Table } from 'reactstrap'
-import "../CosBuddy.css"
+import "../Conpanion.css"
 import ConventionCard from "./ConventionCard"
 
 export default class ConventionList extends Component {

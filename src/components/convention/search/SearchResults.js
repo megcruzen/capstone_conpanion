@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Media, Button, Modal, ModalBody, ModalFooter } from 'reactstrap';
-import "../../CosBuddy.css"
+import "../../Conpanion.css"
 import AppManager from "../../../modules/AppManager"
 
 export default class SearchResults extends Component {

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { NavbarBrand, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { NavbarBrand } from 'reactstrap';
 import AppManager from '../../modules/AppManager';
-import "../CosBuddy.css";
+import "../Conpanion.css";
 import auth0Client from "../../Auth"
 
 
@@ -53,7 +53,7 @@ export default class Login extends Component {
         return (
             <section className="login">
                 <div className="logo text-center"><NavbarBrand tag={Link} to="/"><span className="nav-highlight">con</span>panion</NavbarBrand></div>
-                <div className="login_form my-4">
+                {/* <div className="login_form my-4">
                     <Form inline onSubmit={this.userLogin}>
                         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
                             <Label for="username" hidden>Username</Label>
@@ -67,26 +67,26 @@ export default class Login extends Component {
                         </FormGroup>
                         <Button color="primary">Submit</Button>
                     </Form>
-                </div>
+                </div> */}
 
-                {/* <div>
-                    Auth0 code that checks if user is logged in. If they are, display profile name and sign out button. If they are not, display sign in button.
+                <div className="text-center mt-4">
+                    {/* Auth0 code that checks if user is logged in. If they are, display profile name and sign out button. If they are not, display sign in button. */}
                     {
                         !auth0Client.isAuthenticated() &&
-                        <button className="btn btn-dark" onClick={auth0Client.signIn}>Sign In</button>
+                        <button className="btn btn-primary" onClick={auth0Client.signIn}>Log in or Register</button>
                     }
                     {
                         auth0Client.isAuthenticated() &&
                         <div>
                         <label className="mr-2">{auth0Client.getProfile().name}</label>
-                        <button className="btn btn-dark" onClick={() => {this.signOut()}}>Sign Out</button>
+                        <button className="btn btn-primary" onClick={() => {this.signOut()}}>Sign Out</button>
                         </div>
                     }
-                </div> */}
-
-                <div className="text-center">
-                    New to ConPanion? <a href="#" onClick={() => this.props.history.push("/register")} className="link">Sign up now!</a>
                 </div>
+
+                {/* <div className="text-center">
+                    New to ConPanion? <a href="#" onClick={() => this.props.history.push("/register")} className="link">Sign up now!</a>
+                </div> */}
             </section>
         )
     }

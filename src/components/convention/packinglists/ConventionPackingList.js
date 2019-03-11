@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, Table } from 'reactstrap';
-import "../../CosBuddy.css";
+import "../../Conpanion.css";
 import ConventionItem from "./ConventionItem"
 
 export default class ConventionPackingList extends Component {

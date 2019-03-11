@@ -3,8 +3,8 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Media, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import "../CosBuddy.css"
-import thumb from "./64x64.jpg"
+import "../Conpanion.css"
+// import thumb from "./64x64.jpg"
 
 export default class ConventionCard extends Component {
     constructor(props) {

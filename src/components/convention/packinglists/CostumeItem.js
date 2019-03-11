@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../../CosBuddy.css";
+import "../../Conpanion.css";
 
 export default class ConCostumeItem extends Component {
 

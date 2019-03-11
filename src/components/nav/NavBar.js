@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import "./NavBar.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import auth0Client from "../../Auth";
 
     export default class NavBar extends React.Component {
         constructor(props) {
@@ -18,9 +19,15 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } f
             isOpen: !this.state.isOpen
           });
         }
-        clearSession = () => {
-            sessionStorage.clear();
-        }
+        // clearSession = () => {
+        //     sessionStorage.clear();
+        // }
+        signOut = () => {
+              auth0Client.signOut();
+              sessionStorage.clear();
+              // this.props.history.replace('/');
+          }
+
         render() {
           return (
             <div id="nav">
@@ -39,7 +46,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } f
                       <NavLink tag={Link} to="/groups">Groups</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink onClick={this.clearSession} tag={Link} to="/login">Logout</NavLink>
+                        <NavLink onClick={this.signOut} tag={Link} to="/">Logout</NavLink>
                     </NavItem>
                   </Nav>
                 </Collapse>

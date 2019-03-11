@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { } from 'reactstrap';
-import "../CosBuddy.css";
+import "../Conpanion.css";
 import AppManager from "../../modules/AppManager"
 
 export default class Timeslot extends Component {

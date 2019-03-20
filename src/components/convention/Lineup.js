@@ -16,22 +16,18 @@ export default class Lineup extends Component {
     }
 
     addDay = () => {
-
         const newDay = {
             userConventionId: this.props.convention.userConventionId,
             title: "New Day"
         }
-
         this.props.addNewDay(newDay)
     }
 
     addDayExample = () => {
-
         const exampleDay = {
             userConventionId: this.props.convention.userConventionId,
             title: "Friday"
         }
-
         this.props.addNewDay(exampleDay)
     }
 

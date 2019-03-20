@@ -4,19 +4,13 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import { Media, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import "../Conpanion.css"
-// import thumb from "./64x64.jpg"
 
 export default class ConventionCard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
           modal: false
-        };
+    };
 
-        this.toggle = this.toggle.bind(this);
-    }
-
-    toggle() {
+    toggle = () => {
         this.setState({
             modal: !this.state.modal
         });

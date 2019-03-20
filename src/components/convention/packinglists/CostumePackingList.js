@@ -10,19 +10,11 @@ export default class CostumePackingList extends Component {
     state = {
         conCostumeId: "",
         costumeItemId: "",
-        checked: ""
+        checked: "",
+        modal: false
     }
 
-    constructor(props) {
-        super(props);
-        this.state = {
-          modal: false
-        };
-
-        this.toggle = this.toggle.bind(this);
-    }
-
-    toggle() {
+    toggle = () => {
         this.setState({
             modal: !this.state.modal
         });

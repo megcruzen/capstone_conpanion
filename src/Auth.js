@@ -94,11 +94,11 @@ class Auth {
 
   signOut() {
     // clear id token, profile, and expiration
-    // clear local storage
+    // clear session storage
     this.idToken = null;
     this.profile = null;
     this.expiresAt = null;
-    localStorage.removeItem("userId");
+    sessionStorage.removeItem("userId");
   }
 }
 

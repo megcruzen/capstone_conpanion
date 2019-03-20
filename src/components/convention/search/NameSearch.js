@@ -25,18 +25,57 @@ export default class NameSearch extends Component {
         .then(() => this.props.history.push("/conventions/search"));
     }
 
-    searchConventions = (searchQuery) => {
-        const newSearchResults = {}
-        return AppManager.searchConventions(searchQuery)
-        .then(response => newSearchResults.conventions = response)
-        .then(() => this.setState(newSearchResults))
+    sortDate = (a, b) => {
+        let date1 = new Date(a.startDate);
+        let date2 = new Date(b.startDate)
+        return date1 - date2;
+    }
 
-        // .then(conventions => {
-        //     this.setState({ conventions: newSearchResults })
-        // })
+    searchConventions = (searchQuery) => {
+        let today = new Date();
+        let day = today.getDate();
+        let month = today.getMonth() + 1;
+        let year = today.getFullYear();
+
+        if (day < 10) {
+            day = `0${day}`;
+        }
+        if (month < 10) {
+            month = `0${month}`
+        }
+
+        let yesterday = day - 1;
+        let endOfYesterday = `${year}-${month}-${yesterday}`
+        // console.log(new Date(endOfYesterday));
+
+        // const newSearchResults = {}
+        return AppManager.searchConventions(searchQuery)
+        // .then(response => newSearchResults.conventions = response)
+        // .then(() => this.setState(newSearchResults))
+        // .then(conventions => this.setState({ conventions: conventions }))
+        .then(conventions =>
+            conventions.sort(this.sortDate)
+                       .filter(con => (new Date(con.endDate) - new Date(endOfYesterday)) > 0)
+        )
+        .then(conventions => this.setState({ conventions: conventions }))
+    }
+
+    showResults = () => {
+        if (this.state.conventions.length > 0) {
+            return (
+                this.state.conventions
+                    .map(result => (
+                    <ConSearchResults key={result.id} result={result} {...this.props} />
+                    ))
+            )
+        }
+        // else {
+        //     return <p>No results found.</p>
+        // }
     }
 
     render() {
+
         return (
             <section className="convention_search">
                 <h4>Search by Name, City, or State</h4>
@@ -55,9 +94,14 @@ export default class NameSearch extends Component {
 
                 <Table striped borderless className="name_results">
                     <tbody>
-                        {this.state.conventions.map(result => (
-                            <ConSearchResults key={result.id} result={result} {...this.props} />
-                    ))}
+                        {
+                            // this.state.conventions
+                            // .map(result => (
+                            // <ConSearchResults key={result.id} result={result} {...this.props} />
+                            // ))
+
+                            this.showResults()
+                        }
                     </tbody>
                 </Table>
 

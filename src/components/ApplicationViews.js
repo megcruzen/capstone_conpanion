@@ -427,7 +427,8 @@ export default class ApplicationViews extends Component {
             if (this.isAuthenticated()) {
               return <Welcome {...props}
                       users={this.state.users}
-                      getAllData={this.getAllData} />
+                      getAllData={this.getAllData}
+                      myConventions={this.state.myConventions} />
             } else {
                   return <Login {...props} />
             }

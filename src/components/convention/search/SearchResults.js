@@ -11,12 +11,7 @@ export default class SearchResults extends Component {
         modal: false
     }
 
-    constructor(props) {
-        super(props);
-        this.toggle = this.toggle.bind(this);
-    }
-
-    toggle() {
+    toggle = () => {
         this.setState({
             modal: !this.state.modal
         });
@@ -53,10 +48,8 @@ export default class SearchResults extends Component {
     }
 
     checkConnection = (result) => {
-
         if (this.props.myConventions.find(myConvention =>
             myConvention.id === this.props.result.id)) {
-            // return <Button color="secondary" disabled>Already Added</Button>
             return <i class="fas fa-check"></i>
         }
         else {
@@ -75,7 +68,6 @@ export default class SearchResults extends Component {
     }
 
     render() {
-
         let months = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "12"]
 
         let start = new Date(this.props.result.startDate);

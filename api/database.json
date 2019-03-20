@@ -3,8 +3,8 @@
     {
       "id": 1,
       "username": "megcruzen",
-      "email": "megcruzen@gmail.com",
-      "password": "pass123",
+      "email": "test@test.com",
+      "password": "Pass123!",
       "timestamp": "1234567",
       "usertype": "cosplayer"
     },
@@ -159,8 +159,8 @@
     },
     {
       "name": "C2E2",
-      "startDate": "2019-03-24",
-      "endDate": "2019-02-24",
+      "startDate": "2019-03-22",
+      "endDate": "2019-03-24",
       "city": "Chicago",
       "state": "IL",
       "website": "http://c2e2.com",

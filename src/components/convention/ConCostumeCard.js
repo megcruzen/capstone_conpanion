@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle, Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
 export default class ConCostumeCard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+    state = {
           modal: false
-        };
-
-        this.toggle = this.toggle.bind(this);
     }
 
-    toggle() {
+    toggle = () => {
         this.setState({
             modal: !this.state.modal
         });

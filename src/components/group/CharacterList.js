@@ -35,29 +35,6 @@ export default class CharacterList extends Component {
 
         return (
                 <div className="character_list mb-2">
-
-                    {/* <Collapsible trigger="Character List">
-                        <Table>
-                            <tbody>
-                            {
-                                this.props.characters.filter(character => character.groupId === this.props.group.id)
-                                .map(character =>
-                                    <CharacterCard character={character} deleteCharacter={this.props.deleteCharacter} updateCharacter={this.props.updateCharacter} groupId={this.props.group.id} />
-                                )
-                            }
-                            </tbody>
-                        </Table>
-                        <Form onSubmit={this.addCharacter} className="d-flex">
-                            <FormGroup className="w-100 mr-2">
-                                <Label for="character" hidden>Character Name</Label>
-                                <Input type="text" required name="character" id="character"
-                                onChange={this.handleFieldChange} placeholder="Add character" />
-                            </FormGroup>
-                            <div><Button color="primary">Add</Button></div>
-                        </Form>
-                    </Collapsible> */}
-
-                    {/* <CollapsibleComponent> */}
                         <CollapsibleHead isExpanded={true}>Character List</CollapsibleHead>
                         <CollapsibleContent isExpanded={true}>
                             <Table>
@@ -79,7 +56,6 @@ export default class CharacterList extends Component {
                                 <div><Button color="primary">Add</Button></div>
                             </Form>
                         </CollapsibleContent>
-                    {/* </CollapsibleComponent> */}
 
                 </div>
 

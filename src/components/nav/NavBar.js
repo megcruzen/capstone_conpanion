@@ -22,11 +22,21 @@ import auth0Client from "../../Auth";
         // clearSession = () => {
         //     sessionStorage.clear();
         // }
+        // signOut = () => {
+        //       auth0Client.signOut();
+        //       sessionStorage.clear();
+        //       // this.props.history.replace('/');
+        //   }
+
         signOut = () => {
-              auth0Client.signOut();
-              sessionStorage.clear();
-              // this.props.history.replace('/');
-          }
+          // clear id token, profile, and expiration
+          // clear session storage
+          this.idToken = null;
+          this.profile = null;
+          this.expiresAt = null;
+          // auth0Client.signOut();
+          sessionStorage.clear();
+        }
 
         render() {
           return (
@@ -46,7 +56,7 @@ import auth0Client from "../../Auth";
                       <NavLink tag={Link} to="/groups">Groups</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink onClick={this.signOut} tag={Link} to="/">Logout</NavLink>
+                        <NavLink onClick={() => {this.signOut()}} tag={Link} to="/">Logout</NavLink>
                     </NavItem>
                   </Nav>
                 </Collapse>

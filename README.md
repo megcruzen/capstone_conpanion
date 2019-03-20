@@ -11,6 +11,7 @@ To run ConPanion locally:
 1. Set up Auth0 (see below)
 1. In the `/api` directory, run `json-server -p 5002 -w database.json`
 1. Run `npm start` in root directory to start react server
+1. On Auth0 login screen, use `test@test.com` as the email address (any password will work)
 
 ### Set Up Auth0
 1. Sign up or log in to Auth0 - https://auth0.com/

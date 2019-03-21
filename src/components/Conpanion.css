@@ -180,6 +180,21 @@ select#costumeId {
 }
 
 
+/****** Main ******/
+
+.welcome h2 {
+    margin: 100px 0px 40px 0px;
+}
+
+.next_con {
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 400px;
+}
+
+
 
 /****** Costumes ******/
 

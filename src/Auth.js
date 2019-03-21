@@ -3,6 +3,11 @@ import { AUTH_CONFIG } from  './Auth0Variables';
 import AppManager from './modules/AppManager';
 
 class Auth {
+
+  accessToken;
+  idToken;
+  expiresAt;
+
   constructor() {
 
     this.auth0 = new auth0.WebAuth({
@@ -42,20 +47,24 @@ class Auth {
   }
 
   handleAuthentication() {
+    // Set isLoggedIn flag in localStorage
+    localStorage.setItem("isLoggedIn", "true");
+
     return new Promise((resolve, reject) => {
       this.auth0.parseHash((err, authResult) => {
         if (err) return reject(err);
         if (!authResult || !authResult.idToken) {
           return reject(err);
         }
+
+        // Set the time that the access token will expire at
+        let expiresAt = (authResult.expiresIn * 1000) + new Date().getTime();
+        this.accessToken = authResult.accessToken;
         this.idToken = authResult.idToken;
+        this.expiresAt = expiresAt;
         this.profile = authResult.idTokenPayload;
-        // set the time that the id token will expire at
-        this.expiresAt = authResult.idTokenPayload.exp * 1000;
-        // this.getInfo();
         this.getCurrentUser()
         .then(() => resolve());
-        // resolve();
       });
     })
   }
@@ -71,7 +80,6 @@ class Auth {
             .then(users => {
               if (users.length) {
                 sessionStorage.setItem("User", users[0].id);
-                // this.props.getAllData();
                 resolve(users[0].id);
               } else {
                 let newUser = {
@@ -95,10 +103,12 @@ class Auth {
   signOut() {
     // clear id token, profile, and expiration
     // clear session storage
+    this.accessToken = null;
     this.idToken = null;
     this.profile = null;
-    this.expiresAt = null;
-    sessionStorage.removeItem("userId");
+    this.expiresAt = 0;
+    sessionStorage.clear();
+    localStorage.removeItem("isLoggedIn");
   }
 }
 

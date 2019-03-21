@@ -171,18 +171,18 @@ export default class ApplicationViews extends Component {
   }
 
   copyNewCostumeItem = (response) => {
-    console.log("item.costumeId", response.costumeId)
+    // console.log("item.costumeId", response.costumeId)
     const conCostumes = this.state.conCostumes;
     const filteredCostumes = conCostumes.filter( conCostume => conCostume.costumeId === response.costumeId)
     // console.log(conCostumes.map ( conCostume => conCostume.costumeId))
-    console.log("filteredCostumes", filteredCostumes)
+    // console.log("filteredCostumes", filteredCostumes)
     filteredCostumes.map( conCostume => {
         const conCostumeItem = {
           conCostumeId: conCostume.id,
           costumeItemId: response.id,
           checked: false
         }
-        console.log(conCostumeItem)
+        // console.log(conCostumeItem)
         AppManager.postConCostumeItem(conCostumeItem)
     })
   }
@@ -203,9 +203,9 @@ export default class ApplicationViews extends Component {
   }
 
   copyCostumeItems = (response) => {
-    // console.log(response.id)
+    // console.log("response.id", response.id)
     const costumeItems = this.state.costumeItems;
-    // console.log(costumeItems)
+    // console.log("costumeItems", costumeItems)
 
     return Promise.all(costumeItems.map( item => {
         // console.log("itemId", item.costumeId, "costumeId", response.costumeId, "conCostumeId", response.id)
@@ -215,7 +215,7 @@ export default class ApplicationViews extends Component {
                 costumeItemId: item.id,
                 checked: false
             }
-            // console.log(conCostumeItem)
+            // console.log("conCostumeItem", conCostumeItem)
             return AppManager.postConCostumeItem(conCostumeItem)
         }
     })
@@ -447,7 +447,7 @@ export default class ApplicationViews extends Component {
                     myConventions={this.state.myConventions}
                     removeConvention={this.removeConvention} />
             } else {
-                  return <Redirect to="/login" />
+                  return <Redirect to="/" />
             }
           }} />
 
@@ -459,7 +459,7 @@ export default class ApplicationViews extends Component {
                     addUserConvention={this.addUserConvention}
                     myConventions={this.state.myConventions} />
             } else {
-              return <Redirect to="/login" />
+              return <Redirect to="/" />
             }
           }} />
 
@@ -469,7 +469,7 @@ export default class ApplicationViews extends Component {
                     addConvention={this.addConvention}
                     genres={this.state.genres} />
             } else {
-              return <Redirect to="/login" />
+              return <Redirect to="/" />
             }
         }} />
 
@@ -505,7 +505,7 @@ export default class ApplicationViews extends Component {
                     updateTimeslot={this.updateTimeslot}
                     deleteTimeslot={this.deleteTimeslot} />
           } else {
-            return <Redirect to="/login" />
+            return <Redirect to="/" />
           }
         }} />
 
@@ -514,7 +514,7 @@ export default class ApplicationViews extends Component {
             return <CostumeList {...props}
                     costumes={this.state.costumes} />
           } else {
-            return <Redirect to="/login" />
+            return <Redirect to="/" />
           }
         }} />
 
@@ -523,7 +523,7 @@ export default class ApplicationViews extends Component {
             return <CostumeForm {...props}
                     addCostume={this.addCostume} />
           } else {
-            return <Redirect to="/login" />
+            return <Redirect to="/" />
           }
         }} />
 
@@ -542,7 +542,7 @@ export default class ApplicationViews extends Component {
                     deleteConCostumeItem={this.deleteConCostumeItem}
                     deleteCostumeAndDependents={this.deleteCostumeAndDependents} />
           } else {
-            return <Redirect to="/login" />
+            return <Redirect to="/" />
           }
         }} />
 
@@ -552,7 +552,7 @@ export default class ApplicationViews extends Component {
                     costumes={this.state.costumes}
                     editCostume={this.editCostume} />
           } else {
-            return <Redirect to="/login" />
+            return <Redirect to="/" />
           }
         }} />
 
@@ -574,7 +574,7 @@ export default class ApplicationViews extends Component {
                     createGroup={this.createGroup}
                     allConventions={this.state.allConventions} />
             } else {
-              return <Redirect to="/login" />
+              return <Redirect to="/" />
             }
         }} />
 
@@ -597,7 +597,7 @@ export default class ApplicationViews extends Component {
                     deleteCharacter={this.deleteCharacter}
                     updateCharacter={this.updateCharacter} />
           } else {
-            return <Redirect to="/login" />
+            return <Redirect to="/" />
           }
         }} />
 
@@ -609,7 +609,7 @@ export default class ApplicationViews extends Component {
                     editGroup={this.editGroup}
                     allConventions={this.state.allConventions} />
           } else {
-            return <Redirect to="/login" />
+            return <Redirect to="/" />
           }
         }} />
 
@@ -617,7 +617,7 @@ export default class ApplicationViews extends Component {
           if (this.isAuthenticated()) {
             return <Contact />
           } else {
-            return <Redirect to="/login" />
+            return <Redirect to="/" />
           }
         }} />
 

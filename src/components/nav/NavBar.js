@@ -4,38 +4,22 @@ import "./NavBar.css";
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import auth0Client from "../../Auth";
+import { AUTH_CONFIG } from  '../../Auth0Variables';
 
     export default class NavBar extends React.Component {
-        constructor(props) {
-          super(props);
-
-          this.toggle = this.toggle.bind(this);
-          this.state = {
+        state = {
             isOpen: false
-          };
         }
-        toggle() {
+
+        toggle = () => {
           this.setState({
             isOpen: !this.state.isOpen
           });
         }
-        // clearSession = () => {
-        //     sessionStorage.clear();
-        // }
-        // signOut = () => {
-        //       auth0Client.signOut();
-        //       sessionStorage.clear();
-        //       // this.props.history.replace('/');
-        //   }
 
         signOut = () => {
-          // clear id token, profile, and expiration
-          // clear session storage
-          this.idToken = null;
-          this.profile = null;
-          this.expiresAt = null;
-          // auth0Client.signOut();
-          sessionStorage.clear();
+          auth0Client.signOut();
+          window.location.replace(`https://megcruzen.auth0.com/v2/logout?returnTo=http://localhost:3000&client_id=${AUTH_CONFIG.clientId}`);
         }
 
         render() {
@@ -56,7 +40,7 @@ import auth0Client from "../../Auth";
                       <NavLink tag={Link} to="/groups">Groups</NavLink>
                     </NavItem>
                     <NavItem>
-                        <NavLink onClick={() => {this.signOut()}} tag={Link} to="/">Logout</NavLink>
+                        <NavLink onClick={() => {this.signOut()}} style={{cursor:'pointer'}}>Logout</NavLink>
                     </NavItem>
                   </Nav>
                 </Collapse>

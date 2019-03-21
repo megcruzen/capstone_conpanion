@@ -307,6 +307,11 @@
       "userId": 1,
       "conventionId": 8,
       "id": 26
+    },
+    {
+      "userId": 1,
+      "conventionId": 7,
+      "id": 27
     }
   ],
   "conCostumes": [
@@ -329,21 +334,6 @@
       "costumeId": 3,
       "userConventionId": 10,
       "id": 65
-    },
-    {
-      "costumeId": 11,
-      "userConventionId": 25,
-      "id": 75
-    },
-    {
-      "costumeId": 8,
-      "userConventionId": 25,
-      "id": 76
-    },
-    {
-      "costumeId": 10,
-      "userConventionId": 25,
-      "id": 77
     },
     {
       "costumeId": 3,
@@ -371,44 +361,9 @@
       "id": 82
     },
     {
-      "costumeId": 4,
-      "userConventionId": 8,
-      "id": 83
-    },
-    {
-      "costumeId": 10,
-      "userConventionId": 8,
-      "id": 84
-    },
-    {
-      "costumeId": 8,
-      "userConventionId": 8,
-      "id": 85
-    },
-    {
-      "costumeId": 3,
-      "userConventionId": 8,
-      "id": 86
-    },
-    {
       "costumeId": 9,
       "userConventionId": 8,
       "id": 87
-    },
-    {
-      "costumeId": 1,
-      "userConventionId": 8,
-      "id": 88
-    },
-    {
-      "costumeId": 7,
-      "userConventionId": 8,
-      "id": 89
-    },
-    {
-      "costumeId": 6,
-      "userConventionId": 8,
-      "id": 90
     },
     {
       "costumeId": 11,
@@ -446,9 +401,39 @@
       "id": 97
     },
     {
+      "costumeId": 8,
+      "userConventionId": 8,
+      "id": 101
+    },
+    {
+      "costumeId": 7,
+      "userConventionId": 8,
+      "id": 102
+    },
+    {
+      "costumeId": 6,
+      "userConventionId": 8,
+      "id": 103
+    },
+    {
+      "costumeId": 5,
+      "userConventionId": 8,
+      "id": 104
+    },
+    {
+      "costumeId": 10,
+      "userConventionId": 8,
+      "id": 105
+    },
+    {
+      "costumeId": 4,
+      "userConventionId": 8,
+      "id": 106
+    },
+    {
       "costumeId": 11,
       "userConventionId": 8,
-      "id": 98
+      "id": 107
     }
   ],
   "conventionItems": [
@@ -706,6 +691,66 @@
       "name": "Fur cloak",
       "costumeId": 8,
       "id": 112
+    },
+    {
+      "name": "Dress",
+      "costumeId": 1,
+      "id": 115
+    },
+    {
+      "name": "Chemise",
+      "costumeId": 1,
+      "id": 116
+    },
+    {
+      "name": "Sleeves",
+      "costumeId": 1,
+      "id": 117
+    },
+    {
+      "name": "Belt",
+      "costumeId": 1,
+      "id": 118
+    },
+    {
+      "name": "Boots",
+      "costumeId": 1,
+      "id": 119
+    },
+    {
+      "name": "Wig",
+      "costumeId": 1,
+      "id": 120
+    },
+    {
+      "name": "Bow",
+      "costumeId": 1,
+      "id": 121
+    },
+    {
+      "name": "Quiver",
+      "costumeId": 1,
+      "id": 122
+    },
+    {
+      "name": "Dress",
+      "costumeId": 11,
+      "id": 123
+    },
+    {
+      "name": "Chemise",
+      "costumeId": 11,
+      "id": 124
+    },
+    {
+      "name": "Boots",
+      "costumeId": 11,
+      "id": 125
+    },
+    {
+      "name": "Belt",
+      "costumeId": 11,
+      "id": 126
     }
   ],
   "conCostumeItems": [
@@ -774,48 +819,6 @@
       "costumeItemId": 23,
       "checked": false,
       "id": 398
-    },
-    {
-      "conCostumeId": 77,
-      "costumeItemId": 65,
-      "checked": false,
-      "id": 485
-    },
-    {
-      "conCostumeId": 77,
-      "costumeItemId": 66,
-      "checked": false,
-      "id": 486
-    },
-    {
-      "conCostumeId": 77,
-      "costumeItemId": 67,
-      "checked": false,
-      "id": 487
-    },
-    {
-      "conCostumeId": 77,
-      "costumeItemId": 68,
-      "checked": false,
-      "id": 488
-    },
-    {
-      "conCostumeId": 77,
-      "costumeItemId": 69,
-      "checked": false,
-      "id": 489
-    },
-    {
-      "conCostumeId": 77,
-      "costumeItemId": 63,
-      "checked": false,
-      "id": 490
-    },
-    {
-      "conCostumeId": 77,
-      "costumeItemId": 64,
-      "checked": false,
-      "id": 491
     },
     {
       "conCostumeId": 78,
@@ -992,22 +995,10 @@
       "id": 523
     },
     {
-      "conCostumeId": 76,
-      "costumeItemId": 105,
-      "checked": false,
-      "id": 524
-    },
-    {
       "conCostumeId": 57,
       "costumeItemId": 105,
       "checked": false,
       "id": 526
-    },
-    {
-      "conCostumeId": 76,
-      "costumeItemId": 106,
-      "checked": false,
-      "id": 527
     },
     {
       "conCostumeId": 57,
@@ -1016,148 +1007,16 @@
       "id": 529
     },
     {
-      "conCostumeId": 76,
-      "costumeItemId": 107,
-      "checked": false,
-      "id": 530
-    },
-    {
       "conCostumeId": 57,
       "costumeItemId": 107,
       "checked": false,
       "id": 532
     },
     {
-      "conCostumeId": 76,
-      "costumeItemId": 112,
-      "checked": false,
-      "id": 541
-    },
-    {
       "conCostumeId": 57,
       "costumeItemId": 112,
       "checked": false,
       "id": 543
-    },
-    {
-      "conCostumeId": 83,
-      "costumeItemId": 24,
-      "checked": false,
-      "id": 544
-    },
-    {
-      "conCostumeId": 83,
-      "costumeItemId": 25,
-      "checked": false,
-      "id": 545
-    },
-    {
-      "conCostumeId": 83,
-      "costumeItemId": 26,
-      "checked": false,
-      "id": 546
-    },
-    {
-      "conCostumeId": 84,
-      "costumeItemId": 63,
-      "checked": false,
-      "id": 547
-    },
-    {
-      "conCostumeId": 84,
-      "costumeItemId": 64,
-      "checked": false,
-      "id": 548
-    },
-    {
-      "conCostumeId": 84,
-      "costumeItemId": 65,
-      "checked": false,
-      "id": 549
-    },
-    {
-      "conCostumeId": 84,
-      "costumeItemId": 68,
-      "checked": false,
-      "id": 550
-    },
-    {
-      "conCostumeId": 84,
-      "costumeItemId": 69,
-      "checked": false,
-      "id": 551
-    },
-    {
-      "conCostumeId": 84,
-      "costumeItemId": 66,
-      "checked": false,
-      "id": 552
-    },
-    {
-      "conCostumeId": 84,
-      "costumeItemId": 67,
-      "checked": false,
-      "id": 553
-    },
-    {
-      "conCostumeId": 85,
-      "costumeItemId": 105,
-      "checked": false,
-      "id": 554
-    },
-    {
-      "conCostumeId": 85,
-      "costumeItemId": 106,
-      "checked": false,
-      "id": 555
-    },
-    {
-      "conCostumeId": 85,
-      "costumeItemId": 107,
-      "checked": false,
-      "id": 556
-    },
-    {
-      "conCostumeId": 85,
-      "costumeItemId": 112,
-      "checked": false,
-      "id": 557
-    },
-    {
-      "conCostumeId": 86,
-      "costumeItemId": 18,
-      "checked": false,
-      "id": 558
-    },
-    {
-      "conCostumeId": 86,
-      "costumeItemId": 19,
-      "checked": false,
-      "id": 559
-    },
-    {
-      "conCostumeId": 86,
-      "costumeItemId": 20,
-      "checked": false,
-      "id": 560
-    },
-    {
-      "conCostumeId": 86,
-      "costumeItemId": 21,
-      "checked": false,
-      "id": 561
-    },
-    {
-      "conCostumeId": 86,
-      "costumeItemId": 22,
-      "checked": false,
-      "id": 562
-    },
-    {
-      "conCostumeId": 86,
-      "costumeItemId": 23,
-      "checked": false,
-      "id": 563
     },
     {
       "conCostumeId": 87,
@@ -1188,78 +1047,6 @@
       "costumeItemId": 53,
       "checked": false,
       "id": 568
-    },
-    {
-      "conCostumeId": 89,
-      "costumeItemId": 10,
-      "checked": false,
-      "id": 569
-    },
-    {
-      "conCostumeId": 89,
-      "costumeItemId": 11,
-      "checked": false,
-      "id": 570
-    },
-    {
-      "conCostumeId": 89,
-      "costumeItemId": 12,
-      "checked": false,
-      "id": 571
-    },
-    {
-      "conCostumeId": 89,
-      "costumeItemId": 13,
-      "checked": false,
-      "id": 572
-    },
-    {
-      "conCostumeId": 89,
-      "costumeItemId": 14,
-      "checked": false,
-      "id": 573
-    },
-    {
-      "conCostumeId": 89,
-      "costumeItemId": 15,
-      "checked": false,
-      "id": 574
-    },
-    {
-      "conCostumeId": 89,
-      "costumeItemId": 16,
-      "checked": false,
-      "id": 575
-    },
-    {
-      "conCostumeId": 89,
-      "costumeItemId": 41,
-      "checked": false,
-      "id": 576
-    },
-    {
-      "conCostumeId": 89,
-      "costumeItemId": 62,
-      "checked": false,
-      "id": 577
-    },
-    {
-      "conCostumeId": 90,
-      "costumeItemId": 102,
-      "checked": false,
-      "id": 578
-    },
-    {
-      "conCostumeId": 90,
-      "costumeItemId": 103,
-      "checked": false,
-      "id": 579
-    },
-    {
-      "conCostumeId": 90,
-      "costumeItemId": 104,
-      "checked": false,
-      "id": 580
     },
     {
       "conCostumeId": 92,
@@ -1434,6 +1221,252 @@
       "costumeItemId": 23,
       "checked": false,
       "id": 615
+    },
+    {
+      "conCostumeId": 94,
+      "costumeItemId": 115,
+      "checked": false,
+      "id": 620
+    },
+    {
+      "conCostumeId": 94,
+      "costumeItemId": 116,
+      "checked": false,
+      "id": 622
+    },
+    {
+      "conCostumeId": 94,
+      "costumeItemId": 117,
+      "checked": false,
+      "id": 624
+    },
+    {
+      "conCostumeId": 94,
+      "costumeItemId": 118,
+      "checked": false,
+      "id": 626
+    },
+    {
+      "conCostumeId": 94,
+      "costumeItemId": 119,
+      "checked": false,
+      "id": 628
+    },
+    {
+      "conCostumeId": 94,
+      "costumeItemId": 120,
+      "checked": false,
+      "id": 630
+    },
+    {
+      "conCostumeId": 94,
+      "costumeItemId": 121,
+      "checked": false,
+      "id": 632
+    },
+    {
+      "conCostumeId": 94,
+      "costumeItemId": 122,
+      "checked": false,
+      "id": 635
+    },
+    {
+      "conCostumeId": 101,
+      "costumeItemId": 105,
+      "checked": false,
+      "id": 651
+    },
+    {
+      "conCostumeId": 101,
+      "costumeItemId": 106,
+      "checked": false,
+      "id": 652
+    },
+    {
+      "conCostumeId": 101,
+      "costumeItemId": 107,
+      "checked": false,
+      "id": 653
+    },
+    {
+      "conCostumeId": 101,
+      "costumeItemId": 112,
+      "checked": false,
+      "id": 654
+    },
+    {
+      "conCostumeId": 102,
+      "costumeItemId": 10,
+      "checked": false,
+      "id": 655
+    },
+    {
+      "conCostumeId": 102,
+      "costumeItemId": 11,
+      "checked": false,
+      "id": 656
+    },
+    {
+      "conCostumeId": 102,
+      "costumeItemId": 12,
+      "checked": false,
+      "id": 657
+    },
+    {
+      "conCostumeId": 102,
+      "costumeItemId": 13,
+      "checked": false,
+      "id": 658
+    },
+    {
+      "conCostumeId": 91,
+      "costumeItemId": 123,
+      "checked": false,
+      "id": 659
+    },
+    {
+      "conCostumeId": 91,
+      "costumeItemId": 124,
+      "checked": false,
+      "id": 660
+    },
+    {
+      "conCostumeId": 91,
+      "costumeItemId": 125,
+      "checked": false,
+      "id": 664
+    },
+    {
+      "conCostumeId": 91,
+      "costumeItemId": 126,
+      "checked": false,
+      "id": 666
+    },
+    {
+      "conCostumeId": 103,
+      "costumeItemId": 103,
+      "checked": false,
+      "id": 670
+    },
+    {
+      "conCostumeId": 103,
+      "costumeItemId": 102,
+      "checked": false,
+      "id": 671
+    },
+    {
+      "conCostumeId": 103,
+      "costumeItemId": 104,
+      "checked": false,
+      "id": 672
+    },
+    {
+      "conCostumeId": 104,
+      "costumeItemId": 97,
+      "checked": false,
+      "id": 673
+    },
+    {
+      "conCostumeId": 104,
+      "costumeItemId": 98,
+      "checked": false,
+      "id": 674
+    },
+    {
+      "conCostumeId": 104,
+      "costumeItemId": 110,
+      "checked": false,
+      "id": 675
+    },
+    {
+      "conCostumeId": 104,
+      "costumeItemId": 111,
+      "checked": false,
+      "id": 676
+    },
+    {
+      "conCostumeId": 105,
+      "costumeItemId": 63,
+      "checked": false,
+      "id": 677
+    },
+    {
+      "conCostumeId": 105,
+      "costumeItemId": 64,
+      "checked": false,
+      "id": 678
+    },
+    {
+      "conCostumeId": 105,
+      "costumeItemId": 65,
+      "checked": false,
+      "id": 679
+    },
+    {
+      "conCostumeId": 105,
+      "costumeItemId": 66,
+      "checked": false,
+      "id": 680
+    },
+    {
+      "conCostumeId": 105,
+      "costumeItemId": 67,
+      "checked": false,
+      "id": 681
+    },
+    {
+      "conCostumeId": 105,
+      "costumeItemId": 68,
+      "checked": false,
+      "id": 682
+    },
+    {
+      "conCostumeId": 105,
+      "costumeItemId": 69,
+      "checked": false,
+      "id": 683
+    },
+    {
+      "conCostumeId": 106,
+      "costumeItemId": 24,
+      "checked": false,
+      "id": 698
+    },
+    {
+      "conCostumeId": 106,
+      "costumeItemId": 25,
+      "checked": false,
+      "id": 699
+    },
+    {
+      "conCostumeId": 106,
+      "costumeItemId": 26,
+      "checked": false,
+      "id": 700
+    },
+    {
+      "conCostumeId": 107,
+      "costumeItemId": 123,
+      "checked": false,
+      "id": 701
+    },
+    {
+      "conCostumeId": 107,
+      "costumeItemId": 124,
+      "checked": false,
+      "id": 702
+    },
+    {
+      "conCostumeId": 107,
+      "costumeItemId": 125,
+      "checked": false,
+      "id": 703
+    },
+    {
+      "conCostumeId": 107,
+      "costumeItemId": 126,
+      "checked": false,
+      "id": 704
     }
   ],
   "days": [
@@ -1639,9 +1672,14 @@
       "id": 7
     },
     {
-      "userId": 5,
+      "userId": 3,
       "groupId": 1,
       "id": 8
+    },
+    {
+      "userId": 5,
+      "groupId": 1,
+      "id": 9
     }
   ],
   "messages": [
@@ -1673,7 +1711,7 @@
       "message": "Where are we meeting again?",
       "timeDisplay": "2/14/2019 at 8:05 PM",
       "timestamp": 1550196336794,
-      "userId": 1,
+      "userId": 3,
       "groupId": 1,
       "id": 11
     },
@@ -1695,8 +1733,8 @@
     },
     {
       "message": "Hilton 5th Floor!",
-      "timeDisplay": "2/28/2019 at 3:47 PM",
-      "timestamp": 1551390444778,
+      "timeDisplay": "3/21/2019 at 8:49 AM",
+      "timestamp": 1553176153605,
       "userId": 1,
       "groupId": 1,
       "id": 14
@@ -1711,7 +1749,7 @@
     },
     {
       "name": "Arya",
-      "user": "",
+      "user": "firebird",
       "groupId": 1,
       "id": 2
     },
@@ -1741,7 +1779,7 @@
     },
     {
       "name": "Sansa",
-      "user": "",
+      "user": "destiny",
       "groupId": 1,
       "id": 8
     },

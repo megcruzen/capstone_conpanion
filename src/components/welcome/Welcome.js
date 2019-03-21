@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Table, Media } from 'reactstrap';
+import { Media } from 'reactstrap';
 import "../Conpanion.css";
-import ConventionCard from "../convention/ConventionCard"
+// import ConventionCard from "../convention/ConventionCard"
 
 export default class Welcome extends Component {
 
@@ -102,8 +102,11 @@ export default class Welcome extends Component {
             <section className="welcome">
                 {this.showName()}
 
-                <h3>Next Convention</h3>
+                <div className="next_con">
+                <h3 className="mb-4 text-center">Your Next Convention</h3>
+                <hr />
                 {this.getNextCon()}
+                </div>
 
             </section>
         )

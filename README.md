@@ -1,3 +1,5 @@
+<p align="center"><img src="./src/images/conpanion_logo.png" alt="ConPanion" title="ConPanion" width="500px"></p>
+
 <img src="./src/images/conpanion.png" alt="ConPanion" title="ConPanion" width="1000px">
 
 # ConPanion
